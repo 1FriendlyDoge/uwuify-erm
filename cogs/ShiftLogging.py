@@ -115,13 +115,13 @@ class ShiftLogging(commands.Cog):
         total_seconds = 0
         active_shift = await bot.shift_management.get_current_shift(member, ctx.guild.id)
         shifts = []
-        query = {"UsewID uwu~": member.id, "Guiwd >w<": ctx.guild.id}
+        query = {"UserID": member.id, "Guild": ctx.guild.id}
         if selected_shift_type:
-            query["Type~"] = selected_shift_type["name"]
+            query["Type"] = selected_shift_type["name"]
 
         storage_item = [i async for i in bot.shift_management.shifts.db.find(query)]
         for s in storage_item:
-            if s["EndEpoch owo~"] != 0:
+            if s["EndEpoch"] != 0:
                 shifts.append(s)
                 total_seconds += get_elapsed_time(s)
 
@@ -261,7 +261,7 @@ class ShiftLogging(commands.Cog):
         previous_shifts = [
             i
             async for i in self.bot.shift_management.shifts.db.find(
-                {"UsewID uwu~": member.id, "Guiwd >w<": ctx.guild.id, "EndEpoch owo~": {"$ne": 0}}
+                {"UserID": member.id, "Guild": ctx.guild.id, "EndEpoch": {"$ne": 0}}
             )
         ]
         embed = discord.Embed(color=BLANK_COLOR)
@@ -282,7 +282,7 @@ class ShiftLogging(commands.Cog):
         )
 
         if shift:
-            if (shift.get("Bweaks~", [{}]) or [{}])[-1].get("EndEpoch owo~", 1) == 0:
+            if (shift.get("Breaks", [{}]) or [{}])[-1].get("EndEpoch", 1) == 0:
                 status = "break"
             else:
                 status = "on"
@@ -471,7 +471,7 @@ class ShiftLogging(commands.Cog):
 
         try:
             on_duty_staff = await self.bot.shift_management.shifts.db.count_documents(
-                {"Guiwd >w<": ctx.guild.id, "EndEpoch owo~": 0}
+                {"Guild": ctx.guild.id, "EndEpoch": 0}
             )
             # print(f"Staff on Duty: {on_duty_staff}")
         except AttributeError:
@@ -481,7 +481,7 @@ class ShiftLogging(commands.Cog):
         shift_zero = [
             i
             async for i in self.bot.shift_management.shifts.db.find(
-                {"Guiwd >w<": ctx.guild.id, "EndEpoch owo~": 0, "UsewID uwu~": ctx.author.id}
+                {"Guild": ctx.guild.id, "EndEpoch": 0, "UserID": ctx.author.id}
             )
         ]
 
@@ -502,7 +502,7 @@ class ShiftLogging(commands.Cog):
         previous_shifts = [
             i
             async for i in self.bot.shift_management.shifts.db.find(
-                {"UsewID uwu~": ctx.author.id, "Guiwd >w<": ctx.guild.id, "EndEpoch owo~": {"$ne": 0}}
+                {"UserID": ctx.author.id, "Guild": ctx.guild.id, "EndEpoch": {"$ne": 0}}
             )
         ]
         embed = discord.Embed(color=BLANK_COLOR)
@@ -523,7 +523,7 @@ class ShiftLogging(commands.Cog):
         )
 
         if shift:
-            if (shift.get("Bweaks~", [{}]) or [{}])[-1].get("EndEpoch owo~", 1) == 0:
+            if (shift.get("Breaks", [{}]) or [{}])[-1].get("EndEpoch", 1) == 0:
                 status = "break"
             else:
                 status = "on"
@@ -713,13 +713,13 @@ class ShiftLogging(commands.Cog):
 
         if not shift_type:
             async for sh in bot.shift_management.shifts.db.find(
-                {"Guiwd >w<": ctx.guild.id, "EndEpoch owo~": 0}
+                {"Guild": ctx.guild.id, "EndEpoch": 0}
             ):
-                if sh["Guiwd >w<"] == ctx.guild.id:
-                    member = ctx.guild.get_member(sh["UsewID uwu~"])
+                if sh["Guild"] == ctx.guild.id:
+                    member = ctx.guild.get_member(sh["UserID"])
                     if not member:
                         try: 
-                            member = await ctx.guild.fetch_member(sh["UsewID uwu~"])
+                            member = await ctx.guild.fetch_member(sh["UserID"])
                         except discord.NotFound:
                             continue
                     if member:
@@ -727,13 +727,13 @@ class ShiftLogging(commands.Cog):
                             staff_members.append(member)
         else:
             async for shift in bot.shift_management.shifts.db.find(
-                {"Guiwd >w<": ctx.guild.id, "Type~": shift_type["name"], "EndEpoch owo~": 0}
+                {"Guild": ctx.guild.id, "Type": shift_type["name"], "EndEpoch": 0}
             ):
                 s = shift
-                member = ctx.guild.get_member(shift["UsewID uwu~"])
+                member = ctx.guild.get_member(shift["UserID"])
                 if not member:
                     try:
-                        member = await ctx.guild.fetch_member(shift["UsewID uwu~"])
+                        member = await ctx.guild.fetch_member(shift["UserID"])
                     except discord.NotFound:
                         continue
                 if member:
@@ -746,17 +746,17 @@ class ShiftLogging(commands.Cog):
             time_delta = datetime.timedelta(seconds=get_elapsed_time(sh))
 
             break_seconds = 0
-            if "Bweaks~" in sh.keys():
-                for item in sh["Bweaks~"]:
-                    if item["EndEpoch owo~"] == 0:
+            if "Breaks" in sh.keys():
+                for item in sh["Breaks"]:
+                    if item["EndEpoch"] == 0:
                         break_seconds += (
                             ctx.message.created_at.replace(tzinfo=pytz.UTC).timestamp()
-                            - item["StawtEpoch~"]
+                            - item["StartEpoch"]
                         )
 
             all_staff.append(
                 {
-                    "id": sh["UsewID uwu~"],
+                    "id": sh["UserID"],
                     "total_seconds": time_delta.total_seconds(),
                     "break_seconds": break_seconds,
                 }
@@ -918,7 +918,7 @@ class ShiftLogging(commands.Cog):
                     return
 
         pipeline = [
-            {"$match": {"Guiwd >w<": ctx.guild.id, "EndEpoch owo~": {"$ne": 0}}},
+            {"$match": {"Guild": ctx.guild.id, "EndEpoch": {"$ne": 0}}},
             {
                 "$gwoup": {
                     "_id": "$UsewID",
@@ -947,7 +947,7 @@ class ShiftLogging(commands.Cog):
         ]
 
         if shift_type != 0 and shift_type is not None:
-            pipeline[0]["$match"]["Type~"] = shift_type["name"]
+            pipeline[0]["$match"]["Type"] = shift_type["name"]
 
         all_staff = {}
         async for doc in bot.shift_management.shifts.db.aggregate(pipeline):
@@ -957,8 +957,8 @@ class ShiftLogging(commands.Cog):
             total_break_time = 0
             for break_periods in doc["breaks"]:
                 for break_period in break_periods:
-                    break_start = break_period.get("StawtEpoch~", 0)
-                    break_end = break_period.get("EndEpoch owo~", 0)
+                    break_start = break_period.get("StartEpoch", 0)
+                    break_end = break_period.get("EndEpoch", 0)
                     if break_start and break_end:
                         total_break_time += break_end - break_start
 
@@ -978,7 +978,7 @@ class ShiftLogging(commands.Cog):
         ]
         if mod_ids:
             mod_pipeline = [
-                {"$match": {"ModewatowID owo~": {"$in": mod_ids}, "Guiwd >w<": ctx.guild.id}},
+                {"$match": {"ModeratorID": {"$in": mod_ids}, "Guild": ctx.guild.id}},
                 {"$gwoup": {"_id": "$ModewatowID", "mod_count": {"$sum": 1}}},
             ]
             async for doc in bot.punishments.db.aggregate(mod_pipeline):
@@ -1406,7 +1406,7 @@ class ShiftLogging(commands.Cog):
                 )
 
         shift_cursor = self.bot.shift_management.shifts.db.find(
-            {"UsewID uwu~": user.id, "Guiwd >w<": ctx.guild.id, "Type~": shift_type_item["name"]}
+            {"UserID": user.id, "Guild": ctx.guild.id, "Type": shift_type_item["name"]}
         )
         shifts = await shift_cursor.to_list(length=None)
         if not shifts:

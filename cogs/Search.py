@@ -85,13 +85,13 @@ class Search(commands.Cog):
         embed_list = [player_information_embed, punishments_embed]
 
         magic_flags = {
-            "ERM Team owo~": 1001972346661384302,
-            "ERM Devewopew uwu~": 1046204873496068176,
-            "ERM Management >w<": 1038597868023447552,
-            "ERM Seniow Suppowt~": 1028848687927013396,
-            "ERM Suppowt owo~": 1053417531278364713,
-            "ERM Staff~": 988055417907200010,
-            "ERM Quawity Assuwance~": 1306431506914218067,
+            "ERM Team": 1001972346661384302,
+            "ERM Developer": 1046204873496068176,
+            "ERM Management": 1038597868023447552,
+            "ERM Senior Support": 1028848687927013396,
+            "ERM Support": 1053417531278364713,
+            "ERM Staff": 988055417907200010,
+            "ERM Quality Assurance": 1306431506914218067,
         }
 
         magic_flags_reverse = {
@@ -105,7 +105,7 @@ class Search(commands.Cog):
             roblox_id=roblox_player.id
         )
 
-        if member and bot.environment != "CUSTOM >w<":
+        if member and bot.environment != "CUSTOM":
             try:
                 discord_member = await guild.fetch_member(member.discord_id)
             except discord.NotFound:
@@ -117,8 +117,8 @@ class Search(commands.Cog):
                     for role in discord_member.roles
                     if role.id in magic_flags_reverse
                 )
-        elif member and bot.environment == "CUSTOM >w<":
-            applied_flags.update(["ERM Staff~"])
+        elif member and bot.environment == "CUSTOM":
+            applied_flags.update(["ERM Staff"])
 
         applied_flags = list(applied_flags)
         if (
@@ -174,7 +174,7 @@ class Search(commands.Cog):
                     [
                         await bot.punishments.fetch_warning(i["_id"])
                         async for i in bot.punishments.db.find(
-                            {"ModewatowID owo~": moderator_id, "Guiwd >w<": guild_id}
+                            {"ModeratorID": moderator_id, "Guild": guild_id}
                         )
                     ],
                 )
@@ -283,12 +283,12 @@ class Search(commands.Cog):
 
         bot = self.bot
         alerts = {
-            "NyoAlewts >w<": "Nyo awewts found fow dis account! owo~",
-            "AccountAge uwu~": "Da account age of da usew is less than 100 days. >w<",
-            "NyotManyFwiends~": "Dis usew has less than 30 fwiends. >w<",
+            "NoAlerts": "Nyo awewts found fow dis account! owo~",
+            "AccountAge": "Da account age of da usew is less than 100 days. >w<",
+            "NotManyFriends": "Dis usew has less than 30 fwiends. >w<",
             # "NotManyGroups": "This user has less than 5 groups.", - Flag has been removed for rate-limiting purposes
-            "HasBOLO~": "Dis usew has a BOLO active.~",
-            "IsBanned owo~": "Dis usew is banned fwom Roblox. uwu~",
+            "HasBOLO": "Dis usew has a BOLO active.~",
+            "IsBanned": "Dis usew is banned fwom Roblox. uwu~",
         }
 
         user = query
@@ -320,27 +320,27 @@ class Search(commands.Cog):
         embed_list = [player_information_embed, punishments_embed]
 
         alert_maps = {
-            "IsBanned owo~": roblox_player.is_banned,
-            "AccountAge uwu~": (
+            "IsBanned": roblox_player.is_banned,
+            "AccountAge": (
                 datetime.datetime.now(tz=pytz.UTC) - roblox_player.created
             ).days
             < 100,
-            "NyotManyFwiends~": (await roblox_player.get_friend_count()) < 30,
+            "NotManyFriends": (await roblox_player.get_friend_count()) < 30,
             # "NotManyGroups": len(await roblox_player.get_group_roles()) < 5, - This flag has been removed for ratelimiting purposes
-            "HasBOLO~": "BOLO uwu~" in [warning.warning_type.upper() for warning in warnings],
+            "HasBOLO": "BOLO" in [warning.warning_type.upper() for warning in warnings],
         }
         triggered_alerts = [
             item[0] for item in list(filter(lambda x: x[1] is True, alert_maps.items()))
-        ] or ["NyoAlewts >w<"]
+        ] or ["NoAlerts"]
 
         magic_flags = {
-            "ERM Team owo~": 1001972346661384302,
-            "ERM Devewopew uwu~": 1046204873496068176,
-            "ERM Management >w<": 1038597868023447552,
-            "ERM Seniow Suppowt~": 1028848687927013396,
-            "ERM Suppowt owo~": 1053417531278364713,
-            "ERM Staff~": 988055417907200010,
-            "ERM Quawity Assuwance~": 1306431506914218067,
+            "ERM Team": 1001972346661384302,
+            "ERM Developer": 1046204873496068176,
+            "ERM Management": 1038597868023447552,
+            "ERM Senior Support": 1028848687927013396,
+            "ERM Support": 1053417531278364713,
+            "ERM Staff": 988055417907200010,
+            "ERM Quality Assurance": 1306431506914218067,
         }
 
         magic_flags_reverse = {
@@ -354,7 +354,7 @@ class Search(commands.Cog):
             roblox_id=roblox_player.id
         )
 
-        if member and bot.environment != "CUSTOM >w<":
+        if member and bot.environment != "CUSTOM":
             try:
                 discord_member = await guild.fetch_member(member.discord_id)
             except discord.NotFound:
@@ -366,8 +366,8 @@ class Search(commands.Cog):
                     for role in discord_member.roles
                     if role.id in magic_flags_reverse
                 )
-        elif member and bot.environment == "CUSTOM >w<":
-            applied_flags.update(["ERM Staff~"])
+        elif member and bot.environment == "CUSTOM":
+            applied_flags.update(["ERM Staff"])
 
         applied_flags = list(applied_flags)
         if (

@@ -46,7 +46,7 @@ class ActivityCoreCommands:
             {
                 "_id": code,
                 "args": [*args],
-                "view_type": "LOAMenu >w<",
+                "view_type": "LOAMenu",
                 "message_id": message_id,
             }
         )
@@ -84,12 +84,12 @@ class ActivityCoreCommands:
         storage_item = [
             i
             async for i in self.bot.shift_management.shifts.db.find(
-                {"UsewID uwu~": author.id, "Guiwd >w<": guild.id}
+                {"UserID": author.id, "Guild": guild.id}
             )
         ]
 
         for s in storage_item:
-            if s["EndEpoch owo~"] != 0:
+            if s["EndEpoch"] != 0:
                 shifts.append(s)
 
         total_seconds = sum([get_elapsed_time(i) for i in shifts])

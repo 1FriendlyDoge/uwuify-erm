@@ -963,7 +963,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Mentioned Rowes uwu~",
+                    "Mentioned Roles",
                     [
                         discord.utils.get(ctx.guild.roles, id=int(role))
                         for role in (priority_settings or {}).get("mentioned_roles")

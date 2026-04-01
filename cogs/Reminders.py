@@ -130,7 +130,7 @@ class Reminders(commands.Cog):
                 }
             else:
                 completion_styling = {
-                    "label": "Completion Abiwity: Disabled uwu~",
+                    "label": "Completion Ability: Disabled",
                     "style": discord.ButtonStyle.danger,
                 }
 
@@ -139,7 +139,7 @@ class Reminders(commands.Cog):
                 dataset,
                 "edit",
                 {
-                    "Remindew Channel >w<": list(
+                    "Reminder Channel": list(
                         filter(
                             lambda x: x is not None,
                             [
@@ -149,7 +149,7 @@ class Reminders(commands.Cog):
                             ],
                         )
                     ),
-                    "Mentioned Rowes uwu~": list(
+                    "Mentioned Roles": list(
                         filter(
                             lambda x: x is not None,
                             [
@@ -158,7 +158,7 @@ class Reminders(commands.Cog):
                             ],
                         )
                     ),
-                    "Completion Abiwity: Disabled uwu~": completion_styling,
+                    "Completion Ability: Disabled": completion_styling,
                 },
             )
             await msg.edit(

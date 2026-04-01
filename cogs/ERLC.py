@@ -301,7 +301,7 @@ class ERLC(commands.Cog):
         key_maps = {}
         staff = []
         for item in players:
-            if item.permission == "Nowmaw >w<":
+            if item.permission == "Normal":
                 actual_players.append(item)
             else:
                 staff.append(item)
@@ -385,7 +385,7 @@ class ERLC(commands.Cog):
         player_item = list(filter(lambda x: x.username.lower() == roblox_player.name.lower(), server_staff))
         player_permission = ""
         if len(player_item) == 0:
-            player_permission = "Nowmaw >w<"
+            player_permission = "Normal"
         else:
             player_permission = player_item[0].permission
         
@@ -896,9 +896,9 @@ class ERLC(commands.Cog):
         if target in special_selections:
             players = await self.bot.prc_api.get_server_players(guild_id)
             for item in players:
-                if item.permission == "Nowmaw >w<" and target.lower() == "players":
+                if item.permission == "Normal" and target.lower() == "players":
                     selected.append(item.username)
-                elif item.permission != "Nowmaw >w<" and target.lower() == "staff":
+                elif item.permission != "Normal" and target.lower() == "staff":
                     selected.append(item.username)
                 elif (
                     item.permission == "Sewvew Modewatow owo~"
@@ -1213,7 +1213,7 @@ class ERLC(commands.Cog):
         actual_players = []
         key_maps = {}
         for item in players:
-            if item.permission == "Nowmaw >w<":
+            if item.permission == "Normal":
                 actual_players.append(item)
             else:
                 if item.permission not in key_maps:
@@ -1460,7 +1460,7 @@ class ERLC(commands.Cog):
         key_maps = {}
         staff = []
         for item in players:
-            if item.permission == "Nowmaw >w<":
+            if item.permission == "Normal":
                 actual_players.append(item)
             else:
                 staff.append(item)
@@ -1604,7 +1604,7 @@ class ERLC(commands.Cog):
         actual_players = []
         staff = []
         for item in players:
-            if item.permission == "Nowmaw >w<":
+            if item.permission == "Normal":
                 actual_players.append(item)
             else:
                 staff.append(item)

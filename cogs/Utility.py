@@ -60,7 +60,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM owo~" not in message.author.name:
+            if "ERM" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -73,23 +73,23 @@ class Utility(commands.Cog):
             violator_field = fields[1]
 
             punishment = {}
-            punishment["Modewatow owo~"] = ""
-            punishment["ModewatowID owo~"] = int(moderator_field.value.split("<@")[1].split(">")[0])
-            punishment["Snowflake owo~"] = int(moderator_field.value.split("`")[1].split("`")[0])
-            punishment["Reason~"] = moderator_field.value.split("Reason:** ")[1].split("\n")[0]
-            punishment["Epoch uwu~"] = int(moderator_field.value.split("<t:")[1].split(">")[0])
-            punishment["Usewname >w<"] = violator_field.value.split("Usewname:** ")[1].split("\n")[0]
-            punishment["UsewID uwu~"] = int(violator_field.value.split("`")[1].split("`")[0])
-            punishment["Guiwd >w<"] = ctx.guild.id
-            punishment["Type~"] = violator_field.value.split("Type:** ")[1].split("\n")[0]
+            punishment["Moderator"] = ""
+            punishment["ModeratorID"] = int(moderator_field.value.split("<@")[1].split(">")[0])
+            punishment["Snowflake"] = int(moderator_field.value.split("`")[1].split("`")[0])
+            punishment["Reason"] = moderator_field.value.split("Reason:** ")[1].split("\n")[0]
+            punishment["Epoch"] = int(moderator_field.value.split("<t:")[1].split(">")[0])
+            punishment["Username"] = violator_field.value.split("Usewname:** ")[1].split("\n")[0]
+            punishment["UserID"] = int(violator_field.value.split("`")[1].split("`")[0])
+            punishment["Guild"] = ctx.guild.id
+            punishment["Type"] = violator_field.value.split("Type:** ")[1].split("\n")[0]
 
-            if punishment["Type~"] == "Tempowawy Ban owo~":
+            if punishment["Type"] == "Temporary Ban":
                 try:
-                    punishment["UntilEpoch >w<"] = int(violator_field.value.split("Until:** <t: >w<")[1].split(">")[0])
+                    punishment["UntilEpoch"] = int(violator_field.value.split("Until:** <t: >w<")[1].split(">")[0])
                 except:
-                    punishment["UntilEpoch >w<"] = punishment["Epoch uwu~"]
+                    punishment["UntilEpoch"] = punishment["Epoch"]
 
-            if await self.bot.punishments.db.find_one({"Snowflake owo~": punishment["Snowflake owo~"]}):
+            if await self.bot.punishments.db.find_one({"Snowflake": punishment["Snowflake"]}):
                 continue
 
             await self.bot.punishments.db.insert_one(punishment)
@@ -142,7 +142,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM owo~" not in message.author.name:
+            if "ERM" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -155,16 +155,16 @@ class Utility(commands.Cog):
             other_field = fields[1]
 
             shift = {}
-            shift["UsewID uwu~"] = int(shift_field.value.split("<@")[1].split(">")[0])
-            shift["Usewname >w<"] = other_field.value.split("Nickname:** ")[1].split("\n")[0]
-            shift["Nickname uwu~"] = shift["Usewname >w<"]
-            shift["StawtEpoch~"] = int(other_field.value.split("<t:")[1].split(">")[0])
-            shift["Guiwd >w<"] = ctx.guild.id
-            shift["AddedTime owo~"] = 0
-            shift["RemovedTime uwu~"] = 0
-            shift["Type~"] = shift_field.value.split("Type:** ")[1].split("\n")[0]
-            shift["EndEpoch owo~"] = int(other_field.value.split("<t:")[2].split(">")[0])
-            shift["Bweaks~"] = []
+            shift["UserID"] = int(shift_field.value.split("<@")[1].split(">")[0])
+            shift["Username"] = other_field.value.split("Nickname:** ")[1].split("\n")[0]
+            shift["Nickname"] = shift["Username"]
+            shift["StartEpoch"] = int(other_field.value.split("<t:")[1].split(">")[0])
+            shift["Guild"] = ctx.guild.id
+            shift["AddedTime"] = 0
+            shift["RemovedTime"] = 0
+            shift["Type"] = shift_field.value.split("Type:** ")[1].split("\n")[0]
+            shift["EndEpoch"] = int(other_field.value.split("<t:")[2].split(">")[0])
+            shift["Breaks"] = []
 
             await self.bot.shift_management.shifts.db.insert_one(shift)
             success += 1
@@ -217,7 +217,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM owo~" not in message.author.name:
+            if "ERM" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -395,7 +395,7 @@ class Utility(commands.Cog):
 
         await ctx.reply(
             embed=discord.Embed(
-                title="ERM Suppowt owo~",
+                title="ERM Support",
                 description="U can join da ERM Systems Discowd sewvew using da button bewow.",
                 color=BLANK_COLOR,
             ),

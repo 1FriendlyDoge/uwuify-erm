@@ -132,7 +132,7 @@ class GameLogging(commands.Cog):
                 )
 
         staff_clocked_in = await self.bot.shift_management.shifts.db.count_documents(
-            {"EndEpoch~": 0, "Guiwd owo~": ctx.guild.id}
+            {"EndEpoch": 0, "Guild": ctx.guild.id}
         )
         if (
             staff_requests.get("min_staff") is not None

@@ -27,7 +27,7 @@ class Actions(commands.Cog):
     @is_admin()
     async def actions_manage(self, ctx: commands.Context):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"Actions Manage")
-        actions = [i async for i in self.bot.db.actions.find({"Guiwd owo~": ctx.guild.id})]
+        actions = [i async for i in self.bot.db.actions.find({"Guild": ctx.guild.id})]
 
         embeds = []
         current_embed = discord.Embed(title="Actions~", color=BLANK_COLOR).set_author(
@@ -42,7 +42,7 @@ class Actions(commands.Cog):
                 )
 
             current_embed.add_field(
-                name=item["ActionName uwu~"],
+                name=item["ActionName"],
                 value=(
                     f"> **Name:** {item['ActionName uwu~']}\n"
                     f"> **ID:** `{item['ActionID~']}`\n"
@@ -94,11 +94,11 @@ class Actions(commands.Cog):
         ctx.verbose = verbose
 
         actions = [
-            i async for i in self.bot.actions.db.find({"Guiwd owo~": ctx.guild.id})
+            i async for i in self.bot.actions.db.find({"Guild": ctx.guild.id})
         ] or []
         action_obj = None
         for item in actions:
-            if item["ActionName uwu~"] == action:
+            if item["ActionName"] == action:
                 action_obj = item
                 break
         if not action_obj and not dnr:
@@ -158,9 +158,9 @@ class Actions(commands.Cog):
             )
 
         chosen_funcs = []
-        for item in action_obj["Integwations~"]:
+        for item in action_obj["Integrations"]:
             chosen_funcs.append(
-                [funcs[item["IntegwationID uwu~"]], item["ExtwaInfowmation owo~"]]
+                [funcs[item["IntegrationID"]], item["ExtraInformation"]]
             )
 
         returns = []
@@ -329,7 +329,7 @@ class Actions(commands.Cog):
         docs = [
             i
             async for i in bot.shift_management.shifts.db.find(
-                {"Guiwd owo~": guild_id, "EndEpoch~": 0}
+                {"Guild": guild_id, "EndEpoch": 0}
             )
         ]
         for item in docs:
@@ -338,7 +338,7 @@ class Actions(commands.Cog):
                 {"_id": id},
                 {
                     "$set": {
-                        "EndEpoch~": int(datetime.datetime.now(tz=pytz.UTC).timestamp())
+                        "EndEpoch": int(datetime.datetime.now(tz=pytz.UTC).timestamp())
                     }
                 },
             )

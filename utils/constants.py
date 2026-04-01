@@ -72,22 +72,22 @@ RED_COLOR = 0xD12F32
 ORANGE_COLOR = discord.Colour.orange()
 
 SERVER_CONDITIONS = {
-    "In-Game Pwayews owo~": "ERLC_Players",
-    "In-Game Modewatows uwu~": "ERLC_Moderators",
-    "In-Game Admwins~": "ERLC_Admins",
-    "In-Game Ownew~": "ERLC_Owner",
-    "In-Game Staff~": "ERLC_Staff",
-    "In-Game Queue uwu~": "ERLC_Queue",
-    "On Duty Staff~": "OnDuty",
-    "On Bweak Staff~": "OnBreak",
-    "Pwayews on Powice~": "ERLC_Police",
-    "Pwayews on Shewiff~": "ERLC_Sheriff",
-    "Pwayews on Fiwe~": "ERLC_Fire",
-    "Pwayews on DOT~": "ERLC_DOT",
-    "Pwayews on Civiwian~": "ERLC_Civilian",
-    "Pwayews on Jaiw~": "ERLC_Jail",
-    "Vehicwes Spawned~": "ERLC_Vehicles",
-    "If ... is in-game owo~": "ERLC_X_InGame",
+    "In-Game Players": "ERLC_Players",
+    "In-Game Moderators": "ERLC_Moderators",
+    "In-Game Admins": "ERLC_Admins",
+    "In-Game Owner": "ERLC_Owner",
+    "In-Game Staff": "ERLC_Staff",
+    "In-Game Queue": "ERLC_Queue",
+    "On Duty Staff": "OnDuty",
+    "On Break Staff": "OnBreak",
+    "Players on Police": "ERLC_Police",
+    "Players on Sheriff": "ERLC_Sheriff",
+    "Players on Fire": "ERLC_Fire",
+    "Players on DOT": "ERLC_DOT",
+    "Players on Civilian": "ERLC_Civilian",
+    "Players on Jail": "ERLC_Jail",
+    "Vehicles Spawned": "ERLC_Vehicles",
+    "If ... is in-game": "ERLC_X_InGame",
 }
 
 RELEVANT_DESCRIPTIONS = [
@@ -110,12 +110,12 @@ RELEVANT_DESCRIPTIONS = [
 ]
 
 CONDITION_OPTIONS = {
-    "Equaws~": "==",
-    "Wess Than~": "<",
-    "Wess Than ow Equaws To~": "<=",
-    "Nyot Equaws To~": "!=",
-    "Mowe Than~": ">",
-    "Mowe Than ow Equaws To~": ">=",
+    "Equals": "==",
+    "Less Than": "<",
+    "Less Than or Equals To": "<=",
+    "Not Equals To": "!=",
+    "More Than": ">",
+    "More Than or Equals To": ">=",
 }
 
 OPTION_DESCRIPTIONS = [

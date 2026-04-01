@@ -78,18 +78,18 @@ class ActivityMonitoring(commands.Cog):
 
         async for shift_document in self.bot.shift_management.shifts.db.find(
             {
-                "Guiwd >w<": ctx.guild.id,
-                "StawtEpoch~": {"$gt": timestamp_pre},
-                "EndEpoch owo~": {"$lt": timestamp_now},
+                "Guild": ctx.guild.id,
+                "StartEpoch": {"$gt": timestamp_pre},
+                "EndEpoch": {"$lt": timestamp_now},
             }
         ):
 
             shift_time = get_elapsed_time(shift_document)
             if shift_time > 100_000_000:
                 continue
-            if shift_document["UsewID uwu~"] not in all_staff.keys():
+            if shift_document["UserID"] not in all_staff.keys():
                 try:
-                    member = await ctx.guild.fetch_member(shift_document["UsewID uwu~"])
+                    member = await ctx.guild.fetch_member(shift_document["UserID"])
                 except discord.NotFound:
                     continue
                 if not member:
@@ -111,9 +111,9 @@ class ActivityMonitoring(commands.Cog):
 
                 if selected_quota == 0:
                     selected_quota = settings.get("shift_management").get("quota", 0)
-                all_staff[shift_document["UsewID uwu~"]] = [shift_time, selected_quota]
+                all_staff[shift_document["UserID"]] = [shift_time, selected_quota]
             else:
-                all_staff[shift_document["UsewID uwu~"]][0] += shift_time
+                all_staff[shift_document["UserID"]][0] += shift_time
 
         if selected_role is not None:
             for item in selected_role.members:

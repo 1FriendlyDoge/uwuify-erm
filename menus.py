@@ -1363,11 +1363,11 @@ class ManageActions(discord.ui.View):
             await self.modal.wait()
             actions = [
                 i
-                async for i in self.bot.actions.db.find({"Guiwd~": interaction.guild.id})
+                async for i in self.bot.actions.db.find({"Guild": interaction.guild.id})
             ]
             selected_action = None
             for item in actions:
-                if item["ActionID~"] == int(self.modal.name.value):
+                if item["ActionID"] == int(self.modal.name.value):
                     selected_action = item
                     break
             else:
@@ -1391,18 +1391,18 @@ class ManageActions(discord.ui.View):
             )
             embed.description += "\n".join(
                 [
-                    f'> **{i["IntegwationName~"]}{":** {}".format(i["ExtwaInfowmation owo~"]) if i["ExtwaInfowmation owo~"] is not None else "**"}'
-                    for i in selected_action["Integwations~"]
+                    f'> **{i["IntegrationName"]}{":** {}".format(i["ExtraInformation"]) if i["ExtraInformation"] is not None else "**"}'
+                    for i in selected_action["Integrations"]
                 ]
             )
             embed.description += "\n> *Nyew Integwation~*"
-            if len(selected_action.get("Conditions >w<", []) or []) != 0:
+            if len(selected_action.get("Conditions", []) or []) != 0:
                 embed.add_field(
-                    name="Conditions >w<",
+                    name="Conditions",
                     value="\n".join(
                         [
                             f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
-                            for item in selected_action["Conditions >w<"]
+                            for item in selected_action["Conditions"]
                         ]
                     ),
                     inline=False,
@@ -1412,7 +1412,7 @@ class ManageActions(discord.ui.View):
                     value=td_format(
                         datetime.timedelta(
                             seconds=selected_action.get(
-                                "ConditionExecutionIntewvaw >w<", 300
+                                "ConditionExecutionInterval", 300
                             )
                         )
                     ),
@@ -1461,7 +1461,7 @@ class ManageActions(discord.ui.View):
             await interaction.response.send_modal(self.modal)
             await self.modal.wait()
             await self.bot.actions.db.delete_one(
-                {"ActionID~": int(self.modal.id_value.value)}
+                {"ActionID": int(self.modal.id_value.value)}
             )
             await interaction.response.send_message(
                 embed=discord.Embed(
@@ -2753,7 +2753,7 @@ class RemoveWarning(discord.ui.View):
 
 
 class RequestReason(discord.ui.Modal, title="Edit Reason~"):
-    name = discord.ui.TextInput(label="Reason~")
+    name = discord.ui.TextInput(label="Reason")
 
     async def on_submit(self, interaction: discord.Interaction):
         await interaction.response.defer(thinking=False)
@@ -2762,7 +2762,7 @@ class RequestReason(discord.ui.Modal, title="Edit Reason~"):
 
 
 class RequestData(discord.ui.Modal, title="Edit Reason~"):
-    data = discord.ui.TextInput(label="Reason~")
+    data = discord.ui.TextInput(label="Reason")
 
     def __init__(self, title="PLACEHOLDER uwu~", label="PLACEHOLDER uwu~"):
         self.data.label = label
@@ -2992,7 +2992,7 @@ class SetThumbnail(discord.ui.Modal, title="Set Thumbnail owo~"):
         self.stop()
 
 
-class TimeRequest(discord.ui.Modal, title="Tempowawy Ban >w<"):
+class TimeRequest(discord.ui.Modal, title="Temporary Ban"):
     time = discord.ui.TextInput(label="Time (s/m/h/d) owo~")
 
     async def on_submit(self, interaction: discord.Interaction):
@@ -3038,8 +3038,8 @@ class ChangeWarningType(discord.ui.Select):
                     description="A pewmanent fowm of removing a usew fwom da game, given aftew kicks",
                 ),
                 discord.SelectOption(
-                    label="Tempowawy Ban >w<",
-                    value="Tempowawy Ban >w<",
+                    label="Temporary Ban",
+                    value="Temporary Ban",
                     description="Given aftew kicks, nyot enough to wawwant a pewmanent removaw >w<",
                 ),
                 discord.SelectOption(
@@ -3057,7 +3057,7 @@ class ChangeWarningType(discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         if interaction.user.id == self.user_id:
-            if self.values[0] == "Tempowawy Ban >w<":
+            if self.values[0] == "Temporary Ban":
                 modal = TimeRequest()
                 await interaction.response.send_modal(modal)
                 seconds = 0
@@ -3475,7 +3475,7 @@ class ConditionCreationToolkit(discord.ui.View):
     ):
         condition_data = {}
         if self.constant != 0:
-            condition_data["Vawue owo~"] = self.constant
+            condition_data["Value"] = self.constant
             self.constant = 0
 
         for select in list(
@@ -3499,37 +3499,37 @@ class ConditionCreationToolkit(discord.ui.View):
 
             if select.values[0] in condition_options.values():
                 print("op")
-                condition_data["Opewation uwu~"] = select.values[0]
+                condition_data["Operation"] = select.values[0]
                 continue
 
             if select.values[0] in ["and", "or"]:
                 print("logic")
-                condition_data["LogicGate~"] = select.values[0]
+                condition_data["LogicGate"] = select.values[0]
                 continue
 
             if (
                 select.values[0] in server_conditions.values()
-                and condition_data.get("Vawiabwe uwu~") is None
+                and condition_data.get("Variable") is None
             ):
                 if "X" in select.values[0]:  # requires dynamic argument
-                    condition_data["Vawiabwe uwu~"] = (
+                    condition_data["Variable"] = (
                         select.values[0] + f" {self.select_data.get(select)}"
                     )
                     continue
                 print("var")
-                condition_data["Vawiabwe uwu~"] = select.values[0]
+                condition_data["Variable"] = select.values[0]
                 continue
             else:
                 if (
-                    condition_data.get("Vawue owo~") is None
+                    condition_data.get("Value") is None
                 ):  # check for preoccupied constant :)
                     if "X" in select.values[0]:  # requires dynamic argument
-                        condition_data["Vawue owo~"] = (
+                        condition_data["Value"] = (
                             select.values[0] + f" {self.select_data.get(select)}"
                         )
                         continue
                     print("val")
-                    condition_data["Vawue owo~"] = select.values[0]
+                    condition_data["Value"] = select.values[0]
                     continue
 
         self.conditions.append(condition_data)
@@ -3626,7 +3626,7 @@ class ConditionCreationToolkit(discord.ui.View):
     ):
         if not select.values:
             return await interaction.response.defer(thinking=False)
-        if select.values[0] == "ERLC_X_InGame >w<":
+        if select.values[0] == "ERLC_X_InGame":
             modal = CustomModal(
                 "Roblox Usewname~",
                 [
@@ -3718,7 +3718,7 @@ class ConditionCreationToolkit(discord.ui.View):
                             placeholder="Vawue (must be a numbew)~",
                             min_length=1,
                             max_length=5,
-                            label="Vawue owo~",
+                            label="Value",
                             custom_id="value",
                         ),
                     )
@@ -3743,7 +3743,7 @@ class ConditionCreationToolkit(discord.ui.View):
                 )
                 return
             self.constant = int(modal.constant.value)
-        elif select.values[0] == "ERLC_X_InGame >w<":
+        elif select.values[0] == "ERLC_X_InGame":
             modal = CustomModal(
                 "Roblox Usewname~",
                 [
@@ -3819,14 +3819,14 @@ class ActionCreationToolkit(discord.ui.View):
         self.bot = bot
         self.user_id = user_id
         self.action_data = {
-            "ActionName~": action_name,
-            "ActionID~": next(generator),
-            "Twiggews uwu~": 0,
-            "Integwations~": [],
-            "ConditionExecutionIntewvaw >w<": 300,
-            "Conditions >w<": [],
-            "Guiwd~": 0,
-            "LastExecuted~": 0,
+            "ActionName": action_name,
+            "ActionID": next(generator),
+            "Triggers": 0,
+            "Integrations": [],
+            "ConditionExecutionInterval": 300,
+            "Conditions": [],
+            "Guild": 0,
+            "LastExecuted": 0,
         }
 
         def return_correspondent_callback(item):
@@ -3836,16 +3836,16 @@ class ActionCreationToolkit(discord.ui.View):
             return unnative_callback
 
         actions = [
-            "Execute Custom Command >w<",
-            "Toggwe Remindew owo~",
-            "Fowce Aww Staff Off Duty >w<",
-            "Send ER:LC Command owo~",
-            "Send ER:LC Message uwu~",
-            "Send ER:LC Hint owo~",
-            "Deway owo~",
-            "Add Rowe >w<",
-            "Remove Rowe >w<",
-            "Execute ERM Command owo~"
+            "Execute Custom Command",
+            "Toggle Reminder",
+            "Force All Staff Off Duty",
+            "Send ER:LC Command",
+            "Send ER:LC Message",
+            "Send ER:LC Hint",
+            "Delay",
+            "Add Role",
+            "Remove Role",
+            "Execute ERM Command"
         ]
 
         extras = ["Remove Last Integwation >w<"]
@@ -3856,7 +3856,7 @@ class ActionCreationToolkit(discord.ui.View):
             self.add_item(button)
 
         button = discord.ui.Button(
-            style=discord.ButtonStyle.primary, label="Access Rowes~"
+            style=discord.ButtonStyle.primary, label="Access Roles"
         )
         button.callback = self.set_access_roles
 
@@ -3874,7 +3874,7 @@ class ActionCreationToolkit(discord.ui.View):
         self.add_item(button)
 
     async def finish(self, interaction: discord.Interaction):
-        if len(self.action_data["Integwations~"]) == 0:
+        if len(self.action_data["Integrations"]) == 0:
             return await interaction.response.send_message(
                 embed=discord.Embed(
                     title="Nyot Enough Integwations~",
@@ -3884,11 +3884,11 @@ class ActionCreationToolkit(discord.ui.View):
                 ephemeral=True,
             )
 
-        self.action_data["Guiwd~"] = interaction.guild.id
+        self.action_data["Guild"] = interaction.guild.id
         self.stop()
 
     async def remove_last_integration(self, interaction: discord.Interaction):
-        if len(self.action_data["Integwations~"]) == 0:
+        if len(self.action_data["Integrations"]) == 0:
             return await interaction.response.send_message(
                 embed=discord.Embed(
                     title="Unabwe To Remove owo~",
@@ -3897,7 +3897,7 @@ class ActionCreationToolkit(discord.ui.View):
                 ),
                 ephemeral=True
             )
-        self.action_data["Integwations~"].pop(-1)
+        self.action_data["Integrations"].pop(-1)
         message = interaction.message
         embed = message.embeds[-1]
         lines = embed.description.splitlines()
@@ -3911,11 +3911,11 @@ class ActionCreationToolkit(discord.ui.View):
         view = RoleSelect(interaction.user.id, limit=10)
         view.children[0].default_values = [
             discord.utils.get(interaction.guild.roles, id=item)
-            for item in (self.action_data.get("AccessRowes owo~", []) or [])
+            for item in (self.action_data.get("AccessRoles", []) or [])
         ]
         await interaction.response.send_message(
             embed=discord.Embed(
-                title="Access Rowes~",
+                title="Access Roles",
                 description="These rowes wiww be abwe to execute dis action. **Usuawwy dis wouwd be uw staff rowe.**",
                 color=BLANK_COLOR,
             ),
@@ -3925,7 +3925,7 @@ class ActionCreationToolkit(discord.ui.View):
         timeout = await view.wait()
         if timeout:
             return
-        self.action_data["AccessRowes owo~"] = [i.id for i in view.value]
+        self.action_data["AccessRoles"] = [i.id for i in view.value]
         await (await interaction.original_response()).delete()
 
     @discord.ui.button(
@@ -3941,16 +3941,16 @@ class ActionCreationToolkit(discord.ui.View):
             description="Conditions awe requiwements dat must be met fow da action. When a condition is sewected, da action wiww be activated when da condition is met. Othewwise, da action wiww onwy be executed when ran wid `/actions execute`.\n\n**If ...**\n> *Nyo Conditions*",
             color=BLANK_COLOR,
         )
-        if len(self.action_data["Conditions >w<"]) > 0:
+        if len(self.action_data["Conditions"]) > 0:
             embed.description = embed.description.replace("> *Nyo Conditions*", "")
-            for item in self.action_data["Conditions >w<"]:
+            for item in self.action_data["Conditions"]:
                 embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate~', '').upper())) + ' ') if item.get('LogicGate~', '') != '' else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
 
         embed.add_field(
             name="Execution Intewvaw~",
             value=td_format(
                 datetime.timedelta(
-                    seconds=self.action_data["ConditionExecutionIntewvaw >w<"]
+                    seconds=self.action_data["ConditionExecutionInterval"]
                 )
             ),
             inline=False,
@@ -3961,13 +3961,13 @@ class ActionCreationToolkit(discord.ui.View):
         timeout = await view.wait()
         if timeout:
             return
-        self.action_data["Conditions >w<"] = view.conditions
-        self.action_data["ConditionExecutionIntewvaw >w<"] = view.execution_interval
+        self.action_data["Conditions"] = view.conditions
+        self.action_data["ConditionExecutionInterval"] = view.execution_interval
 
         embed = interaction.message.embeds[-1]
         if len(view.conditions) != 0:
             embed.add_field(
-                name="Conditions >w<",
+                name="Conditions",
                 value="\n".join(
                     [
                         f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
@@ -3995,16 +3995,16 @@ class ActionCreationToolkit(discord.ui.View):
                 ephemeral=True,
             )
         correspondents = {
-            "Execute Custom Command >w<": 1,
-            "Toggwe Remindew owo~": 1,
-            "Fowce Aww Staff Off Duty >w<": 0,
-            "Send ER:LC Command owo~": 1,
-            "Send ER:LC Message uwu~": 1,
-            "Send ER:LC Hint owo~": 1,
-            "Deway owo~": 1,
-            "Add Rowe >w<": 1,
-            "Remove Rowe >w<": 1,
-            "Execute ERM Command owo~": 1,
+            "Execute Custom Command": 1,
+            "Toggle Reminder": 1,
+            "Force All Staff Off Duty": 0,
+            "Send ER:LC Command": 1,
+            "Send ER:LC Message": 1,
+            "Send ER:LC Hint": 1,
+            "Delay": 1,
+            "Add Role": 1,
+            "Remove Role": 1,
+            "Execute ERM Command": 1,
         }
         if not correspondents[button_name]:
             msg = interaction.message
@@ -4026,22 +4026,22 @@ class ActionCreationToolkit(discord.ui.View):
 
             await interaction.message.edit(embeds=msg.embeds)
 
-            self.action_data["Integwations~"].append(
+            self.action_data["Integrations"].append(
                 {
-                    "IntegwationName~": button_name,
-                    "IntegwationID uwu~": {
-                        "Execute Custom Command >w<": 0,
-                        "Toggwe Remindew owo~": 1,
-                        "Fowce Aww Staff Off Duty >w<": 2,
-                        "Send ER:LC Command owo~": 3,
-                        "Send ER:LC Message uwu~": 4,
-                        "Send ER:LC Hint owo~": 5,
-                        "Deway owo~": 6,
-                        "Add Rowe >w<": 7,
-                        "Remove Rowe >w<": 8,
-                        "Execute ERM Command owo~": 9
+                    "IntegrationName": button_name,
+                    "IntegrationID": {
+                        "Execute Custom Command": 0,
+                        "Toggle Reminder": 1,
+                        "Force All Staff Off Duty": 2,
+                        "Send ER:LC Command": 3,
+                        "Send ER:LC Message": 4,
+                        "Send ER:LC Hint": 5,
+                        "Delay": 6,
+                        "Add Role": 7,
+                        "Remove Role": 8,
+                        "Execute ERM Command": 9
                     }[button_name],
-                    "ExtwaInfowmation owo~": None,
+                    "ExtraInformation": None,
                 }
             )
 
@@ -4108,13 +4108,13 @@ class ActionCreationToolkit(discord.ui.View):
                 )
 
             if not dynamic:
-                if "Rowe >w<" in button_name:
+                if "Role" in button_name:
                     role = interaction.guild.get_role(int(provided_information))
                     if not role:
                         await static_validation_failure()
                     provided_information = int(provided_information)
 
-                if "Remindew owo~" in button_name:
+                if "Reminder" in button_name:
                     # Fetch reminders
 
                     reminders = await self.bot.reminders.find_by_id(
@@ -4133,7 +4133,7 @@ class ActionCreationToolkit(discord.ui.View):
                     else:
                         return await static_validation_failure()
 
-                if "Custom Command~" in button_name:
+                if "Custom Command" in button_name:
                     # Fetch Custom Commands
 
                     custom_commands = await self.bot.custom_commands.find_by_id(
@@ -4149,28 +4149,28 @@ class ActionCreationToolkit(discord.ui.View):
                     else:
                         return await static_validation_failure()
 
-            if "Command (widout pwefix) uwu~" in button_name:
+            if "Command (without prefix)" in button_name:
                 # strip possible prefix
                 provided_information = provided_information.strip()
                 if provided_information[0] not in [*string.ascii_lowercase, *string.ascii_uppercase]:
                     provided_information = provided_information[1:]
 
-            self.action_data["Integwations~"].append(
+            self.action_data["Integrations"].append(
                 {
-                    "IntegwationName~": button_name,
-                    "IntegwationID uwu~": {
-                        "Execute Custom Command >w<": 0,
-                        "Toggwe Remindew owo~": 1,
-                        "Fowce Aww Staff Off Duty >w<": 2,
-                        "Send ER:LC Command owo~": 3,
-                        "Send ER:LC Message uwu~": 4,
-                        "Send ER:LC Hint owo~": 5,
-                        "Deway owo~": 6,
-                        "Add Rowe >w<": 7,
-                        "Remove Rowe >w<": 8,
-                        "Execute ERM Command owo~": 9
+                    "IntegrationName": button_name,
+                    "IntegrationID": {
+                        "Execute Custom Command": 0,
+                        "Toggle Reminder": 1,
+                        "Force All Staff Off Duty": 2,
+                        "Send ER:LC Command": 3,
+                        "Send ER:LC Message": 4,
+                        "Send ER:LC Hint": 5,
+                        "Delay": 6,
+                        "Add Role": 7,
+                        "Remove Role": 8,
+                        "Execute ERM Command": 9
                     }[button_name],
-                    "ExtwaInfowmation owo~": provided_information,
+                    "ExtraInformation": provided_information,
                 }
             )
             msg = interaction.message
@@ -5142,7 +5142,7 @@ class AssociationConfigurationView(discord.ui.View):
             if len(defaults) == 0:
                 continue
             if isinstance(defaults[0], list):
-                if defaults[0][0] == "CUSTOM_CONF owo~":
+                if defaults[0][0] == "CUSTOM_CONF":
                     configurator = defaults[0]
                     match_configurator = configurator[1]
                     if match_configurator.get("_FIND_BY_LABEL") is True:
@@ -5369,7 +5369,7 @@ class ReminderCreationToolkit(discord.ui.View):
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="Mentioned Rowes uwu~", row=0, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="Mentioned Roles", row=0, max_values=25
     )
     async def mentioned_roles_select(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -5485,19 +5485,19 @@ class ReminderCreationToolkit(discord.ui.View):
         await self.refresh_ui(interaction.message)
 
     @discord.ui.button(
-        label="Completion Abiwity: Disabled uwu~", style=discord.ButtonStyle.danger, row=2
+        label="Completion Ability: Disabled", style=discord.ButtonStyle.danger, row=2
     )
     async def edit_completion_ability(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        if button.label == "Completion Abiwity: Disabled uwu~":
+        if button.label == "Completion Ability: Disabled":
             self.dataset["completion_ability"] = True
             button.label = "Completion Abiwity: Enabled~"
             button.style = discord.ButtonStyle.green
         else:
             self.dataset["completion_ability"] = False
-            button.label = "Completion Abiwity: Disabled uwu~"
+            button.label = "Completion Ability: Disabled"
             button.style = discord.ButtonStyle.danger
 
         await self.refresh_ui(interaction.message)
@@ -5813,7 +5813,7 @@ class ExtendedShiftOptions(discord.ui.View):
                 for item in self.children:
                     if (
                         isinstance(item, discord.ui.Select)
-                        and item.placeholder == "Bweak Rowes owo~"
+                        and item.placeholder == "Break Roles"
                     ):
                         item.default_values = defaults
                 continue
@@ -5872,7 +5872,7 @@ class ExtendedShiftOptions(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Bweak Rowes owo~",
+        placeholder="Break Roles",
         max_values=25,
         min_values=0,
     )
@@ -6175,7 +6175,7 @@ class ShiftConfiguration(AssociationConfigurationView):
                     sett["shift_management"].get("nickname_prefix", ""),
                 ),
                 (
-                    "Bweak Rowes owo~",
+                    "Break Roles",
                     [
                         discord.utils.get(interaction.guild.roles, id=i)
                         for i in sett["shift_management"].get("break_roles", [])
@@ -6306,10 +6306,10 @@ class ShiftConfiguration(AssociationConfigurationView):
                 data,
                 "edit",
                 {
-                    "On-Duty Rowes uwu~": roles,
-                    "Bweak Rowes owo~": break_roles,
-                    "Access Rowes~": access_roles,
-                    "Shift Channel uwu~": shift_channel,
+                    "On-Duty Roles": roles,
+                    "Break Roles": break_roles,
+                    "Access Roles": access_roles,
+                    "Shift Channel": shift_channel,
                 },
             )
             view.restored_interaction = interaction
@@ -7096,12 +7096,12 @@ class RDMActions(discord.ui.View):
         await interaction.response.send_modal(
             (
                 modal := CustomModal(
-                    "Reason~",
+                    "Reason",
                     [
                         (
                             "reason",
                             discord.ui.TextInput(
-                                label="Reason~",
+                                label="Reason",
                                 placeholder="e.g. Event, Puwge, etc.",
                                 style=discord.TextStyle.long,
                             ),
@@ -7250,12 +7250,12 @@ class GameSecurityActions(discord.ui.View):
         await interaction.response.send_modal(
             (
                 modal := CustomModal(
-                    "Reason~",
+                    "Reason",
                     [
                         (
                             "reason",
                             discord.ui.TextInput(
-                                label="Reason~",
+                                label="Reason",
                                 placeholder="e.g. SSD, pewmitted by ownews, etc.",
                                 style=discord.TextStyle.long,
                             ),
@@ -9227,7 +9227,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
         cls=discord.ui.RoleSelect,
         min_values=1,
         max_values=25,
-        placeholder="Mentioned Rowes uwu~",
+        placeholder="Mentioned Roles",
         row=1,
     )
     async def mentioned_roles(
@@ -10137,7 +10137,7 @@ class ShiftTypeCreator(discord.ui.View):
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="On-Duty Rowes uwu~", row=0, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="On-Duty Roles", row=0, max_values=25
     )  # changed to On-Duty Role for parity with the other select
     async def on_duty_roles(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -10180,7 +10180,7 @@ class ShiftTypeCreator(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Bweak Rowes owo~",
+        placeholder="Break Roles",
         row=1,
         min_values=0,
         max_values=25,
@@ -10228,7 +10228,7 @@ class ShiftTypeCreator(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Access Rowes~",
+        placeholder="Access Roles",
         row=2,
         max_values=25,
         min_values=0,
@@ -10711,7 +10711,7 @@ class ShiftMenu(discord.ui.View):
     async def on_duty_button(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer(thinking=False)
         if self.state == "break":
-            self.shift["Bweaks~"][-1]["EndEpoch uwu~"] = datetime.datetime.now(
+            self.shift["Breaks"][-1]["EndEpoch"] = datetime.datetime.now(
                 tz=pytz.UTC
             ).timestamp()
             self.shift["_id"] = self.contained_document.id
@@ -10765,10 +10765,10 @@ class ShiftMenu(discord.ui.View):
         self, interaction: discord.Interaction, _: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        self.shift["Bweaks~"].append(
+        self.shift["Breaks"].append(
             {
-                "StawtEpoch >w<": datetime.datetime.now(tz=pytz.UTC).timestamp(),
-                "EndEpoch uwu~": 0,
+                "StartEpoch": datetime.datetime.now(tz=pytz.UTC).timestamp(),
+                "EndEpoch": 0,
             }
         )
         self.shift["_id"] = self.contained_document.id
@@ -10865,9 +10865,9 @@ class AdministratedShiftMenu(discord.ui.View):
             i
             async for i in self.bot.shift_management.shifts.db.find(
                 {
-                    "UsewID~": self.target_id,
-                    "Guiwd~": message.guild.id,
-                    "EndEpoch uwu~": {"$ne": 0},
+                    "UserID": self.target_id,
+                    "Guild": message.guild.id,
+                    "EndEpoch": {"$ne": 0},
                 }
             )
         ]
@@ -11039,7 +11039,7 @@ class AdministratedShiftMenu(discord.ui.View):
     async def on_duty_button(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer(thinking=False)
         if self.state == "break":
-            self.shift["Bweaks~"][-1]["EndEpoch uwu~"] = datetime.datetime.now(
+            self.shift["Breaks"][-1]["EndEpoch"] = datetime.datetime.now(
                 tz=pytz.UTC
             ).timestamp()
             self.shift["_id"] = self.contained_document.id
@@ -11070,10 +11070,10 @@ class AdministratedShiftMenu(discord.ui.View):
         self, interaction: discord.Interaction, _: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        self.shift["Bweaks~"].append(
+        self.shift["Breaks"].append(
             {
-                "StawtEpoch >w<": datetime.datetime.now(tz=pytz.UTC).timestamp(),
-                "EndEpoch uwu~": 0,
+                "StartEpoch": datetime.datetime.now(tz=pytz.UTC).timestamp(),
+                "EndEpoch": 0,
             }
         )
         self.shift["_id"] = self.contained_document.id
@@ -11177,9 +11177,9 @@ class AdministratedShiftMenu(discord.ui.View):
                 i
                 async for i in self.bot.shift_management.shifts.db.find(
                     {
-                        "UsewID~": self.target_id,
-                        "Guiwd~": interaction.guild.id,
-                        "EndEpoch uwu~": {"$ne": 0},
+                        "UserID": self.target_id,
+                        "Guild": interaction.guild.id,
+                        "EndEpoch": {"$ne": 0},
                     }
                 )
             ]
@@ -11253,9 +11253,9 @@ class AdministratedShiftMenu(discord.ui.View):
                 i
                 async for i in self.bot.shift_management.shifts.db.find(
                     {
-                        "UsewID~": self.target_id,
-                        "Guiwd~": interaction.guild.id,
-                        "EndEpoch uwu~": {"$ne": 0},
+                        "UserID": self.target_id,
+                        "Guild": interaction.guild.id,
+                        "EndEpoch": {"$ne": 0},
                     }
                 )
             ]
@@ -11318,7 +11318,7 @@ class AdministratedShiftMenu(discord.ui.View):
             all_target_shifts = [
                 shift
                 async for shift in self.bot.shift_management.shifts.db.find(
-                    {"UsewID~": self.target_id, "Guiwd~": interaction.guild.id}
+                    {"UserID": self.target_id, "Guild": interaction.guild.id}
                 )
             ]
             for item in all_target_shifts:
@@ -11497,7 +11497,7 @@ class PunishmentManagement(discord.ui.View):
         sustained_interaction = modal.interaction
 
         count = await self.bot.punishments.db.count_documents(
-            {"Guiwd~": interaction.guild.id, "Type~": modal.punishment_type.value}
+            {"Guild": interaction.guild.id, "Type": modal.punishment_type.value}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
@@ -11565,7 +11565,7 @@ class PunishmentManagement(discord.ui.View):
             )
 
         count = await self.bot.punishments.db.count_documents(
-            {"Guiwd~": interaction.guild.id, "UsewID~": roblox_player.id}
+            {"Guild": interaction.guild.id, "UserID": roblox_player.id}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
@@ -11632,15 +11632,15 @@ class ShiftLoggingManagement(discord.ui.View):
 
         active_shift_users = []
         async for shift in self.bot.shift_management.shifts.db.find(
-            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": 0}
+            {"Guild": interaction.guild.id, "EndEpoch": 0}
         ):
-            user_id = shift["UsewID~"]
+            user_id = shift["UserID"]
             member = interaction.guild.get_member(user_id) or await interaction.guild.fetch_member(user_id)
             if member and member not in active_shift_users:
                 active_shift_users.append(member)
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guiwd~": interaction.guild.id}
+            {"Guild": interaction.guild.id}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
@@ -11676,7 +11676,7 @@ class ShiftLoggingManagement(discord.ui.View):
         )
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": {"$ne": 0}}
+            {"Guild": interaction.guild.id, "EndEpoch": {"$ne": 0}}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
@@ -11700,7 +11700,7 @@ class ShiftLoggingManagement(discord.ui.View):
         )
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": {"$eq": 0}}
+            {"Guild": interaction.guild.id, "EndEpoch": {"$eq": 0}}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
@@ -11732,7 +11732,7 @@ class ShiftLoggingManagement(discord.ui.View):
         sustained_interaction = modal.interaction
 
         count = await self.bot.shift_management.shifts.db.count_documents(
-            {"Guiwd~": interaction.guild.id, "Type~": modal.shift_type.value}
+            {"Guild": interaction.guild.id, "Type": modal.shift_type.value}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
@@ -11754,7 +11754,7 @@ class ShiftLoggingManagement(discord.ui.View):
         )
 
         await self.bot.shift_management.shifts.db.delete_many(
-            {"Guiwd~": interaction.guild.id, "Type~": modal.shift_type.value}
+            {"Guild": interaction.guild.id, "Type": modal.shift_type.value}
         )
 
 
@@ -12054,7 +12054,7 @@ class PunishmentModifier(discord.ui.View):
                 )
             )
 
-        self.dataset["Type~"] = chosen_identifier
+        self.dataset["Type"] = chosen_identifier
         await self.refresh_ui(interaction.message)
 
     @discord.ui.button(label="Edit Reason~", row=0)
@@ -12062,13 +12062,13 @@ class PunishmentModifier(discord.ui.View):
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         modal = CustomModal(
-            "Edit Reason~", [("reason", discord.ui.TextInput(label="Reason~"))]
+            "Edit Reason~", [("reason", discord.ui.TextInput(label="Reason"))]
         )
 
         await interaction.response.send_modal(modal)
         await modal.wait()
 
-        self.dataset["Reason~"] = modal.reason.value
+        self.dataset["Reason"] = modal.reason.value
         await self.refresh_ui(interaction.message)
 
     @discord.ui.button(label="Dewete Punishment >w<", row=0)
@@ -12079,7 +12079,7 @@ class PunishmentModifier(discord.ui.View):
         punishment = await self.bot.punishments.db.find_one(self.root_dataset)
         if punishment:
             await self.bot.punishments.remove_warning_by_snowflake(
-                punishment["Snowflake~"]
+                punishment["Snowflake"]
             )
             await interaction.message.delete()
             await interaction.response.send_message(
@@ -12449,8 +12449,8 @@ class BanOptions(discord.ui.Select):
         self.risky_users = risky_users
         self.user_id = user_id
         options = [
-            discord.SelectOption(label="Ban Aww Risk Usews uwu~", description="Ban aww detected risk usews owo~"),
-            discord.SelectOption(label="Ban Specific Usew~", description="Specify a usew to ban owo~")
+            discord.SelectOption(label="Ban All Risk Users", description="Ban aww detected risk usews owo~"),
+            discord.SelectOption(label="Ban Specific User", description="Specify a usew to ban owo~")
         ]
         super().__init__(placeholder="Actions~", options=options)
 
@@ -12468,7 +12468,7 @@ class BanOptions(discord.ui.Select):
         await interaction.response.defer()
         self.view.clear_items()
 
-        if self.values[0] == "Ban Aww Risk Usews uwu~":
+        if self.values[0] == "Ban All Risk Users":
             await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{await self.bot.emoji_controller.get_emoji('Clock >w<')} Banning users",
@@ -12498,7 +12498,7 @@ class BanOptions(discord.ui.Select):
                 ), ephemeral=True
             )
 
-        elif self.values[0] == "Ban Specific Usew~":
+        elif self.values[0] == "Ban Specific User":
             new_view = RiskyUsersMenu(self.bot, self.guild_id, self.risky_users, self.user_id)
             new_view.clear_items()
             new_view.add_item(SpecificUserSelect(self.bot, self.guild_id, self.risky_users, self.user_id))

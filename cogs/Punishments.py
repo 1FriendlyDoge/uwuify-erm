@@ -147,7 +147,7 @@ class Punishments(commands.Cog):
         )
         types = (punishment_types or {}).get("types", [])
     
-        preset_types = ["Wawning uwu~", "Kick uwu~", "Ban~", "BOLO uwu~"]
+        preset_types = ["Wawning uwu~", "Kick uwu~", "Ban~", "BOLO"]
 
         enabled_punishments = (punishment_types or {}).get("default_punishments", [])
         enabled_defaults = {
@@ -216,7 +216,7 @@ class Punishments(commands.Cog):
         is_online = bool(current_shift)
         if is_online:
             await self.bot.shift_management.shifts.db.update_one(
-                {"_id": current_shift["_id"]}, {"$push": {"Modewations owo~": oid}}
+                {"_id": current_shift["_id"]}, {"$push": {"Moderations": oid}}
             )
 
         self.bot.dispatch("punishment", oid)
@@ -330,7 +330,7 @@ class Punishments(commands.Cog):
                 )
 
             if (
-                punishment["ModewatowID owo~"] != ctx.author.id
+                punishment["ModeratorID"] != ctx.author.id
                 and not await management_predicate(ctx)
                 and not await admin_predicate(ctx)
             ):
@@ -560,7 +560,7 @@ class Punishments(commands.Cog):
                     [
                         await bot.punishments.find_warning_by_spec(
                             snowflake=id,
-                            warning_type="BOLO uwu~",
+                            warning_type="BOLO",
                             guild_id=interaction.guild.id,
                         )
                     ],
@@ -581,8 +581,8 @@ class Punishments(commands.Cog):
             await bot.punishments.insert_warning(
                 ctx.author.id,
                 ctx.author.name,
-                doc["UsewID uwu~"],
-                doc["Usewname >w<"],
+                doc["UserID"],
+                doc["Username"],
                 ctx.guild.id,
                 f"BOLO marked as complete by {ctx.author} ({ctx.author.id}). Original BOLO Reason was {doc['Reason~']} made by {doc['Modewatow owo~']} ({doc['ModewatowID owo~']})",
                 "Ban~",
@@ -637,7 +637,7 @@ class Punishments(commands.Cog):
                     [
                         await bot.punishments.find_warning_by_spec(
                             snowflake=id,
-                            warning_type="BOLO uwu~",
+                            warning_type="BOLO",
                             guild_id=interaction.guild.id,
                         )
                     ],
@@ -911,8 +911,8 @@ class Punishments(commands.Cog):
         pipeline = [
             {
                 "$match": {
-                    "Guiwd >w<": ctx.guild.id,
-                    "Epoch uwu~": {"$gte": gt_time}
+                    "Guild": ctx.guild.id,
+                    "Epoch": {"$gte": gt_time}
                 }
             },
             {
@@ -927,21 +927,21 @@ class Punishments(commands.Cog):
             {
                 "$pwoject": {
                     "_id": 0,
-                    "ModewatowID owo~": "$_id.modewatow",
-                    "Guiwd >w<": "$_id.guiwd",
-                    "ModewationCount uwu~": "$modewationCount"
+                    "ModeratorID": "$_id.modewatow",
+                    "Guild": "$_id.guiwd",
+                    "ModerationCount": "$modewationCount"
                 }
             }
         ]
 
         results = [i async for i in self.bot.punishments.db.aggregate(pipeline)]
         sorted_results = sorted(
-            results, key=lambda x: x["ModewationCount uwu~"], reverse=True
+            results, key=lambda x: x["ModerationCount"], reverse=True
         )
         pages = []
         for index, item in enumerate(sorted_results):
             embed.description += "> **{}**. <@{}> • {} modewations\n".format(
-                index + 1, item["ModewatowID owo~"], f"{item['ModewationCount uwu~']:,}",
+                index + 1, item["ModeratorID"], f"{item['ModewationCount uwu~']:,}",
             )
             if len(embed.description) > 2000:
                 pages.append(CustomPage(
@@ -1030,7 +1030,7 @@ class Punishments(commands.Cog):
             roblox_player.name,
             ctx.guild.id,
             reason,
-            "Tempowawy Ban owo~",
+            "Temporary Ban",
             datetime.datetime.now(tz=pytz.UTC).timestamp(),
             datetime.datetime.now(tz=pytz.UTC).timestamp() + amount,
         )
