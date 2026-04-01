@@ -18,8 +18,8 @@ class OnLOAAccept(commands.Cog):
         try:
             await user.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Activity Notice Accepted",
-                    description=f"Your {s_loa['type']} request in **{guild.name}** was accepted!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Activity Nyotice Accepted uwu~",
+                    description=f"Ur {s_loa['type']} wequest in **{guild.name}** was accepted! hehe~",
                     color=GREEN_COLOR,
                 )
             )
@@ -60,7 +60,7 @@ class OnLOAAccept(commands.Cog):
 
         embed = messg.embeds[0]
         embed.title = (
-            f"{self.bot.emoji_controller.get_emoji('success')} {s_loa['type']} Accepted"
+            f"{self.bot.emoji_controller.get_emoji('success')} {s_loa['type']} Accepted owo~"
         )
         embed.colour = GREEN_COLOR
         try:
@@ -71,7 +71,7 @@ class OnLOAAccept(commands.Cog):
             pass
 
         embed.set_footer(
-            text=f"Accepted by {accepted_by_user.name if accepted_by_user else 'n/a'}"
+            text=f"Accepted by {accepted_by_user.name if accepted_by_user else 'n/a'} uwu~"
         )
 
         await messg.edit(embed=embed, view=None)

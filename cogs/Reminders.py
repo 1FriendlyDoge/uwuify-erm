@@ -24,8 +24,8 @@ class Reminders(commands.Cog):
     @commands.guild_only()
     @reminders.command(
         name="manage",
-        description="Manage your reminders",
-        extras={"category": "Reminders"},
+        description="Manage uw wemindews~ uwu",
+        extras={"category": "Remindews owo~"},
     )
     @is_admin()
     @require_settings()
@@ -36,7 +36,7 @@ class Reminders(commands.Cog):
         if reminder_data is None:
             reminder_data = {"_id": ctx.guild.id, "reminders": []}
 
-        embed = discord.Embed(title="Reminders", color=BLANK_COLOR)
+        embed = discord.Embed(title="Wemindews~", color=BLANK_COLOR)
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
         [
             embed.add_field(
@@ -44,8 +44,8 @@ class Reminders(commands.Cog):
                 value=(
                     f"> **Name:** {reminder['name']}\n"
                     f"> **ID:** {reminder['id']}\n"
-                    f"> **Interval:** {td_format(datetime.timedelta(seconds=reminder['interval']))}\n"
-                    f"> **ER:LC Integration:** {self.bot.emoji_controller.get_emoji('check') if reminder.get('integration') is not None else self.bot.emoji_controller.get_emoji('xmark')}\n"
+                    f"> **Intewvaw:** {td_format(datetime.timedelta(seconds=reminder['interval']))}\n"
+                    f"> **ER:LC Integwation:** {self.bot.emoji_controller.get_emoji('check') if reminder.get('integration') is not None else self.bot.emoji_controller.get_emoji('xmark')}\n"
                     f"> **Paused:** {self.bot.emoji_controller.get_emoji('check') if reminder.get('paused') is True else self.bot.emoji_controller.get_emoji('xmark')}"
                 ),
                 inline=False,
@@ -55,7 +55,7 @@ class Reminders(commands.Cog):
         embed.set_thumbnail(url=ctx.guild.icon)
 
         if len(embed.fields) == 0:
-            embed.add_field(name="No Reminders", value="This server has no reminders.")
+            embed.add_field(name="Nyo Wemindews~", value="Dis sewvew has nyo wemindews~ owo")
 
         view = ManageReminders(ctx.author.id)
 
@@ -77,8 +77,8 @@ class Reminders(commands.Cog):
                         await bot.reminders.upsert(reminder_data)
                         return await msg.edit(
                             embed=discord.Embed(
-                                title=f"{self.bot.emoji_controller.get_emoji('success')} Reminder Resumed",
-                                description="Your reminder has been resumed!",
+                                title=f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Wesumed~",
+                                description="Uw wemindew has been wesumed! owo",
                                 color=GREEN_COLOR,
                             ),
                             view=None,
@@ -89,8 +89,8 @@ class Reminders(commands.Cog):
                         await bot.reminders.upsert(reminder_data)
                         return await msg.edit(
                             embed=discord.Embed(
-                                title=f"{self.bot.emoji_controller.get_emoji('success')} Reminder Paused",
-                                description="Your reminder has been paused!",
+                                title=f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Paused~",
+                                description="Uw wemindew has been paused! uwu",
                                 color=GREEN_COLOR,
                             ),
                             view=None,
@@ -98,8 +98,8 @@ class Reminders(commands.Cog):
 
             return await msg.edit(
                 embed=discord.Embed(
-                    title="Invalid Reminder",
-                    description="We could not find the reminder associated with that ID.",
+                    title="Invawid Wemindew >w<",
+                    description="We couwd nyot find da wemindew associated wid dat ID~ >w<",
                     color=BLANK_COLOR,
                 ),
                 view=None,
@@ -115,8 +115,8 @@ class Reminders(commands.Cog):
             if not dataset:
                 return await msg.edit(
                     embed=discord.Embed(
-                        title="Could not find reminder",
-                        description="I could not find the reminder with the ID you specified.",
+                        title="Couwd nyot find wemindew~",
+                        description="I couwd nyot find da wemindew wid da ID u specified~ >w<",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -125,12 +125,12 @@ class Reminders(commands.Cog):
             completion_ability = dataset.get("completion_ability", False)
             if completion_ability:
                 completion_styling = {
-                    "label": "Completion Ability: Enabled",
+                    "label": "Completion Abiwity: Enabled~",
                     "style": discord.ButtonStyle.green,
                 }
             else:
                 completion_styling = {
-                    "label": "Completion Ability: Disabled",
+                    "label": "Completion Abiwity: Disabled uwu~",
                     "style": discord.ButtonStyle.danger,
                 }
 
@@ -139,7 +139,7 @@ class Reminders(commands.Cog):
                 dataset,
                 "edit",
                 {
-                    "Reminder Channel": list(
+                    "Remindew Channel >w<": list(
                         filter(
                             lambda x: x is not None,
                             [
@@ -149,7 +149,7 @@ class Reminders(commands.Cog):
                             ],
                         )
                     ),
-                    "Mentioned Roles": list(
+                    "Mentioned Rowes uwu~": list(
                         filter(
                             lambda x: x is not None,
                             [
@@ -158,20 +158,20 @@ class Reminders(commands.Cog):
                             ],
                         )
                     ),
-                    "Completion Ability: Disabled": completion_styling,
+                    "Completion Abiwity: Disabled uwu~": completion_styling,
                 },
             )
             await msg.edit(
                 embed=discord.Embed(
-                    title="Edit a Reminder",
+                    title="Edit a Wemindew~",
                     description=(
                         f"> **Name:** {dataset['name']}\n"
                         f"> **ID:** {dataset['id']}\n"
-                        f"> **Channel:** {'<#{}>'.format(dataset.get('channel', None)) if dataset.get('channel', None) is not None else 'Not set'}\n"
-                        f"> **Completion Ability:** {dataset.get('completion_ability') or 'Not set'}\n"
-                        f"> **Mentioned Roles:** {', '.join(['<@&{}>'.format(r) for r in (dataset.get('role') or [])]) or 'Not set'}\n"
-                        f"> **Interval:** {td_format(datetime.timedelta(seconds=dataset.get('interval', 0))) or 'Not set'}\n"
-                        f"> **ER:LC Integration Enabled:** {dataset.get('integration') is not None}"
+                        f"> **Channew:** {'<#{}>'.format(dataset.get('channel', None)) if dataset.get('channel', None) is not None else 'Nyot set owo~'}\n"
+                        f"> **Compwetion Abiwity:** {dataset.get('completion_ability') or 'Nyot set owo~'}\n"
+                        f"> **Mentioned Wowes:** {', '.join(['<@&{}>'.format(r) for r in (dataset.get('role') or [])]) or 'Nyot set owo~'}\n"
+                        f"> **Intewvaw:** {td_format(datetime.timedelta(seconds=dataset.get('interval', 0))) or 'Nyot set owo~'}\n"
+                        f"> **ER:LC Integwation Enabwed:** {dataset.get('integration') is not None}"
                         f"\n\n**Content:**\n{dataset['message']}"
                     ),
                     color=BLANK_COLOR,
@@ -190,8 +190,8 @@ class Reminders(commands.Cog):
             await bot.reminders.upsert(reminder_data)
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Reminder Edited",
-                    description="Your reminder has been edited!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Edited~",
+                    description="Uw wemindew has been edited! hehe >w<",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -206,8 +206,8 @@ class Reminders(commands.Cog):
             except ValueError:
                 return await msg.edit(
                     embed=discord.Embed(
-                        title="Invalid Time",
-                        description="You did not enter a valid time.",
+                        title="Invawid Time~",
+                        description="U did nyot entew a vawid time~ >w<",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -221,22 +221,22 @@ class Reminders(commands.Cog):
                 "message": message,
                 "channel": None,
                 "role": [],
-                "lastTriggered": 0,
+                "lastTwiggewed": 0,
                 "paused": False,
             }
 
             view = ReminderCreationToolkit(ctx.author.id, dataset, "create")
             await msg.edit(
                 embed=discord.Embed(
-                    title="Reminder Creation",
+                    title="Wemindew Cweation~",
                     description=(
                         f"> **Name:** {dataset['name']}\n"
                         f"> **ID:** {dataset['id']}\n"
-                        f"> **Channel:** {'<#{}>'.format(dataset.get('channel', None)) if dataset.get('channel', None) is not None else 'Not set'}\n"
-                        f"> **Completion Ability:** {dataset.get('completion_ability') or 'Not set'}\n"
-                        f"> **Mentioned Roles:** {', '.join(['<@&{}>'.format(r) for r in dataset.get('role', [])]) or 'Not set'}\n"
-                        f"> **Interval:** {td_format(datetime.timedelta(seconds=dataset.get('interval', 0))) or 'Not set'}\n"
-                        f"> **ER:LC Integration Enabled:** {dataset.get('integration') is not None}"
+                        f"> **Channew:** {'<#{}>'.format(dataset.get('channel', None)) if dataset.get('channel', None) is not None else 'Nyot set owo~'}\n"
+                        f"> **Compwetion Abiwity:** {dataset.get('completion_ability') or 'Nyot set owo~'}\n"
+                        f"> **Mentioned Wowes:** {', '.join(['<@&{}>'.format(r) for r in dataset.get('role', [])]) or 'Nyot set owo~'}\n"
+                        f"> **Intewvaw:** {td_format(datetime.timedelta(seconds=dataset.get('interval', 0))) or 'Nyot set owo~'}\n"
+                        f"> **ER:LC Integwation Enabwed:** {dataset.get('integration') is not None}"
                         f"\n\n**Content:**\n{dataset['message']}"
                     ),
                     color=BLANK_COLOR,
@@ -252,8 +252,8 @@ class Reminders(commands.Cog):
             await bot.reminders.upsert(reminder_data)
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Reminder Created",
-                    description="Your reminder has been created!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Cweated~",
+                    description="Uw wemindew has been cweated! owo",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -269,8 +269,8 @@ class Reminders(commands.Cog):
                     await bot.reminders.upsert(reminder_data)
                     return await msg.edit(
                         embed=discord.Embed(
-                            title=f"{self.bot.emoji_controller.get_emoji('success')} Reminder Deleted",
-                            description="Your reminder has been deleted!",
+                            title=f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Deweted~",
+                            description="Uw wemindew has been deweted! nyaa uwu~",
                             color=GREEN_COLOR,
                         ),
                         view=None,
@@ -278,8 +278,8 @@ class Reminders(commands.Cog):
             else:
                 return await msg.edit(
                     embed=discord.Embed(
-                        title="Invalid Reminder",
-                        description="We could not find the reminder associated with that ID.",
+                        title="Invawid Wemindew >w<",
+                        description="We couwd nyot find da wemindew associated wid dat ID~ >w<",
                         color=BLANK_COLOR,
                     ),
                     view=None,

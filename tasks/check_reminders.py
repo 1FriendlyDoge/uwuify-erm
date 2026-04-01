@@ -50,7 +50,7 @@ async def iterate_reminder(bot, guildObj): # TODO: do a refactor of this.. this 
             else:
                 view = None
             embed = discord.Embed(
-                title="Notification",
+                title="Notifiwcation uwu~",
                 description=f"{item['message']}",
                 color=BLANK_COLOR,
             )

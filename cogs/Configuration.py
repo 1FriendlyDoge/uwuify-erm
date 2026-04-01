@@ -42,8 +42,8 @@ class Configuration(commands.Cog):
     @commands.guild_only()
     @commands.hybrid_command(
         name="setup",
-        description="Begin using ERM!",
-        extras={"category": "Configuration"},
+        description="Begin using ERM!~",
+        extras={"category": "Configuwation~"},
     )
     @is_management()
     async def _setup(self, ctx: commands.Context):
@@ -63,8 +63,8 @@ class Configuration(commands.Cog):
         if current_settings:
             msg = await ctx.send(
                 embed=discord.Embed(
-                    title="Already Setup",
-                    description="You've already setup ERM in this server! Are you sure you would like to go through the setup process again?",
+                    title="Alweady Setup uwu~",
+                    description="U've alweady setup ERM in dis sewvew! Awe u suwe u wouwd like to go thwough da setup pwocess again?",
                     color=blank_color,
                 ),
                 view=(confirmation_view := YesNoColourMenu(ctx.author.id)),
@@ -73,8 +73,8 @@ class Configuration(commands.Cog):
             if confirmation_view.value is False:
                 return await msg.edit(
                     embed=discord.Embed(
-                        title="Successfully Cancelled",
-                        description="Cancelled the setup process for this server. All settings have been kept.",
+                        title="Successfuwwy Cancewwed owo~",
+                        description="Cancewwed da setup pwocess fow dis sewvew. Aww settings hab been kept.",
                         color=blank_color,
                     ),
                     view=None,
@@ -83,8 +83,8 @@ class Configuration(commands.Cog):
         if msg is None:
             msg = await ctx.send(
                 embed=discord.Embed(
-                    title="Let's get started!",
-                    description="To setup ERM, press the arrow button below!",
+                    title="Let's get stawted!~",
+                    description="To setup ERM, pwess da awwow button bewow! owo~",
                     color=blank_color,
                 ),
                 view=(next_view := NextView(bot, ctx.author.id)),
@@ -92,8 +92,8 @@ class Configuration(commands.Cog):
         else:
             await msg.edit(
                 embed=discord.Embed(
-                    title="Let's get started!",
-                    description="To setup ERM, press the arrow button below!",
+                    title="Let's get stawted!~",
+                    description="To setup ERM, pwess da awwow button bewow! owo~",
                     color=blank_color,
                 ),
                 view=(next_view := NextView(bot, ctx.author.id)),
@@ -103,8 +103,8 @@ class Configuration(commands.Cog):
         if timeout or not next_view.value:
             await msg.edit(
                 embed=discord.Embed(
-                    title="Cancelled",
-                    description="You have took too long to complete this part of the setup.",
+                    title="Cancewwed >w<",
+                    description="U hab took too long to complete dis pawt of da setup. uwu~",
                     color=blank_color,
                 ),
                 view=None,
@@ -183,19 +183,19 @@ class Configuration(commands.Cog):
 
         staff_roles = RoleSelect(ctx.author.id).children[0]
         staff_roles.row = 0
-        staff_roles.placeholder = "Staff Roles"
+        staff_roles.placeholder = "Staff Rowes >w<"
         staff_roles.callback = check_unlock_override
         staff_roles.min_values = 0
 
         admin_roles = RoleSelect(ctx.author.id).children[0]
         admin_roles.row = 1
-        admin_roles.placeholder = "Admin Roles"
+        admin_roles.placeholder = "Admin Rowes >w<"
         admin_roles.callback = discard_unlock_override
         admin_roles.min_values = 0
 
         management_roles = RoleSelect(ctx.author.id).children[0]
         management_roles.row = 2
-        management_roles.placeholder = "Management Roles"
+        management_roles.placeholder = "Management Rowes >w<"
         management_roles.callback = check_unlock_override
         management_roles.min_values = 0
 
@@ -203,25 +203,25 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 discord.SelectOption(
-                    label="!", description="Use '!' as your custom prefix."
+                    label="!", description="Use '!' as ur custom pwefix.~"
                 ),
                 discord.SelectOption(
-                    label=">", description="Use '>' as your custom prefix."
+                    label=">", description="Use '>' as ur custom pwefix.~"
                 ),
                 discord.SelectOption(
-                    label="?", description="Use '?' as your custom prefix."
+                    label="?", description="Use '?' as ur custom pwefix. owo~"
                 ),
                 discord.SelectOption(
-                    label=":", description="Use ':' as your custom prefix."
+                    label=":", description="Use ':' as ur custom pwefix. >w<"
                 ),
                 discord.SelectOption(
-                    label="-", description="Use '-' as your custom prefix."
+                    label="-", description="Use '-' as ur custom pwefix. >w<"
                 ),
             ],
         )
         prefix = prefix_view.children[0]
         prefix.row = 3
-        prefix.placeholder = "Prefix"
+        prefix.placeholder = "Pwefix~"
         prefix.callback = check_unlock_override
 
         async def stop_override(interaction: discord.Interaction):
@@ -240,12 +240,12 @@ class Configuration(commands.Cog):
 
         await msg.edit(
             embed=discord.Embed(
-                title="Basic Settings",
+                title="Basic Settings >w<",
                 description=(
-                    "**Staff Role:** A staff role is the role that is going to be able to use most ERM commands. You'd assign this role to the people you want to be able to use ERM's core functionalities.\n\n"
-                    "**Admin Role:** An admin role is the role that can manage LOAs, RAs & other peoples' shifts but it can not use server manage and config.\n\n"
-                    "**Management Role:** A management role is the roles of your server management members. These people will be able to delete punishments, modify people's shift time, and accept LOA Requests.\n\n"
-                    "**Prefix:** This will be a prefix you are able to use instead of our slash command system. You can use this prefix to execute commands slightly faster and to take advantage of some extra features."
+                    "**Staff Rowe:** A staff rowe is da rowe dat is going to be abwe to use most ERM commands. U'd assign dis rowe to da peopwe u want to be abwe to use ERM's cowe functionawities.\n\n"
+                    "**Admin Rowe:** An admin rowe is da rowe dat can manage LOAs, RAs & odew peoples' shifts but it can nyot use sewvew manage and config.\n\n"
+                    "**Management Rowe:** A management rowe is da rowes of ur sewvew management membews. These peopwe wiww be abwe to dewete punishments, modify peopwe's shift time, and accept LOA Requests.\n\n"
+                    "**Pwefix:** Dis wiww be a pwefix u awe abwe to use instead of ouw slash command system. U can use dis pwefix to execute commands slightwy fastew and to take advantage of some extwa featuwes."
                 ),
                 color=blank_color,
             ),
@@ -258,17 +258,17 @@ class Configuration(commands.Cog):
                 item, discord.ui.RoleSelect
             ):
                 if len(item.values) > 0:
-                    if item.placeholder == "Staff Roles":
+                    if item.placeholder == "Staff Rowes >w<":
                         modifications["staff_management"]["role"] = [
                             i.id for i in item.values
                         ]
-                    if item.placeholder == "Prefix":
+                    if item.placeholder == "Pwefix~":
                         modifications["customisation"]["prefix"] = item.values[0]
-                    elif item.placeholder == "Management Roles":
+                    elif item.placeholder == "Management Rowes >w<":
                         modifications["staff_management"]["management_role"] = [
                             i.id for i in item.values
                         ]
-                    elif item.placeholder == "Admin Roles":
+                    elif item.placeholder == "Admin Rowes >w<":
                         modifications["staff_management"]["admin_role"] = [
                             i.id for i in item.values
                         ]
@@ -277,33 +277,33 @@ class Configuration(commands.Cog):
 
         loa_channel_view = ChannelSelect(ctx.author.id, limit=1)
         loa_channel_select = loa_channel_view.children[0]
-        loa_channel_select.placeholder = "LOA Channel"
+        loa_channel_select.placeholder = "LOA Channel uwu~"
         loa_channel_select.row = 1
 
         loa_role_view = RoleSelect(ctx.author.id, limit=1)
         loa_role_select = loa_role_view.children[0]
-        loa_role_select.placeholder = "LOA Role"
+        loa_role_select.placeholder = "LOA Rowe uwu~"
         loa_role_select.row = 2
 
         loa_enabled_view = CustomSelectMenu(
             ctx.author.id,
             [
                 discord.SelectOption(
-                    label="Enabled",
+                    label="Enabled >w<",
                     value="enabled",
-                    description="LOA Requests are enabled.",
+                    description="LOA Requests awe enabled. owo~",
                 ),
                 discord.SelectOption(
-                    label="Disabled",
+                    label="Disabled owo~",
                     value="disabled",
-                    description="LOA Requests are disabled.",
+                    description="LOA Requests awe disabled. uwu~",
                 ),
             ],
         )
         loa_enabled_select = loa_enabled_view.children[0]
         loa_enabled_select.callback = callback_override
         loa_enabled_select.row = 0
-        loa_enabled_select.placeholder = "LOA Requests"
+        loa_enabled_select.placeholder = "LOA Requests uwu~"
 
         next_view = NextView(bot, ctx.author.id)
         next_button = next_view.children[0]
@@ -322,9 +322,9 @@ class Configuration(commands.Cog):
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('loa')} LOA Requests",
                 description=(
-                    "**Enabled:** This setting enables or disables the LOA Requests module. When enabled, this allows your staff members to fill out Leave of Absence requests for your management members to approve.\n\n"
-                    "**LOA Role:** This role is given to those who are on Leave of Absence, and is removed when they go off Leave of Absence.\n\n"
-                    "**LOA Channel:** This channel will be where Leave of Absence requests will be logged, and where they will be accepted or denied. Make sure this is a channel that Management members can see, so that they can approve LOA requests."
+                    "**Enabled:** Dis setting enables ow disables da LOA Requests moduwe. When enabled, dis awwows ur staff membews to fiww out Leave of Absence requests fow ur management membews to appwove.\n\n"
+                    "**LOA Rowe:** Dis rowe is given to those who awe on Leave of Absence, and is removed when they go off Leave of Absence.\n\n"
+                    "**LOA Channel:** Dis channel wiww be whewe Leave of Absence requests wiww be logged, and whewe they wiww be accepted ow denied. Make suwe dis is a channel dat Management membews can see, so dat they can appwove LOA requests."
                 ),
                 color=blank_color,
             ),
@@ -341,13 +341,13 @@ class Configuration(commands.Cog):
                 or isinstance(item, discord.ui.ChannelSelect)
             ):
                 if len(item.values) > 0:
-                    if item.placeholder == "LOA Role":
+                    if item.placeholder == "LOA Rowe uwu~":
                         modifications["staff_management"]["loa_role"] = [
                             r.id for r in item.values
                         ]
-                    elif item.placeholder == "LOA Channel":
+                    elif item.placeholder == "LOA Channel uwu~":
                         modifications["staff_management"]["channel"] = item.values[0].id
-                    elif item.placeholder == "LOA Requests":
+                    elif item.placeholder == "LOA Requests uwu~":
                         modifications["staff_management"]["enabled"] = bool(
                             item.values[0] == "enabled"
                         )
@@ -356,7 +356,7 @@ class Configuration(commands.Cog):
 
         ra_role_view = RoleSelect(ctx.author.id, limit=1)
         ra_role_select = ra_role_view.children[0]
-        ra_role_select.placeholder = "RA Role"
+        ra_role_select.placeholder = "RA Rowe uwu~"
         ra_role_select.row = 2
         ra_role_select.min_values = 0
 
@@ -372,8 +372,8 @@ class Configuration(commands.Cog):
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('loa')} RA Requests",
                 description=(
-                    "**What are RA Requests?** RA Requests, also called Reduced Activity Requests, are a form of Leave of Absence where the staff member isn't required to complete the full quota, but expects that they will be able to complete it partially.\n\n"
-                    "**RA Role:** This role is given to those who are on Reduced Activity, and is removed when they go off Reduced Activity.\n\n"
+                    "**What awe RA Requests?** RA Requests, also cawwed Reduced Activity Requests, awe a fowm of Leave of Absence whewe da staff membew isn't requiwed to complete da fuww quota, but expects dat they wiww be abwe to complete it pawtiawwy.\n\n"
+                    "**RA Rowe:** Dis rowe is given to those who awe on Reduced Activity, and is removed when they go off Reduced Activity.\n\n"
                 ),
                 color=blank_color,
             ),
@@ -388,7 +388,7 @@ class Configuration(commands.Cog):
                 item, discord.ui.RoleSelect
             ):
                 if len(item.values) > 0:
-                    if item.placeholder == "RA Role":
+                    if item.placeholder == "RA Rowe uwu~":
                         modifications["staff_management"]["ra_role"] = item.values[0].id
 
         punishment_settings = discord.ui.View()
@@ -403,26 +403,26 @@ class Configuration(commands.Cog):
             punishment_channel_view.children[0]
         )
         punishment_channel_select.min_values = 0
-        punishment_channel_select.placeholder = "Punishments Channel"
+        punishment_channel_select.placeholder = "Punishments Channel owo~"
         punishment_channel_select.row = 1
 
         punishments_enabled_view = CustomSelectMenu(
             ctx.author.id,
             [
                 discord.SelectOption(
-                    label="Enabled",
+                    label="Enabled >w<",
                     value="enabled",
-                    description="ROBLOX Punishments are enabled.",
+                    description="ROBLOX Punishments awe enabled. >w<",
                 ),
                 discord.SelectOption(
-                    label="Disabled",
+                    label="Disabled owo~",
                     value="disabled",
-                    description="ROBLOX Punishments are disabled.",
+                    description="ROBLOX Punishments awe disabled. >w<",
                 ),
             ],
         )
         punishments_enabled_item = punishments_enabled_view.children[0]
-        punishments_enabled_item.placeholder = "ROBLOX Punishments"
+        punishments_enabled_item.placeholder = "ROBLOX Punishments uwu~"
         punishments_enabled_item.row = 0
         punishments_enabled_item.callback = callback_override
 
@@ -433,9 +433,9 @@ class Configuration(commands.Cog):
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('log')} ROBLOX Punishments",
                 description=(
-                    "**What is the ROBLOX Punishments module?** The ROBLOX Punishments module allows for members of your Staff Team to log punishments against a ROBLOX player using ERM! You can specify custom types of punishments, where they will go, as well as manage and search individual punishments.\n\n"
-                    "**Enabled:** This setting toggles the ROBLOX Punishments module. When enabled, staff members will be able to use `/punish`, and management members will be able to additionally use `/punishment manage`.\n\n"
-                    "**Punishments Channel:** This is where most punishments made with the ROBLOX Punishments go. Any logged actions of a ROBLOX player will go to this channel."
+                    "**What is da ROBLOX Punishments moduwe?** Da ROBLOX Punishments moduwe awwows fow membews of ur Staff Team to log punishments against a ROBLOX playew using ERM! U can specify custom types of punishments, whewe they wiww go, as weww as manage and seawch individuaw punishments.\n\n"
+                    "**Enabled:** Dis setting toggles da ROBLOX Punishments moduwe. When enabled, staff membews wiww be abwe to use `/punish`, and management membews wiww be abwe to additionawwy use `/punishment manage`.\n\n"
+                    "**Punishments Channel:** Dis is whewe most punishments made wid da ROBLOX Punishments go. Any logged actions of a ROBLOX playew wiww go to dis channel."
                 ),
                 color=blank_color,
             ),
@@ -451,13 +451,13 @@ class Configuration(commands.Cog):
                 or isinstance(item, discord.ui.ChannelSelect)
             ):
                 if len(item.values) > 0:
-                    if item.placeholder == "ROBLOX Punishments":
+                    if item.placeholder == "ROBLOX Punishments uwu~":
                         if not modifications.get("punishments"):
                             modifications["punishments"] = {}
                         modifications["punishments"]["enabled"] = bool(
                             item.values[0] == "enabled"
                         )
-                    elif item.placeholder == "Punishments Channel":
+                    elif item.placeholder == "Punishments Channel owo~":
                         if not modifications.get("punishments"):
                             modifications["punishments"] = {}
                         modifications["punishments"]["channel"] = item.values[0].id
@@ -468,32 +468,32 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 discord.SelectOption(
-                    label="Enabled",
+                    label="Enabled >w<",
                     value="enabled",
-                    description="Enable the Shift Management module.",
+                    description="Enabwe da Shift Management moduwe. >w<",
                 ),
                 discord.SelectOption(
-                    label="Disabled",
+                    label="Disabled owo~",
                     value="disabled",
-                    description="Disable the Shift Management module.",
+                    description="Disabwe da Shift Management moduwe. uwu~",
                 ),
             ],
         )
         shift_enabled_select = shift_enabled_view.children[0]
-        shift_enabled_select.placeholder = "Shift Management"
+        shift_enabled_select.placeholder = "Shift Management~"
         shift_enabled_select.row = 0
         shift_enabled_select.callback = callback_override
 
         shift_channel_view = ChannelSelect(ctx.author.id, limit=1)
         shift_channel_select = shift_channel_view.children[0]
         shift_channel_select.row = 1
-        shift_channel_select.placeholder = "Shift Channel"
+        shift_channel_select.placeholder = "Shift Channel~"
         shift_channel_select.min_values = 0
 
         shift_role_view = RoleSelect(ctx.author.id, limit=5)
         shift_role_select = shift_role_view.children[0]
         shift_role_select.row = 2
-        shift_role_select.placeholder = "On-Duty Role"
+        shift_role_select.placeholder = "On-Duty Rowe~"
         shift_channel_select.min_values = 0
 
         next_menu = NextView(bot, ctx.author.id)
@@ -514,10 +514,10 @@ class Configuration(commands.Cog):
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('shift')} Shift Management",
                 description=(
-                    "**What is Shift Management?** The Shift Management module allows for staff members to log how much time they were in-game, or moderating, or on as a staff member. It allows for a comprehensive guide of who is the most active in your staff team.\n\n"
-                    "**Enabled:** When enabled, staff members will be able to run `/duty` commands to manage their shift, see how much time they have, as well as see how much time other people have. Management members will be able to administrate people's shifts, add time, remove time, and clear people's shifts.\n\n"
-                    "**Shift Channel:** This is where all shift logs will go to. This channel will be used for all modifications to shifts, any person that may be starting or ending their shift.\n\n"
-                    "**On-Duty Role:** When someone is on shift, they will be given this role. When the staff member goes off shift, this role will be removed from them."
+                    "**What is Shift Management?** Da Shift Management moduwe awwows fow staff membews to log how much time they wewe in-game, ow modewating, ow on as a staff membew. It awwows fow a compwehensive guide of who is da most active in ur staff team.\n\n"
+                    "**Enabled:** When enabled, staff membews wiww be abwe to run `/duty` commands to manage theiw shift, see how much time they hab, as weww as see how much time odew peopwe hab. Management membews wiww be abwe to administwate peopwe's shifts, add time, remove time, and cleaw peopwe's shifts.\n\n"
+                    "**Shift Channel:** Dis is whewe aww shift logs wiww go to. Dis channel wiww be used fow aww modifications to shifts, any pewson dat may be stawting ow ending theiw shift.\n\n"
+                    "**On-Duty Rowe:** When someone is on shift, they wiww be given dis rowe. When da staff membew goes off shift, dis rowe wiww be removed fwom them."
                 ),
                 color=blank_color,
             ),
@@ -533,13 +533,13 @@ class Configuration(commands.Cog):
                 or isinstance(item, discord.ui.ChannelSelect)
             ):
                 if len(item.values) > 0:
-                    if item.placeholder == "Shift Management":
+                    if item.placeholder == "Shift Management~":
                         modifications["shift_management"]["enabled"] = bool(
                             item.values[0] == "enabled"
                         )
-                    elif item.placeholder == "Shift Channel":
+                    elif item.placeholder == "Shift Channel~":
                         modifications["shift_management"]["channel"] = item.values[0].id
-                    elif item.placeholder == "On-Duty Role":
+                    elif item.placeholder == "On-Duty Rowe~":
                         modifications["shift_management"]["role"] = [
                             role.id for role in item.values
                         ]
@@ -551,7 +551,7 @@ class Configuration(commands.Cog):
         await msg.edit(
             embed=discord.Embed(
                 title=f'{self.bot.emoji_controller.get_emoji("success")} Success!',
-                description="You are now setup with ERM, and have finished the Setup Wizard! You should now be able to use ERM in your staff team. If you'd like to change any of these settings, use `/config`!\n\n**ERM has lots more modules than what's mentioned here! You can enable them by going into `/config`!**",
+                description="U awe now setup wid ERM, and hab finished da Setup Wizawd! U shouwd now be abwe to use ERM in ur staff team. If u'd like to change any of these settings, use `/config`!\n\n**ERM has lots mowe moduwes than what's mentioned hewe! U can enabwe them by going into `/config`!**",
                 color=0x1FD373,
             ),
             view=None,
@@ -560,9 +560,9 @@ class Configuration(commands.Cog):
     @commands.guild_only()
     @commands.hybrid_command(
         name="config",
-        description="View your ERM settings",
+        description="View ur ERM settings~",
         aliases=["settings"],
-        extras={"category": "Configuration"},
+        extras={"category": "Configuwation~"},
     )
     @require_settings()
     @is_management()
@@ -577,14 +577,14 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Staff Roles",
+                    "Staff Rowes >w<",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in settings["staff_management"].get("role") or [0]
                     ],
                 ),
                 (
-                    "Admin Role",
+                    "Admin Rowe >w<",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in settings["staff_management"].get("admin_role")
@@ -592,7 +592,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Management Roles",
+                    "Management Rowes >w<",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in settings["staff_management"].get(
@@ -602,9 +602,9 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Prefix",
+                    "Pwefix~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
                             settings["customisation"].get("prefix")
                             if settings["customisation"].get("prefix")
@@ -629,19 +629,19 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "LOA Requests",
+                    "LOA Requests uwu~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings["staff_management"].get("enabled") is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
-                ("LOA Role", loa_roles),
+                ("LOA Rowe uwu~", loa_roles),
                 (
-                    "LOA Channel",
+                    "LOA Channel uwu~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -658,14 +658,14 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "On-Duty Role",
+                    "On-Duty Rowe~",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in (settings["shift_management"].get("role") or [0])
                     ],
                 ),
                 (
-                    "Shift Channel",
+                    "Shift Channel~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -675,13 +675,13 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Shift Management",
+                    "Shift Management~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings["shift_management"].get("enabled") is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
@@ -696,14 +696,14 @@ class Configuration(commands.Cog):
         else:
             ra_roles = [0]
 
-        ra_view = RAConfiguration(bot, ctx.author.id, [("RA Role", ra_roles)])
+        ra_view = RAConfiguration(bot, ctx.author.id, [("RA Rowe uwu~", ra_roles)])
 
         roblox_punishments = PunishmentsConfiguration(
             bot,
             ctx.author.id,
             [
                 (
-                    "Punishments Channel",
+                    "Punishments Channel owo~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -713,13 +713,13 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "ROBLOX Punishments",
+                    "ROBLOX Punishments uwu~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings["punishments"].get("enabled") is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
@@ -731,18 +731,18 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Game Security",
+                    "Game Secuwity owo~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("game_security", {}).get("enabled") is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "Alert Channel",
+                    "Alewt Channel uwu~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -756,7 +756,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Webhook Channel",
+                    "Webhook Channel owo~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -770,7 +770,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Mentionables",
+                    "Mentionables >w<",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in (
@@ -786,44 +786,44 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Message Logging",
+                    "Message Logging~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("game_logging", {})
                             .get("message", {})
                             .get("enabled", None)
                             is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "STS Logging",
+                    "STS Logging >w<",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("game_logging", {})
                             .get("sts", {})
                             .get("enabled", None)
                             is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "Priority Logging",
+                    "Pwiowity Logging owo~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("game_logging", {})
                             .get("priority", {})
                             .get("enabled", None)
                             is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
@@ -835,37 +835,37 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Anti-Ping",
+                    "Anti-Ping uwu~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("antiping", {}).get("enabled", None) is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "Use Hierarchy",
+                    "Use Hiewawchy~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
+                            "Enabled >w<"
                             if settings.get("antiping", {}).get("use_hierarchy", None)
                             is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "Affected Roles",
+                    "Affected Rowes owo~",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in (settings.get("antiping", {}).get("role") or [0])
                     ],
                 ),
                 (
-                    "Bypass Roles",
+                    "Bypass Rowes~",
                     [
                         discord.utils.get(ctx.guild.roles, id=role)
                         for role in (
@@ -881,26 +881,26 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Elevation Required",
+                    "Elevation Requiwed owo~",
                     [
-                        ["CUSTOM_CONF", {"_FIND_BY_LABEL": True}],
+                        ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
-                            "Enabled"
-                            if (settings.get("ERLC", {}) or {}).get(
+                            "Enabled >w<"
+                            if (settings.get("ERLC~", {}) or {}).get(
                                 "elevation_required", True
                             )
                             is True
-                            else "Disabled"
+                            else "Disabled owo~"
                         ),
                     ],
                 ),
                 (
-                    "Player Logs Channel",
+                    "Playew Logs Channel owo~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
                             if (
-                                channel := (settings.get("ERLC", {}) or {}).get(
+                                channel := (settings.get("ERLC~", {}) or {}).get(
                                     "player_logs"
                                 )
                             )
@@ -909,12 +909,12 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Kill Logs Channel",
+                    "Kiww Logs Channel uwu~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
                             if (
-                                channel := (settings.get("ERLC", {}) or {}).get(
+                                channel := (settings.get("ERLC~", {}) or {}).get(
                                     "kill_logs"
                                 )
                             )
@@ -930,7 +930,7 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "ERM Log Channel",
+                    "ERM Log Channel >w<",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -955,7 +955,7 @@ class Configuration(commands.Cog):
             ctx.author.id,
             [
                 (
-                    "Blacklisted Roles",
+                    "Blacklisted Rowes uwu~",
                     [
                         discord.utils.get(ctx.guild.roles, id=int(role))
                         for role in (priority_settings or {}).get("blacklisted_roles")
@@ -963,7 +963,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Mentioned Roles",
+                    "Mentioned Rowes uwu~",
                     [
                         discord.utils.get(ctx.guild.roles, id=int(role))
                         for role in (priority_settings or {}).get("mentioned_roles")
@@ -971,7 +971,7 @@ class Configuration(commands.Cog):
                     ],
                 ),
                 (
-                    "Priority Channel",
+                    "Pwiowity Channel~",
                     [
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
@@ -988,7 +988,7 @@ class Configuration(commands.Cog):
         maple_county_configuration = MapleCountyConfiguration(
             bot,
             ctx.author.id,
-            settings.get("MC", {})
+            settings.get("MC owo~", {})
         )
 
         pages = []
@@ -1011,121 +1011,121 @@ class Configuration(commands.Cog):
         ):
             corresponding_embeds = [
                 discord.Embed(
-                    title="Basic Settings",
+                    title="Basic Settings >w<",
                     description=(
-                        "**Staff Role:** A staff role is the role that is going to be able to use most ERM commands. You'd assign this role to the people you want to be able to use ERM's core functionalities.\n\n"
-                        "**Admin Role:** An admin role is the role that can manage LOAs, RAs & other peoples' shifts but it can not use server manage and config.\n\n"
-                        "**Management Role:** A management role is the roles of your server management members. These people will be able to delete punishments, modify people's shift time, and accept LOA Requests.\n\n"
-                        "**Prefix:** This will be a prefix you are able to use instead of our slash command system. You can use this prefix to execute commands slightly faster and to take advantage of some extra features."
+                        "**Staff Rowe:** A staff rowe is da rowe dat is going to be abwe to use most ERM commands. U'd assign dis rowe to da peopwe u want to be abwe to use ERM's cowe functionawities.\n\n"
+                        "**Admin Rowe:** An admin rowe is da rowe dat can manage LOAs, RAs & odew peoples' shifts but it can nyot use sewvew manage and config.\n\n"
+                        "**Management Rowe:** A management rowe is da rowes of ur sewvew management membews. These peopwe wiww be abwe to dewete punishments, modify peopwe's shift time, and accept LOA Requests.\n\n"
+                        "**Pwefix:** Dis wiww be a pwefix u awe abwe to use instead of ouw slash command system. U can use dis pwefix to execute commands slightwy fastew and to take advantage of some extwa featuwes."
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="LOA Requests",
+                    title="LOA Requests uwu~",
                     description=(
-                        "**Enabled:** This setting enables or disables the LOA Requests module. When enabled, this allows your staff members to fill out Leave of Absence requests for your management members to approve.\n\n"
-                        "**LOA Role:** This role is given to those who are on Leave of Absence, and is removed when they go off Leave of Absence.\n\n"
-                        "**LOA Channel:** This channel will be where Leave of Absence requests will be logged, and where they will be accepted or denied. Make sure this is a channel that Management members can see, so that they can approve LOA requests."
+                        "**Enabled:** Dis setting enables ow disables da LOA Requests moduwe. When enabled, dis awwows ur staff membews to fiww out Leave of Absence requests fow ur management membews to appwove.\n\n"
+                        "**LOA Rowe:** Dis rowe is given to those who awe on Leave of Absence, and is removed when they go off Leave of Absence.\n\n"
+                        "**LOA Channel:** Dis channel wiww be whewe Leave of Absence requests wiww be logged, and whewe they wiww be accepted ow denied. Make suwe dis is a channel dat Management membews can see, so dat they can appwove LOA requests."
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="Shift Management",
+                    title="Shift Management~",
                     description=(
-                        "**What is Shift Management?** The Shift Management module allows for staff members to log how much time they were in-game, or moderating, or on as a staff member. It allows for a comprehensive guide of who is the most active in your staff team.\n\n"
-                        "**Enabled:** When enabled, staff members will be able to run `/duty` commands to manage their shift, see how much time they have, as well as see how much time other people have. Management members will be able to administrate people's shifts, add time, remove time, and clear people's shifts.\n\n"
-                        "**Shift Channel:** This is where all shift logs will go to. This channel will be used for all modifications to shifts, any person that may be starting or ending their shift.\n\n"
-                        "**On-Duty Role:** When someone is on shift, they will be given this role. When the staff member goes off shift, this role will be removed from them."
+                        "**What is Shift Management?** Da Shift Management moduwe awwows fow staff membews to log how much time they wewe in-game, ow modewating, ow on as a staff membew. It awwows fow a compwehensive guide of who is da most active in ur staff team.\n\n"
+                        "**Enabled:** When enabled, staff membews wiww be abwe to run `/duty` commands to manage theiw shift, see how much time they hab, as weww as see how much time odew peopwe hab. Management membews wiww be abwe to administwate peopwe's shifts, add time, remove time, and cleaw peopwe's shifts.\n\n"
+                        "**Shift Channel:** Dis is whewe aww shift logs wiww go to. Dis channel wiww be used fow aww modifications to shifts, any pewson dat may be stawting ow ending theiw shift.\n\n"
+                        "**On-Duty Rowe:** When someone is on shift, they wiww be given dis rowe. When da staff membew goes off shift, dis rowe wiww be removed fwom them."
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="RA Requests",
+                    title="RA Requests uwu~",
                     description=(
-                        "**What are RA Requests?** RA Requests, also called Reduced Activity Requests, are a form of Leave of Absence where the staff member isn't required to complete the full quota, but expects that they will be able to complete it partially.\n\n"
-                        "**RA Role:** This role is given to those who are on Reduced Activity, and is removed when they go off Reduced Activity.\n\n"
+                        "**What awe RA Requests?** RA Requests, also cawwed Reduced Activity Requests, awe a fowm of Leave of Absence whewe da staff membew isn't requiwed to complete da fuww quota, but expects dat they wiww be abwe to complete it pawtiawwy.\n\n"
+                        "**RA Rowe:** Dis rowe is given to those who awe on Reduced Activity, and is removed when they go off Reduced Activity.\n\n"
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="ROBLOX Punishments",
+                    title="ROBLOX Punishments uwu~",
                     description=(
-                        "**What is the ROBLOX Punishments module?** The ROBLOX Punishments module allows for members of your Staff Team to log punishments against a ROBLOX player using ERM! You can specify custom types of punishments, where they will go, as well as manage and search individual punishments.\n\n"
-                        "**Enabled:** This setting toggles the ROBLOX Punishments module. When enabled, staff members will be able to use `/punish`, and management members will be able to additionally use `/punishment manage`.\n\n"
-                        "**Punishments Channel:** This is where most punishments made with the ROBLOX Punishments go. Any logged actions of a ROBLOX player will go to this channel."
+                        "**What is da ROBLOX Punishments moduwe?** Da ROBLOX Punishments moduwe awwows fow membews of ur Staff Team to log punishments against a ROBLOX playew using ERM! U can specify custom types of punishments, whewe they wiww go, as weww as manage and seawch individuaw punishments.\n\n"
+                        "**Enabled:** Dis setting toggles da ROBLOX Punishments moduwe. When enabled, staff membews wiww be abwe to use `/punish`, and management membews wiww be abwe to additionawwy use `/punishment manage`.\n\n"
+                        "**Punishments Channel:** Dis is whewe most punishments made wid da ROBLOX Punishments go. Any logged actions of a ROBLOX playew wiww go to dis channel."
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="Game Security",
+                    title="Game Secuwity owo~",
                     description=(
-                        "**What is the Game Security module?** As of right now, this module only applies to private servers of Emergency Response: Liberty County. This module aims to protect and secure private servers by detecting if a staff member runs a potentially abusive command, and notifying management of this incident.\n\n"
-                        "**Enabled:** Game Security is a module that aims to protect private servers from abuse of administrative privileges. This only works for particular games and servers. You should disable this if you aren't a game listed above.\n\n"
-                        "**Webhook Channel:** This channel is where the bot will read the webhooks from the game server. This is not where alerts will be sent. Rather, this is where the bot will detect any admin abuse.\n\n"
-                        "**Alert Channel:** This channel is where the bot will send the corresponding alerts for abuse of administrative privileges in your private server. It is recommended for this not to be the same as your Webhook Channel so that you don't miss any unresolved Security Alerts.\n\n"
-                        "**Mentionables:** These roles will be mentioned when a security alert is sent by ERM. All of these roles will be mentioned in the message, and they should be able to deal with the situation at hand for maximum staff efficiency."
+                        "**What is da Game Secuwity moduwe?** As of right now, dis moduwe onwy applies to pwivate sewvews of Emewgency Response: Libewty County. Dis moduwe aims to pwotect and secuwe pwivate sewvews by detecting if a staff membew runs a potentiawwy abusive command, and notifying management of dis incident.\n\n"
+                        "**Enabled:** Game Secuwity is a moduwe dat aims to pwotect pwivate sewvews fwom abuse of administwative pwiviweges. Dis onwy wowks fow pawticuwaw games and sewvews. U shouwd disabwe dis if u awen't a game listed above.\n\n"
+                        "**Webhook Channel:** Dis channel is whewe da bot wiww read da webhooks fwom da game sewvew. Dis is nyot whewe awewts wiww be sent. Radew, dis is whewe da bot wiww detect any admin abuse.\n\n"
+                        "**Alewt Channel:** Dis channel is whewe da bot wiww send da cowwesponding awewts fow abuse of administwative pwiviweges in ur pwivate sewvew. It is recommended fow dis nyot to be da same as ur Webhook Channel so dat u don't miss any unwesolved Secuwity Alewts.\n\n"
+                        "**Mentionables:** These rowes wiww be mentioned when a secuwity awewt is sent by ERM. Aww of these rowes wiww be mentioned in da message, and they shouwd be abwe to deaw wid da situation at hand fow maximum staff efficiency."
                     ),
                     color=blank_color,
                 ),
                 discord.Embed(
-                    title="Game Logging",
+                    title="Game Logging >w<",
                     color=blank_color,
                     description=(
-                        "**What is Game Logging?** Game Logging is an ERM module, particularly tailored towards private servers of Emergency Response: Liberty County, but can apply to other roleplay games in a similar genre. Game Logging allows for staff members to log events of interest, such as custom in-game messages, priority timers, as well as STS events. This allows for streamlined management of staff efficiency.\n\n"
+                        "**What is Game Logging?** Game Logging is an ERM moduwe, pawticuwawwy taiwowed towawds pwivate sewvews of Emewgency Response: Libewty County, but can appwy to odew roweplay games in a simiwaw genwe. Game Logging awwows fow staff membews to log events of intewest, such as custom in-game messages, pwiowity timews, as weww as STS events. Dis awwows fow stweamlined management of staff efficiency.\n\n"
                         "### Message Logging\n\n"
-                        "**Enabled:** This dictates whether the in-game message section of the Game Logging module is enabled. This part of the module automatically and allows for manual logs of in-game messages and 'hints' so that management can effectively see if staff members are sending the correct amount of notifications.\n\n"
-                        "**Message Logging Channel:** This channel will be where these message and notification logs will be sent to.\n\n"
+                        "**Enabled:** Dis dictates whedew da in-game message section of da Game Logging moduwe is enabled. Dis pawt of da moduwe automaticawwy and awwows fow manuaw logs of in-game messages and 'hints' so dat management can effectivewy see if staff membews awe sending da cowwect amount of notifications.\n\n"
+                        "**Message Logging Channel:** Dis channel wiww be whewe these message and notification logs wiww be sent to.\n\n"
                         "### STS Logging\n\n"
-                        "**Enabled:** This dictates whether the Shoulder-to-Shoulder event logging section of the Game Logging module is enabled. When enabled, staff members can log the duration of their events, as well as who hosted them and other important information.\n\n"
-                        "**STS Logging Channel:** This is where the event logs for Shoulder-to-Shoulder events will appear. Management members will be able to see all relevant information of an STS here.\n\n"
-                        "### Priority Logging\n\n"
-                        "**Enabled:** This section of the Game Logging module, correspondingly named the Priority Logging part, allows for staff members to log Priority Timer events, their reason, duration, as well as any notable information which may be necessary for management members.\n\n"
-                        "**Priority Logging Channel:** This channel will be where priority timer events and event notifications will be logged accordingly for management members to view."
+                        "**Enabled:** Dis dictates whedew da Shouldew-to-Shouldew event logging section of da Game Logging moduwe is enabled. When enabled, staff membews can log da duwation of theiw events, as weww as who hosted them and odew impowtant infowmation.\n\n"
+                        "**STS Logging Channel:** Dis is whewe da event logs fow Shouldew-to-Shouldew events wiww appeaw. Management membews wiww be abwe to see aww rewevant infowmation of an STS hewe.\n\n"
+                        "### Pwiowity Logging\n\n"
+                        "**Enabled:** Dis section of da Game Logging moduwe, cowwespondingwy named da Pwiowity Logging pawt, awwows fow staff membews to log Pwiowity Timew events, theiw reason, duwation, as weww as any notabwe infowmation which may be necessawy fow management membews.\n\n"
+                        "**Pwiowity Logging Channel:** Dis channel wiww be whewe pwiowity timew events and event notifications wiww be logged accowdingwy fow management membews to view."
                     ),
                 ),
                 discord.Embed(
-                    title="Anti-Ping",
+                    title="Anti-Ping uwu~",
                     color=blank_color,
                     description=(
-                        "**What is Anti-Ping?** Anti-ping is an ERM module which specialises in preventing mention abuse of High Ranks within a Discord server. ERM detects if an unauthorized individual mentions a High Ranking individual, and notifies them to discontinue any further attempts to violate the server's regulations.\n\n"
-                        "**Enabled:** This setting dictates whether ERM will take action upon these users, and intervene when necessary. When disabled, the Anti-Ping module will not activate.\n\n"
-                        "**Affected Roles:** These roles clarify the individuals who are affected by Anti-Ping, and are classed as important individuals to ERM. An individual who pings someone with these affected roles, will activate Anti-Ping.\n\n"
-                        "**Bypass Roles:** An individual who holds one of these roles will not be able to trigger Anti-Ping filters, and will be able to ping any individual within the Affected Roles list without ERM intervening.\n\n"
-                        "**Use Hierarchy:** This setting dictates whether Anti-Ping will take into account role hierarchy for each of the affected roles. For example, if you set Moderation as an affected role, it would also apply for all roles above Moderation, such as Administration or Management."
+                        "**What is Anti-Ping?** Anti-ping is an ERM moduwe which speciawises in pweventing mention abuse of High Ranks widin a Discowd sewvew. ERM detects if an unaudowized individuaw mentions a High Ranking individuaw, and notifies them to discontinue any fuwdew attempts to viowate da sewvew's reguwations.\n\n"
+                        "**Enabled:** Dis setting dictates whedew ERM wiww take action upon these usews, and intewvene when necessawy. When disabled, da Anti-Ping moduwe wiww nyot activate.\n\n"
+                        "**Affected Rowes:** These rowes clawify da individuals who awe affected by Anti-Ping, and awe classed as impowtant individuals to ERM. An individuaw who pings someone wid these affected rowes, wiww activate Anti-Ping.\n\n"
+                        "**Bypass Rowes:** An individuaw who howds one of these rowes wiww nyot be abwe to twiggew Anti-Ping filtews, and wiww be abwe to ping any individuaw widin da Affected Rowes list widout ERM intewvening.\n\n"
+                        "**Use Hiewawchy:** Dis setting dictates whedew Anti-Ping wiww take into account rowe hiewawchy fow each of da affected rowes. Fow exampwe, if u set Modewation as an affected rowe, it wouwd also appwy fow aww rowes above Modewation, such as Administwation ow Management."
                     ),
                 ),
                 discord.Embed(
-                    title="ER:LC Integration",
+                    title="ER:LC Integwation owo~",
                     color=blank_color,
                     description=(
-                        "**What is the ER:LC Integration?** ER:LC Integration allows for ERM to communicate with the Police Roleplay Community APIs, and your Emergency Response: Liberty County server. In particular, these configurations allow for Join Logs, Leave Logs, and Kill Logs to be logged.\n\n"
-                        "**Elevation Required:** This setting dictates whether elevated permissions are required to run commands such as `:admin` and `:unadmin`. In such case where this is enabled, Co-Owner permissions are required to run these commands to prevent security risk. If disabled, those with the Management Roles in your server can run these commands. **It is advised you keep this enabled unless you have a valid reason to turn it off.** Contact ERM Support if you are unsure what this setting does.\n\n"
-                        "**Player Logs Channel:** This channel is where Player Join and Leave logs will be sent by ERM. ERM will check your server every 45 seconds to see if new members have joined or left, and report of their time accordingly.\n\n"
-                        "**Kill Logs Channel:** This setting is where Kill Logs will be sent by ERM. ERM will check your server every 45 seconds and constantly contact your ER:LC private server to know if there are any new kill logs. If there are, to log them in the corresponding channel."
+                        "**What is da ER:LC Integwation?** ER:LC Integwation awwows fow ERM to communicate wid da Powice Roweplay Community APIs, and ur Emewgency Response: Libewty County sewvew. In pawticuwaw, these configuwations awwow fow Join Logs, Leave Logs, and Kiww Logs to be logged.\n\n"
+                        "**Elevation Requiwed:** Dis setting dictates whedew ewevated pewmissions awe requiwed to run commands such as `:admin` and `:unadmin`. In such case whewe dis is enabled, Co-Ownew pewmissions awe requiwed to run these commands to pwevent secuwity risk. If disabled, those wid da Management Rowes in ur sewvew can run these commands. **It is advised u keep dis enabled unless u hab a vawid reason to tuwn it off.** Contact ERM Suppowt if u awe unsuwe what dis setting does.\n\n"
+                        "**Playew Logs Channel:** Dis channel is whewe Playew Join and Leave logs wiww be sent by ERM. ERM wiww check ur sewvew evewy 45 seconds to see if new membews hab joined ow left, and repowt of theiw time accowdingwy.\n\n"
+                        "**Kiww Logs Channel:** Dis setting is whewe Kiww Logs wiww be sent by ERM. ERM wiww check ur sewvew evewy 45 seconds and constantwy contact ur ER:LC pwivate sewvew to know if thewe awe any new kiww logs. If thewe awe, to log them in da cowwesponding channel."
                     ),
                 ),
                 discord.Embed(
-                    title="ERM Logging",
+                    title="ERM Logging >w<",
                     color=blank_color,
                     description=(
-                        "**ERM Log Channel:** This channel is where ERM will log all administrative commands and configuration changes made by Admin & Management Roles. This is useful for auditing purposes, ensuring transparency, and detecting any potential abuse of administrative privileges. This is a critical part of ERM and should be enabled for all servers using ERM.\n\n"
-                        "All commands such as Duty Admin, LOA Admin, RA Admin, Server Manage, Config, etc., as well as nearly all configuration changes, will be logged in this channel."
+                        "**ERM Log Channel:** Dis channel is whewe ERM wiww log aww administwative commands and configuwation changes made by Admin & Management Rowes. Dis is useful fow auditing puwposes, ensuwing twanspawency, and detecting any potentiaw abuse of administwative pwiviweges. Dis is a cwiticaw pawt of ERM and shouwd be enabled fow aww sewvews using ERM.\n\n"
+                        "Aww commands such as Duty Admin, LOA Admin, RA Admin, Sewvew Manage, Config, etc., as weww as neawwy aww configuwation changes, wiww be logged in dis channel."
                     ),
                 ),
                 discord.Embed(
-                    title="Priority Requests",
+                    title="Pwiowity Requests~",
                     color=blank_color,
                     description=(
-                        "**Blacklisted Roles:** These are the roles which are unable to use the ERM Priority Request system. They will not be able to submit priority requests if they have any of these roles.\n\n"
-                        "**Mentioned Roles:** When a priority request is submitted, these roles will be mentioned in the accompanying message advising staff in regards to the priority request.\n\n"
-                        "**Priority Channel:** This channel will be where priority requests are submitted, and where the message advising staff in regards to the priority request will be sent."
+                        "**Blacklisted Rowes:** These awe da rowes which awe unabwe to use da ERM Pwiowity Request system. They wiww nyot be abwe to submit pwiowity requests if they hab any of these rowes.\n\n"
+                        "**Mentioned Rowes:** When a pwiowity request is submitted, these rowes wiww be mentioned in da accompanying message advising staff in regawds to da pwiowity request.\n\n"
+                        "**Pwiowity Channel:** Dis channel wiww be whewe pwiowity requests awe submitted, and whewe da message advising staff in regawds to da pwiowity request wiww be sent."
                     ),
                 ),
                 discord.Embed(
-                    title="Maple County Integration",
+                    title="Mapwe County Integwation owo~",
                     color=blank_color,
                     description=(
-                        "**What is the Maple County Integration?**\nThe Maple County Integration allows for ERM to communicate with the Maple County APIs, and your Maple County server. In particular, these configurations allow for configuration of various Maple County-specific supported features and settings.\n\n"
+                        "**What is da Mapwe County Integwation?**\nDa Mapwe County Integwation awwows fow ERM to communicate wid da Mapwe County APIs, and ur Mapwe County sewvew. In pawticuwaw, these configuwations awwow fow configuwation of vawious Mapwe County-specific suppowted featuwes and settings.\n\n"
                     )
                 )
             ]
@@ -1143,16 +1143,16 @@ class Configuration(commands.Cog):
         except discord.HTTPException:
             await ctx.send(
                 embed=discord.Embed(
-                    title="Critical Error",
-                    description="Configuration error; 827",
+                    title="Cwiticaw Ewwow >w<",
+                    description="Configuwation ewwow; 827 owo~",
                     color=BLANK_COLOR,
                 )
             )
 
     @commands.hybrid_group(
         name="server",
-        description="This is a namespace for commands relating to the Server Management functionality",
-        extras={"category": "Configuration"},
+        description="Dis is a namespace fow commands rewating to da Sewvew Management functionawity",
+        extras={"category": "Configuwation~"},
     )
     async def server(self, ctx: commands.Context):
         pass
@@ -1160,8 +1160,8 @@ class Configuration(commands.Cog):
     @commands.guild_only()
     @server.command(
         name="manage",
-        description="Manage your server's ERM data!",
-        extras={"category": "Configuration"},
+        description="Manage ur sewvew's ERM data! >w<",
+        extras={"category": "Configuwation~"},
     )
     @is_management()
     @require_settings()
@@ -1170,35 +1170,35 @@ class Configuration(commands.Cog):
 
         embeds = [
             discord.Embed(
-                title="Introduction",
+                title="Intwoduction >w<",
                 description=(
-                    "This **Server Management Panel** allows individuals who have access to it, to manage your data regarding ERM on your server. This contains any of the data contained within the 3 main modules, which are Activity Notices, ROBLOX Punishments, and Shift Logging.\n\n"
-                    "Using this panel, you can clear certain parts of data, or erase the data of a particular module in its entirety. For some modules, you can also erase its data by a particular specification - such as removing all punishments from a punishment type.\n\n"
-                    "Members with **Management** permissions can access this panel, and erase your server's data, so ensure you only give this access to people who you trust. As with particular parts of this panel, some actions are reversible when contacting ERM Support."
+                    "Dis **Sewvew Management Panel** awwows individuals who hab access to it, to manage ur data regawding ERM on ur sewvew. Dis contains any of da data contained widin da 3 main moduwes, which awe Activity Notices, ROBLOX Punishments, and Shift Logging.\n\n"
+                    "Using dis panel, u can cleaw cewtain pawts of data, ow ewase da data of a pawticuwaw moduwe in its entiwety. Fow some moduwes, u can also ewase its data by a pawticuwaw specification - such as removing aww punishments fwom a punishment type.\n\n"
+                    "Membews wid **Management** pewmissions can access dis panel, and ewase ur sewvew's data, so ensuwe u onwy give dis access to peopwe who u twust. As wid pawticuwaw pawts of dis panel, some actions awe revewsibwe when contacting ERM Suppowt."
                 ),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon),
             discord.Embed(
-                title="Activity Notices",
+                title="Activity Notices >w<",
                 description=(
-                    "Activity Notices allow for routine and robust staff management and administration, with the implementation of Leave of Absence requests and Reduced Activity requests. Staff members can request for one of these facilities, and Management can approve and deny on a case-by-case basis.\n\n"
-                    "Using this panel, you can perform 3 actions. You can **Erase Pending Requests** to remove all ongoing Activity Notice requests. You can also **Erase LOA Notices** and **Erase RA Notices** to erase their correspondent activity notices. **These will not automatically remove the LOA or RA roles, as these actions only erase these notices from our database.**"
+                    "Activity Notices awwow fow routine and robust staff management and administwation, wid da implementation of Leave of Absence requests and Reduced Activity requests. Staff membews can request fow one of these faciwities, and Management can appwove and deny on a case-by-case basis.\n\n"
+                    "Using dis panel, u can pewfowm 3 actions. U can **Ewase Pending Requests** to remove aww ongoing Activity Notice requests. U can also **Ewase LOA Notices** and **Ewase RA Notices** to ewase theiw cowwespondent activity notices. **These wiww nyot automaticawwy remove da LOA ow RA rowes, as these actions onwy ewase these notices fwom ouw database.**"
                 ),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon),
             discord.Embed(
-                title="ROBLOX Punishments",
+                title="ROBLOX Punishments uwu~",
                 description=(
-                    "ROBLOX Punishments allow for staff members to log their punishments on the ROBLOX platform using ERM. ERM allows a robust experience for a staff member utilising this module, as commands are easy to learn and execute, as well as to effectively be implemented into a staff member's workflow.\n\n"
-                    "Using this panel, you can **Erase All Punishments**, as well as **Erase Punishments By Type** and **Erase Punishments By Username**."
+                    "ROBLOX Punishments awwow fow staff membews to log theiw punishments on da ROBLOX platfowm using ERM. ERM awwows a robust expewience fow a staff membew utiwising dis moduwe, as commands awe easy to leawn and execute, as weww as to effectivewy be implemented into a staff membew's wowkflow.\n\n"
+                    "Using dis panel, u can **Ewase Aww Punishments**, as weww as **Ewase Punishments By Type** and **Ewase Punishments By Usewname**."
                 ),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon),
             discord.Embed(
-                title="Shift Logging",
+                title="Shift Logging owo~",
                 description=(
-                    'Shift Logging allow for an easy experience for staff members looking to log their active shift time using ERM. Staff members can run simple commands to go "on-duty", as well as go on break to signify unavailability. Once they are ready, they can go "off-duty" to signify that they are no longer available for any administrative action.\n\n'
-                    "Using this panel, you can **Erase All Shifts**, as well as utilise **Erase Past Shifts** and **Erase Active Shifts**. You can also **Erase Shifts By Type**."
+                    'Shift Logging awwow fow an easy expewience fow staff membews looking to log theiw active shift time using ERM. Staff membews can run simpwe commands to go "on-duty", as weww as go on bweak to signify unavaiwabiwity. Once they awe ready, they can go "off-duty" to signify dat they awe nyo longew avaiwabwe fow any administwative action.\n\n'
+                    "Using dis panel, u can **Ewase Aww Shifts**, as weww as utiwise **Ewase Past Shifts** and **Ewase Active Shifts**. U can also **Ewase Shifts By Type**."
                 ),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon),

@@ -5,7 +5,7 @@ from utils.mc_api import ServerKey
 from utils.utils import config_change_log
 import discord
 
-class CustomModal(discord.ui.Modal, title="Edit Reason"):
+class CustomModal(discord.ui.Modal, title="Edit Weason uwu~"):
     def __init__(self, title, options, epher_args: dict = None):
         super().__init__(title=title)
         if epher_args is None:
@@ -32,7 +32,7 @@ class MapleCountyConfiguration(discord.ui.View):
         self.user_id = user_id
         self.settings = settings or {}
 
-    @discord.ui.button(label="Automatic Discord Checks", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Automatic Discowd Checks uwu~", style=discord.ButtonStyle.secondary)
     async def automatic_discord_checks(self, interaction: Interaction, button: discord.ui.Button):
         sett = await self.bot.settings.find_by_id(interaction.guild.id)
         if not sett:
@@ -45,14 +45,14 @@ class MapleCountyConfiguration(discord.ui.View):
         channel_id = discord_checks.get('channel_id')
         
         embed = discord.Embed(
-            title="Automatic Discord Checks",
+            title="Automatic Discowd Checks uwu~",
             description=(
-                "> This module allows for automatic checks on Discord accounts of players in your Maple County server."
+                "> Dis moduwe awwows fow automatic checks on Discowd accounts of pwayews in ur Mapwe County sewvew owo~"
             ),
             color=blank_color,
         ).add_field(
-            name="Alert Channel",
-            value=f"> Players that aren't in the Discord server will be sent in this channel.",
+            name="Awewt Channew~",
+            value=f"> Pwayews dat awen't in da Discowd sewvew wiww be sent in dis channew uwu~",
             inline=False,
         )
         
@@ -75,15 +75,15 @@ class MCDiscordCheckConfig(discord.ui.View):
     
     def create_select(self):
         select = discord.ui.Select(
-            placeholder="Enable/Disable Discord Checks",
+            placeholder="Enabwe/Disabwe Discowd Checks uwu~",
             options=[
                 discord.SelectOption(
-                    label="Enable Discord Checks", 
+                    label="Enabwe Discowd Checks uwu~",
                     value="enable",
                     default=self.settings.get('MC', {}).get('discord_checks', {}).get('enabled', False)
                 ),
                 discord.SelectOption(
-                    label="Disable Discord Checks", 
+                    label="Disabwe Discowd Checks >w<~",
                     value="disable",
                     default=not self.settings.get('MC', {}).get('discord_checks', {}).get('enabled', False)
                 ),
@@ -98,7 +98,7 @@ class MCDiscordCheckConfig(discord.ui.View):
         default_values = [discord.Object(id=current_channel_id)] if current_channel_id else None
         
         channel_select = discord.ui.ChannelSelect(
-            placeholder="Select Alert Channel",
+            placeholder="Sewect Awewt Channew uwu~",
             channel_types=[discord.ChannelType.text],
             max_values=1,
             default_values=default_values,
@@ -110,7 +110,7 @@ class MCDiscordCheckConfig(discord.ui.View):
     async def select_callback(self, interaction: Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "You are not permitted to interact with this dropdown.",
+                "U awe nyot pewmitted to intewact wif dis dwopdown >w<~",
                 ephemeral=True
             )
             return
@@ -140,20 +140,20 @@ class MCDiscordCheckConfig(discord.ui.View):
                 self.bot, 
                 interaction.guild, 
                 interaction.user, 
-                f"MC Discord Checks have been {status}."
+                f"MC Discowd Checks hav been {status} uwu~"
             )
             
             await interaction.response.send_message(
-                f"Discord Checks have been {status}.",
+                f"Discowd Checks hav been {status} uwu~",
                 ephemeral=True,
             )
         else:
-            await interaction.response.send_message("No option selected.", ephemeral=True)
+            await interaction.response.send_message("Nyo option sewected >w<~", ephemeral=True)
 
     async def channel_select_callback(self, interaction: Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "You are not permitted to interact with this dropdown.",
+                "U awe nyot pewmitted to intewact wif dis dwopdown >w<~",
                 ephemeral=True
             )
             return
@@ -183,10 +183,10 @@ class MCDiscordCheckConfig(discord.ui.View):
             self.bot,
             interaction.guild,
             interaction.user,
-            f"MC Discord Checks alert channel set to <#{channel_id}>."
+            f"MC Discowd Checks awewt channew set to <#{channel_id}> uwu~"
         )
 
         await interaction.response.send_message(
-            f"Alert channel set to <#{channel_id}>.",
+            f"Awewt channew set to <#{channel_id}> uwu~",
             ephemeral=True
         )

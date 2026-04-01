@@ -153,27 +153,27 @@ class OnShiftEnd(commands.Cog):
 
         if channel is not None:
             await channel.send(
-                embed=discord.Embed(title="Shift Ended", color=BLANK_COLOR)
+                embed=discord.Embed(title="Shift Ended owo~", color=BLANK_COLOR)
                 .add_field(
-                    name="Shift Information",
+                    name="Shift Infowmation~",
                     value=(
-                        f"> **Staff Member:** {staff_member.mention}\n"
+                        f"> **Staff Membew:** {staff_member.mention}\n"
                         f"> **Shift Type:** {shift_type}\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Other Information",
+                    name="Othew Infowmation~",
                     value=(
-                        f"> **Shift Start:** <t:{int(shift.start_epoch)}>\n"
+                        f"> **Shift Stawt:** <t:{int(shift.start_epoch)}>\n"
                         f"> **Shift End:** <t:{int(shift.end_epoch)}>\n"
-                        f"> **Shift Length:** {td_format(datetime.timedelta(seconds=shift.end_epoch - shift.start_epoch - (sum((br.end_epoch) - (br.start_epoch) for br in shift.breaks)) + (shift.added_time if shift.added_time > (86400 * 7) else 0) - (shift.removed_time if shift.removed_time > (86400 * 7) else 0)))}\n"
+                        f"> **Shift Wength:** {td_format(datetime.timedelta(seconds=shift.end_epoch - shift.start_epoch - (sum((br.end_epoch) - (br.start_epoch) for br in shift.breaks)) + (shift.added_time if shift.added_time > (86400 * 7) else 0) - (shift.removed_time if shift.removed_time > (86400 * 7) else 0)))}\n"
                         f"> **Nickname:** `{shift.nickname}`\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Moderation Details:",
+                    name="Modewation Detaiws~:",
                     value=(
                         "\n".join(
                             [
@@ -182,7 +182,7 @@ class OnShiftEnd(commands.Cog):
                             ]
                         )
                         if moderation_counts
-                        else "> No Moderations Found"
+                        else "> Nyo Modewations Found~ uwu"
                     ),
                     inline=False,
                 )
@@ -200,19 +200,19 @@ class OnShiftEnd(commands.Cog):
             )
         if shift_reports_enabled:
             embed = (
-                discord.Embed(title="Shift Report", color=BLANK_COLOR)
+                discord.Embed(title="Shift Wepowt uwu~", color=BLANK_COLOR)
                 .add_field(
-                    name="Shift Information",
+                    name="Shift Infowmation~",
                     value=(
                         f"> **Shift Type:** {shift_type}\n"
-                        f"> **Shift Start:** <t:{int(shift.start_epoch)}>\n"
+                        f"> **Shift Stawt:** <t:{int(shift.start_epoch)}>\n"
                         f"> **Shift End:** <t:{int(shift.end_epoch)}>\n"
                         f"> **Nickname:** `{shift.nickname}`\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Total Moderations:",
+                    name="Totaw Modewations~:",
                     value=(
                         "\n".join(
                             [
@@ -221,12 +221,12 @@ class OnShiftEnd(commands.Cog):
                             ]
                         )
                         if moderation_counts
-                        else "> No Moderations Found"
+                        else "> Nyo Modewations Found~ uwu"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Elapsed Time",
+                    name="Ewapsed Time~",
                     value=f"> {td_format(datetime.timedelta(seconds=shift.end_epoch - shift.start_epoch - (sum((br.end_epoch) - (br.start_epoch) for br in shift.breaks)) + (shift.added_time if shift.added_time > (86400 * 7) else 0) - (shift.removed_time if shift.removed_time > (86400 * 7) else 0)))}",
                     inline=False,
                 )

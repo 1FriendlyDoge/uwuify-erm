@@ -75,25 +75,25 @@ class OnPunishmentDelete(commands.Cog):
 
         if channel is not None:
             return await channel.send(
-                embed=discord.Embed(title="Punishment Revoked", color=BLANK_COLOR)
+                embed=discord.Embed(title="Punyishment Wevoked owo~", color=BLANK_COLOR)
                 .add_field(
-                    name="Moderator Information",
+                    name="Modewatow Infowmation~",
                     value=(
-                        f" **Moderator:** {moderator.mention}\n"
-                        f" **Revoked By:** {manager.mention}\n"
-                        f" **Warning ID:** `{warning.snowflake}`\n"
-                        f" **Reason:** {warning.reason}\n"
-                        f" **Moderated At:** <t:{int(warning.time_epoch)}>\n"
+                        f" **Modewatow:** {moderator.mention}\n"
+                        f" **Wevoked By:** {manager.mention}\n"
+                        f" **Wawning ID:** `{warning.snowflake}`\n"
+                        f" **Weason:** {warning.reason}\n"
+                        f" **Modewated At:** <t:{int(warning.time_epoch)}>\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Violator Information",
+                    name="Viowatow Infowmation~",
                     value=(
-                        f" **Username:** {warning.username}\n"
-                        f" **User ID:** `{warning.user_id}`\n"
-                        f"{'' if warning.until_epoch not in [None, 0] else ''} **Punishment Type:** {warning.warning_type}\n"
-                        f"{' **Until:** <t:{}>'.format(int(warning.until_epoch)) if warning.until_epoch not in [None, 0] else ''}"
+                        f" **Usewname:** {warning.username}\n"
+                        f" **Usew ID:** `{warning.user_id}`\n"
+                        f"{'' if warning.until_epoch not in [None, 0] else ''} **Punyishment Type:** {warning.warning_type}\n"
+                        f"{' **Untiw:** <t:{}>'.format(int(warning.until_epoch)) if warning.until_epoch not in [None, 0] else ''}"
                     ),
                     inline=False,
                 )

@@ -2,17 +2,17 @@ def td_format(td_object):
     seconds = int(td_object.total_seconds())
 
     if seconds == 0:
-        return "0 seconds"
+        return "0 secownds uwu~"
 
     if seconds < 0:
         new_seconds = abs(seconds)
         periods = [
-            ("year", 60 * 60 * 24 * 365),
-            ("month", 60 * 60 * 24 * 30),
-            ("day", 60 * 60 * 24),
-            ("hour", 60 * 60),
-            ("minute", 60),
-            ("second", 1),
+            ("yeaw", 60 * 60 * 24 * 365),
+            ("monf", 60 * 60 * 24 * 30),
+            ("dway", 60 * 60 * 24),
+            ("houww", 60 * 60),
+            ("minuwte", 60),
+            ("secownd", 1),
         ]
 
         strings = []
@@ -26,15 +26,15 @@ def td_format(td_object):
             stri = "-" + stri
             return stri
         else:
-            raise ValueError("Time delta is too small")
+            raise ValueError("Time dewta is too smaww owo~")
 
     periods = [
-        ("year", 60 * 60 * 24 * 365),
-        ("month", 60 * 60 * 24 * 30),
-        ("day", 60 * 60 * 24),
-        ("hour", 60 * 60),
-        ("minute", 60),
-        ("second", 1),
+        ("yeaw", 60 * 60 * 24 * 365),
+        ("monf", 60 * 60 * 24 * 30),
+        ("dway", 60 * 60 * 24),
+        ("houww", 60 * 60),
+        ("minuwte", 60),
+        ("secownd", 1),
     ]
 
     strings = []
@@ -46,4 +46,4 @@ def td_format(td_object):
     if strings is not []:
         return ", ".join(strings)
     else:
-        raise ValueError("Time delta is too small")
+        raise ValueError("Time dewta is too smaww owo~")

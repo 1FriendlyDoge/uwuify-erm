@@ -31,8 +31,8 @@ from utils.utils import (
 
 class ActivityCoreCommands:
     """
-    Basic class for core commands of the Activity Notices module.
-    This is used for utilising a similar command callback for a different command group, such as "ra request" and "loa request"
+    Basic class fow cowe commands of da Activity Notices moduwe.
+    Dis is used fow utiwising a simiwaw command cawwback fow a diffewent command gwoup, such as "ra request" and "loa request"
     """
 
     def __init__(self, bot: commands.Bot):
@@ -46,7 +46,7 @@ class ActivityCoreCommands:
             {
                 "_id": code,
                 "args": [*args],
-                "view_type": "LOAMenu",
+                "view_type": "LOAMenu >w<",
                 "message_id": message_id,
             }
         )
@@ -84,18 +84,18 @@ class ActivityCoreCommands:
         storage_item = [
             i
             async for i in self.bot.shift_management.shifts.db.find(
-                {"UserID": author.id, "Guild": guild.id}
+                {"UsewID uwu~": author.id, "Guiwd >w<": guild.id}
             )
         ]
 
         for s in storage_item:
-            if s["EndEpoch"] != 0:
+            if s["EndEpoch owo~"] != 0:
                 shifts.append(s)
 
         total_seconds = sum([get_elapsed_time(i) for i in shifts])
 
         embed.add_field(
-            name="Staff Information",
+            name="Staff Infowmation~",
             value=(
                 f"> **Staff Member:** {author.mention}\n"
                 f"> **Top Role:** {author.top_role.name}\n"
@@ -106,7 +106,7 @@ class ActivityCoreCommands:
         )
 
         embed.add_field(
-            name="Request Information",
+            name="Request Infowmation uwu~",
             value=(
                 f"> **Type:** {request_type}\n"
                 f"> **Reason:** {schema['reason']}\n"
@@ -127,7 +127,7 @@ class ActivityCoreCommands:
         msg = await staff_channel.send(embed=embed, view=view)
         schema["message_id"] = msg.id
         await self.upload_to_views(
-            code, msg.id, "SELF", management_roles, loa_roles, schema, author.id, code
+            code, msg.id, "SELF owo~", management_roles, loa_roles, schema, author.id, code
         )
         return schema
 
@@ -138,8 +138,8 @@ class ActivityCoreCommands:
         if not settings:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Setup",
-                    description="Your server is not setup.",
+                    title="Nyot Setup >w<",
+                    description="Ur sewvew is nyot setup.~",
                     color=BLANK_COLOR,
                 )
             )
@@ -153,7 +153,7 @@ class ActivityCoreCommands:
         ):
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
+                    title="Nyot Enabled uwu~",
                     description=f"{request_type_object.upper()} Requests are not enabled on this server.",
                     color=BLANK_COLOR,
                 )
@@ -167,7 +167,7 @@ class ActivityCoreCommands:
         except Exception as _:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Channel Not Found",
+                    title="Channel Nyot Found >w<",
                     description=f"Activity Notice channel was not found.",
                     color=BLANK_COLOR,
                 )
@@ -207,10 +207,10 @@ class ActivityCoreCommands:
             request_type=request_type_object,
             current_notice=current_notice,
         )
-        embed = discord.Embed(title="Activity Notices", color=BLANK_COLOR)
+        embed = discord.Embed(title="Activity Notices >w<", color=BLANK_COLOR)
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
         embed.add_field(
-            name="Staff Information",
+            name="Staff Infowmation~",
             value=(
                 f"> **Staff Member:** {victim.mention}\n"
                 f"> **Top Role:** {victim.top_role.name}\n"
@@ -249,8 +249,8 @@ class ActivityCoreCommands:
             if not all([reason is not None, duration is not None]):
                 return await respond(
                     embed=discord.Embed(
-                        title="Cancelled",
-                        description="Not enough values were entered.",
+                        title="Cancewwed >w<",
+                        description="Nyot enough vawues wewe entewed. >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -260,8 +260,8 @@ class ActivityCoreCommands:
             except ValueError:
                 return await respond(
                     embed=discord.Embed(
-                        title="Invalid Time",
-                        description="You did not provide a valid time format.",
+                        title="Invawid Time uwu~",
+                        description="U did nyot pwovide a vawid time fowmat. uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -269,7 +269,7 @@ class ActivityCoreCommands:
             if current_notice:
                 return await respond(
                     embed=discord.Embed(
-                        title="Active Notice",
+                        title="Active Notice~",
                         description=f"This individual already has an active {request_type_object.upper()} notice.",
                         color=BLANK_COLOR,
                     )
@@ -310,7 +310,7 @@ class ActivityCoreCommands:
                     await msg.edit(embed=embed, view=custom_view)
 
             def setup_embed() -> discord.Embed:
-                embed = discord.Embed(title="Activity Notices", color=BLANK_COLOR)
+                embed = discord.Embed(title="Activity Notices >w<", color=BLANK_COLOR)
                 embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
                 return embed
 
@@ -339,8 +339,8 @@ class ActivityCoreCommands:
             if len(pages) == 0:
                 return await respond(
                     embed=discord.Embed(
-                        title="No Activity Notices",
-                        description="There were no active Activity Notices found.",
+                        title="Nyo Activity Notices~",
+                        description="Thewe wewe nyo active Activity Notices found. uwu~",
                         color=BLANK_COLOR,
                     ),
                     custom_view=None,
@@ -364,8 +364,8 @@ class ActivityCoreCommands:
             if not current_notice:
                 return await respond(
                     embed=discord.Embed(
-                        title="No Active Notice",
-                        description="This staff member has no active notice.",
+                        title="Nyo Active Notice >w<",
+                        description="Dis staff membew has nyo active notice.~",
                     )
                 )
 
@@ -391,8 +391,8 @@ class ActivityCoreCommands:
             if not current_notice:
                 return await respond(
                     embed=discord.Embed(
-                        title="No Active Notice",
-                        description="This staff member has no active notice.",
+                        title="Nyo Active Notice >w<",
+                        description="Dis staff membew has nyo active notice.~",
                     )
                 )
 
@@ -424,7 +424,7 @@ class ActivityCoreCommands:
                 return await respond(
                     embed=discord.Embed(
                         title=f"{self.bot.emoji_controller.get_emoji('error')} No Active Notice",
-                        description="This staff member has no active notice.",
+                        description="Dis staff membew has nyo active notice.~",
                     )
                 )
 
@@ -432,8 +432,8 @@ class ActivityCoreCommands:
             if duration is None:
                 return await respond(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} Cancelled",
-                        description="You did not provide a duration.",
+                        title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} Cancelled",
+                        description="U did nyot pwovide a duwation. uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -443,8 +443,8 @@ class ActivityCoreCommands:
             except ValueError:
                 return await respond(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} Invalid Time",
-                        description="You did not provide a valid time format.",
+                        title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} Invalid Time",
+                        description="U did nyot pwovide a vawid time fowmat. uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -482,7 +482,7 @@ class ActivityCoreCommands:
         ):
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
+                    title="Nyot Enabled uwu~",
                     description=f"{request_type_object.upper()} Requests are not enabled on this server.",
                     color=BLANK_COLOR,
                 )
@@ -501,7 +501,7 @@ class ActivityCoreCommands:
         except discord.NotFound:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Channel Not Found",
+                    title="Channel Nyot Found >w<",
                     description=f"Activity Notice channel was not found.",
                     color=BLANK_COLOR,
                 )
@@ -512,7 +512,7 @@ class ActivityCoreCommands:
         except ValueError:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Incorrect Time",
+                    title="Incowwect Time >w<",
                     description=f"The time you provided was incorrect.",
                     color=BLANK_COLOR,
                 )
@@ -536,7 +536,7 @@ class ActivityCoreCommands:
         if len(active_author_notices) > 0:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Already Active",
+                    title="Alweady Active owo~",
                     description=f"You already have a {request_type_object.upper()} request.",
                     color=BLANK_COLOR,
                 )
@@ -551,7 +551,7 @@ class ActivityCoreCommands:
         except ValueError:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Incorrect Time",
+                    title="Incowwect Time >w<",
                     description=f"The time you provided was incorrect.",
                     color=BLANK_COLOR,
                 )
@@ -601,7 +601,7 @@ class ActivityCoreCommands:
         ).get(f"{request_type_object.lower()}_role", None):
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
+                    title="Nyot Enabled uwu~",
                     description=f"{request_type_object.upper()} Requests are not enabled on this server.",
                     color=BLANK_COLOR,
                 )
@@ -625,7 +625,7 @@ class ActivityCoreCommands:
             active_requests.append(item)
 
         def setup_embed() -> discord.Embed:
-            embed = discord.Embed(title="Activity Notices", color=BLANK_COLOR)
+            embed = discord.Embed(title="Activity Notices >w<", color=BLANK_COLOR)
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             return embed
 
@@ -654,8 +654,8 @@ class ActivityCoreCommands:
         if len(pages) == 0:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Activity Notices",
-                    description="There were no active Activity Notices found.",
+                    title="Nyo Activity Notices~",
+                    description="Thewe wewe nyo active Activity Notices found. uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -673,7 +673,7 @@ class ActivityCoreCommands:
         ).get(f"{request_type_object.lower()}_role", None):
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
+                    title="Nyot Enabled uwu~",
                     description=f"{request_type_object.upper()} Requests are not enabled on this server.",
                     color=BLANK_COLOR,
                 )
@@ -689,7 +689,7 @@ class ActivityCoreCommands:
             all_requests.append(item)
 
         def setup_embed() -> discord.Embed:
-            embed = discord.Embed(title="Activity Notices", color=BLANK_COLOR)
+            embed = discord.Embed(title="Activity Notices >w<", color=BLANK_COLOR)
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             return embed
 
@@ -715,8 +715,8 @@ class ActivityCoreCommands:
         if len(pages) == 0:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Activity Notices",
-                    description="There were no active Activity Notices found.",
+                    title="Nyo Activity Notices~",
+                    description="Thewe wewe nyo active Activity Notices found. uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -738,8 +738,8 @@ class StaffManagement(commands.Cog):
 
     @commands.hybrid_group(
         name="ra",
-        description="File a Reduced Activity request",
-        extras={"category": "Staff Management"},
+        description="Fiwe a Reduced Activity request~",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
     async def ra(self, ctx, time, *, reason):
@@ -748,8 +748,8 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @ra.command(
         name="active",
-        description="View all active RAs",
-        extras={"category": "Staff Management"},
+        description="View aww active RAs~",
+        extras={"category": "Staff Management >w<"},
     )
     @is_admin()
     @require_settings()
@@ -759,14 +759,14 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @ra.command(
         name="request",
-        description="File a Reduced Activity request",
-        extras={"category": "Staff Management", "ephemeral": True},
+        description="Fiwe a Reduced Activity request~",
+        extras={"category": "Staff Management >w<", "ephemeral": True},
         with_app_command=True,
     )
     @is_staff()
-    @app_commands.describe(time="How long are you going to be on RA for? (s/m/h/d)")
-    @app_commands.describe(reason="What is your reason for going on RA?")
-    @app_commands.describe(starting="When would you like to start your RA? (s/m/h/d)")
+    @app_commands.describe(time="How long awe u going to be on RA fow? (s/m/h/d)~")
+    @app_commands.describe(reason="What is ur reason fow going on RA? >w<")
+    @app_commands.describe(starting="When wouwd u like to stawt ur RA? (s/m/h/d) owo~")
     async def ra_request(self, ctx, time, *, reason, starting: str = None):
         await self.core_commands.core_command_request(
             ctx, "ra", time, reason, starting=starting
@@ -775,13 +775,13 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @ra.command(
         name="admin",
-        description="Administrate a Reduced Activity request",
-        extras={"category": "Staff Management"},
+        description="Administwate a Reduced Activity request >w<",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
     @is_admin()
     @app_commands.describe(
-        member="Who's RA would you like to administrate? Specify a Discord user."
+        member="Who's RA wouwd u like to administwate? Specify a Discowd usew."
     )
     async def ra_admin(self, ctx, member: discord.Member):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"RA Admin: {member}")
@@ -790,8 +790,8 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @ra.command(
         name="view",
-        description="View your active RA",
-        extras={"category": "Staff Management"},
+        description="View ur active RA uwu~",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
     @is_staff()
@@ -800,20 +800,20 @@ class StaffManagement(commands.Cog):
 
     @commands.hybrid_group(
         name="loa",
-        description="File a Leave of Absence request",
-        extras={"category": "Staff Management"},
+        description="Fiwe a Leave of Absence request owo~",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
-    @app_commands.describe(time="How long are you going to be on LoA for? (s/m/h/d)")
-    @app_commands.describe(reason="What is your reason for going on LoA?")
+    @app_commands.describe(time="How long awe u going to be on LoA fow? (s/m/h/d) >w<")
+    @app_commands.describe(reason="What is ur reason fow going on LoA? owo~")
     async def loa(self, ctx, time, *, reason):
         await ctx.invoke(self.bot.get_command("loa request"), time=time, reason=reason)
 
     @commands.guild_only()
     @loa.command(
         name="view",
-        description="View your active LOA",
-        extras={"category": "Staff Management"},
+        description="View ur active LOA owo~",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
     @is_staff()
@@ -822,8 +822,8 @@ class StaffManagement(commands.Cog):
 
     @loa.command(
         name="active",
-        description="View all active LOAs",
-        extras={"category": "Staff Management"},
+        description="View aww active LOAs owo~",
+        extras={"category": "Staff Management >w<"},
     )
     @is_admin()
     async def loa_active(self, ctx):
@@ -832,14 +832,14 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @loa.command(
         name="request",
-        description="File a Leave of Absence request",
-        extras={"category": "Staff Management", "ephemeral": True},
+        description="Fiwe a Leave of Absence request owo~",
+        extras={"category": "Staff Management >w<", "ephemeral": True},
         with_app_command=True,
     )
     @is_staff()
-    @app_commands.describe(time="How long are you going to be on LoA for? (s/m/h/d)")
-    @app_commands.describe(reason="What is your reason for going on LoA?")
-    @app_commands.describe(starting="When would you like to start your LOA? (s/m/h/d)")
+    @app_commands.describe(time="How long awe u going to be on LoA fow? (s/m/h/d) >w<")
+    @app_commands.describe(reason="What is ur reason fow going on LoA? owo~")
+    @app_commands.describe(starting="When wouwd u like to stawt ur LOA? (s/m/h/d)~")
     async def loa_request(self, ctx, time, *, reason, starting: str = None):
         await self.core_commands.core_command_request(
             ctx, "loa", time, reason, starting=starting
@@ -848,13 +848,13 @@ class StaffManagement(commands.Cog):
     @commands.guild_only()
     @loa.command(
         name="admin",
-        description="Administrate a Leave of Absence request",
-        extras={"category": "Staff Management"},
+        description="Administwate a Leave of Absence request >w<",
+        extras={"category": "Staff Management >w<"},
         with_app_command=True,
     )
     @is_admin()
     @app_commands.describe(
-        member="Who's LOA would you like to administrate? Specify a Discord user."
+        member="Who's LOA wouwd u like to administwate? Specify a Discowd usew."
     )
     async def loa_admin(self, ctx, member: discord.Member):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"LOA Admin: {member}")

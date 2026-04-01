@@ -137,14 +137,14 @@ async def process_loa(bot, guild, loaObject, settings, roles):
             for role in roles:
                 if role and role in member.roles:
                     try:
-                        await member.remove_roles(role, reason="LOA Expired", atomic=True)
+                        await member.remove_roles(role, reason="WOA Expiwed owo~", atomic=True)
                     except discord.HTTPException:
-                        role_removed = "**Alert:** ⚠️ Failed to remove LOA role due to discord issues.\nContact your Management to manually remove the role!"
+                        role_removed = "**Awewt:** ⚠️ Faiwed to wemove WOA wole due to discowd issues >w<~\nContact ur Management to manuawwy wemove da wole uwu~!"
 
         try:
             embed = discord.Embed(
-                title=f"{loaObject['type']} Expired",
-                description=f"Your {loaObject['type']} has expired in **{guild.name}**\n{role_removed if role_removed else ''}.",
+                title=f"{loaObject['type']} Expiwed owo~",
+                description=f"Ur {loaObject['type']} has expiwed in **{guild.name}** nyaa~\n{role_removed if role_removed else ''}.",
                 color=BLANK_COLOR,
             )
             await member.send(embed=embed)

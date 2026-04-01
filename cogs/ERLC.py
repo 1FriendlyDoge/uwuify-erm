@@ -59,7 +59,7 @@ class ERLC(commands.Cog):
         self,
         guild_id,
         author_id,
-        interpret_type: typing.Literal["Message", "Hint", "Command"],
+        interpret_type: typing.Literal["Message >w<", "Hint~", "Command >w<"],
         command_string: str,
         attempted: bool = False,
     ):
@@ -75,7 +75,7 @@ class ERLC(commands.Cog):
     async def mc(self, ctx: commands.Context):
         pass
 
-    @mc.command(name="link", description="Link your Maple County server with ERM!")
+    @mc.command(name="link", description="Link ur Mapwe County sewvew wid ERM! owo~")
     @is_management()
     async def mc_link(self, ctx: commands.Context, *, server_name: str):
         # get the linked roblox user
@@ -89,8 +89,8 @@ class ERLC(commands.Cog):
             if not roblox_user.get("robloxID"):
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Not Linked",
-                        description="You are not linked to any ROBLOX account.",
+                        title="Nyot Linked owo~",
+                        description="U awe nyot linked to any ROBLOX account. >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -105,8 +105,8 @@ class ERLC(commands.Cog):
         except prc_api.ResponseFailure:  # yes, this is correct.
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Server Not Found",
-                    description="We could not find a server you own under the server name provided. Make sure you are linked with ERM by running `/link` in any server.",
+                    title="Sewvew Nyot Found owo~",
+                    description="We couwd nyot find a sewvew u own undew da sewvew name pwovided. Make suwe u awe linked wid ERM by running `/link` in any sewvew.",
                     color=BLANK_COLOR,
                 )
             )
@@ -121,7 +121,7 @@ class ERLC(commands.Cog):
 
     @mc.command(
         name="info",
-        description="Get information about the current players in your Maple County server.",
+        description="Get infowmation about da cuwwent playews in ur Mapwe County sewvew.",
     )
     @is_server_linked()
     async def mc_info(self, ctx: commands.Context):
@@ -138,7 +138,7 @@ class ERLC(commands.Cog):
             embed1 = discord.Embed(title=f"{status.name}", color=BLANK_COLOR)
             embed1.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             embed1.add_field(
-                name="Basic Info",
+                name="Basic Info~",
                 value=(
                     f"> **Join Code:** [{status.join_key}](https://www.roblox.com/games/start?placeId=8416011646&launchData=psjoincode%3D{status.join_key}&deep_link_value=roblox%3A%2F%2FplaceId%3D8416011646)\n"
                     f"> **Current Players:** {status.current_players}/{status.max_players}\n"
@@ -146,7 +146,7 @@ class ERLC(commands.Cog):
                 inline=False,
             )
             embed1.add_field(
-                name="Server Ownership",
+                name="Sewvew Ownewship owo~",
                 value=(
                     f"> **Owner:** [{(await client.get_user(status.owner_id)).name}](https://roblox.com/users/{status.owner_id}/profile)\n"
                     f"> **Co-Owners:** {f', '.join([f'[{user.name}](https://roblox.com/users/{user.id}/profile)' for user in await client.get_users(status.co_owner_ids, expand=False)])}"
@@ -155,12 +155,12 @@ class ERLC(commands.Cog):
             )
 
             embed1.add_field(
-                name="Staff Statistics",
+                name="Staff Statistics~",
                 value=(
-                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Server Moderator', players)))}\n"
-                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Server Administrator', players)))}\n"
-                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Normal', players)))}\n"
-                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guild': guild_id, 'EndEpoch': 0})}"
+                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Sewvew Modewatow owo~', players)))}\n"
+                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Sewvew Administwatow uwu~', players)))}\n"
+                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Nowmaw >w<', players)))}\n"
+                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guiwd >w<': guild_id, 'EndEpoch owo~': 0})}"
                 ),
                 inline=False,
             )
@@ -180,7 +180,7 @@ class ERLC(commands.Cog):
 
         await operate_and_reload_serverinfo(None, guild_id)
 
-    @mc.command(name="logs", description="See the Command Logs of your server.")
+    @mc.command(name="logs", description="See da Command Logs of ur sewvew. >w<")
     @is_staff()
     @is_server_linked()
     async def mc_logs(self, ctx: commands.Context):
@@ -193,7 +193,7 @@ class ERLC(commands.Cog):
                 guild_id
             )
             embed = discord.Embed(
-                color=BLANK_COLOR, title="Command Logs", description=""
+                color=BLANK_COLOR, title="Command Logs uwu~", description=""
             )
 
             sorted_logs = sorted(
@@ -205,7 +205,7 @@ class ERLC(commands.Cog):
                 embed.description += f"> [{log.username}](https://roblox.com/users/{log.user_id}/profile) ran the command `{log.command}` • <t:{int(log.timestamp)}:R>\n"
 
             if embed.description in ["", "\n"]:
-                embed.description = "> No player logs found."
+                embed.description = "> Nyo playew logs found."
 
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
 
@@ -224,7 +224,7 @@ class ERLC(commands.Cog):
 
         await operate_and_reload_commandlogs(None, guild_id)
 
-    @mc.command(name="bans", description="Filter the bans of your server.")
+    @mc.command(name="bans", description="Filtew da bans of ur sewvew. >w<")
     @is_staff()
     @is_server_linked()
     async def mc_bans(
@@ -240,12 +240,12 @@ class ERLC(commands.Cog):
         except prc_api.ResponseFailure:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="MC API Error",
-                    description="There were no bans, or your API key is incorrect.",
+                    title="MC API Ewwow >w<",
+                    description="Thewe wewe nyo bans, ow ur API key is incowwect. >w<",
                     color=BLANK_COLOR,
                 )
             )
-        embed = discord.Embed(color=BLANK_COLOR, title="Bans", description="")
+        embed = discord.Embed(color=BLANK_COLOR, title="Bans uwu~", description="")
         status = username or user_id
 
         if not username and user_id:
@@ -269,9 +269,9 @@ class ERLC(commands.Cog):
 
         if embeds[0].description in ["", "\n"]:
             embeds[0].description = (
-                "> This ban was not found."
+                "> Dis ban was nyot found."
                 if status
-                else "> Bans were not found in your server."
+                else "> Bans wewe nyot found in ur sewvew."
             )
 
         embeds[0].set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
@@ -287,7 +287,7 @@ class ERLC(commands.Cog):
         else:
             await ctx.send(embed=embed)
 
-    @mc.command(name="players", description="See all players in the server.")
+    @mc.command(name="players", description="See aww playews in da sewvew.~")
     @is_server_linked()
     async def mc_players(
         self, ctx: commands.Context, filter: typing.Optional[str] = None
@@ -301,7 +301,7 @@ class ERLC(commands.Cog):
         key_maps = {}
         staff = []
         for item in players:
-            if item.permission == "Normal":
+            if item.permission == "Nowmaw >w<":
                 actual_players.append(item)
             else:
                 staff.append(item)
@@ -325,7 +325,7 @@ class ERLC(commands.Cog):
                     for plr in staff
                 ]
             )
-            or "> No players in this category."
+            or "> Nyo playews in dis categowy."
         )
 
         embed2.description += f"\n\n**Online Players [{len(actual_players)}]**\n" + (
@@ -335,7 +335,7 @@ class ERLC(commands.Cog):
                     for plr in actual_players
                 ]
             )
-            or "> No players in this category."
+            or "> Nyo playews in dis categowy."
         )
 
         embed2.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
@@ -355,11 +355,11 @@ class ERLC(commands.Cog):
 
     @server.command(
         name="panel",
-        description="Open a panel that allows you to manage a player in your server.",
+        description="Open a panel dat awwows u to manage a playew in ur sewvew.",
         aliases=["playerpanel", "manage"],
     )
     @app_commands.autocomplete(target=erlc_players_autocomplete)
-    @app_commands.describe(target="Who would you like to manage?")
+    @app_commands.describe(target="Who wouwd u like to manage? uwu~")
     @is_staff()
     @is_server_linked()
     async def erlc_panel(self, ctx: commands.Context, target: str):
@@ -367,8 +367,8 @@ class ERLC(commands.Cog):
         if not target or target.get("errors") is not None:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find player",
-                    description="I could not find a Roblox player with that username.",
+                    title="Couwd nyot find playew owo~",
+                    description="I couwd nyot find a Roblox playew wid dat usewname. >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -385,7 +385,7 @@ class ERLC(commands.Cog):
         player_item = list(filter(lambda x: x.username.lower() == roblox_player.name.lower(), server_staff))
         player_permission = ""
         if len(player_item) == 0:
-            player_permission = "Normal"
+            player_permission = "Nowmaw >w<"
         else:
             player_permission = player_item[0].permission
         
@@ -431,8 +431,8 @@ class ERLC(commands.Cog):
             if not matching_kill_logs:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="No Kills Found",
-                        description="This player has no kills in the server.",
+                        title="Nyo Kiwws Found owo~",
+                        description="Dis playew has nyo kiwws in da sewvew. owo~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -458,8 +458,8 @@ class ERLC(commands.Cog):
             if not matching_command_logs:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="No Commands Found",
-                        description="This player has no commands in the server.",
+                        title="Nyo Commands Found~",
+                        description="Dis playew has nyo commands in da sewvew. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -485,8 +485,8 @@ class ERLC(commands.Cog):
             if not matching_modcalls:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="No Modcalls Found",
-                        description="This player has no modcalls in the server.",
+                        title="Nyo Modcawws Found owo~",
+                        description="Dis playew has nyo modcawws in da sewvew. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -527,8 +527,8 @@ class ERLC(commands.Cog):
             else:
                 return await interaction.response.send_message(
                         embed=discord.Embed(
-                            title="Refresh Failed",
-                            description="The player could not be refreshed successfully.",
+                            title="Refwesh Faiwed uwu~",
+                            description="Da playew couwd nyot be refweshed successfuwwy.~",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -553,8 +553,8 @@ class ERLC(commands.Cog):
             else:
                 return await interaction.response.send_message(
                         embed=discord.Embed(
-                            title="Respawn Failed",
-                            description="The player could not be respawned successfully.",
+                            title="Respawn Faiwed >w<",
+                            description="Da playew couwd nyot be respawned successfuwwy. >w<",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -570,8 +570,8 @@ class ERLC(commands.Cog):
                     (
                         "value",
                         discord.ui.TextInput(
-                            label="Roblox Username",
-                            placeholder="Roblox Username (e.g. i_iMikey)",
+                            label="Roblox Usewname owo~",
+                            placeholder="Roblox Usewname (e.g. i_iMikey) >w<",
                             required=True,
                         ),
                     )
@@ -597,19 +597,19 @@ class ERLC(commands.Cog):
                     ephemeral=True,
                 )
                 await self.secure_logging(
-                    ctx.guild.id, ctx.author.id, "Command", command
+                    ctx.guild.id, ctx.author.id, "Command >w<", command
                 )
             else:
                 await interaction.followup.send(
                     embed=discord.Embed(
-                        title="Teleport Failed",
-                        description="The player could not be teleported.",
+                        title="Tewepowt Faiwed~",
+                        description="Da playew couwd nyot be tewepowted. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
                 )
                 await self.secure_logging(
-                    ctx.guild.id, ctx.author.id, "Command", command
+                    ctx.guild.id, ctx.author.id, "Command >w<", command
                 )
 
         async def pm_player_callback(interaction: discord.Interaction, button: discord.ui.Button):
@@ -622,8 +622,8 @@ class ERLC(commands.Cog):
                     (
                         "value",
                         discord.ui.TextInput(
-                            label="Message",
-                            placeholder="What message would you like to send?",
+                            label="Message >w<",
+                            placeholder="What message wouwd u like to send? uwu~",
                             required=True,
                         ),
                     )
@@ -649,19 +649,19 @@ class ERLC(commands.Cog):
                     ephemeral=True,
                 )
                 await self.secure_logging(
-                    ctx.guild.id, ctx.author.id, "Command", command
+                    ctx.guild.id, ctx.author.id, "Command >w<", command
                 )
             else:
                 await interaction.followup.send(
                     embed=discord.Embed(
-                        title="PM Failed",
-                        description="The message could not be sent to the player.",
+                        title="PM Faiwed >w<",
+                        description="Da message couwd nyot be sent to da playew. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
                 )
                 await self.secure_logging(
-                    ctx.guild.id, ctx.author.id, "Command", command
+                    ctx.guild.id, ctx.author.id, "Command >w<", command
                 )
 
         
@@ -673,7 +673,7 @@ class ERLC(commands.Cog):
                 ctx.guild.id, (command := f":kick {roblox_player.name}")
             )
             await self.secure_logging(
-                ctx.guild.id, ctx.author.id, "Command", command
+                ctx.guild.id, ctx.author.id, "Command >w<", command
             )
             if command_response[0] == 200:
                 return await interaction.response.send_message(
@@ -688,8 +688,8 @@ class ERLC(commands.Cog):
             else:
                 return await interaction.response.send_message(
                         embed=discord.Embed(
-                            title="Kick Failed",
-                            description="The player could not be kicked successfully.",
+                            title="Kick Faiwed~",
+                            description="Da playew couwd nyot be kicked successfuwwy. owo~",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -702,8 +702,8 @@ class ERLC(commands.Cog):
             if not await admin_check(self.bot, ctx.guild, ctx.author) and not await management_predicate(ctx):
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Insufficient Permissions",
-                        description="You do not have permission to ban players.",
+                        title="Insufficient Pewmissions >w<",
+                        description="U do nyot hab pewmission to ban playews. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -713,7 +713,7 @@ class ERLC(commands.Cog):
                 ctx.guild.id, (command := f":ban {roblox_player.id}")
             )
             await self.secure_logging(
-                ctx.guild.id, ctx.author.id, "Command", command
+                ctx.guild.id, ctx.author.id, "Command >w<", command
             )
 
             if command_response[0] == 200:
@@ -728,8 +728,8 @@ class ERLC(commands.Cog):
             else:
                 return await interaction.response.send_message(
                         embed=discord.Embed(
-                            title="Ban Failed",
-                            description="The player could not be banned successfully.",
+                            title="Ban Faiwed owo~",
+                            description="Da playew couwd nyot be banned successfuwwy. uwu~",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -742,37 +742,37 @@ class ERLC(commands.Cog):
                 accessory=discord.ui.Thumbnail(
                     media=thumbnails[0].image_url if thumbnails else None
              )
-            ).add_item(f"## {roblox_player.name}\n### User Information\n> **Username:** `{roblox_player.name}`\n> **User ID:** `{roblox_player.id}`\n> **Permission:** {player_permission}\n{'> **Team:** {}{}{}'.format(erlc_player.team, newline, '> **Callsign:** `{}`'.format(erlc_player.callsign) if erlc_player.callsign else '') if erlc_player else ''}")
+            ).add_item(f"## {roblox_player.name}\n### User Information\n> **Username:** `{roblox_player.name}`\n> **User ID:** `{roblox_player.id}`\n> **Permission:** {player_permission}\n{'> **Team:** {}{}{}'.format(erlc_player.team, newline, '> **Cawwsign:** `{}`'.format(erlc_player.callsign) if erlc_player.callsign else '') if erlc_player else ''}")
 
             if len(matching_player_logs) > 0:
                 section.add_item(
-                    f"### Timeline Information\n" + '\n'.join([f"> {'Joined' if log.type == 'join' else 'Left'} at <t:{log.timestamp}:F>" for log in matching_player_logs]))
+                    f"### Timeline Information\n" + '\n'.join([f"> {'Joined >w<' if log.type == 'join' else 'Left~'} at <t:{log.timestamp}:F>" for log in matching_player_logs]))
             else:
-                section.add_item("### Timeline Information\n> No activity logs found for this player.")
+                section.add_item("### Timewine Infowmation\n> Nyo activity logs found fow dis playew.")
             
             if len(vehicle_information) > 0:
                 section.add_item(
                     f"### Vehicle Information\n> **Vehicle:** {vehicle_information[0].vehicle}\n> **Livery:** {vehicle_information[0].texture}"
                 )
             else:
-                section.add_item("### Vehicle Information\n> No active vehicle found for this player.")
+                section.add_item("### Vehicwe Infowmation\n> Nyo active vehicwe found fow dis playew.")
 
             log_actions = discord.ui.ActionRow(
-                CustomExecutionButton(ctx.author.id, label="View Kills", style=discord.ButtonStyle.gray, func=view_kills_callback),
-                CustomExecutionButton(ctx.author.id, label="View Commands", style=discord.ButtonStyle.gray, func=view_commands_callback),
-                CustomExecutionButton(ctx.author.id, label="View Modcalls", style=discord.ButtonStyle.gray, func=view_modcalls_callback),
+                CustomExecutionButton(ctx.author.id, label="View Kiwws >w<", style=discord.ButtonStyle.gray, func=view_kills_callback),
+                CustomExecutionButton(ctx.author.id, label="View Commands owo~", style=discord.ButtonStyle.gray, func=view_commands_callback),
+                CustomExecutionButton(ctx.author.id, label="View Modcawws >w<", style=discord.ButtonStyle.gray, func=view_modcalls_callback),
             )
 
             active_actions = discord.ui.ActionRow(
-                CustomExecutionButton(ctx.author.id, label="Refresh Player", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=refresh_player_callback),
-                CustomExecutionButton(ctx.author.id, label="Respawn Player", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=respawn_player_callback),
-                CustomExecutionButton(ctx.author.id, label="PM Player", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=pm_player_callback),
-                CustomExecutionButton(ctx.author.id, label="Teleport To Player", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=teleport_to_callback),
+                CustomExecutionButton(ctx.author.id, label="Refwesh Playew uwu~", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=refresh_player_callback),
+                CustomExecutionButton(ctx.author.id, label="Respawn Playew owo~", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=respawn_player_callback),
+                CustomExecutionButton(ctx.author.id, label="PM Playew uwu~", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=pm_player_callback),
+                CustomExecutionButton(ctx.author.id, label="Tewepowt To Playew owo~", style=discord.ButtonStyle.gray, disabled=disable_online_buttons, func=teleport_to_callback),
             )
 
             destructive_actions = discord.ui.ActionRow(
-                CustomExecutionButton(ctx.author.id, label="Kick Player", style=discord.ButtonStyle.red, disabled=disable_online_buttons, func=kick_player_callback),
-                CustomExecutionButton(ctx.author.id, label="Ban Player", style=discord.ButtonStyle.red, func=ban_player_callback), # bans can be done offline
+                CustomExecutionButton(ctx.author.id, label="Kick Playew uwu~", style=discord.ButtonStyle.red, disabled=disable_online_buttons, func=kick_player_callback),
+                CustomExecutionButton(ctx.author.id, label="Ban Playew~", style=discord.ButtonStyle.red, func=ban_player_callback), # bans can be done offline
             )
 
         class TestView(discord.ui.LayoutView):
@@ -783,12 +783,12 @@ class ERLC(commands.Cog):
 
     @server.command(
         name="modcalls",
-        description="View all modcalls in your ER:LC server!",
+        description="View aww modcawws in ur ER:LC sewvew! uwu~",
     )
     @is_server_linked()
     @is_staff()
     @app_commands.describe(
-        filter="Filter the modcalls by a specific username or user ID."
+        filter="Filtew da modcawws by a specific usewname ow usew ID. uwu~"
     )
     async def erlc_modcalls(self, ctx: commands.Context, filter: typing.Optional[str] = None):
         guild_id = ctx.guild.id
@@ -797,19 +797,19 @@ class ERLC(commands.Cog):
         if not modcalls:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Modcalls Found",
-                    description="There are no modcalls in this server.",
+                    title="Nyo Modcawws Found owo~",
+                    description="Thewe awe nyo modcawws in dis sewvew. uwu~",
                     color=BLANK_COLOR,
                 )
             )
 
         embed = discord.Embed(
-            title="Moderator Calls", color=BLANK_COLOR, description=""
+            title="Modewatow Cawws >w<", color=BLANK_COLOR, description=""
         )
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon or "")
         pages = []
         for call in modcalls:
-            val = f"> Caller: [{call.caller_username}](https://roblox.com/users/{call.caller_id}/profile) • Moderator: {'[{}](https://roblox.com/users/{}/profile)'.format(call.moderator_username, call.moderator_id) if call.moderator_id else 'n/a'} • <t:{call.timestamp}:t>\n"
+            val = f"> Caller: [{call.caller_username}](https://roblox.com/users/{call.caller_id}/profile) • Moderator: {'[{}](https://roblox.com/usews/{}/pwofiwe)'.format(call.moderator_username, call.moderator_id) if call.moderator_id else 'n/a'} • <t:{call.timestamp}:t>\n"
             if filter and (filter.lower() in val.lower()):
                 embed.description += val
             elif not filter:
@@ -817,13 +817,13 @@ class ERLC(commands.Cog):
             if len(embed.description) > 2000:
                 pages.append(CustomPage(embeds=[embed], identifier=str(len(pages) + 1)))
                 embed = discord.Embed(
-                    title="Moderator Calls", color=BLANK_COLOR, description=""
+                    title="Modewatow Cawws >w<", color=BLANK_COLOR, description=""
                 )
                 embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon or "")
         
         if len(pages) == 0:
             if embed.description == "":
-                embed.description = "> No modcalls found."
+                embed.description = "> Nyo modcawws found."
             await ctx.send(embed=embed)
             return
     
@@ -835,20 +835,20 @@ class ERLC(commands.Cog):
         
     @server.command(
         name="permissions",
-        description="View the permissions of players in your ER:LC server!",
+        description="View da pewmissions of playews in ur ER:LC sewvew! owo~",
         aliases=["perm", "playerpermissions", "playerperms"],
     )
     @is_server_linked()
     @is_staff()
     @app_commands.describe(
-        filter="Filter the permissions by a specific role, username or user ID."
+        filter="Filtew da pewmissions by a specific rowe, usewname ow usew ID."
     )
     async def erlc_permissions(self, ctx: commands.Context, filter: typing.Optional[str] = None):
         # use SelectPagination - sort by Server Co-Owner, Server Administrator, Server Moderator
         pages = []
         server_staff = await self.bot.prc_api.get_server_staff(ctx.guild.id)
         embed = discord.Embed(
-            title="Server Permissions", color=BLANK_COLOR, description=""
+            title="Sewvew Pewmissions~", color=BLANK_COLOR, description=""
         )
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon or "")
         for item in server_staff:
@@ -860,13 +860,13 @@ class ERLC(commands.Cog):
             if len(embed.description) > 1000:
                 pages.append(CustomPage(embeds=[embed], identifier=str(len(pages) + 1)))
                 embed = discord.Embed(
-                    title="Server Permissions", color=BLANK_COLOR, description=""
+                    title="Sewvew Pewmissions~", color=BLANK_COLOR, description=""
                 )
                 embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon or "")
             
         if len(pages) == 0:
             if embed.description == "":
-                embed.description = "> No permissions found."
+                embed.description = "> Nyo pewmissions found."
             await ctx.send(
                 embed=embed
             )
@@ -880,13 +880,13 @@ class ERLC(commands.Cog):
     
     @server.command(
         name="pm",
-        description="Send a PM to players in your ER:LC server!",
+        description="Send a PM to playews in ur ER:LC sewvew! >w<",
         aliases=["private", "sendpm", "send"],
     )
     @app_commands.autocomplete(target=erlc_group_autocomplete)
     @app_commands.describe(
-        target="Who would you like to send this message to?",
-        message="What would you like to send?",
+        target="Who wouwd u like to send dis message to? >w<",
+        message="What wouwd u like to send? owo~",
     )
     @is_staff()
     async def erlc_pm(self, ctx: commands.Context, target: str, *, message: str):
@@ -896,17 +896,17 @@ class ERLC(commands.Cog):
         if target in special_selections:
             players = await self.bot.prc_api.get_server_players(guild_id)
             for item in players:
-                if item.permission == "Normal" and target.lower() == "players":
+                if item.permission == "Nowmaw >w<" and target.lower() == "players":
                     selected.append(item.username)
-                elif item.permission != "Normal" and target.lower() == "staff":
+                elif item.permission != "Nowmaw >w<" and target.lower() == "staff":
                     selected.append(item.username)
                 elif (
-                    item.permission == "Server Moderator"
+                    item.permission == "Sewvew Modewatow owo~"
                     and target.lower() == "moderators"
                 ):
                     selected.append(item.username)
                 elif (
-                    item.permission == "Server Administrator"
+                    item.permission == "Sewvew Administwatow uwu~"
                     and target.lower() == "admins"
                 ):
                     selected.append(item.username)
@@ -919,28 +919,28 @@ class ERLC(commands.Cog):
         if command_response[0] == 200:
             await ctx.send(
                 embed=discord.Embed(
-                    title="<:success:1163149118366040106> Successfully Sent",
-                    description="This PM has been sent to the server!",
+                    title="<:success:1163149118366040106> Successfuwwy Sent",
+                    description="Dis PM has been sent to da sewvew! owo~",
                     color=GREEN_COLOR,
                 )
             )
             await self.secure_logging(
-                guild_id, ctx.author.id, "Private Message", message
+                guild_id, ctx.author.id, "Pwivate Message owo~", message
             )
         else:
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Executed",
-                    description="This PM has not been sent to the server successfully.",
+                    title="Nyot Executed owo~",
+                    description="Dis PM has nyot been sent to da sewvew successfuwwy. >w<",
                     color=BLANK_COLOR,
                 )
             )
             await self.secure_logging(
-                guild_id, ctx.author.id, "Private Message", message
+                guild_id, ctx.author.id, "Pwivate Message owo~", message
             )
 
     @server.command(
-        name="message", description="Send a Message to your ER:LC server with ERM!"
+        name="message", description="Send a Message to ur ER:LC sewvew wid ERM! uwu~"
     )
     @is_staff()
     @is_server_linked()
@@ -952,57 +952,57 @@ class ERLC(commands.Cog):
             await ctx.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Sent",
-                    description="This message has been sent to the server!",
+                    description="Dis message has been sent to da sewvew! uwu~",
                     color=GREEN_COLOR,
                 )
             )
-            await self.secure_logging(guild_id, ctx.author.id, "Message", message)
+            await self.secure_logging(guild_id, ctx.author.id, "Message >w<", message)
         else:
             await ctx.send(
                 embed=discord.Embed(
-                    title="Not Executed",
-                    description="This message has not been sent to the server successfully.",
+                    title="Nyot Executed owo~",
+                    description="Dis message has nyot been sent to da sewvew successfuwwy. uwu~",
                     color=BLANK_COLOR,
                 )
             )
-            await self.secure_logging(guild_id, ctx.author.id, "Message", message)
+            await self.secure_logging(guild_id, ctx.author.id, "Message >w<", message)
 
     @server.command(
-        name="hint", description="Send a Hint to your ER:LC server with ERM!"
+        name="hint", description="Send a Hint to ur ER:LC sewvew wid ERM! uwu~"
     )
     @is_staff()
     @is_server_linked()
     async def erlc_hint(self, ctx: commands.Context, *, hint: str):
         guild_id = ctx.guild.id
 
-        await self.secure_logging(guild_id, ctx.author.id, "Hint", hint)
+        await self.secure_logging(guild_id, ctx.author.id, "Hint~", hint)
 
         command_response = await self.bot.prc_api.run_command(guild_id, f":h {hint}")
         if command_response[0] == 200:
             return await ctx.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Sent",
-                    description="This Hint has been sent to the server!",
+                    description="Dis Hint has been sent to da sewvew! >w<",
                     color=GREEN_COLOR,
                 )
             )
         else:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Executed",
-                    description="This Hint has not been sent to the server successfully.",
+                    title="Nyot Executed owo~",
+                    description="Dis Hint has nyot been sent to da sewvew successfuwwy. >w<",
                     color=BLANK_COLOR,
                 )
             )
 
     @server.command(
         name="link",
-        description="Link your ER:LC server with ERM!",
-        extras={"ignoreDefer": True},
+        description="Link ur ER:LC sewvew wid ERM! uwu~",
+        extras={"ignoweDefew": True},
     )
     @is_management()
     @app_commands.describe(
-        key="Your PRC Server Key - check your server settings for details"
+        key="Ur PRC Sewvew Key - check ur sewvew settings fow details uwu~"
     )
     async def server_link(self, ctx: commands.Context, key: str):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"ER:LC Link")
@@ -1014,8 +1014,8 @@ class ERLC(commands.Cog):
                 else ctx.interaction.response.send_message
             )(
                 embed=discord.Embed(
-                    title="Incorrect Key",
-                    description="This Server Key is invalid and nonfunctional. Ensure you've entered it correctly.",
+                    title="Incowwect Key owo~",
+                    description="Dis Sewvew Key is invawid and nonfunctionaw. Ensuwe u've entewed it cowwectwy.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1030,7 +1030,7 @@ class ERLC(commands.Cog):
             )(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Changed",
-                    description="I have changed the Server Key successfully. You can now run ER:LC commands on your server.",
+                    description="I hab changed da Sewvew Key successfuwwy. U can now run ER:LC commands on ur sewvew.",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -1038,7 +1038,7 @@ class ERLC(commands.Cog):
 
     @server.command(
         name="unlink",
-        description="Unlink your ER:LC server from ERM!",
+        description="Unlink ur ER:LC sewvew fwom ERM!~",
     )
     @is_management()
     @is_server_linked()
@@ -1048,17 +1048,17 @@ class ERLC(commands.Cog):
         await ctx.send(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Unlinked",
-                description="I have unlinked your ER:LC server from ERM.",
+                description="I hab unlinked ur ER:LC sewvew fwom ERM. owo~",
                 color=GREEN_COLOR,
             )
         )
 
     @server.command(
         name="command",
-        description='Send a direct command to your ER:LC server, under "Remote Server Management"',
+        description='Send a diwect command to ur ER:LC sewvew, undew "Remote Sewvew Management"',
         extras={"ephemeral": True},
     )
-    @app_commands.describe(command="The command to send to your ER:LC server")
+    @app_commands.describe(command="Da command to send to ur ER:LC sewvew >w<")
     @is_management()
     @is_server_linked()
     async def server_send_command(self, ctx: commands.Context, *, command: str):
@@ -1084,17 +1084,17 @@ class ERLC(commands.Cog):
         ):
             # REQUIRES ELEVATION
             if (
-                (await self.bot.settings.find_by_id(ctx.guild.id) or {}).get("ERLC", {})
+                (await self.bot.settings.find_by_id(ctx.guild.id) or {}).get("ERLC~", {})
                 or {}
             ).get("elevation_required", True):
                 await self.secure_logging(
-                    ctx.guild.id, ctx.author.id, "Command", command, True
+                    ctx.guild.id, ctx.author.id, "Command >w<", command, True
                 )
                 if ctx.interaction:
                     await ctx.interaction.followup.send(
                         embed=discord.Embed(
-                            title="Not Authorized",
-                            description="This command is privileged and requires special elevation.",
+                            title="Nyot Audowized uwu~",
+                            description="Dis command is pwiviweged and requiwes speciaw ewevation. uwu~",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -1102,8 +1102,8 @@ class ERLC(commands.Cog):
                 else:
                     await ctx.send(
                         embed=discord.Embed(
-                            title="Not Authorized",
-                            description="This command is privileged and requires special elevation.",
+                            title="Nyot Audowized uwu~",
+                            description="Dis command is pwiviweged and requiwes speciaw ewevation. uwu~",
                             color=BLANK_COLOR,
                         )
                     )
@@ -1115,28 +1115,28 @@ class ERLC(commands.Cog):
             await ctx.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Ran",
-                    description="This command should have now been executed in your server.",
+                    description="Dis command shouwd hab now been executed in ur sewvew. owo~",
                     color=GREEN_COLOR,
                 )
             )
             await self.secure_logging(
-                int(ctx.guild.id), ctx.author.id, "Command", command
+                int(ctx.guild.id), ctx.author.id, "Command >w<", command
             )
         else:
             await ctx.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="This command has not been sent to the server successfully.",
+                    description="Dis command has nyot been sent to da sewvew successfuwwy. uwu~",
                     color=BLANK_COLOR,
                 )
             )
             await self.secure_logging(
-                int(ctx.guild.id), ctx.author.id, "Command", command
+                int(ctx.guild.id), ctx.author.id, "Command >w<", command
             )
 
     @server.command(
         name="info",
-        description="Get information about the current players in your ER:LC server.",
+        description="Get infowmation about da cuwwent playews in ur ER:LC sewvew.",
     )
     @is_server_linked()
     async def server_info(self, ctx: commands.Context):
@@ -1156,7 +1156,7 @@ class ERLC(commands.Cog):
             embed1 = discord.Embed(title=f"{status.name}", color=BLANK_COLOR)
             embed1.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             embed1.add_field(
-                name="Basic Info",
+                name="Basic Info~",
                 value=(
                     f"> **Join Code:** [{status.join_key}](https://policeroleplay.community/join/{status.join_key})\n"
                     f"> **Current Players:** {status.current_players}/{status.max_players}\n"
@@ -1165,7 +1165,7 @@ class ERLC(commands.Cog):
                 inline=False,
             )
             embed1.add_field(
-                name="Server Ownership",
+                name="Sewvew Ownewship owo~",
                 value=(
                     f"> **Owner:** [{(await client.get_user(status.owner_id)).name}](https://roblox.com/users/{status.owner_id}/profile)\n"
                     f"> **Co-Owners:** {f', '.join([f'[{user.name}](https://roblox.com/users/{user.id}/profile)' for user in await client.get_users(status.co_owner_ids, expand=False)])}"
@@ -1174,12 +1174,12 @@ class ERLC(commands.Cog):
             )
 
             embed1.add_field(
-                name="Staff Statistics",
+                name="Staff Statistics~",
                 value=(
-                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Server Moderator', players)))}\n"
-                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Server Administrator', players)))}\n"
-                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Normal', players)))}\n"
-                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guild': guild_id, 'EndEpoch': 0})}"
+                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Sewvew Modewatow owo~', players)))}\n"
+                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Sewvew Administwatow uwu~', players)))}\n"
+                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Nowmaw >w<', players)))}\n"
+                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guiwd >w<': guild_id, 'EndEpoch owo~': 0})}"
                 ),
                 inline=False,
             )
@@ -1200,7 +1200,7 @@ class ERLC(commands.Cog):
         await operate_and_reload_serverinfo(None, guild_id)
 
     @server.command(
-        name="staff", description="See the online staff members in your ER:LC server!"
+        name="staff", description="See da online staff membews in ur ER:LC sewvew! >w<"
     )
     @is_staff()
     @is_server_linked()
@@ -1213,7 +1213,7 @@ class ERLC(commands.Cog):
         actual_players = []
         key_maps = {}
         for item in players:
-            if item.permission == "Normal":
+            if item.permission == "Nowmaw >w<":
                 actual_players.append(item)
             else:
                 if item.permission not in key_maps:
@@ -1221,11 +1221,11 @@ class ERLC(commands.Cog):
                 else:
                     key_maps[item.permission].append(item)
 
-        new_maps = ["Server Owners", "Server Administrator", "Server Moderator"]
+        new_maps = ["Sewvew Ownews~", "Sewvew Administwatow uwu~", "Sewvew Modewatow owo~"]
         new_vals = [
-            key_maps.get("Server Owner", []) + key_maps.get("Server Co-Owner", []),
-            key_maps.get("Server Administrator", []),
-            key_maps.get("Server Moderator", []),
+            key_maps.get("Sewvew Ownew >w<", []) + key_maps.get("Sewvew Co-Ownew >w<", []),
+            key_maps.get("Sewvew Administwatow uwu~", []),
+            key_maps.get("Sewvew Modewatow owo~", []),
         ]
         new_keymap = dict(zip(new_maps, new_vals))
         embed2.title = f"Online Staff Members [{sum([len(i) for i in new_vals])}]"
@@ -1243,10 +1243,10 @@ class ERLC(commands.Cog):
                 )
 
         if len(embed2.fields) == 0:
-            embed2.description = "> There are no online staff members."
+            embed2.description = "> Thewe awe nyo online staff membews."
         await ctx.send(embed=embed2)
 
-    @server.command(name="kills", description="See the Kill Logs of your server.")
+    @server.command(name="kills", description="See da Kiww Logs of ur sewvew.~")
     @is_staff()
     @is_server_linked()
     async def kills(self, ctx: commands.Context):
@@ -1257,7 +1257,7 @@ class ERLC(commands.Cog):
             # status: ServerStatus = await self.bot.prc_api.get_server_status(guild_id)
             kill_logs: list[KillLog] = await self.bot.prc_api.fetch_kill_logs(guild_id)
             embed = discord.Embed(
-                color=BLANK_COLOR, title="Server Kill Logs", description=""
+                color=BLANK_COLOR, title="Sewvew Kiww Logs >w<", description=""
             )
 
             sorted_kill_logs = sorted(
@@ -1269,7 +1269,7 @@ class ERLC(commands.Cog):
                 embed.description += f"> [{log.killer_username}](https://roblox.com/users/{log.killer_user_id}/profile) killed [{log.killed_username}](https://roblox.com/users/{log.killed_user_id}/profile) • <t:{int(log.timestamp)}:R>\n"
 
             if embed.description in ["", "\n"]:
-                embed.description = "> No kill logs found."
+                embed.description = "> Nyo kiww logs found."
 
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
 
@@ -1288,7 +1288,7 @@ class ERLC(commands.Cog):
         await operate_and_reload_kills(None, guild_id)
 
     @server.command(
-        name="playerlogs", description="See the Join and Leave logs of your server."
+        name="playerlogs", description="See da Join and Leave logs of ur sewvew. uwu~"
     )
     @is_staff()
     @is_server_linked()
@@ -1302,7 +1302,7 @@ class ERLC(commands.Cog):
                 guild_id
             )
             embed = discord.Embed(
-                color=BLANK_COLOR, title="Player Join/Leave Logs", description=""
+                color=BLANK_COLOR, title="Playew Join/Leave Logs >w<", description=""
             )
 
             sorted_logs = sorted(
@@ -1311,10 +1311,10 @@ class ERLC(commands.Cog):
             for log in sorted_logs:
                 if len(embed.description) > 3800:
                     break
-                embed.description += f"> [{log.username}](https://roblox.com/users/{log.user_id}/profile) {'joined the server' if log.type == 'join' else 'left the server'} • <t:{int(log.timestamp)}:R>\n"
+                embed.description += f"> [{log.username}](https://roblox.com/users/{log.user_id}/profile) {'joined da sewvew' if log.type == 'join' else 'left da sewvew'} • <t:{int(log.timestamp)}:R>\n"
 
             if embed.description in ["", "\n"]:
-                embed.description = "> No player logs found."
+                embed.description = "> Nyo playew logs found."
 
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
 
@@ -1335,7 +1335,7 @@ class ERLC(commands.Cog):
 
         await operate_and_reload_playerlogs(None, guild_id)
 
-    @server.command(name="logs", description="See the Command Logs of your server.")
+    @server.command(name="logs", description="See da Command Logs of ur sewvew. >w<")
     @is_staff()
     @is_server_linked()
     async def commandlogs(self, ctx: commands.Context):
@@ -1348,7 +1348,7 @@ class ERLC(commands.Cog):
                 guild_id
             )
             embed = discord.Embed(
-                color=BLANK_COLOR, title="Command Logs", description=""
+                color=BLANK_COLOR, title="Command Logs uwu~", description=""
             )
 
             sorted_logs = sorted(
@@ -1360,7 +1360,7 @@ class ERLC(commands.Cog):
                 embed.description += f"> [{log.username}](https://roblox.com/users/{log.user_id}/profile) ran the command `{log.command}` • <t:{int(log.timestamp)}:R>\n"
 
             if embed.description in ["", "\n"]:
-                embed.description = "> No player logs found."
+                embed.description = "> Nyo playew logs found."
 
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
 
@@ -1381,7 +1381,7 @@ class ERLC(commands.Cog):
 
         await operate_and_reload_commandlogs(None, guild_id)
 
-    @server.command(name="bans", description="Filter the bans of your server.")
+    @server.command(name="bans", description="Filtew da bans of ur sewvew. >w<")
     @is_staff()
     @is_server_linked()
     async def bans(
@@ -1397,12 +1397,12 @@ class ERLC(commands.Cog):
         except prc_api.ResponseFailure:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="PRC API Error",
-                    description="There were no bans, or your API key is incorrect.",
+                    title="PRC API Ewwow uwu~",
+                    description="Thewe wewe nyo bans, ow ur API key is incowwect. >w<",
                     color=BLANK_COLOR,
                 )
             )
-        embed = discord.Embed(color=BLANK_COLOR, title="Bans", description="")
+        embed = discord.Embed(color=BLANK_COLOR, title="Bans uwu~", description="")
         status = username or user_id
 
         if not username and user_id:
@@ -1426,9 +1426,9 @@ class ERLC(commands.Cog):
 
         if embeds[0].description in ["", "\n"]:
             embeds[0].description = (
-                "> This ban was not found."
+                "> Dis ban was nyot found."
                 if status
-                else "> Bans were not found in your server."
+                else "> Bans wewe nyot found in ur sewvew."
             )
 
         embeds[0].set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
@@ -1444,7 +1444,7 @@ class ERLC(commands.Cog):
         else:
             await ctx.send(embed=embeds[0])
             
-    @server.command(name="players", description="See all players in the server.")
+    @server.command(name="players", description="See aww playews in da sewvew.~")
     @is_server_linked()
     async def server_players(
         self, ctx: commands.Context, filter: typing.Optional[str] = None
@@ -1460,7 +1460,7 @@ class ERLC(commands.Cog):
         key_maps = {}
         staff = []
         for item in players:
-            if item.permission == "Normal":
+            if item.permission == "Nowmaw >w<":
                 actual_players.append(item)
             else:
                 staff.append(item)
@@ -1484,7 +1484,7 @@ class ERLC(commands.Cog):
                     for plr in staff
                 ]
             )
-            or "> No players in this category."
+            or "> Nyo playews in dis categowy."
         )
 
         embed2.description += f"\n\n**Online Players [{len(actual_players)}]**\n" + (
@@ -1494,7 +1494,7 @@ class ERLC(commands.Cog):
                     for plr in actual_players
                 ]
             )
-            or "> No players in this category."
+            or "> Nyo playews in dis categowy."
         )
 
         embed2.description += f"\n\n**Queue [{len(queue)}]**\n" + (
@@ -1504,7 +1504,7 @@ class ERLC(commands.Cog):
                     for plr in queue
                 ]
             )
-            or "> No players in this category."
+            or "> Nyo playews in dis categowy."
         )
 
         embed2.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
@@ -1526,7 +1526,7 @@ class ERLC(commands.Cog):
         await ctx.send(embed=embed2)
 
     @server.command(
-        name="teams", description="See all players in the server, grouped by team."
+        name="teams", description="See aww playews in da sewvew, gwouped by team. uwu~"
     )
     @is_staff()
     @is_server_linked()
@@ -1549,7 +1549,7 @@ class ERLC(commands.Cog):
                 teams[plr.team] = []
             teams[plr.team].append(plr)
 
-        team_order = ["Police", "Sheriff", "Fire", "DOT", "Civilian"]
+        team_order = ["Powice owo~", "Shewiff~", "Fiwe >w<", "DOT >w<", "Civiwian >w<"]
         for team in team_order:
             team_players = []
             if team in teams:
@@ -1565,17 +1565,17 @@ class ERLC(commands.Cog):
                 + "\n\n"
             )
         if embed2.description.strip() == "":
-            embed2.description = "> There are no players in-game."
+            embed2.description = "> Thewe awe nyo playews in-game."
 
         embed2.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
 
         if len(embed2.description) > 3999:
-            embed2.description = "> The list is too long to display."
+            embed2.description = "> Da list is too long to display."
 
         await ctx.send(embed=embed2)
 
     @server.command(
-        name="vehicles", description="See all vehicles of players in the server."
+        name="vehicles", description="See aww vehicles of playews in da sewvew. >w<"
     )
     @is_staff()
     @is_server_linked()
@@ -1589,7 +1589,7 @@ class ERLC(commands.Cog):
         if len(vehicles) <= 0:
             emb = discord.Embed(
                 title=f"Server Vehicles [{len(vehicles)}/{len(players)}]",
-                description="> There are no active vehicles in your server.",
+                description="> Thewe awe nyo active vehicles in ur sewvew.",
                 color=BLANK_COLOR,
             )
             emb.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url)
@@ -1604,7 +1604,7 @@ class ERLC(commands.Cog):
         actual_players = []
         staff = []
         for item in players:
-            if item.permission == "Normal":
+            if item.permission == "Nowmaw >w<":
                 actual_players.append(item)
             else:
                 staff.append(item)
@@ -1618,7 +1618,7 @@ class ERLC(commands.Cog):
                 description = ""
 
         if not descriptions:
-            descriptions.append("> There are no active vehicles in your server.")
+            descriptions.append("> Thewe awe nyo active vehicles in ur sewvew.")
 
         pages = []
         for index, description in enumerate(descriptions):
@@ -1637,7 +1637,7 @@ class ERLC(commands.Cog):
 
     @server.command(
         name="check",
-        description="Perform a Discord check on your server to see if all players are in the Discord server.",
+        description="Pewfowm a Discowd check on ur sewvew to see if aww playews awe in da Discowd sewvew.",
     )
     @is_staff()
     @is_server_linked()
@@ -1648,8 +1648,8 @@ class ERLC(commands.Cog):
         except ResponseFailure:
             return await ctx.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} PRC API Error",
-                    description="There was an error fetching players from the PRC API.",
+                    title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} PRC API Error",
+                    description="Thewe was an ewwow fetching playews fwom da PRC API. owo~",
                     color=BLANK_COLOR,
                 )
             )
@@ -1657,8 +1657,8 @@ class ERLC(commands.Cog):
         if not players:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Players Found",
-                    description="There are no players in the server to check.",
+                    title="Nyo Playews Found~",
+                    description="Thewe awe nyo playews in da sewvew to check. >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -1677,9 +1677,9 @@ class ERLC(commands.Cog):
 
         class CheckContainer(discord.ui.Container):
             in_discord = discord.ui.TextDisplay(
-                content="### Players in Discord\n"
+                content="### Playews in Discowd\n"
                         + "\n".join(
-                            [f"> {member.mention} - [{player.username}](https://roblox.com/users/{player.id}/profile) {'**(Server Booster)**' if 'Server Booster' in [i.name for i in member.roles] else ''} {'**(Staff)**' if is_staff[member] else ''}"
+                            [f"> {member.mention} - [{player.username}](https://roblox.com/users/{player.id}/profile) {'**(Sewvew Boostew)**' if 'Sewvew Boostew~' in [i.name for i in member.roles] else ''} {'**(Staff)**' if is_staff[member] else ''}"
                             for player, member in players_found.items()]
                         )
             )
@@ -1689,7 +1689,7 @@ class ERLC(commands.Cog):
             )
 
             not_in_discord = discord.ui.TextDisplay(
-                content="### Players Not in Discord\n"
+                content="### Playews Nyot in Discowd\n"
                         + "\n".join(
                             [f"> [{player.username}](https://roblox.com/users/{player.id}/profile)"
                             for player in players_not_found]
@@ -1703,17 +1703,17 @@ class ERLC(commands.Cog):
         )
 
     @server.command(
-        name="refresh", description="Refresh the author in the ER:LC server."
+        name="refresh", description="Refwesh da audow in da ER:LC sewvew. owo~"
     )
     @is_server_linked()
     async def refresh(self, ctx: commands.Context):
         settings = await self.bot.settings.find_by_id(ctx.guild.id) or {}
-        erlc_settings = settings.get("ERLC", {})
+        erlc_settings = settings.get("ERLC~", {})
         if not erlc_settings.get("allow_player_refresh", False):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
-                    description="Player refresh is not enabled in this server.",
+                    title="Nyot Enabled uwu~",
+                    description="Playew refwesh is nyot enabled in dis sewvew.~",
                     color=BLANK_COLOR,
                 )
             )
@@ -1725,8 +1725,8 @@ class ERLC(commands.Cog):
         if not roblox_user or not (roblox_user or {}).get("robloxID"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find user",
-                    description="I couldn't find your ROBLOX user. Please make sure that you're verified with Bloxlink.",
+                    title="Couwd nyot find usew~",
+                    description="I couldn't find ur ROBLOX usew. Pwease make suwe dat u're vewified wid Bloxlink.",
                     color=BLANK_COLOR,
                 )
             )
@@ -1737,8 +1737,8 @@ class ERLC(commands.Cog):
         if not username:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find username",
-                    description="I could not find this user's ROBLOX username.",
+                    title="Couwd nyot find usewname uwu~",
+                    description="I couwd nyot find dis usew's ROBLOX usewname. >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -1751,13 +1751,13 @@ class ERLC(commands.Cog):
         thumbnail_url = thumbnails[0].image_url
 
         embed = discord.Embed(
-            title="Confirm Refresh",
+            title="Confiwm Refwesh~",
             description=f"Is this your account? If not, be sure to set a new primary account with Bloxlink.",
             color=BLANK_COLOR,
         )
         embed.set_thumbnail(url=thumbnail_url)
         embed.add_field(
-            name="Account Information",
+            name="Account Infowmation >w<",
             value=(
                 f"> **Username:** {username}\n"
                 f"> **User ID:** {roblox_user['robloxID']}\n"
@@ -1773,8 +1773,8 @@ class ERLC(commands.Cog):
         if not view.value:
             return await msg.edit(
                 embed=discord.Embed(
-                    title="Cancelled",
-                    description="Refresh has been cancelled.",
+                    title="Cancewwed >w<",
+                    description="Refwesh has been cancewwed. owo~",
                     color=BLANK_COLOR,
                 ),
                 view=None,
@@ -1796,7 +1796,7 @@ class ERLC(commands.Cog):
             await msg.edit(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="This command has not been sent to the server successfully.",
+                    description="Dis command has nyot been sent to da sewvew successfuwwy. uwu~",
                     color=BLANK_COLOR,
                 ),
                 view=None,

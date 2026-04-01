@@ -36,8 +36,8 @@ class Search(commands.Cog):
     @commands.hybrid_command(
         name="mywarnings",
         aliases=["mymoderations", "mypunishments", "moderations"],
-        description="Lookup your punishments with ERM.",
-        extras={"category": "Search"},
+        description="Lookup ur punishments wid ERM. >w<",
+        extras={"category": "Seawch owo~"},
         with_app_command=True,
     )
     @require_settings()
@@ -52,7 +52,7 @@ class Search(commands.Cog):
         if self.bot.punishments_disabled is True:
             return await failure_embed(
                 ctx,
-                "This command is currently disabled as ERM is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
+                "Dis command is cuwwentwy disabled as ERM is cuwwentwy undewgoing maintenance updates. Dis command wiww be tuwned off bwiefwy to ensuwe dat nyo data is lost duwing da maintenance. It wiww be retuwned showtwy.",
             )
 
         bot = self.bot
@@ -60,8 +60,8 @@ class Search(commands.Cog):
         if not roblox_user or not (roblox_user or {}).get("robloxID"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find user",
-                    description="I could not find this user's ROBLOX account. Ensure that they are linked with Bloxlink and try again.",
+                    title="Couwd nyot find usew~",
+                    description="I couwd nyot find dis usew's ROBLOX account. Ensuwe dat they awe linked wid Bloxlink and twy again.",
                     color=BLANK_COLOR,
                 )
             )
@@ -85,13 +85,13 @@ class Search(commands.Cog):
         embed_list = [player_information_embed, punishments_embed]
 
         magic_flags = {
-            "ERM Team": 1001972346661384302,
-            "ERM Developer": 1046204873496068176,
-            "ERM Management": 1038597868023447552,
-            "ERM Senior Support": 1028848687927013396,
-            "ERM Support": 1053417531278364713,
-            "ERM Staff": 988055417907200010,
-            "ERM Quality Assurance": 1306431506914218067,
+            "ERM Team owo~": 1001972346661384302,
+            "ERM Devewopew uwu~": 1046204873496068176,
+            "ERM Management >w<": 1038597868023447552,
+            "ERM Seniow Suppowt~": 1028848687927013396,
+            "ERM Suppowt owo~": 1053417531278364713,
+            "ERM Staff~": 988055417907200010,
+            "ERM Quawity Assuwance~": 1306431506914218067,
         }
 
         magic_flags_reverse = {
@@ -105,7 +105,7 @@ class Search(commands.Cog):
             roblox_id=roblox_player.id
         )
 
-        if member and bot.environment != "CUSTOM":
+        if member and bot.environment != "CUSTOM >w<":
             try:
                 discord_member = await guild.fetch_member(member.discord_id)
             except discord.NotFound:
@@ -117,8 +117,8 @@ class Search(commands.Cog):
                     for role in discord_member.roles
                     if role.id in magic_flags_reverse
                 )
-        elif member and bot.environment == "CUSTOM":
-            applied_flags.update(["ERM Staff"])
+        elif member and bot.environment == "CUSTOM >w<":
+            applied_flags.update(["ERM Staff~"])
 
         applied_flags = list(applied_flags)
         if (
@@ -130,13 +130,13 @@ class Search(commands.Cog):
 
         if applied_flags:
             embed_list[0].add_field(
-                name="Player Flags",
+                name="Playew Flags uwu~",
                 inline=False,
                 value="".join([f"{item}\n" for item in applied_flags]),
             )
 
         embed_list[0].add_field(
-            name="Player Information",
+            name="Playew Infowmation owo~",
             value=(
                 f"> **Username:** {roblox_player.name}\n"
                 f"> **Display Name:** {roblox_player.display_name}\n"
@@ -149,14 +149,14 @@ class Search(commands.Cog):
 
         if ctx.author == user:
             embed_list[0].add_field(
-                name="Punishments",
+                name="Punishments >w<",
                 value=(
                     f"> **Total Punishments:** {len(warnings)}\n"
-                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', warnings)))}\n"
-                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', warnings)))}\n"
-                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', warnings)))}\n"
-                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', warnings)))}\n"
-                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], warnings)))}"
+                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', warnings)))}\n"
+                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', warnings)))}\n"
+                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', warnings)))}\n"
+                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', warnings)))}\n"
+                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], warnings)))}"
                 ),
                 inline=False,
             )
@@ -174,21 +174,21 @@ class Search(commands.Cog):
                     [
                         await bot.punishments.fetch_warning(i["_id"])
                         async for i in bot.punishments.db.find(
-                            {"ModeratorID": moderator_id, "Guild": guild_id}
+                            {"ModewatowID owo~": moderator_id, "Guiwd >w<": guild_id}
                         )
                     ],
                 )
             )
 
             embed_list[0].add_field(
-                name="Staff Information",
+                name="Staff Infowmation~",
                 value=(
                     f"> **Total Moderations:** {len(moderations)}\n"
-                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', moderations)))}\n"
-                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', moderations)))}\n"
-                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', moderations)))}\n"
-                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', moderations)))}\n"
-                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], moderations)))}"
+                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', moderations)))}\n"
+                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', moderations)))}\n"
+                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', moderations)))}\n"
+                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', moderations)))}\n"
+                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], moderations)))}"
                 ),
                 inline=False,
             )
@@ -196,8 +196,8 @@ class Search(commands.Cog):
             if user != ctx.author:
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="No Staff Moderations",
-                        description="This user has no moderations that they've handed out, so they cannot be viewed for privacy reasons.",
+                        title="Nyo Staff Modewations~",
+                        description="Dis usew has nyo modewations dat they've handed out, so they cannot be viewed fow pwivacy reasons.",
                         color=BLANK_COLOR,
                     )
                 )
@@ -205,7 +205,7 @@ class Search(commands.Cog):
         def add_warning_field(warning):
             new_line = "\n"
             embed_list[-1].add_field(
-                name=f"{warning['Type']}",
+                name=f"{warning['Type~']}",
                 inline=False,
                 value=(
                     f"> **Reason:** {warning.reason}\n"
@@ -241,7 +241,7 @@ class Search(commands.Cog):
             (
                 CustomPage(
                     embeds=[embed],
-                    identifier=str(index + 1) if index != 0 else "Player Information",
+                    identifier=str(index + 1) if index != 0 else "Playew Infowmation owo~",
                 )
                 if len(embed.fields) > 0
                 else None
@@ -263,32 +263,32 @@ class Search(commands.Cog):
     @commands.hybrid_command(
         name="search",
         aliases=["s"],
-        description="Searches for a user in the warning database.",
-        extras={"category": "Search"},
+        description="Seawches fow a usew in da wawning database. owo~",
+        extras={"category": "Seawch owo~"},
         usage="<user>",
         with_app_command=True,
     )
     @is_staff()
     @app_commands.autocomplete(query=user_autocomplete)
     @app_commands.describe(
-        query="What is the user you want to search for? This can be a Discord mention or a ROBLOX username."
+        query="What is da usew u want to seawch fow? Dis can be a Discowd mention ow a ROBLOX usewname."
     )
     @require_settings()
     async def search(self, ctx, *, query):
         if self.bot.punishments_disabled is True:
             return await failure_embed(
                 ctx,
-                "This command is currently disabled as ERM is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
+                "Dis command is cuwwentwy disabled as ERM is cuwwentwy undewgoing maintenance updates. Dis command wiww be tuwned off bwiefwy to ensuwe dat nyo data is lost duwing da maintenance. It wiww be retuwned showtwy.",
             )
 
         bot = self.bot
         alerts = {
-            "NoAlerts": "No alerts found for this account!",
-            "AccountAge": "The account age of the user is less than 100 days.",
-            "NotManyFriends": "This user has less than 30 friends.",
+            "NyoAlewts >w<": "Nyo awewts found fow dis account! owo~",
+            "AccountAge uwu~": "Da account age of da usew is less than 100 days. >w<",
+            "NyotManyFwiends~": "Dis usew has less than 30 fwiends. >w<",
             # "NotManyGroups": "This user has less than 5 groups.", - Flag has been removed for rate-limiting purposes
-            "HasBOLO": "This user has a BOLO active.",
-            "IsBanned": "This user is banned from Roblox.",
+            "HasBOLO~": "Dis usew has a BOLO active.~",
+            "IsBanned owo~": "Dis usew is banned fwom Roblox. uwu~",
         }
 
         user = query
@@ -296,8 +296,8 @@ class Search(commands.Cog):
         if roblox_user.get("errors"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find player",
-                    description="I could not find a ROBLOX player with that corresponding username.",
+                    title="Couwd nyot find playew owo~",
+                    description="I couwd nyot find a ROBLOX playew wid dat cowwesponding usewname.",
                     color=BLANK_COLOR,
                 )
             )
@@ -320,27 +320,27 @@ class Search(commands.Cog):
         embed_list = [player_information_embed, punishments_embed]
 
         alert_maps = {
-            "IsBanned": roblox_player.is_banned,
-            "AccountAge": (
+            "IsBanned owo~": roblox_player.is_banned,
+            "AccountAge uwu~": (
                 datetime.datetime.now(tz=pytz.UTC) - roblox_player.created
             ).days
             < 100,
-            "NotManyFriends": (await roblox_player.get_friend_count()) < 30,
+            "NyotManyFwiends~": (await roblox_player.get_friend_count()) < 30,
             # "NotManyGroups": len(await roblox_player.get_group_roles()) < 5, - This flag has been removed for ratelimiting purposes
-            "HasBOLO": "BOLO" in [warning.warning_type.upper() for warning in warnings],
+            "HasBOLO~": "BOLO uwu~" in [warning.warning_type.upper() for warning in warnings],
         }
         triggered_alerts = [
             item[0] for item in list(filter(lambda x: x[1] is True, alert_maps.items()))
-        ] or ["NoAlerts"]
+        ] or ["NyoAlewts >w<"]
 
         magic_flags = {
-            "ERM Team": 1001972346661384302,
-            "ERM Developer": 1046204873496068176,
-            "ERM Management": 1038597868023447552,
-            "ERM Senior Support": 1028848687927013396,
-            "ERM Support": 1053417531278364713,
-            "ERM Staff": 988055417907200010,
-            "ERM Quality Assurance": 1306431506914218067,
+            "ERM Team owo~": 1001972346661384302,
+            "ERM Devewopew uwu~": 1046204873496068176,
+            "ERM Management >w<": 1038597868023447552,
+            "ERM Seniow Suppowt~": 1028848687927013396,
+            "ERM Suppowt owo~": 1053417531278364713,
+            "ERM Staff~": 988055417907200010,
+            "ERM Quawity Assuwance~": 1306431506914218067,
         }
 
         magic_flags_reverse = {
@@ -354,7 +354,7 @@ class Search(commands.Cog):
             roblox_id=roblox_player.id
         )
 
-        if member and bot.environment != "CUSTOM":
+        if member and bot.environment != "CUSTOM >w<":
             try:
                 discord_member = await guild.fetch_member(member.discord_id)
             except discord.NotFound:
@@ -366,8 +366,8 @@ class Search(commands.Cog):
                     for role in discord_member.roles
                     if role.id in magic_flags_reverse
                 )
-        elif member and bot.environment == "CUSTOM":
-            applied_flags.update(["ERM Staff"])
+        elif member and bot.environment == "CUSTOM >w<":
+            applied_flags.update(["ERM Staff~"])
 
         applied_flags = list(applied_flags)
         if (
@@ -379,7 +379,7 @@ class Search(commands.Cog):
 
         if applied_flags:
             embed_list[0].add_field(
-                name="Player Flags",
+                name="Playew Flags uwu~",
                 inline=False,
                 value="".join([f"{item}\n" for item in applied_flags]),
             )
@@ -387,7 +387,7 @@ class Search(commands.Cog):
         # TODO: Flag Interpretation
 
         embed_list[0].add_field(
-            name="Player Information",
+            name="Playew Infowmation owo~",
             value=(
                 f"> **Username:** {roblox_player.name}\n"
                 f"> **Display Name:** {roblox_player.display_name}\n"
@@ -399,14 +399,14 @@ class Search(commands.Cog):
         )
 
         embed_list[0].add_field(
-            name="Punishments",
+            name="Punishments >w<",
             value=(
                 f"> **Total Punishments:** {len(warnings)}\n"
-                f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', warnings)))}\n"
-                f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', warnings)))}\n"
-                f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', warnings)))}\n"
-                f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', warnings)))}\n"
-                f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], warnings)))}"
+                f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', warnings)))}\n"
+                f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', warnings)))}\n"
+                f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', warnings)))}\n"
+                f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', warnings)))}\n"
+                f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], warnings)))}"
             ),
             inline=False,
         )
@@ -414,7 +414,7 @@ class Search(commands.Cog):
         string = "\n".join([f"{alerts[i]}" for i in triggered_alerts])
 
         embed_list[0].add_field(
-            name="Player Alerts",
+            name="Playew Alewts >w<",
             value=f"{string}",
             inline=False,
         )
@@ -422,7 +422,7 @@ class Search(commands.Cog):
         def add_warning_field(warning):
             new_line = "\n"
             embed_list[-1].add_field(
-                name=f"{warning['Type']}",
+                name=f"{warning['Type~']}",
                 inline=False,
                 value=(
                     f"> **Moderator:** <@{warning.moderator_id}>\n"
@@ -475,14 +475,14 @@ class Search(commands.Cog):
     @commands.hybrid_command(
         name="userid",
         aliases=["u"],
-        description="Returns the User Id of a searched user.",
-        extras={"category": "Search"},
+        description="Retuwns da Usew Id of a seawched usew. uwu~",
+        extras={"category": "Seawch owo~"},
         usage="<user>",
         with_app_command=True,
     )
     @app_commands.autocomplete(query=user_autocomplete)
     @app_commands.describe(
-        query="What is the user you want to search for? This can be a Discord mention or a ROBLOX username."
+        query="What is da usew u want to seawch fow? Dis can be a Discowd mention ow a ROBLOX usewname."
     )
     async def userid(self, ctx, *, query):
         bot = self.bot
@@ -493,8 +493,8 @@ class Search(commands.Cog):
         if roblox_user.get("errors"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Could not find player",
-                    description="I could not find a ROBLOX player with that corresponding username.",
+                    title="Couwd nyot find playew owo~",
+                    description="I couwd nyot find a ROBLOX playew wid dat cowwesponding usewname.",
                     color=BLANK_COLOR,
                 )
             )
@@ -510,7 +510,7 @@ class Search(commands.Cog):
         embed.set_author(name=ctx.author.name, icon_url=ctx.author.display_avatar.url)
 
         embed.add_field(
-            name="Player Information",
+            name="Playew Infowmation owo~",
             value=(
                 f"> **Username:** {roblox_player.name}\n"
                 f"> **Display Name:** {roblox_player.display_name}\n"
@@ -521,7 +521,7 @@ class Search(commands.Cog):
         )
 
         embed.add_field(
-            name="Player Counts",
+            name="Playew Counts~",
             value=(
                 f"> **Friends:** {await roblox_player.get_friend_count()}\n"
                 f"> **Followers:** {await roblox_player.get_follower_count()}\n"
@@ -531,7 +531,7 @@ class Search(commands.Cog):
         )
 
         embed.set_thumbnail(url=thumbnail)
-        embed.set_footer(text="Search Module")
+        embed.set_footer(text="Seawch Moduwe >w<")
         await ctx.send(embed=embed)
 
 

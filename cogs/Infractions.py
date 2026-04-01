@@ -16,7 +16,7 @@ class Infractions(commands.Cog):
         self.bot = bot
 
     async def check_manager_role(self, ctx):
-        """Helper method to check if user has manager role from settings"""
+        """Helpew medod to check if usew has managew rowe fwom settings"""
         settings = await self.bot.settings.find_by_id(ctx.guild.id)
         if not settings or "infractions" not in settings:
             return False
@@ -27,12 +27,12 @@ class Infractions(commands.Cog):
     @commands.hybrid_group(name="infractions")
     @is_staff()
     async def infractions(self, ctx):
-        """Base command for infractions"""
+        """Base command fow infwactions~"""
         if ctx.invoked_subcommand is None:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Invalid Subcommand",
-                    description="Please specify a valid subcommand.",
+                    title="Invawid Subcommand owo~",
+                    description="Pwease specify a vawid subcommand~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -40,19 +40,19 @@ class Infractions(commands.Cog):
     @commands.guild_only()
     @commands.hybrid_command(
         name="myinfractions",
-        description="View your infractions",
-        extras={"category": "Infractions"},
+        description="View uw infwactions~ uwu",
+        extras={"category": "Infwactions >w<"},
     )
     @is_staff()
     @require_settings()
     async def myinfractions(self, ctx):
-        """View your infractions"""
+        """View ur infwactions owo~"""
         settings = await self.bot.settings.find_by_id(ctx.guild.id)
         if not settings:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Setup",
-                    description="Your server is not setup.",
+                    title="Nyot Setup owo~",
+                    description="Uw sewvew is nyot setup~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -60,8 +60,8 @@ class Infractions(commands.Cog):
         if not settings.get("infractions"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
-                    description="Infractions are not enabled on this server.",
+                    title="Nyot Enabwed uwu~",
+                    description="Infwactions awe nyot enabwed on dis sewvew~ nyaa uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -75,15 +75,15 @@ class Infractions(commands.Cog):
         if len(infractions) == 0:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Infractions",
-                    description="You have no infractions.",
+                    title="Nyo Infwactions owo~",
+                    description="U hav nyo infwactions~ owo",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
         def setup_embed() -> discord.Embed:
-            embed = discord.Embed(title="Your Infractions", color=BLANK_COLOR)
+            embed = discord.Embed(title="Uw Infwactions~", color=BLANK_COLOR)
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             return embed
 
@@ -93,18 +93,18 @@ class Infractions(commands.Cog):
                 embeds.append(setup_embed())
 
             embed = embeds[-1]
-            issuer = "System"
+            issuer = "System >w<"
             if infraction.get("issuer_id"):
                 issuer = f"<@{infraction['issuer_id']}>"
 
             embed.add_field(
-                name=f"Infraction #{infraction.get('_id', 'Unknown')}",
+                name=f"Infraction #{infraction.get('_id', 'Unknown uwu~')}",
                 value=(
                     f"> **Type:** {infraction['type']}\n"
                     f"> **Reason:** {infraction['reason']}\n"
                     f"> **Issuer:** {issuer}\n"
                     f"> **Date:** <t:{int(infraction['timestamp'])}:F>\n"
-                    f"> **Status:** {'Revoked' if infraction.get('revoked', False) else 'Active'}"
+                    f"> **Status:** {'Wevoked~' if infraction.get('revoked', False) else 'Active >w<'}"
                 ),
                 inline=False,
             )
@@ -123,21 +123,21 @@ class Infractions(commands.Cog):
     @commands.guild_only()
     @infractions.command(
         name="view",
-        description="View a user's infractions",
-        extras={"category": "Infractions"},
+        description="View a usew's infwactions~ owo",
+        extras={"category": "Infwactions >w<"},
     )
     @is_staff()
     @require_settings()
-    @app_commands.describe(user="The user to check infractions for")
+    @app_commands.describe(user="Da usew to check infwactions fow~ uwu")
     async def infractions_view(self, ctx, user: discord.Member):
-        """View a user's infractions"""
+        """View a usew's infwactions owo~"""
         if user.id != ctx.author.id:
             has_manager_role = await self.check_manager_role(ctx)
             if not has_manager_role and not await management_predicate(ctx):
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Permission Denied",
-                        description="You need management permissions to view other users' infractions.",
+                        title="Pewmission Denied >w<",
+                        description="U need management pewmissions to view odew usews' infwactions~ >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -146,8 +146,8 @@ class Infractions(commands.Cog):
         if not settings:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Setup",
-                    description="Your server is not setup.",
+                    title="Nyot Setup owo~",
+                    description="Uw sewvew is nyot setup~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -155,8 +155,8 @@ class Infractions(commands.Cog):
         if not settings.get("infractions"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
-                    description="Infractions are not enabled on this server.",
+                    title="Nyot Enabwed uwu~",
+                    description="Infwactions awe nyot enabwed on dis sewvew~ nyaa uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -172,8 +172,8 @@ class Infractions(commands.Cog):
         if len(infractions) == 0:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Infractions",
-                    description=f"{'You have' if target_id == ctx.author.id else 'This user has'} no infractions.",
+                    title="Nyo Infwactions owo~",
+                    description=f"{'U hav owo~' if target_id == ctx.author.id else 'Dis usew has >w<'} nyo infwactions~ owo",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -196,7 +196,7 @@ class Infractions(commands.Cog):
             if not name:
                 name = str(target_id)
 
-            embed = discord.Embed(title=f"Infractions for {name}", color=BLANK_COLOR)
+            embed = discord.Embed(title=f"Infwactions fow {name}~", color=BLANK_COLOR)
             embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             return embed
 
@@ -206,18 +206,18 @@ class Infractions(commands.Cog):
                 embeds.append(setup_embed())
 
             embed = embeds[-1]
-            issuer = "System"
+            issuer = "System >w<"
             if infraction.get("issuer_id"):
                 issuer = f"<@{infraction['issuer_id']}>"
 
             embed.add_field(
-                name=f"Infraction #{infraction.get('_id', 'Unknown')}",
+                name=f"Infraction #{infraction.get('_id', 'Unknown uwu~')}",
                 value=(
                     f"> **Type:** {infraction['type']}\n"
                     f"> **Reason:** {infraction['reason']}\n"
                     f"> **Issuer:** {issuer}\n"
                     f"> **Date:** <t:{int(infraction['timestamp'])}:F>\n"
-                    f"> **Status:** {'Revoked' if infraction.get('revoked', False) else 'Active'}"
+                    f"> **Status:** {'Wevoked~' if infraction.get('revoked', False) else 'Active >w<'}"
                 ),
                 inline=False,
             )
@@ -234,25 +234,25 @@ class Infractions(commands.Cog):
             await ctx.send(embed=embeds[0])
 
     @commands.guild_only()
-    @infractions.command(name="issue", description="Issue an infraction to a user")
+    @infractions.command(name="issue", description="Issue an infwaction to a usew~ owo")
     @is_staff()
     @require_settings()
     @app_commands.autocomplete(type=infraction_type_autocomplete)
     @app_commands.describe(
-        type="The type of infraction to give",
-        user="The user to issue an infraction to",
-        reason="What is your reason for giving this infraction?",
+        type="Da type of infwaction to give~ uwu",
+        user="Da usew to issue an infwaction to~ owo",
+        reason="What is uw weason fow giving dis infwaction? >w<",
     )
     async def infractions_issue(
         self, ctx, user: discord.Member, type: str, *, reason: str
     ):
-        """Issue an infraction to a user"""
+        """Issue an infwaction to a usew owo~"""
         has_manager_role = await self.check_manager_role(ctx)
         if not has_manager_role and not await management_predicate(ctx):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Permission Denied",
-                    description="You need management permissions or your infractions manager permission to issue infractions.",
+                    title="Pewmission Denied >w<",
+                    description="U need management pewmissions ow uw infwactions managew pewmission to issue infwactions~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -261,8 +261,8 @@ class Infractions(commands.Cog):
         if not settings:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Setup",
-                    description="Your server is not setup.",
+                    title="Nyot Setup owo~",
+                    description="Uw sewvew is nyot setup~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -270,8 +270,8 @@ class Infractions(commands.Cog):
         if not settings.get("infractions"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
-                    description="Infractions are not enabled on this server.",
+                    title="Nyot Enabwed uwu~",
+                    description="Infwactions awe nyot enabwed on dis sewvew~ nyaa uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -291,8 +291,8 @@ class Infractions(commands.Cog):
         if not infraction_config:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Invalid Type",
-                    description="This infraction type does not exist.",
+                    title="Invawid Type uwu~",
+                    description="Dis infwaction type does nyot exist~ nyaa uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -341,7 +341,7 @@ class Infractions(commands.Cog):
         if will_escalate:
             type = current_type
             reason = (
-                f"{reason}\n\nEscalated from {original_type} after reaching threshold"
+                f"{reason}\n\nEscawated fwom {original_type} aftew weaching thweshowd~ owo"
             )
 
         # Create infraction document
@@ -384,11 +384,11 @@ class Infractions(commands.Cog):
 
         await ctx.send(
             embed=discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('success')} Infraction Issued",
-                description="Successfully issued an infraction!",
+                title=f"{self.bot.emoji_controller.get_emoji('success')} Infwaction Issued~",
+                description="S-successfuwwy issued an infwaction! hehe >w<",
                 color=discord.Color.green(),
             ).add_field(
-                name="Details",
+                name="Detaiws owo~",
                 value=(
                     f"> **User:** {target_name}\n"
                     f"> **Type:** {type}\n"
@@ -397,7 +397,7 @@ class Infractions(commands.Cog):
                     f"> **Date:** <t:{int(infraction_doc['timestamp'])}:F>\n"
                     f"> **ID:** `{result.inserted_id}`\n"
                     + (
-                        f"> **Escalated:** Yes (from {original_type})"
+                        f"> **Escawated:** Yes (fwom {original_type})"
                         if will_escalate
                         else ""
                     )
@@ -407,18 +407,18 @@ class Infractions(commands.Cog):
             ephemeral=True,
         )
 
-    @infractions.command(name="revoke", description="Revoke an infraction using its ID")
+    @infractions.command(name="revoke", description="Wevoke an infwaction using its ID~ owo")
     @is_staff()
     @require_settings()
-    @app_commands.describe(infraction_id="The ID of the infraction to revoke")
+    @app_commands.describe(infraction_id="Da ID of da infwaction to wevoke~ uwu")
     async def infractions_revoke(self, ctx, infraction_id: str):
-        """Revoke an infraction"""
+        """Revoke an infwaction >w<"""
         has_manager_role = await self.check_manager_role(ctx)
         if not has_manager_role and not await management_predicate(ctx):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Permission Denied",
-                    description="You need management permissions to revoke infractions.",
+                    title="Pewmission Denied >w<",
+                    description="U need management pewmissions to wevoke infwactions~ >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -432,8 +432,8 @@ class Infractions(commands.Cog):
             if not infraction:
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Not Found",
-                        description="No infraction was found with that ID.",
+                        title="Nyot Found uwu~",
+                        description="Nyo infwaction was found wid dat ID~ nyaa >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -441,8 +441,8 @@ class Infractions(commands.Cog):
             if infraction["guild_id"] != ctx.guild.id:
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Not Found",
-                        description="No infraction was found with that ID in this server.",
+                        title="Nyot Found uwu~",
+                        description="Nyo infwaction was found wid dat ID in dis sewvew~ >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -450,8 +450,8 @@ class Infractions(commands.Cog):
             if infraction.get("revoked", False):
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Already Revoked",
-                        description="This infraction has already been revoked.",
+                        title="Awweady Wevoked~",
+                        description="Dis infwaction has awweady been wevoked~ nyaa owo~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -474,8 +474,8 @@ class Infractions(commands.Cog):
 
             await ctx.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Infraction Revoked",
-                    description="Successfully revoked the infraction!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Infwaction Wevoked~",
+                    description="S-successfuwwy wevoked da infwaction! hehe owo~",
                     color=discord.Color.green(),
                 )
             )
@@ -483,8 +483,8 @@ class Infractions(commands.Cog):
         except Exception as e:
             await ctx.send(
                 embed=discord.Embed(
-                    title="Error",
-                    description=f"An error occurred while revoking the infraction: {str(e)}",
+                    title="Ewwow uwu~",
+                    description=f"An ewwow occuwwed whiwe wevoking da infwaction: {str(e)} >w<",
                     color=BLANK_COLOR,
                 )
             )

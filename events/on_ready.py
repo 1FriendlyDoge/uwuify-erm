@@ -24,8 +24,8 @@ class OnReady(commands.Cog):
                 channel = await self.bot.fetch_channel(1193390631192641687)
                 await channel.send(
                     embed=discord.Embed(
-                        title="Shard Connection",
-                        description=f"Shard `{sid}` has connected.",
+                        title="Shawd Connection uwu~",
+                        description=f"Shawd `{sid}` has connected~ owo~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -43,8 +43,8 @@ class OnReady(commands.Cog):
                 channel = await self.bot.fetch_channel(1193390631192641687)
                 await channel.send(
                     embed=discord.Embed(
-                        title="Shard Disconnection",
-                        description=f"Shard `{sid}` has gracefully disconnected.",
+                        title="Shawd Disconnection >w<",
+                        description=f"Shawd `{sid}` has gwacefuwwy disconnected~ uwu~",
                         color=BLANK_COLOR,
                     )
                 )

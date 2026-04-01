@@ -306,9 +306,9 @@ def process_kill_logs(kill_logs, last_timestamp):
 
         latest_timestamp = max(latest_timestamp, log.timestamp)
         embed = discord.Embed(
-            title="Kill Log",
+            title="Kiww Wog uwu~",
             color=BLANK_COLOR,
-            description=f"[{log.killer_username}](https://roblox.com/users/{log.killer_user_id}/profile) killed [{log.killed_username}](https://roblox.com/users/{log.killed_user_id}/profile) • <t:{int(log.timestamp)}:T>",
+            description=f"[{log.killer_username}](https://roblox.com/users/{log.killer_user_id}/profile) kiwwed [{log.killed_username}](https://roblox.com/users/{log.killed_user_id}/profile) owo~ • <t:{int(log.timestamp)}:T>",
         )
         embeds.append(embed)
 
@@ -347,15 +347,15 @@ async def process_player_logs(bot, settings, guild_id, player_logs, last_timesta
                     avatar_url = avatar[0].image_url if avatar else None
 
                     embed = discord.Embed(
-                        title="Suspicious Username Detected",
-                        description="A player with a potentially problematic username has joined the server.",
+                        title="Suspicious Usewname Detected owo~",
+                        description="A pwayew wif a potentiawwy pwobwematic usewname has joined da sewvew >w<~",
                         color=0xFF0000,
                     )
                     embed.add_field(
-                        name="Player Information",
-                        value=f"> **Username:** [{log.username}](https://roblox.com/users/{log.user_id}/profile)\n"
-                              f"> **User ID:** {log.user_id}\n"
-                              f"> **Reason:** Username appears to use confusing character patterns",
+                        name="Pwayew Infowmation~",
+                        value=f"> **Usewname:** [{log.username}](https://roblox.com/users/{log.user_id}/profile)\n"
+                              f"> **Usew ID:** {log.user_id}\n"
+                              f"> **Weason:** Usewname appeaws to use confusing chawactew pattewns owo~",
                     )
                     if avatar_url:
                         embed.set_thumbnail(url=avatar_url)
@@ -380,8 +380,8 @@ async def process_player_logs(bot, settings, guild_id, player_logs, last_timesta
 
         latest_timestamp = max(latest_timestamp, log.timestamp)
         embed = discord.Embed(
-            title=f"Player {'Join' if log.type == 'join' else 'Leave'} Log",
-            description=f"[{log.username}](https://roblox.com/users/{log.user_id}/profile) {'joined the server' if log.type == 'join' else 'left the server'} • <t:{int(log.timestamp)}:T>",
+            title=f"Pwayew {'Join' if log.type == 'join' else 'Weave'} Wog uwu~",
+            description=f"[{log.username}](https://roblox.com/users/{log.user_id}/profile) {'joined da sewvew hehe~' if log.type == 'join' else 'weft da sewvew >w<~'} • <t:{int(log.timestamp)}:T>",
             color=GREEN_COLOR if log.type == "join" else RED_COLOR,
         )
         embeds.append(embed)
@@ -428,7 +428,7 @@ async def process_player_logs(bot, settings, guild_id, player_logs, last_timesta
                                         ):
                                             has_blacklisted_items = True
                                             blacklisted_reasons.append(
-                                                f"Using a blacklisted item: {item['name']}"
+                                                f"Using a bwackwisted item: {item['name']} owo~"
                                             )
                                             logging.info(
                                                 f"Found blacklisted item: {item['id']} - {item['name']}"
@@ -494,13 +494,13 @@ async def process_player_logs(bot, settings, guild_id, player_logs, last_timesta
                                                 ]
                                             ),
                                             embed=discord.Embed(
-                                                title="Unrealistic Avatar Detected",
-                                                description="We have detected that a player in your server has an unrealistic avatar.",
+                                                title="Unweawistic Avataw Detected owo~",
+                                                description="We hav detected dat a pwayew in ur sewvew has an unweawistic avataw >w<~",
                                                 color=0x2C2F33,
                                             )
                                             .add_field(
-                                                name="Player Information",
-                                                value=f"> **Username:** [{user.name}](https://roblox.com/users/{user_id}/profile)\n> **User ID:** {user_id}\n> **Reason:** {', '.join(reasons)}",
+                                                name="Pwayew Infowmation~",
+                                                value=f"> **Usewname:** [{user.name}](https://roblox.com/users/{user_id}/profile)\n> **Usew ID:** {user_id}\n> **Weason:** {', '.join(reasons)}",
                                             )
                                             .set_thumbnail(url=avatar_url),
                                             view=view,
@@ -633,8 +633,8 @@ async def check_automatic_shifts(bot, settings, guild_id, join_logs, ts: int) ->
             try:
                 await member.send(
                     embed=discord.Embed(
-                        title=f"{bot.emoji_controller.get_emoji('success')} Shift Ended",
-                        description=f"Your shift has automatically been ended in the server **{guild.name}**.",
+                        title=f"{bot.emoji_controller.get_emoji('success')} Shift Ended owo~",
+                        description=f"Ur shift has automaticawwy been ended in da sewvew **{guild.name}** nyaa~",
                         color=GREEN_COLOR,
                     )
                 )
@@ -691,8 +691,8 @@ async def check_automatic_shifts(bot, settings, guild_id, join_logs, ts: int) ->
             try:
                 await item.send(
                     embed=discord.Embed(
-                        title=f"{bot.emoji_controller.get_emoji('success')} Shift Started",
-                        description=f"Your shift has automatically been started in the server **{guild.name}**.",
+                        title=f"{bot.emoji_controller.get_emoji('success')} Shift Stawted uwu~",
+                        description=f"Ur shift has automaticawwy been stawted in da sewvew **{guild.name}** hehe~",
                         color=GREEN_COLOR,
                     )
                 )
@@ -858,23 +858,23 @@ async def check_team_restrictions(bot, settings, guild_id, players):
                 # ','.join(list) but I didn't realise this before writing this whole
                 # algorithm :skull:
                 if preappended_items > 0:
-                    per_user_action_list += ", Private Messaged"
+                    per_user_action_list += ", Pwivate Messaged"
                 else:
-                    per_user_action_list += "Private Messaged"
+                    per_user_action_list += "Pwivate Messaged"
                 preappended_items += 1
             if item.lower() in [i.lower() for i in load_against]:
                 if preappended_items > 0:
-                    per_user_action_list += ", Loaded"
+                    per_user_action_list += ", Woaded"
                 else:
-                    per_user_action_list += "Loaded"
+                    per_user_action_list += "Woaded"
                 preappended_items += 1
             per_user_action_list += "\n"
         embed = discord.Embed(
-            title="Team Restrictions",
-            description=f"Your team restriction for the `{team}` team has affected **{len(players)}** players.",
+            title="Team Westwictions uwu~",
+            description=f"Ur team westwiction fow da `{team}` team has affected **{len(players)}** pwayews owo~",
             color=BLANK_COLOR,
         ).add_field(
-            name=f"Players Affected [{len(players)}]",
+            name=f"Pwayews Affected [{len(players)}]~",
             inline=False,
             value=per_user_action_list,
         )
@@ -959,11 +959,11 @@ async def handle_kick_timer(bot, settings, guild_id, player_logs, command_logs):
                 if user_data:
                     await bot.punishments.insert_warning(
                         staff_id=978662093408591912,
-                        staff_name="ERM Systems",
+                        staff_name="EWM Systems",
                         user_id=user_data.user_id,
                         user_name=username,
                         guild_id=guild_id,
-                        reason="Rejoined within kick timer",
+                        reason="Wejoined widin kick timew owo~",
                         moderation_type=punishment,
                         time_epoch=current_time,
                     )

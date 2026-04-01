@@ -13,7 +13,7 @@ class OAuth2(commands.Cog):
 
     @commands.hybrid_command(
         name="link",
-        description="Link your Roblox account with ERM.",
+        description="Wink uw Wobwox account wid EWM~ owo",
         extras={"ephemeral": True},
     )
     async def link_roblox(self, ctx: commands.Context):
@@ -25,8 +25,8 @@ class OAuth2(commands.Cog):
             user = await self.bot.roblox.get_user(linked_account["roblox_id"])
             msg = await ctx.send(
                 embed=discord.Embed(
-                    title="Already Linked",
-                    description=f"You have already linked your account with `{user.name}`. Are you sure you would like to relink?",
+                    title="Awweady Winked owo~",
+                    description=f"U hav awweady winked ur account with `{user.name}`. Awe u suwe u wouwd wike to wewink? >w<",
                     color=BLANK_COLOR,
                 ),
                 view=(view := YesNoMenu(ctx.author.id)),
@@ -35,8 +35,8 @@ class OAuth2(commands.Cog):
             if timeout or not view.value:
                 await msg.edit(
                     embed=discord.Embed(
-                        title="Cancelled",
-                        description="This action was cancelled by the user.",
+                        title="Cancewwed uwu~",
+                        description="Dis action was cancewwed by da usew~ nyaa uwu~",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -45,8 +45,8 @@ class OAuth2(commands.Cog):
         timestamp = time.time()
         verification_message = {
             "embed": discord.Embed(
-                title="Verify with ERM",
-                description="**To link your account with ERM, click the button below.**\nIf you encounter an error, please contact ERM Support by running `/support`.",
+                title="Vewify wid EWM uwu",
+                description="**To wink uw account wid EWM, cwick da button bewow~ owo**\nIf u encountew an ewwow, pwease contact EWM Suppowt by wunning `/suppowt`.",
                 color=BLANK_COLOR,
             ),
             "view": AccountLinkingMenu(self.bot, ctx.author, ctx.interaction),
@@ -69,8 +69,8 @@ class OAuth2(commands.Cog):
                 ):
                     await msg.edit(
                         embed=discord.Embed(
-                            title=f"{self.bot.emoji_controller.get_emoji('success')} Linked",
-                            description="Your Roblox account has been successfully linked to ERM.",
+                            title=f"{self.bot.emoji_controller.get_emoji('success')} Winked",
+                            description="Uw Wobwox account has been s-successfuwwy winked to EWM~ hehe",
                             color=GREEN_COLOR,
                         )
                     )
@@ -83,7 +83,7 @@ class OAuth2(commands.Cog):
                         await msg.edit(
                             embed=discord.Embed(
                                 title=f"{self.bot.emoji_controller.get_emoji('success')} Linked",
-                                description="Your Roblox account has been successfully linked to ERM.",
+                                description="Ur Roblox account has been successfuwwy linked to ERM. >w<",
                                 color=GREEN_COLOR,
                             )
                         )

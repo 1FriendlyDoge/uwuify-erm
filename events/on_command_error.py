@@ -36,8 +36,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Cooldown",
-                        description=f"This command is on cooldown. Please try again in {error.retry_after:.2f} seconds.",
+                        title="Coowdown >w<",
+                        description=f"Dis command is on coowdown~ Pwease twy again in {error.retry_after:.2f} seconds owo~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -61,8 +61,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Connection Error",
-                        description="The server disconnected without sending a response. Your issue will be fixed if you try again.",
+                        title="Connection Ewwow >w<",
+                        description="Da sewvew disconnected without sending a wesponse~ Ur issue wiww be fixed if u twy again owo~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -74,8 +74,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="HTTP Error",
-                        description="I could not connect to the ROBLOX API. Please try again later.",
+                        title="HTTP Ewwow >w<",
+                        description="I couwd nyot connect to da WOBLOX API~ Pwease twy again watew uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -87,11 +87,11 @@ class OnCommandError(commands.Cog):
             (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title=f"PRC Response Failure ({error.status_code})",
+                        title=f"PRC Wesponse Faiwuwe ({error.status_code}) >w<",
                         description=(
-                            "Your server seems to be offline. If this is incorrect, PRC's API may be down."
+                            "Ur sewvew seems to be offwine~ If dis is incowwect, PRC's API may be down owo~"
                             if error.status_code == 422
-                            else "There seems to be issues with the PRC API. Stand by and wait a few minutes before trying again."
+                            else "Thewe seems to be issues with da PRC API~ Stand by and wait a few minutes befowe twying again uwu~"
                         ),
                         color=BLANK_COLOR,
                     )
@@ -126,8 +126,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Invalid Argument",
-                        description="You provided an invalid argument to this command.",
+                        title="Invawid Awgument >w<",
+                        description="U pwovided an invawid awgument to dis command~ nyaa~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -139,8 +139,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Player not found",
-                        description="I could not find a ROBLOX player with that corresponding username.",
+                        title="Pwayew nyot found >w<",
+                        description="I couwd nyot find a WOBLOX pwayew with dat cowwesponding usewname~ uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -152,8 +152,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Player not found",
-                        description="I could not find a ROBLOX player with that corresponding username.",
+                        title="Pwayew nyot found >w<",
+                        description="I couwd nyot find a WOBLOX pwayew with dat cowwesponding usewname~ uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -167,9 +167,9 @@ class OnCommandError(commands.Cog):
 
         if isinstance(error, commands.NoPrivateMessage):
             embed = discord.Embed(
-                title="Direct Messages",
-                description=f"I would love to talk to you more personally, "
-                f"but I can't do that in DMs. Please use me in a server.",
+                title="Diwect Messages owo",
+                description=f"I wouwd wuv to tawk to u mowe pewsonawwy, "
+                f"but I can't do dat in DMs~ Pwease use me in a sewvew uwu~",
                 color=BLANK_COLOR,
             )
             if not do_not_send:
@@ -180,8 +180,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.send(
                     embed=discord.Embed(
-                        title="Not Setup",
-                        description="This command requires for the bot to be configured before this command is ran. Please use `/setup` first.",
+                        title="Nyot Setup >w<",
+                        description="Dis command wequiwes fow da bot to be configuwed befowe dis command is wan~ Pwease use `/setup` fiwst uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -200,16 +200,16 @@ class OnCommandError(commands.Cog):
             if error.code == 9999 and not do_not_send:
                 await ctx.send(
                     embed=discord.Embed(
-                        title="API Versioning Change",
-                        description="Due to a new change with PRC's Private Server API, in order to use API features, the private server has to be __fully restarted__. If there is no one in-game, a player has to join the game for the API features to work effectively.\n\nIf the server is currently active, when all users leave the game and when one person joins back, the API features will begin working again.\n\nSorry for the inconvenience,\nERM Team",
+                        title="API Vewsioning Change owo",
+                        description="Due to a new change with PRC's Pwivate Sewvew API, in owdew to use API featuwes, da pwivate sewvew has to be __fuwwy westawted__. If thewe is nyo one in-game, a pwayew has to join da game fow da API featuwes to wowk effectivewy~\n\nIf da sewvew is cuwwentwy active, when aww usews weave da game and when one pewson joins back, da API featuwes wiww begin wowking again~\n\nSowwy fow da inconvenience,\nERM Team uwu~",
                         color=BLANK_COLOR,
                     ).set_footer(text=f"{error.code} | {error_id}")
                 )
             elif error.code in [2000, 2001, 2002, 401] and not do_not_send:
                 await ctx.send(
                     embed=discord.Embed(
-                        title="Not Linked",
-                        description=f"This server does not have an {aliases[error.platform]} server connected. \nTo link your {aliases[error.platform]} server, run **/{error.platform} link**.",
+                        title="Nyot Winked >w<",
+                        description=f"Dis sewvew does nyot hav an {aliases[error.platform]} sewvew connected~ \nTo wink ur {aliases[error.platform]} sewvew, wun **/{error.platform} link** owo~",
                         color=BLANK_COLOR,
                     ).set_footer(text=error_id)
                 )
@@ -217,8 +217,8 @@ class OnCommandError(commands.Cog):
                 if not do_not_send:
                     await ctx.send(
                         embed=discord.Embed(
-                            title="API Fatal Error",
-                            description=f"The {aliases[error.platform]} API encountered a fatal error which has resulted in us being unable to fetch {aliases[error.platform]} data.",
+                            title="API Fataw Ewwow >w<",
+                            description=f"Da {aliases[error.platform]} API encountewed a fataw ewwow which has wesuwted in us being unabwe to fetch {aliases[error.platform]} data~ uwu~",
                             color=BLANK_COLOR,
                         ).set_footer(text=f"{error.code} | {error_id}")
                     )
@@ -248,8 +248,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.send(
                     embed=discord.Embed(
-                        title="Not Permitted",
-                        description="You are not permitted to run this command.",
+                        title="Nyot Pewmitted >w<",
+                        description="U awe nyot pewmitted to wun dis command~ uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -260,8 +260,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.reply(
                     embed=discord.Embed(
-                        title="Overflow Error",
-                        description="A user has inputted an arbitrary time amount of time into ERM and we were unable to display the requested data because of this. Please find the source of this, and remove the excess amount of time.",
+                        title="Ovewfwow Ewwow >w<",
+                        description="A usew has inputted an awbitwawy time amount of time into ERM and we wewe unabwe to dispway da wequested data because of dis~ Pwease find da souwce of dis, and wemove da excess amount of time uwu~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -272,8 +272,8 @@ class OnCommandError(commands.Cog):
             return (
                 await ctx.send(
                     embed=discord.Embed(
-                        title="Missing Argument",
-                        description="You are missing a required argument to run this command.",
+                        title="Missing Awgument >w<",
+                        description="U awe missing a wequiwed awgument to wun dis command~ nyaa~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -316,13 +316,13 @@ class OnCommandError(commands.Cog):
             if not do_not_send:
                 await ctx.send(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('error')} Command Failure",
-                        description="The command you were attempting to run failed.\nContact ERM Support for assistance.",
+                        title=f"{self.bot.emoji_controller.get_emoji('error')} Command Faiwuwe >w<",
+                        description="Da command u wewe attempting to wun faiwed~\nContact ERM Suppowt fow assistance uwu~",
                         color=RED_COLOR,
-                    ).add_field(name="Error ID", value=f"[`{error_id}`]({config('SENTRY_BASE_URL') + error_link})", inline=False),
+                    ).add_field(name="Ewwow ID", value=f"[`{error_id}`]({config('SENTRY_BASE_URL') + error_link})", inline=False),
                     view=View().add_item(
                         Button(
-                            label="Contact ERM Support",
+                            label="Contact ERM Suppowt uwu",
                             style=discord.ButtonStyle.link,
                             url="https://discord.gg/FAC629TzBy",
                         )

@@ -182,24 +182,24 @@ class OnMessage(commands.Cog):
 
                                                     embed = (
                                                         discord.Embed(
-                                                            title=f"{self.bot.emoji_controller.get_emoji('security')} Abuse Detected",
+                                                            title=f"{self.bot.emoji_controller.get_emoji('security')} Abuse Detected >w<",
                                                             color=BLANK_COLOR,
                                                         )
                                                         .add_field(
-                                                            name="Staff Information",
+                                                            name="Staff Infowmation~",
                                                             value=(
-                                                                f"> **Username:** {roblox_player.name}\n"
-                                                                f"> **User ID:** {roblox_player.id}\n"
-                                                                f"> **Profile Link:** [Click here](https://roblox.com/users/{roblox_player.id}/profile)\n"
-                                                                f"> **Account Created:** <t:{int(roblox_player.created.timestamp())}>"
+                                                                f"> **Usewname:** {roblox_player.name}\n"
+                                                                f"> **Usew ID:** {roblox_player.id}\n"
+                                                                f"> **Pwofiwe Wink:** [Cwick hewe](https://roblox.com/users/{roblox_player.id}/profile)\n"
+                                                                f"> **Account Cweated:** <t:{int(roblox_player.created.timestamp())}>"
                                                             ),
                                                             inline=False,
                                                         )
                                                         .add_field(
-                                                            name="Abuse Information",
+                                                            name="Abuse Infowmation~",
                                                             value=(
                                                                 f"> **Type:** {'Mass-Kick' if 'kicked' in raw_content else 'Mass-Ban'}\n"
-                                                                f"> **Individuals Affected [{command.count(',')+1}]:** {command}\n"
+                                                                f"> **Individuaws Affected [{command.count(',')+1}]:** {command}\n"
                                                                 f"> **At:** <t:{int(message.created_at.timestamp())}>"
                                                             ),
                                                             inline=False,
@@ -534,9 +534,9 @@ class OnMessage(commands.Cog):
                     if role is not None:
                         if role in mention.roles and role not in message.author.roles:
                             embed = discord.Embed(
-                                title=f"Do not ping {role.name} or above!",
+                                title=f"Do nyot ping {role.name} ow above! >w<",
                                 color=discord.Color.red(),
-                                description=f"Do not ping those with {role.name}!\nIt is a violation of the rules, and you will be punished if you continue.",
+                                description=f"Do nyot ping those with {role.name}!\nIt is a viowation of da wuwes, and u wiww be punyished if u continue~ uwu~",
                             )
                             try:
                                 if message.reference:
@@ -551,12 +551,12 @@ class OnMessage(commands.Cog):
                                 pass
                             try:
                                 embed.set_footer(
-                                    text=f'Thanks, {dataset["customisation"]["brand_name"]}',
+                                    text=f'Thankies, {dataset["customisation"]["brand_name"]} uwu~',
                                     icon_url=get_guild_icon(bot, message.guild),
                                 )
                             except KeyError:
                                 embed.set_footer(
-                                    text=f"Thanks, ERM",
+                                    text=f"Thankies, ERM uwu~",
                                     icon_url=get_guild_icon(bot, message.guild),
                                 )
 
@@ -573,9 +573,9 @@ class OnMessage(commands.Cog):
                     if role is not None:
                         if role in mention.roles and role not in message.author.roles:
                             embed = discord.Embed(
-                                title=f"Do not ping {role.name}!",
+                                title=f"Do nyot ping {role.name}! >w<",
                                 color=discord.Color.red(),
-                                description=f"Do not ping those with {role.name}!\nIt is a violation of the rules, and you will be punished if you continue.",
+                                description=f"Do nyot ping those with {role.name}!\nIt is a viowation of da wuwes, and u wiww be punyished if u continue~ uwu~",
                             )
                             try:
                                 if message.reference:
@@ -590,12 +590,12 @@ class OnMessage(commands.Cog):
                                 pass
                             try:
                                 embed.set_footer(
-                                    text=f'Thanks, {dataset["customisation"]["brand_name"]}',
+                                    text=f'Thankies, {dataset["customisation"]["brand_name"]} uwu~',
                                     icon_url=get_guild_icon(bot, message.guild),
                                 )
                             except KeyError:
                                 embed.set_footer(
-                                    text=f"Thanks, ERM",
+                                    text=f"Thankies, ERM uwu~",
                                     icon_url=get_guild_icon(bot, message.guild),
                                 )
 
@@ -675,15 +675,15 @@ class OnMessage(commands.Cog):
                 ):
                     return await ctx.interaction.followup.send(
                         embed=discord.Embed(
-                            title="Empty Command",
-                            description="Due to Discord limitations, I am unable to send your reminder. Your message is most likely empty.",
+                            title="Empty Command >w<",
+                            description="Due to Discowd wimitations, I am unabwe to send ur wemindew~ Ur message is most wikewy empty uwu~",
                             color=discord.Color.red(),
                         )
                     )
                 await ctx.interaction.followup.send(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('success')} Command Ran",
-                        description=f"I've just ran the custom command in {channel.mention}.",
+                        title=f"{self.bot.emoji_controller.get_emoji('success')} Command Wan~",
+                        description=f"I've just wan da custom command in {channel.mention} owo~",
                         color=discord.Color.green(),
                     )
                 )
@@ -708,15 +708,15 @@ class OnMessage(commands.Cog):
                 ):
                     return await ctx.reply(
                         embed=discord.Embed(
-                            title="Empty Command",
-                            description="Due to Discord limitations, I am unable to send your reminder. Your message is most likely empty.",
+                            title="Empty Command >w<",
+                            description="Due to Discowd wimitations, I am unabwe to send ur wemindew~ Ur message is most wikewy empty uwu~",
                             color=discord.Color.red(),
                         )
                     )
                 await ctx.reply(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('success')} Command Ran",
-                        description=f"I've just ran the custom command in {channel.mention}.",
+                        title=f"{self.bot.emoji_controller.get_emoji('success')} Command Wan~",
+                        description=f"I've just wan da custom command in {channel.mention} owo~",
                         color=discord.Color.green(),
                     )
                 )

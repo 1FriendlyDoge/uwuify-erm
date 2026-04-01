@@ -54,7 +54,7 @@ class Setup(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="All", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Aww~", style=discord.ButtonStyle.green)
     async def all(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -65,7 +65,7 @@ class Setup(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Punishments", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(label="Punishments~", style=discord.ButtonStyle.blurple)
     async def punishments(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -77,7 +77,7 @@ class Setup(discord.ui.View):
         self.value = "punishments"
         self.stop()
 
-    @discord.ui.button(label="Staff Management", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(label="Staff Management~", style=discord.ButtonStyle.blurple)
     async def staff_management(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -89,7 +89,7 @@ class Setup(discord.ui.View):
         self.value = "staff management"
         self.stop()
 
-    @discord.ui.button(label="Shift Management", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(label="Shift Management~", style=discord.ButtonStyle.blurple)
     async def shift_management(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -107,59 +107,59 @@ class Dropdown(discord.ui.Select):
         self.user_id = user_id
         options = [
             discord.SelectOption(
-                label="Staff Management",
+                label="Staff Management~",
                 value="staff_management",
-                description="Inactivity Notices, and managing staff members",
+                description="Inactivity Nyotices, and managing staff membews owo",
             ),
             discord.SelectOption(
-                label="Anti-ping",
+                label="Anti-ping~",
                 value="antiping",
-                description="Responding to certain pings, ping immunity",
+                description="Wesponding to cewtain pings, ping immunity uwu",
             ),
             discord.SelectOption(
-                label="Punishments",
+                label="Punishments~",
                 value="punishments",
-                description="Punishing community members for rule infractions",
+                description="Punishing community membews fow wuwe infwactions >w<",
             ),
             discord.SelectOption(
-                label="Moderation Sync",
+                label="Modewation Sync~",
                 value="moderation_sync",
-                description="Syncing moderation actions from Roblox to Discord",
+                description="Syncing modewation actions fwom Wobwox to Discowd :3 uwu~",
             ),
             discord.SelectOption(
-                label="Shift Management",
+                label="Shift Management~",
                 value="shift_management",
-                description="Shifts (duty on, duty off), and where logs should go",
+                description="Shifts (duty on, duty off), and whewe wogs shouwd go~",
             ),
             discord.SelectOption(
-                label="Shift Types",
+                label="Shift Types~",
                 value="shift_types",
-                description="View and customise shift types",
+                description="View and customise shift types~",
             ),
             discord.SelectOption(
-                label="Verification",
+                label="Vewification~",
                 value="verification",
-                description="Roblox Verification, simplified!",
+                description="Wobwox Vewification, simpwified!~",
             ),
             discord.SelectOption(
-                label="Game Logging",
+                label="Game Wogging~",
                 value="game_logging",
-                description="Game Logging! Messages, STS, Events, and more!",
+                description="Game Wogging!~ Messages, STS, Events, and mowe!~ hehe~",
             ),
             discord.SelectOption(
-                label="Customisation",
+                label="Customisation~",
                 value="customisation",
-                description="Colours, branding, prefix, to customise to your liking",
+                description="Cowouws, bwanding, pwefix, to customise to uw wiking uwu",
             ),
             discord.SelectOption(
-                label="Game Security",
+                label="Game Secuwity~",
                 value="security",
-                description="Anti-abuse detection, and security measures",
+                description="Anti-abuse detection, and secuwity measuwes~",
             ),
             discord.SelectOption(
-                label="Privacy",
+                label="Pwivacy~",
                 value="privacy",
-                description="Disable global warnings, privacy features",
+                description="Disabwe gwobaw wawnings, pwivacy featuwes owo",
             ),
         ]
 
@@ -167,7 +167,7 @@ class Dropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Select a category", min_values=1, max_values=1, options=options
+            placeholder="Sewect a categowy~", min_values=1, max_values=1, options=options
         )
 
     async def callback(self, interaction: discord.Interaction):
@@ -186,42 +186,42 @@ class ShiftModificationDropdown(discord.ui.Select):
         if other is False:
             options = [
                 discord.SelectOption(
-                    label="On Duty",
+                    label="On Duty~",
                     value="on",
-                    description="Start your in-game shift",
+                    description="Stawt uw in-game shift~",
                 ),
                 discord.SelectOption(
-                    label="Toggle Break",
+                    label="Toggwe Bweak~",
                     value="break",
-                    description="Taking a break? Toggle your break status",
+                    description="Taking a bweak? Toggwe uw bweak status owo",
                 ),
                 discord.SelectOption(
-                    label="Off Duty",
+                    label="Off Duty~",
                     value="off",
-                    description="End your in-game shift",
+                    description="End uw in-game shift~",
                 ),
                 discord.SelectOption(
-                    label="Void shift",
+                    label="Void shift~",
                     value="void",
-                    description="Void your in-game shift. This is irreversible.",
+                    description="Void uw in-game shift.~ Dis is iwwevewsibwe.~ >w<",
                 ),
             ]
         else:
             options = [
                 discord.SelectOption(
-                    label="On Duty",
+                    label="On Duty~",
                     value="on",
-                    description="Start their in-game shift",
+                    description="Stawt deiw in-game shift~",
                 ),
                 discord.SelectOption(
-                    label="Toggle Break",
+                    label="Toggwe Bweak~",
                     value="break",
-                    description="Taking a break? Toggle their break status",
+                    description="Taking a bweak? Toggwe deiw bweak status owo",
                 ),
                 discord.SelectOption(
-                    label="Off Duty",
+                    label="Off Duty~",
                     value="off",
-                    description="End their in-game shift",
+                    description="End deiw in-game shift~",
                 ),
             ]
 
@@ -229,7 +229,7 @@ class ShiftModificationDropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Select an option", min_values=1, max_values=1, options=options
+            placeholder="Sewect an option~", min_values=1, max_values=1, options=options
         )
 
     async def callback(self, interaction: discord.Interaction):
@@ -253,24 +253,24 @@ class AdministrativeActionsDropdown(discord.ui.Select):
         self.user_id = user_id
         options = [
             discord.SelectOption(
-                label="Add time",
+                label="Add time~",
                 value="add",
-                description="Add time to their current shift",
+                description="Add time to deiw cuwwent shift~",
             ),
             discord.SelectOption(
-                label="Remove time",
+                label="Wemove time~",
                 value="remove",
-                description="Remove time from their current shift",
+                description="Wemove time fwom deiw cuwwent shift~",
             ),
             discord.SelectOption(
-                label="Void shift",
+                label="Void shift~",
                 value="void",
-                description="Void their shift, and remove it from the leaderboard",
+                description="Void deiw shift, and wemove it fwom da weadewboawd uwu",
             ),
             discord.SelectOption(
-                label="Clear Member Shifts",
+                label="Cweaw Membew Shifts~",
                 value="clear",
-                description="Clear all of their shifts from the leaderboard",
+                description="Cweaw aww of deiw shifts fwom da weadewboawd >w<",
             ),
         ]
 
@@ -278,7 +278,7 @@ class AdministrativeActionsDropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Administrative Actions",
+            placeholder="Administwative Actions~",
             min_values=1,
             max_values=1,
             options=options,
@@ -324,7 +324,7 @@ class CustomDropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Select an option",
+            placeholder="Sewect an option~",
             min_values=1,
             max_values=limit,
             options=optionList,
@@ -363,7 +363,7 @@ class MultiPaginatorDropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Select an option",
+            placeholder="Sewect an option~",
             min_values=1,
             max_values=limit,
             options=optionList,
@@ -373,7 +373,7 @@ class MultiPaginatorDropdown(discord.ui.Select):
         if interaction.user.id == self.user_id:
             await interaction.response.defer()
             await interaction.message.edit(
-                content=f"<:ERMCheck:1111089850720976906>  **{interaction.user.name},** you're currently viewing the **{self.values[0].replace('_', ' ').title()}** commands!",
+                content=f"<:ERMCheck:1111089850720976906>  **{interaction.user.name},** u'we cuwwentwy viewing da **{self.values[0].replace('_', ' ').title()}** commands!~ uwu",
                 embed=self.pages.get(self.values[0]),
             )
         else:
@@ -404,7 +404,7 @@ class MultiDropdown(discord.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Select an option",
+            placeholder="Sewect an option~",
             max_values=len(optionList),
             options=optionList,
         )
@@ -461,7 +461,7 @@ class YesNoMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.green)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -475,7 +475,7 @@ class YesNoMenu(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="No", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.danger)
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -496,14 +496,14 @@ class AcknowledgeMenu(discord.ui.View):
         self.user_id = user_id
         if note:
             for child in self.children:
-                if child.label == "NOTE":
+                if child.label == "NOTE~":
                     child.label = note
 
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
     @discord.ui.button(
-        label="I acknowledge and understand", style=discord.ButtonStyle.green
+        label="I acknowledge and undewstand owo~", style=discord.ButtonStyle.green
     )
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
@@ -519,7 +519,7 @@ class AcknowledgeMenu(discord.ui.View):
 
     # This one is similar to the confirmation button except sets the inner value to `False`
     @discord.ui.button(
-        label="NOTE", style=discord.ButtonStyle.secondary, row=1, disabled=True
+        label="NOTE~", style=discord.ButtonStyle.secondary, row=1, disabled=True
     )
     async def note(self, interaction: discord.Interaction, button: discord.ui.Button):
         pass
@@ -534,7 +534,7 @@ class YesNoExpandedMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Yes, continue", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Yes, continue owo~", style=discord.ButtonStyle.primary)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -549,7 +549,7 @@ class YesNoExpandedMenu(discord.ui.View):
 
     # This one is similar to the confirmation button except sets the inner value to `False`
     @discord.ui.button(
-        label="I'll do this another time", style=discord.ButtonStyle.secondary
+        label="I'ww do dis anodew time~", style=discord.ButtonStyle.secondary
     )
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
@@ -573,7 +573,7 @@ class YesNoColourMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.primary)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -587,7 +587,7 @@ class YesNoColourMenu(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="No", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.secondary)
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -621,13 +621,13 @@ class CustomExecutionButton(discord.ui.Button):
     def __init__(self, user_id, label, style, emoji=None, func=None, row=0, disabled=False):
         """
 
-        A button used for custom execution functions. This is often used to subvert pagination limitations.
+        A button used fow custom execution functions. Dis is often used to subvewt pagination limitations.
 
-        :param user_id: the user who can use this button
-        :param label: the label of the button
-        :param style: style of the button : discord.ButtonStyle
-        :param emoji: emoji of the button
-        :param func: function to be executed when pressed
+        :pawam user_id: da usew who can use dis button
+        :pawam label: da label of da button
+        :pawam stywe: stywe of da button : discowd.ButtonStywe
+        :pawam emoji: emoji of da button
+        :pawam func: function to be executed when pwessed
         """
 
         super().__init__(label=label, style=style, emoji=emoji, row=row, disabled=disabled)
@@ -640,8 +640,8 @@ class CustomExecutionButton(discord.ui.Button):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -677,7 +677,7 @@ class EnableDisableMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Enable", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Enabwe uwu~", style=discord.ButtonStyle.green)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -691,7 +691,7 @@ class EnableDisableMenu(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Disable", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Disabwe uwu~", style=discord.ButtonStyle.danger)
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -714,7 +714,7 @@ class LinkPathwayMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="ERM", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="ERM uwu~", style=discord.ButtonStyle.secondary)
     async def ERM(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -728,7 +728,7 @@ class LinkPathwayMenu(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Bloxlink", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Bloxlink owo~", style=discord.ButtonStyle.danger)
     async def Bloxlink(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -753,7 +753,7 @@ class ShiftModify(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Add time (+)", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Add time (+) uwu~", style=discord.ButtonStyle.green)
     async def add(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -767,7 +767,7 @@ class ShiftModify(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Remove time (-)", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Remove time (-) >w<", style=discord.ButtonStyle.danger)
     async def remove(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -780,7 +780,7 @@ class ShiftModify(discord.ui.View):
         await interaction.edit_original_response(view=self)
         self.stop()
 
-    @discord.ui.button(label="End shift", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="End shift owo~", style=discord.ButtonStyle.danger)
     async def end(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -793,7 +793,7 @@ class ShiftModify(discord.ui.View):
         await interaction.edit_original_response(view=self)
         self.stop()
 
-    @discord.ui.button(label="Void shift", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Void shift uwu~", style=discord.ButtonStyle.danger)
     async def void(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -816,7 +816,7 @@ class ActivityNoticeModification(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Add time (+)", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Add time (+) uwu~", style=discord.ButtonStyle.green)
     async def add(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -830,7 +830,7 @@ class ActivityNoticeModification(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Remove time (-)", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Remove time (-) >w<", style=discord.ButtonStyle.danger)
     async def remove(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -843,7 +843,7 @@ class ActivityNoticeModification(discord.ui.View):
         await interaction.edit_original_response(view=self)
         self.stop()
 
-    @discord.ui.button(label="End Activity Notice", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="End Activity Notice owo~", style=discord.ButtonStyle.danger)
     async def end(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -856,7 +856,7 @@ class ActivityNoticeModification(discord.ui.View):
         await interaction.edit_original_response(view=self)
         self.stop()
 
-    @discord.ui.button(label="Void Activity Notice", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Void Activity Notice uwu~", style=discord.ButtonStyle.danger)
     async def void(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -879,7 +879,7 @@ class PartialShiftModify(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Add time (+)", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Add time (+) uwu~", style=discord.ButtonStyle.green)
     async def add(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -893,7 +893,7 @@ class PartialShiftModify(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="Remove time (-)", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Remove time (-) >w<", style=discord.ButtonStyle.danger)
     async def remove(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -926,7 +926,7 @@ class LOAMenu(discord.ui.View):
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
     @discord.ui.button(
-        label="Accept", style=discord.ButtonStyle.green, custom_id="loamenu:accept"
+        label="Accept owo~", style=discord.ButtonStyle.green, custom_id="loamenu:accept"
     )
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
         # await interaction.response.defer()
@@ -939,8 +939,8 @@ class LOAMenu(discord.ui.View):
 
         for item in self.children:
             item.disabled = True
-            if item.label == "Accept":
-                item.label = "Accepted"
+            if item.label == "Accept owo~":
+                item.label = "Accepted owo~"
             else:
                 self.remove_item(item)
         s_loa = None
@@ -961,8 +961,8 @@ class LOAMenu(discord.ui.View):
         if user is None:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Could not find member",
-                    description="I could not find the staff member which requested this Leave of Absence.",
+                    title="Couwd nyot find membew owo~",
+                    description="I couwd nyot find da staff membew which requested dis Leave of Absence.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1021,7 +1021,7 @@ class LOAMenu(discord.ui.View):
 
     # This one is similar to the confirmation button except sets the inner value to `False`
     @discord.ui.button(
-        label="Deny",
+        label="Deny~",
         style=discord.ButtonStyle.danger,
         custom_id="loamenu:deny",
     )
@@ -1041,8 +1041,8 @@ class LOAMenu(discord.ui.View):
                     "value",
                     (
                         discord.ui.TextInput(
-                            label="Reason for denial",
-                            placeholder="Enter a reason for denying this person's request.",
+                            label="Reason fow deniaw owo~",
+                            placeholder="Entew a reason fow denying dis pewson's request. >w<",
                             required=True,
                         )
                     ),
@@ -1060,7 +1060,7 @@ class LOAMenu(discord.ui.View):
         for item in self.children:
             item.disabled = True
             if item.label == button.label:
-                item.label = "Denied"
+                item.label = "Denied~"
             else:
                 self.remove_item(item)
         s_loa = None
@@ -1073,8 +1073,8 @@ class LOAMenu(discord.ui.View):
         if not s_loa:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Could not find LOA",
-                    description="I could not find the activity notice associated with this menu.",
+                    title="Couwd nyot find LOA~",
+                    description="I couwd nyot find da activity notice associated wid dis menu.",
                 ),
                 ephemeral=True,
             )
@@ -1086,8 +1086,8 @@ class LOAMenu(discord.ui.View):
         if not user:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Could not find member",
-                    description="I could not find the staff member who made this request.",
+                    title="Couwd nyot find membew owo~",
+                    description="I couwd nyot find da staff membew who made dis request.~",
                 ),
                 ephemeral=True,
             )
@@ -1095,7 +1095,7 @@ class LOAMenu(discord.ui.View):
         try:
             await user.send(
                 embed=discord.Embed(
-                    title="Activity Notice Denied",
+                    title="Activity Notice Denied uwu~",
                     description=f"Your {s_loa['type']} request in **{interaction.guild.name}** was denied.\n**Reason:** {reason}",
                     color=BLANK_COLOR,
                 )
@@ -1122,7 +1122,7 @@ class AddReminder(discord.ui.View):
         self.value = None
         self.user_id = user_id
 
-    @discord.ui.button(label="Create a reminder", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate a remindew owo~", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             await interaction.response.defer()
@@ -1143,7 +1143,7 @@ class ManageReminders(discord.ui.View):
         self.user_id = user_id
         self.modal: typing.Union[None, CustomModal] = None
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def create(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1152,25 +1152,25 @@ class ManageReminders(discord.ui.View):
                     (
                         "name",
                         discord.ui.TextInput(
-                            label="Name",
-                            placeholder="Name of your reminder",
+                            label="Name >w<",
+                            placeholder="Name of uw remindew owo~",
                             required=True,
                         ),
                     ),
                     (
                         "content",
                         discord.ui.TextInput(
-                            label="Content",
+                            label="Content~",
                             style=discord.TextStyle.long,
-                            placeholder="Content of your reminder",
+                            placeholder="Content of uw remindew~",
                             required=True,
                         ),
                     ),
                     (
                         "time",
                         discord.ui.TextInput(
-                            label="Interval",
-                            placeholder="What would you like you like the interval to be? (e.g. 5m)",
+                            label="Intewvaw uwu~",
+                            placeholder="What wouwd u like u like da intewvaw to be? (e.g. 5m)~",
                             required=True,
                             style=discord.TextStyle.short,
                         ),
@@ -1184,14 +1184,14 @@ class ManageReminders(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Edit uwu~", style=discord.ButtonStyle.primary)
     async def edit(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1200,8 +1200,8 @@ class ManageReminders(discord.ui.View):
                     (
                         "identifier",
                         discord.ui.TextInput(
-                            label="ID",
-                            placeholder="ID of your reminder",
+                            label="ID~",
+                            placeholder="ID of uw remindew >w<",
                             required=True,
                         ),
                     ),
@@ -1214,14 +1214,14 @@ class ManageReminders(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Pause", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Pause owo~", style=discord.ButtonStyle.secondary)
     async def pause(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1230,8 +1230,8 @@ class ManageReminders(discord.ui.View):
                     (
                         "id_value",
                         discord.ui.TextInput(
-                            label="ID",
-                            placeholder="ID of your reminder",
+                            label="ID~",
+                            placeholder="ID of uw remindew >w<",
                             required=True,
                         ),
                     ),
@@ -1244,14 +1244,14 @@ class ManageReminders(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.red)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.red)
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1260,8 +1260,8 @@ class ManageReminders(discord.ui.View):
                     (
                         "id_value",
                         discord.ui.TextInput(
-                            label="ID",
-                            placeholder="ID of your reminder",
+                            label="ID~",
+                            placeholder="ID of uw remindew >w<",
                             required=True,
                         ),
                     ),
@@ -1274,8 +1274,8 @@ class ManageReminders(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -1292,7 +1292,7 @@ class ManageActions(discord.ui.View):
         self.modal: typing.Union[None, CustomModal] = None
         self.toolkit: typing.Optional[ActionCreationToolkit] = None
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def create(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1301,8 +1301,8 @@ class ManageActions(discord.ui.View):
                     (
                         "name",
                         discord.ui.TextInput(
-                            label="Name",
-                            placeholder="Action Name",
+                            label="Name >w<",
+                            placeholder="Action Name >w<",
                             required=True,
                         ),
                     )
@@ -1315,8 +1315,8 @@ class ManageActions(discord.ui.View):
                 self.bot, self.modal.name.value, self.user_id
             )
             embed = discord.Embed(
-                title="Create an Action",
-                description="Using this panel, you can assign integrations to occur when you execute your action. These can affect your ER:LC servers, execute custom commands, and more. These actions will only run when you run `/actions execute` with your action.\n\n**On Execution:**\n > No Integrations",
+                title="Cweate an Action~",
+                description="Using dis panel, u can assign integwations to occuw when u execute uw action. These can affect uw ER:LC sewvews, execute custom commands, and mowe. These actions wiww onwy run when u run `/actions execute` wid uw action.\n\n**On Execution:**\n > Nyo Integwations",
                 color=BLANK_COLOR,
             )
             await interaction.message.edit(embed=embed, view=self.toolkit)
@@ -1326,7 +1326,7 @@ class ManageActions(discord.ui.View):
             await interaction.message.edit(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Added",
-                    description="I have successfully added this action.",
+                    description="I hab successfuwwy added dis action.~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -1336,14 +1336,14 @@ class ManageActions(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Edit uwu~", style=discord.ButtonStyle.secondary)
     async def edit(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1352,8 +1352,8 @@ class ManageActions(discord.ui.View):
                     (
                         "name",
                         discord.ui.TextInput(
-                            label="ID",
-                            placeholder="Action ID",
+                            label="ID~",
+                            placeholder="Action ID >w<",
                             required=True,
                         ),
                     )
@@ -1363,18 +1363,18 @@ class ManageActions(discord.ui.View):
             await self.modal.wait()
             actions = [
                 i
-                async for i in self.bot.actions.db.find({"Guild": interaction.guild.id})
+                async for i in self.bot.actions.db.find({"Guiwd~": interaction.guild.id})
             ]
             selected_action = None
             for item in actions:
-                if item["ActionID"] == int(self.modal.name.value):
+                if item["ActionID~"] == int(self.modal.name.value):
                     selected_action = item
                     break
             else:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Not Found",
-                        description="I could not find an action with that ID.",
+                        title="Nyot Found~",
+                        description="I couwd nyot find an action wid dat ID. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -1385,34 +1385,34 @@ class ManageActions(discord.ui.View):
             )
             self.toolkit.action_data = selected_action
             embed = discord.Embed(
-                title="Edit an Action",
-                description="Using this panel, you can assign integrations to occur when you execute your action. These can affect your ER:LC servers, execute custom commands, and more. These actions will only run when you run `/actions execute` with your action.\n\n**On Execution:**\n ",
+                title="Edit an Action uwu~",
+                description="Using dis panel, u can assign integwations to occuw when u execute uw action. These can affect uw ER:LC sewvews, execute custom commands, and mowe. These actions wiww onwy run when u run `/actions execute` wid uw action.\n\n**On Execution:**\n ",
                 color=BLANK_COLOR,
             )
             embed.description += "\n".join(
                 [
-                    f'> **{i["IntegrationName"]}{":** {}".format(i["ExtraInformation"]) if i["ExtraInformation"] is not None else "**"}'
-                    for i in selected_action["Integrations"]
+                    f'> **{i["IntegwationName~"]}{":** {}".format(i["ExtwaInfowmation owo~"]) if i["ExtwaInfowmation owo~"] is not None else "**"}'
+                    for i in selected_action["Integwations~"]
                 ]
             )
-            embed.description += "\n> *New Integration*"
-            if len(selected_action.get("Conditions", []) or []) != 0:
+            embed.description += "\n> *Nyew Integwation~*"
+            if len(selected_action.get("Conditions >w<", []) or []) != 0:
                 embed.add_field(
-                    name="Conditions",
+                    name="Conditions >w<",
                     value="\n".join(
                         [
-                            f"> **{('`{}`'.format(item.get('LogicGate', '')) + ' ') if item.get('LogicGate') else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
-                            for item in selected_action["Conditions"]
+                            f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
+                            for item in selected_action["Conditions >w<"]
                         ]
                     ),
                     inline=False,
                 )
                 embed.add_field(
-                    name="Execution Interval",
+                    name="Execution Intewvaw~",
                     value=td_format(
                         datetime.timedelta(
                             seconds=selected_action.get(
-                                "ConditionExecutionInterval", 300
+                                "ConditionExecutionIntewvaw >w<", 300
                             )
                         )
                     ),
@@ -1425,7 +1425,7 @@ class ManageActions(discord.ui.View):
             await interaction.message.edit(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Edited",
-                    description="I have successfully edited this action.",
+                    description="I hab successfuwwy edited dis action. owo~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -1435,14 +1435,14 @@ class ManageActions(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.red)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.red)
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.modal = CustomModal(
@@ -1451,8 +1451,8 @@ class ManageActions(discord.ui.View):
                     (
                         "id_value",
                         discord.ui.TextInput(
-                            label="ID",
-                            placeholder="Action ID",
+                            label="ID~",
+                            placeholder="Action ID >w<",
                             required=True,
                         ),
                     ),
@@ -1461,12 +1461,12 @@ class ManageActions(discord.ui.View):
             await interaction.response.send_modal(self.modal)
             await self.modal.wait()
             await self.bot.actions.db.delete_one(
-                {"ActionID": int(self.modal.id_value.value)}
+                {"ActionID~": int(self.modal.id_value.value)}
             )
             await interaction.response.send_message(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Deleted Action",
-                    description="Action has been deleted successfully.",
+                    description="Action has been deweted successfuwwy. owo~",
                     color=GREEN_COLOR,
                 )
             )
@@ -1474,8 +1474,8 @@ class ManageActions(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -1491,7 +1491,7 @@ class CustomisePunishmentType(discord.ui.View):
             None
         )
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             modal = CreatePunishmentType()
@@ -1507,7 +1507,7 @@ class CustomisePunishmentType(discord.ui.View):
             await interaction.response.defer(ephemeral=True, thinking=True)
             return await generalised_interaction_check_failure(interaction.followup)
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.danger)
     async def deny(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             modal = DeletePunishmentType()
@@ -1545,14 +1545,14 @@ class CustomCommandModification(discord.ui.View):
         ):
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
 
             await message.edit(view=self)
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
             await message.edit(view=self)
 
@@ -1562,8 +1562,8 @@ class CustomCommandModification(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1572,13 +1572,13 @@ class CustomCommandModification(discord.ui.View):
 
     async def refresh_ui(self, message: discord.Message):
         embed = discord.Embed(
-            title="Custom Commands",
+            title="Custom Commands uwu~",
             description=(
-                "**Command Information**\n"
+                "**Command Infowmation**\n"
                 f"> **Command ID:** `{self.command_data['id']}`\n"
                 f"> **Command Name:** {self.command_data['name']}\n"
                 f"> **Creator:** <@{self.command_data['author']}>\n"
-                f"> **Default Channel:** {'<#{}>'.format(self.command_data.get('channel')) if self.command_data.get('channel') is not None else 'None selected'}\n"
+                f"> **Default Channel:** {'<#{}>'.format(self.command_data.get('channel')) if self.command_data.get('channel') is not None else 'None sewected owo~'}\n"
                 f"\n**Message:**\n"
                 f"View the message below by clicking 'View Message'."
             ),
@@ -1586,46 +1586,46 @@ class CustomCommandModification(discord.ui.View):
         )
         await message.edit(embed=embed)
 
-    @discord.ui.button(label="View Variables", row=0)
+    @discord.ui.button(label="View Vawiables >w<", row=0)
     async def view_variables(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         return await interaction.response.send_message(
             embed=discord.Embed(
                 description=(
-                    "With **ERM Custom Commands**, you can use custom variables to adapt to the current circumstances when the command is ran.\n"
-                    "`{user}` - Mention of the person using the command.\n"
-                    "`{username}` - Name of the person using the command.\n"
-                    "`{display_name}` - Display name of the person using the command.\n"
-                    "`{time}` - Timestamp format of the time of the command execution.\n"
-                    "`{server}` - Name of the server this is being ran in.\n"
-                    "`{channel}` - Mention of the channel the command is being ran in.\n"
-                    "`{prefix}` - The custom prefix of the bot.\n"
-                    "`{onduty}` - Number of staff which are on duty within your server.\n"
-                    "\n**PRC Specific Variables**\n"
-                    "`{join_code}` - Join Code of the ER:LC server\n"
-                    "`{players}` - Current players in the ER:LC server\n"
-                    "`{max_players}` - Maximum players of the ER:LC server\n"
-                    "`{queue}` - Number of players in the queue\n"
-                    "`{staff}` - Number of staff members in-game\n"
-                    "`{mods}` - Number of mods in-game\n"
-                    "`{admins}` - Number of admins in-game\n"
+                    "Wid **ERM Custom Commands**, u can use custom vawiables to adapt to da cuwwent ciwcumstances when da command is ran.\n"
+                    "`{user}` - Mention of da pewson using da command.\n"
+                    "`{username}` - Name of da pewson using da command.\n"
+                    "`{display_name}` - Display name of da pewson using da command.\n"
+                    "`{time}` - Timestamp fowmat of da time of da command execution.\n"
+                    "`{server}` - Name of da sewvew dis is being ran in.\n"
+                    "`{channel}` - Mention of da channel da command is being ran in.\n"
+                    "`{prefix}` - Da custom pwefix of da bot.\n"
+                    "`{onduty}` - Numbew of staff which awe on duty widin uw sewvew.\n"
+                    "\n**PRC Specific Vawiables**\n"
+                    "`{join_code}` - Join Code of da ER:LC sewvew\n"
+                    "`{players}` - Cuwwent playews in da ER:LC sewvew\n"
+                    "`{max_players}` - Maximum playews of da ER:LC sewvew\n"
+                    "`{queue}` - Numbew of playews in da queue\n"
+                    "`{staff}` - Numbew of staff membews in-game\n"
+                    "`{mods}` - Numbew of mods in-game\n"
+                    "`{admins}` - Numbew of admins in-game\n"
                 ),
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
         )
 
-    @discord.ui.button(label="Edit Name", row=0)
+    @discord.ui.button(label="Edit Name~", row=0)
     async def edit_custom_command_name(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         modal = CustomModal(
-            "Edit Custom Command Name",
+            "Edit Custom Command Name owo~",
             [
                 (
                     "name",
-                    discord.ui.TextInput(label="Custom Command Name", max_length=50),
+                    discord.ui.TextInput(label="Custom Command Name >w<", max_length=50),
                 )
             ],
         )
@@ -1644,7 +1644,7 @@ class CustomCommandModification(discord.ui.View):
         await self.check_ability(interaction.message)
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="View Message", row=0)
+    @discord.ui.button(label="View Message~", row=0)
     async def view_custom_command_message(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -1653,8 +1653,8 @@ class CustomCommandModification(discord.ui.View):
         async def _return_failure():
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="No Message Found",
-                    description="There is currently no message associated with this Custom Command.\nYou can add one using 'Edit Message'.",
+                    title="Nyo Message Found owo~",
+                    description="Thewe is cuwwentwy nyo message associated wid dis Custom Command.\nU can add one using 'Edit Message'. owo~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1691,7 +1691,7 @@ class CustomCommandModification(discord.ui.View):
             view=view,
         )
 
-    @discord.ui.button(label="Edit Message", row=0)
+    @discord.ui.button(label="Edit Message~", row=0)
     async def edit_message(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -1734,7 +1734,7 @@ class CustomCommandModification(discord.ui.View):
         await self.refresh_ui(interaction.message)
         await (await interaction.original_response()).delete()
 
-    @discord.ui.button(label="Edit Buttons", row=0)
+    @discord.ui.button(label="Edit Buttons~", row=0)
     async def edit_buttons(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -1766,7 +1766,7 @@ class CustomCommandModification(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Default Channel",
+        placeholder="Default Channel owo~",
         row=1,
         min_values=0,
         max_values=1,
@@ -1786,14 +1786,14 @@ class CustomCommandModification(discord.ui.View):
         await self.check_ability(interaction.message)
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=2)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=2)
     async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
         self.value = False
         pass
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, row=2, disabled=True
+        label="Finish uwu~", style=discord.ButtonStyle.green, row=2, disabled=True
     )
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
@@ -1826,7 +1826,7 @@ class CounterButton(discord.ui.Button):
 class ViewVotersButton(discord.ui.Button):
     def __init__(self, row, counter_button):
         super().__init__(
-            label="🔍View Voters", style=discord.ButtonStyle.secondary, row=row
+            label="🔍View Votews", style=discord.ButtonStyle.secondary, row=row
         )
         self.counter_button = counter_button
 
@@ -1835,10 +1835,10 @@ class ViewVotersButton(discord.ui.Button):
             interaction.guild.get_member(user_id).mention
             for user_id in self.counter_button.voters
         ]
-        voter_list = "\n".join(voters) if voters else "No votes yet."
+        voter_list = "\n".join(voters) if voters else "Nyo votes yet.~"
         await interaction.response.send_message(
             embed=discord.Embed(
-                title="Voters", description=voter_list, color=BLANK_COLOR
+                title="Votews owo~", description=voter_list, color=BLANK_COLOR
             ),
             ephemeral=True,
         )
@@ -1862,43 +1862,43 @@ class ButtonCustomisation(discord.ui.View):
         self.value = None
         self.user_id = user_id
 
-    @discord.ui.button(label="Add Button", row=4)
+    @discord.ui.button(label="Add Button uwu~", row=4)
     async def add_button(self, interaction: discord.Interaction, _):
         if len(self.children) >= 25:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Limitation",
-                    description="You can only have a maximum of 25 buttons per custom command.",
+                    title="Limitation >w<",
+                    description="U can onwy hab a maximum of 25 buttons pew custom command.~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
         modal = CustomModal(
-            "Add a Button",
+            "Add a Button uwu~",
             [
                 (
                     "label",
                     discord.ui.TextInput(
-                        label="Label",
+                        label="Label >w<",
                         max_length=80,
-                        placeholder="Label of the button",
+                        placeholder="Label of da button owo~",
                         required=True,
                     ),
                 ),
                 (
                     "url",
                     discord.ui.TextInput(
-                        label="URL",
+                        label="URL owo~",
                         max_length=500,
-                        placeholder="URL of the button",
+                        placeholder="URL of da button uwu~",
                         required=True,
                     ),
                 ),
                 (
                     "row",
                     discord.ui.TextInput(
-                        label="Row", placeholder="Row of the button (e.g. 0, 1, 2, 3)"
+                        label="Row >w<", placeholder="Row of da button (e.g. 0, 1, 2, 3) >w<"
                     ),
                 ),
             ],
@@ -1910,8 +1910,8 @@ class ButtonCustomisation(discord.ui.View):
         if not all([i.isdigit() for i in modal.row.value.strip()]):
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Row",
-                    description="The row you provided is not a valid number.",
+                    title="Invawid Row >w<",
+                    description="Da row u pwovided is nyot a vawid numbew. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1920,8 +1920,8 @@ class ButtonCustomisation(discord.ui.View):
         if int(modal.row.value.strip()) > 4:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Row",
-                    description="The row you provided must be within the range 0-4.",
+                    title="Invawid Row >w<",
+                    description="Da row u pwovided must be widin da range 0-4. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1930,8 +1930,8 @@ class ButtonCustomisation(discord.ui.View):
         if int(modal.row.value.strip()) < 0:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Row",
-                    description="The row you provided must be within the range 0-4.",
+                    title="Invawid Row >w<",
+                    description="Da row u pwovided must be widin da range 0-4. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1940,8 +1940,8 @@ class ButtonCustomisation(discord.ui.View):
         if not modal.label.value.strip():
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Label",
-                    description="The label you provided is not valid.",
+                    title="Invawid Label~",
+                    description="Da label u pwovided is nyot vawid. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1950,8 +1950,8 @@ class ButtonCustomisation(discord.ui.View):
         if not modal.url.value.strip():
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid URL",
-                    description="The URL you provided is not valid.",
+                    title="Invawid URL uwu~",
+                    description="Da URL u pwovided is nyot vawid. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -1965,8 +1965,8 @@ class ButtonCustomisation(discord.ui.View):
         ):
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid URL",
-                    description="The URL you provided is not valid.",
+                    title="Invawid URL uwu~",
+                    description="Da URL u pwovided is nyot vawid. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -2007,17 +2007,17 @@ class ButtonCustomisation(discord.ui.View):
                 }
             ]
 
-    @discord.ui.button(label="Remove Button", row=4)
+    @discord.ui.button(label="Wemove Button~", row=4)
     async def remove_button(self, interaction: discord.Interaction, _):
         modal = CustomModal(
-            "Remove a Button",
+            "Wemove a Button uwu",
             [
                 (
                     "label",
                     discord.ui.TextInput(
-                        label="Label",
+                        label="Wabew~",
                         max_length=80,
-                        placeholder="Label of the button",
+                        placeholder="Wabew of da button owo~",
                         required=True,
                     ),
                 ),
@@ -2040,36 +2040,36 @@ class ButtonCustomisation(discord.ui.View):
             if isinstance(button, discord.ui.Button):
                 if button.label.lower() == modal.label.value.strip().lower():
                     if button.label not in [
-                        "Add Button",
-                        "Remove Button",
-                        "Counter Button",
-                        "Cancel",
-                        "Finish",
+                        "Add Button uwu~",
+                        "Wemove Button~",
+                        "Countew Button >w<",
+                        "Cancew owo~",
+                        "Finyish~",
                     ]:
                         self.remove_item(button)
                         break
 
         await message.edit(view=self)
 
-    @discord.ui.button(label="Counter Button", row=4)
+    @discord.ui.button(label="Countew Button >w<", row=4)
     async def add_counter(self, interaction: discord.Interaction, _):
         if len(self.children) >= 25:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Limitation",
-                    description="You can only have a maximum of 25 buttons per custom command.",
+                    title="Wimitation owo",
+                    description="U can onwy hav a maximum of 25 buttons pew custom command >w<~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
         modal = CustomModal(
-            "Add a Button",
+            "Add a Button uwu~",
             [
                 (
                     "row",
                     discord.ui.TextInput(
-                        label="Row", placeholder="Row of the button (e.g. 0, 1, 2, 3)"
+                        label="Row >w<", placeholder="Row of da button (e.g. 0, 1, 2, 3) >w<"
                     ),
                 )
             ],
@@ -2081,8 +2081,8 @@ class ButtonCustomisation(discord.ui.View):
         if not modal.children[0].value.isdigit():
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Row",
-                    description="The row you provided is not a valid number.",
+                    title="Invawid Row >w<",
+                    description="Da row u pwovided is nyot a vawid numbew. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -2093,8 +2093,8 @@ class ButtonCustomisation(discord.ui.View):
         if row > 4 or row < 0:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Row",
-                    description="The row you provided must be within the range 0-4.",
+                    title="Invawid Row >w<",
+                    description="Da row u pwovided must be widin da range 0-4. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -2122,14 +2122,14 @@ class ButtonCustomisation(discord.ui.View):
         else:
             self.command_data["buttons"] = [{"label": "0", "row": row}]
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=4)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=4)
     async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
         self.value = False
         pass
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, row=4, disabled=False
+        label="Finish uwu~", style=discord.ButtonStyle.green, row=4, disabled=False
     )
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
@@ -2162,19 +2162,19 @@ class MessageCustomisation(discord.ui.View):
         if message.content or message.embeds is not None:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
 
             await message.edit(view=self)
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
             await message.edit(view=self)
 
     @discord.ui.button(
-        label="Set Message",
+        label="Set Message~",
         style=discord.ButtonStyle.secondary,
     )
     async def content(
@@ -2199,7 +2199,7 @@ class MessageCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Add Embed",
+        label="Add Embed uwu~",
         style=discord.ButtonStyle.secondary,
     )
     async def addembed(
@@ -2209,8 +2209,8 @@ class MessageCustomisation(discord.ui.View):
             if len(interaction.message.embeds) > 0:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Limitation",
-                        description="You can only have one embed per custom command message.",
+                        title="Limitation >w<",
+                        description="U can onwy hab one embed pew custom command message. owo~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -2237,7 +2237,7 @@ class MessageCustomisation(discord.ui.View):
             await interaction.response.defer(ephemeral=True, thinking=True)
             return await generalised_interaction_check_failure(interaction.followup)
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, disabled=True)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, disabled=True)
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             self.msg = interaction.message
@@ -2248,7 +2248,7 @@ class MessageCustomisation(discord.ui.View):
             else:
                 await int_invis_embed(
                     interaction,
-                    "your custom message has been saved. You can now continue with your configuration.",
+                    "uw custom message has been saved. U can now continue wid uw configuwation.",
                 )
             if not self.persist and not self.sustained_interaction:
                 await interaction.message.delete()
@@ -2276,19 +2276,19 @@ class EmbedCustomisation(discord.ui.View):
         if message.content or message.embeds is not None:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
 
             await message.edit(view=self)
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
             await message.edit(view=self)
 
     @discord.ui.button(
-        label="Set Message",
+        label="Set Message~",
         style=discord.ButtonStyle.secondary,
     )
     async def content(
@@ -2312,7 +2312,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Remove Embed",
+        label="Remove Embed owo~",
         style=discord.ButtonStyle.secondary,
     )
     async def remove_embed(
@@ -2342,7 +2342,7 @@ class EmbedCustomisation(discord.ui.View):
             await interaction.response.defer(ephemeral=True, thinking=True)
             return await generalised_interaction_check_failure(interaction.followup)
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, disabled=True)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, disabled=True)
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             for item in self.children:
@@ -2354,7 +2354,7 @@ class EmbedCustomisation(discord.ui.View):
             else:
                 await int_invis_embed(
                     interaction,
-                    "your custom message has been created. You can now continue with your configuration.",
+                    "uw custom message has been cweated. U can now continue wid uw configuwation.",
                 )
             if not self.sustained_interaction:
                 await interaction.message.edit(view=None)
@@ -2366,7 +2366,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Title",
+        label="Set Titwe owo~",
         row=1,
         style=discord.ButtonStyle.secondary,
     )
@@ -2391,7 +2391,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Description",
+        label="Set Descwiption >w<",
         row=1,
         style=discord.ButtonStyle.secondary,
     )
@@ -2418,7 +2418,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Embed Colour",
+        label="Set Embed Cowouw uwu~",
         row=1,
         style=discord.ButtonStyle.secondary,
     )
@@ -2445,8 +2445,8 @@ class EmbedCustomisation(discord.ui.View):
                 except TypeError:
                     return await interaction.response.send_message(
                         embed=discord.Embed(
-                            title="Invalid Colour",
-                            description="This colour is invalid.",
+                            title="Invawid Cowouw owo~",
+                            description="Dis cowouw is invawid.~",
                             color=BLANK_COLOR,
                         ),
                         ephemeral=True,
@@ -2459,7 +2459,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Thumbnail",
+        label="Set Thumbnail owo~",
         row=2,
         style=discord.ButtonStyle.secondary,
     )
@@ -2485,8 +2485,8 @@ class EmbedCustomisation(discord.ui.View):
             except discord.HTTPException:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Unavailable URL",
-                        description="This URL is invalid or unavailable.",
+                        title="Unavaiwabwe URL >w<",
+                        description="Dis URL is invawid ow unavaiwabwe. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -2498,7 +2498,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Image",
+        label="Set Image~",
         row=2,
         style=discord.ButtonStyle.secondary,
     )
@@ -2523,8 +2523,8 @@ class EmbedCustomisation(discord.ui.View):
             except discord.HTTPException:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Unavailable URL",
-                        description="This URL is invalid or unavailable.",
+                        title="Unavaiwabwe URL >w<",
+                        description="Dis URL is invawid ow unavaiwabwe. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -2536,7 +2536,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Add Field",
+        label="Add Fiewd uwu~",
         row=3,
         style=discord.ButtonStyle.secondary,
     )
@@ -2580,7 +2580,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Footer",
+        label="Set Footew >w<",
         row=3,
         style=discord.ButtonStyle.secondary,
     )
@@ -2605,8 +2605,8 @@ class EmbedCustomisation(discord.ui.View):
             except discord.HTTPException:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Unavailable URL",
-                        description="This URL is invalid or unavailable.",
+                        title="Unavaiwabwe URL >w<",
+                        description="Dis URL is invawid ow unavaiwabwe. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -2618,7 +2618,7 @@ class EmbedCustomisation(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="Set Author",
+        label="Set Audow >w<",
         row=3,
         style=discord.ButtonStyle.secondary,
     )
@@ -2647,8 +2647,8 @@ class EmbedCustomisation(discord.ui.View):
             except discord.HTTPException:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Unavailable URL",
-                        description="This URL is invalid or unavailable.",
+                        title="Unavaiwabwe URL >w<",
+                        description="Dis URL is invawid ow unavaiwabwe. >w<",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -2666,7 +2666,7 @@ class RemoveReminder(discord.ui.View):
         self.value = None
         self.user_id = user_id
 
-    @discord.ui.button(label="Delete a reminder", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Dewete a remindew uwu~", style=discord.ButtonStyle.danger)
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
             await interaction.response.defer()
@@ -2687,7 +2687,7 @@ class RemoveCustomCommand(discord.ui.View):
         self.user_id = user_id
 
     @discord.ui.button(
-        label="Delete a custom command", style=discord.ButtonStyle.danger
+        label="Dewete a custom command >w<", style=discord.ButtonStyle.danger
     )
     async def accept(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id == self.user_id:
@@ -2712,7 +2712,7 @@ class RemoveWarning(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.green)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -2732,7 +2732,7 @@ class RemoveWarning(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="No", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.danger)
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -2752,8 +2752,8 @@ class RemoveWarning(discord.ui.View):
         self.stop()
 
 
-class RequestReason(discord.ui.Modal, title="Edit Reason"):
-    name = discord.ui.TextInput(label="Reason")
+class RequestReason(discord.ui.Modal, title="Edit Reason~"):
+    name = discord.ui.TextInput(label="Reason~")
 
     async def on_submit(self, interaction: discord.Interaction):
         await interaction.response.defer(thinking=False)
@@ -2761,10 +2761,10 @@ class RequestReason(discord.ui.Modal, title="Edit Reason"):
         self.stop()
 
 
-class RequestData(discord.ui.Modal, title="Edit Reason"):
-    data = discord.ui.TextInput(label="Reason")
+class RequestData(discord.ui.Modal, title="Edit Reason~"):
+    data = discord.ui.TextInput(label="Reason~")
 
-    def __init__(self, title="PLACEHOLDER", label="PLACEHOLDER"):
+    def __init__(self, title="PLACEHOLDER uwu~", label="PLACEHOLDER uwu~"):
         self.data.label = label
         super().__init__(title=title)
 
@@ -2774,7 +2774,7 @@ class RequestData(discord.ui.Modal, title="Edit Reason"):
         self.stop()
 
 
-class CustomModal(discord.ui.Modal, title="Edit Reason"):
+class CustomModal(discord.ui.Modal, title="Edit Reason~"):
     def __init__(self, title, options, epher_args: dict = None):
         super().__init__(title=title)
         if epher_args is None:
@@ -2795,10 +2795,10 @@ class CustomModal(discord.ui.Modal, title="Edit Reason"):
         self.stop()
 
 
-class SetContent(discord.ui.Modal, title="Set Message Content"):
+class SetContent(discord.ui.Modal, title="Set Message Content >w<"):
     name = discord.ui.TextInput(
-        label="Content",
-        placeholder="Content of the message",
+        label="Content~",
+        placeholder="Content of da message owo~",
         max_length=2000,
         style=discord.TextStyle.long,
     )
@@ -2808,10 +2808,10 @@ class SetContent(discord.ui.Modal, title="Set Message Content"):
         self.stop()
 
 
-class CreatePunishmentType(discord.ui.Modal, title="Create Punishment Type"):
+class CreatePunishmentType(discord.ui.Modal, title="Cweate Punishment Type uwu~"):
     name = discord.ui.TextInput(
-        label="Name",
-        placeholder="e.g. Verbal Warning",
+        label="Name >w<",
+        placeholder="e.g. Vewbaw Wawning",
         max_length=20,
         style=discord.TextStyle.short,
     )
@@ -2821,10 +2821,10 @@ class CreatePunishmentType(discord.ui.Modal, title="Create Punishment Type"):
         self.stop()
 
 
-class DeletePunishmentType(discord.ui.Modal, title="Delete Punishment Type"):
+class DeletePunishmentType(discord.ui.Modal, title="Dewete Punishment Type owo~"):
     name = discord.ui.TextInput(
-        label="Name",
-        placeholder="e.g. Verbal Warning",
+        label="Name >w<",
+        placeholder="e.g. Vewbaw Wawning",
         max_length=20,
         style=discord.TextStyle.short,
     )
@@ -2835,10 +2835,10 @@ class DeletePunishmentType(discord.ui.Modal, title="Delete Punishment Type"):
         self.stop()
 
 
-class RobloxUsername(discord.ui.Modal, title="Verification"):
+class RobloxUsername(discord.ui.Modal, title="Vewification >w<"):
     name = discord.ui.TextInput(
-        label="Roblox Username",
-        placeholder="e.g. RoyalCrests",
+        label="Roblox Usewname~",
+        placeholder="e.g. RoyalCwests",
         max_length=32,
         style=discord.TextStyle.short,
     )
@@ -2848,13 +2848,13 @@ class RobloxUsername(discord.ui.Modal, title="Verification"):
         self.stop()
 
 
-class SetTitle(discord.ui.Modal, title="Set Embed Title"):
+class SetTitle(discord.ui.Modal, title="Set Embed Titwe~"):
     name = discord.ui.TextInput(
-        label="Title", placeholder="Title of the embed", style=discord.TextStyle.short
+        label="Titwe >w<", placeholder="Titwe of da embed uwu~", style=discord.TextStyle.short
     )
     url = discord.ui.TextInput(
-        label="Title URL",
-        placeholder="URL of the title",
+        label="Titwe URL >w<",
+        placeholder="URL of da titwe uwu~",
         style=discord.TextStyle.short,
         required=False,
     )
@@ -2865,9 +2865,9 @@ class SetTitle(discord.ui.Modal, title="Set Embed Title"):
         self.stop()
 
 
-class CustomCommandSettings(discord.ui.Modal, title="Custom Command Settings"):
+class CustomCommandSettings(discord.ui.Modal, title="Custom Command Settings~"):
     name = discord.ui.TextInput(
-        label="Custom Command Name",
+        label="Custom Command Name >w<",
         placeholder="e.g. ssu",
         style=discord.TextStyle.short,
         max_length=20,
@@ -2879,10 +2879,10 @@ class CustomCommandSettings(discord.ui.Modal, title="Custom Command Settings"):
         self.stop()
 
 
-class SetDescription(discord.ui.Modal, title="Set Embed Description"):
+class SetDescription(discord.ui.Modal, title="Set Embed Descwiption uwu~"):
     name = discord.ui.TextInput(
-        label="Description",
-        placeholder="Description of the embed",
+        label="Descwiption uwu~",
+        placeholder="Descwiption of da embed >w<",
         style=discord.TextStyle.long,
         max_length=2000,
     )
@@ -2893,9 +2893,9 @@ class SetDescription(discord.ui.Modal, title="Set Embed Description"):
         self.stop()
 
 
-class SetColour(discord.ui.Modal, title="Set Embed Colour"):
+class SetColour(discord.ui.Modal, title="Set Embed Cowouw uwu~"):
     name = discord.ui.TextInput(
-        label="Colour", placeholder="#DB514F", style=discord.TextStyle.short
+        label="Cowouw uwu~", placeholder="#DB514F", style=discord.TextStyle.short
     )
 
     async def on_submit(self, interaction: discord.Interaction):
@@ -2904,9 +2904,9 @@ class SetColour(discord.ui.Modal, title="Set Embed Colour"):
         self.stop()
 
 
-class SetImage(discord.ui.Modal, title="Set Image"):
+class SetImage(discord.ui.Modal, title="Set Image~"):
     image = discord.ui.TextInput(
-        label="Image URL", placeholder="Image URL", style=discord.TextStyle.short
+        label="Image URL~", placeholder="Image URL~", style=discord.TextStyle.short
     )
 
     async def on_submit(self, interaction: discord.Interaction):
@@ -2915,17 +2915,17 @@ class SetImage(discord.ui.Modal, title="Set Image"):
         self.stop()
 
 
-class AddField(discord.ui.Modal, title="Add Field"):
+class AddField(discord.ui.Modal, title="Add Fiewd uwu~"):
     name = discord.ui.TextInput(
-        label="Field Name", placeholder="Field Name", style=discord.TextStyle.short
+        label="Fiewd Name~", placeholder="Fiewd Name~", style=discord.TextStyle.short
     )
     value = discord.ui.TextInput(
-        label="Field Value", placeholder="Field Value", style=discord.TextStyle.short
+        label="Fiewd Vawue uwu~", placeholder="Fiewd Vawue uwu~", style=discord.TextStyle.short
     )
     inline = discord.ui.TextInput(
-        label="Inline?",
-        placeholder="Yes/No",
-        default="Yes",
+        label="Inline? >w<",
+        placeholder="Yes/Nyo~",
+        default="Yes uwu~",
         style=discord.TextStyle.short,
         required=False,
     )
@@ -2936,13 +2936,13 @@ class AddField(discord.ui.Modal, title="Add Field"):
         self.stop()
 
 
-class SetFooter(discord.ui.Modal, title="Set Footer"):
+class SetFooter(discord.ui.Modal, title="Set Footew >w<"):
     name = discord.ui.TextInput(
-        label="Footer Text", placeholder="Footer Text", style=discord.TextStyle.short
+        label="Footew Text owo~", placeholder="Footew Text owo~", style=discord.TextStyle.short
     )
     icon = discord.ui.TextInput(
-        label="Footer Icon URL",
-        placeholder="Footer Icon URL",
+        label="Footew Icon URL owo~",
+        placeholder="Footew Icon URL owo~",
         default="",
         style=discord.TextStyle.short,
         required=False,
@@ -2954,20 +2954,20 @@ class SetFooter(discord.ui.Modal, title="Set Footer"):
         self.stop()
 
 
-class SetAuthor(discord.ui.Modal, title="Set Author"):
+class SetAuthor(discord.ui.Modal, title="Set Audow >w<"):
     name = discord.ui.TextInput(
-        label="Author Name", placeholder="Author Name", style=discord.TextStyle.short
+        label="Audow Name~", placeholder="Audow Name~", style=discord.TextStyle.short
     )
     url = discord.ui.TextInput(
-        label="Author URL",
-        placeholder="Author URL",
+        label="Audow URL >w<",
+        placeholder="Audow URL >w<",
         default="",
         style=discord.TextStyle.short,
         required=False,
     )
     icon = discord.ui.TextInput(
-        label="Author Icon URL",
-        placeholder="Author Icon URL",
+        label="Audow Icon URL uwu~",
+        placeholder="Audow Icon URL uwu~",
         default="",
         style=discord.TextStyle.short,
         required=False,
@@ -2979,10 +2979,10 @@ class SetAuthor(discord.ui.Modal, title="Set Author"):
         self.stop()
 
 
-class SetThumbnail(discord.ui.Modal, title="Set Thumbnail"):
+class SetThumbnail(discord.ui.Modal, title="Set Thumbnail owo~"):
     thumbnail = discord.ui.TextInput(
-        label="Thumbnail URL",
-        placeholder="Thumbnail URL",
+        label="Thumbnail URL owo~",
+        placeholder="Thumbnail URL owo~",
         style=discord.TextStyle.short,
     )
 
@@ -2992,8 +2992,8 @@ class SetThumbnail(discord.ui.Modal, title="Set Thumbnail"):
         self.stop()
 
 
-class TimeRequest(discord.ui.Modal, title="Temporary Ban"):
-    time = discord.ui.TextInput(label="Time (s/m/h/d)")
+class TimeRequest(discord.ui.Modal, title="Tempowawy Ban >w<"):
+    time = discord.ui.TextInput(label="Time (s/m/h/d) owo~")
 
     async def on_submit(self, interaction: discord.Interaction):
         await interaction.response.defer(thinking=False)
@@ -3023,33 +3023,33 @@ class ChangeWarningType(discord.ui.Select):
         if not using_options:
             selected_options = [
                 discord.SelectOption(
-                    label="Warning",
-                    value="Warn",
-                    description="A warning, the smallest form of logged punishment",
+                    label="Wawning owo~",
+                    value="Wawn >w<",
+                    description="A wawning, da smawwest fowm of logged punishment >w<",
                 ),
                 discord.SelectOption(
-                    label="Kick",
-                    value="Kick",
-                    description="Removing a user from the game, usually given after warnings",
+                    label="Kick owo~",
+                    value="Kick owo~",
+                    description="Removing a usew fwom da game, usuawwy given aftew wawnings >w<",
                 ),
                 discord.SelectOption(
-                    label="Ban",
-                    value="Ban",
-                    description="A permanent form of removing a user from the game, given after kicks",
+                    label="Ban~",
+                    value="Ban~",
+                    description="A pewmanent fowm of removing a usew fwom da game, given aftew kicks",
                 ),
                 discord.SelectOption(
-                    label="Temporary Ban",
-                    value="Temporary Ban",
-                    description="Given after kicks, not enough to warrant a permanent removal",
+                    label="Tempowawy Ban >w<",
+                    value="Tempowawy Ban >w<",
+                    description="Given aftew kicks, nyot enough to wawwant a pewmanent removaw >w<",
                 ),
                 discord.SelectOption(
-                    label="BOLO",
-                    value="BOLO",
-                    description="Cannot be found in the game, be on the lookout",
+                    label="BOLO >w<",
+                    value="BOLO >w<",
+                    description="Cannot be found in da game, be on da lookout uwu~",
                 ),
             ]
         super().__init__(
-            placeholder="Select a warning type",
+            placeholder="Sewect a wawning type uwu~",
             min_values=1,
             max_values=1,
             options=selected_options,
@@ -3057,7 +3057,7 @@ class ChangeWarningType(discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         if interaction.user.id == self.user_id:
-            if self.values[0] == "Temporary Ban":
+            if self.values[0] == "Tempowawy Ban >w<":
                 modal = TimeRequest()
                 await interaction.response.send_modal(modal)
                 seconds = 0
@@ -3090,24 +3090,24 @@ class EditWarningSelect(discord.ui.Select):
 
         options = [
             discord.SelectOption(
-                label="Edit reason",
+                label="Edit reason owo~",
                 value="edit",
-                description="Edit the reason of the punishment",
+                description="Edit da reason of da punishment uwu~",
             ),
             discord.SelectOption(
-                label="Change punishment type",
+                label="Change punishment type uwu~",
                 value="change",
-                description="Change the punishment type to a higher or lower severity",
+                description="Change da punishment type to a highew ow lowew sevewity~",
             ),
             discord.SelectOption(
-                label="Delete punishment",
+                label="Dewete punishment owo~",
                 value="delete",
-                description="Delete the punishment from the database. This is irreversible.",
+                description="Dewete da punishment fwom da database. Dis is iwwevewsibwe. uwu~",
             ),
         ]
 
         super().__init__(
-            placeholder="Select an option", min_values=1, max_values=1, options=options
+            placeholder="Sewect an option~", min_values=1, max_values=1, options=options
         )
 
     # This one is similar to the confirmation button except sets the inner value to `False`
@@ -3135,7 +3135,7 @@ class EditWarningSelect(discord.ui.Select):
                 self.value = "type"
                 view = WarningDropdownMenu(interaction.user.id, self.inherited_options)
                 await interaction.message.edit(
-                    content="<:ERMPending:1111097561588183121> **{},** please select a new punishment type.".format(
+                    content="<:ERMPending:1111097561588183121> **{},** pwease sewect a new punishment type.".format(
                         interaction.user.name
                     ),
                     embed=None,
@@ -3155,7 +3155,7 @@ class EditWarningSelect(discord.ui.Select):
                 await interaction.edit_original_response(view=self.view)
                 self.view.stop()
             else:
-                await int_failure_embed(interaction, "you have not picked an option.")
+                await int_failure_embed(interaction, "u hab nyot picked an option.")
         else:
             await interaction.response.defer(ephemeral=True, thinking=True)
             return await generalised_interaction_check_failure(interaction.followup)
@@ -3184,7 +3184,7 @@ class RemoveBOLO(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.green)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             return
@@ -3200,7 +3200,7 @@ class RemoveBOLO(discord.ui.View):
         self.stop()
 
     # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label="No", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.danger)
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -3227,7 +3227,7 @@ class EnterRobloxUsername(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Verify", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Vewify owo~", style=discord.ButtonStyle.green)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -3252,7 +3252,7 @@ class RequestDataView(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Enter Strike Amount", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Entew Stwike Amount >w<", style=discord.ButtonStyle.secondary)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -3287,7 +3287,7 @@ class CustomModalView(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Enter Strike Amount", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Entew Stwike Amount >w<", style=discord.ButtonStyle.secondary)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -3309,18 +3309,18 @@ class GoogleSpreadsheetModification(discord.ui.View):
         self.scopes = scopes
         self.url = url
 
-    @discord.ui.button(label="Request Ownership", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Request Ownewship >w<", style=discord.ButtonStyle.secondary)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         modal = CustomModal(
-            "Request Ownership",
+            "Request Ownewship >w<",
             [
                 (
                     "email",
                     discord.ui.TextInput(
-                        placeholder="Email",
+                        placeholder="Email~",
                         min_length=1,
                         max_length=100,
-                        label="Email",
+                        label="Email~",
                         custom_id="email",
                     ),
                 )
@@ -3346,7 +3346,7 @@ class GoogleSpreadsheetModification(discord.ui.View):
         await interaction.edit_original_response(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Ownership Transferred",
-                description="An ownership transfer request has been sent to your email.",
+                description="An ownewship twansfew request has been sent to uw email. owo~",
                 color=GREEN_COLOR,
             ),
             view=self,
@@ -3375,7 +3375,7 @@ class ConditionCreationToolkit(discord.ui.View):
                 self.hidden_items.append(item)
                 self.remove_item(item)
             if isinstance(item, discord.ui.Select):
-                if item.placeholder == "Select a logic gate":
+                if item.placeholder == "Sewect a logic gate uwu~":
                     self.hidden_selects.append(item)
                     self.remove_item(item)
 
@@ -3403,37 +3403,37 @@ class ConditionCreationToolkit(discord.ui.View):
                 for i in list(
                     filter(
                         lambda x: isinstance(x, discord.ui.Select)
-                        and x.placeholder != "Select a logic gate",
+                        and x.placeholder != "Sewect a logic gate uwu~",
                         self.children,
                     )
                 )
             ]
         ):
             for item in self.hidden_items:
-                if "Value: " in item.label:
+                if "Vawue: " in item.label:
                     item.label = item.label.replace(
-                        item.label.split("Value: ")[1], str(self.constant)
+                        item.label.split("Vawue: ")[1], str(self.constant)
                     )
                 self.add_item(item)
             self.hidden_items = []
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button) and item.label not in [
-                    "Finish",
-                    "Delete Last Condition",
+                    "Finish uwu~",
+                    "Dewete Last Condition uwu~",
                 ]:
                     self.hidden_items.append(item)
                     self.remove_item(item)
 
         for item in self.children:
             if isinstance(item, discord.ui.Button):
-                if "Value: " in item.label:
+                if "Vawue: " in item.label:
                     item.label = item.label.replace(
-                        item.label.split("Value: ")[1], str(self.constant)
+                        item.label.split("Vawue: ")[1], str(self.constant)
                     )
             if isinstance(item, discord.ui.Select):
                 if (
-                    item.placeholder == "Select a logic gate"
+                    item.placeholder == "Sewect a logic gate uwu~"
                     and len(self.conditions) == 0
                 ):
                     self.hidden_selects.append(item)
@@ -3443,18 +3443,18 @@ class ConditionCreationToolkit(discord.ui.View):
 
     async def update_embed(self, interaction: discord.Interaction, set_default=True):
         embed = discord.Embed(
-            title="Change Conditions",
-            description="Conditions are requirements that must be met for the action. When a condition is selected, the action will be activated when the condition is met. Otherwise, the action will only be executed when ran with `/actions execute`.\n\n**If ...**",
+            title="Change Conditions >w<",
+            description="Conditions awe requiwements dat must be met fow da action. When a condition is sewected, da action wiww be activated when da condition is met. Othewwise, da action wiww onwy be executed when ran wid `/actions execute`.\n\n**If ...**",
             color=BLANK_COLOR,
         )
         embed.add_field(
-            name="Execution Interval",
+            name="Execution Intewvaw~",
             value=td_format(datetime.timedelta(seconds=self.execution_interval)),
             inline=False,
         )
 
         for item in self.conditions:
-            embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate', '').upper())) + ' ') if item.get('LogicGate', '') != '' else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
+            embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate~', '').upper())) + ' ') if item.get('LogicGate~', '') != '' else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
 
         if len(self.conditions) == 0:
             embed.description += f"\n> *No Conditions*"
@@ -3463,19 +3463,19 @@ class ConditionCreationToolkit(discord.ui.View):
             embed=embed, view=self.refresh_ui(set_default)
         )
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.green, row=4)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.green, row=4)
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
         await interaction.delete_original_response()
         self.stop()
 
-    @discord.ui.button(label="Add Condition", style=discord.ButtonStyle.green, row=4)
+    @discord.ui.button(label="Add Condition owo~", style=discord.ButtonStyle.green, row=4)
     async def add_condition(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         condition_data = {}
         if self.constant != 0:
-            condition_data["Value"] = self.constant
+            condition_data["Vawue owo~"] = self.constant
             self.constant = 0
 
         for select in list(
@@ -3484,8 +3484,8 @@ class ConditionCreationToolkit(discord.ui.View):
             if len(select.values) == 0:
                 return await interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Invalid Condition",
-                        description="You must select all required values to populate a condition.",
+                        title="Invawid Condition >w<",
+                        description="U must sewect aww requiwed vawues to popuwate a condition. owo~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -3499,37 +3499,37 @@ class ConditionCreationToolkit(discord.ui.View):
 
             if select.values[0] in condition_options.values():
                 print("op")
-                condition_data["Operation"] = select.values[0]
+                condition_data["Opewation uwu~"] = select.values[0]
                 continue
 
             if select.values[0] in ["and", "or"]:
                 print("logic")
-                condition_data["LogicGate"] = select.values[0]
+                condition_data["LogicGate~"] = select.values[0]
                 continue
 
             if (
                 select.values[0] in server_conditions.values()
-                and condition_data.get("Variable") is None
+                and condition_data.get("Vawiabwe uwu~") is None
             ):
                 if "X" in select.values[0]:  # requires dynamic argument
-                    condition_data["Variable"] = (
+                    condition_data["Vawiabwe uwu~"] = (
                         select.values[0] + f" {self.select_data.get(select)}"
                     )
                     continue
                 print("var")
-                condition_data["Variable"] = select.values[0]
+                condition_data["Vawiabwe uwu~"] = select.values[0]
                 continue
             else:
                 if (
-                    condition_data.get("Value") is None
+                    condition_data.get("Vawue owo~") is None
                 ):  # check for preoccupied constant :)
                     if "X" in select.values[0]:  # requires dynamic argument
-                        condition_data["Value"] = (
+                        condition_data["Vawue owo~"] = (
                             select.values[0] + f" {self.select_data.get(select)}"
                         )
                         continue
                     print("val")
-                    condition_data["Value"] = select.values[0]
+                    condition_data["Vawue owo~"] = select.values[0]
                     continue
 
         self.conditions.append(condition_data)
@@ -3538,7 +3538,7 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction, False)
 
     @discord.ui.button(
-        label="Delete Last Condition", style=discord.ButtonStyle.red, row=4
+        label="Dewete Last Condition uwu~", style=discord.ButtonStyle.red, row=4
     )
     async def delete_condition(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -3546,8 +3546,8 @@ class ConditionCreationToolkit(discord.ui.View):
         if len(self.conditions) == 0:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Invalid Condition",
-                    description="You must have at least one condition to delete.",
+                    title="Invawid Condition >w<",
+                    description="U must hab at least one condition to dewete. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -3557,7 +3557,7 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction)
 
     @discord.ui.button(
-        label="Change Interval",
+        label="Change Intewvaw >w<",
         style=discord.ButtonStyle.secondary,
         row=4,
         disabled=False,
@@ -3566,15 +3566,15 @@ class ConditionCreationToolkit(discord.ui.View):
         self, interaction: discord.Interaction, button: discord.ui.button
     ):
         modal = CustomModal(
-            "Change Execution Interval",
+            "Change Execution Intewvaw~",
             [
                 (
                     "interval",
                     discord.ui.TextInput(
-                        placeholder="Interval (s/m/h/d)",
+                        placeholder="Intewvaw (s/m/h/d) uwu~",
                         min_length=1,
                         max_length=5,
-                        label="Interval",
+                        label="Intewvaw uwu~",
                     ),
                 )
             ],
@@ -3589,8 +3589,8 @@ class ConditionCreationToolkit(discord.ui.View):
         except ValueError as _:
             return await modal.interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Interval",
-                    description="The interval you entered is not a valid time.",
+                    title="Invawid Intewvaw >w<",
+                    description="Da intewvaw u entewed is nyot a vawid time. uwu~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -3600,7 +3600,7 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction)
 
     @discord.ui.button(
-        label="Constant Value: 0",
+        label="Constant Vawue: 0 >w<",
         style=discord.ButtonStyle.secondary,
         row=4,
         disabled=True,
@@ -3611,7 +3611,7 @@ class ConditionCreationToolkit(discord.ui.View):
         pass
 
     @discord.ui.select(
-        placeholder="Select a value",
+        placeholder="Sewect a vawue uwu~",
         options=[
             discord.SelectOption(
                 label=key, value=value, description=relevant_descriptions[index]
@@ -3626,17 +3626,17 @@ class ConditionCreationToolkit(discord.ui.View):
     ):
         if not select.values:
             return await interaction.response.defer(thinking=False)
-        if select.values[0] == "ERLC_X_InGame":
+        if select.values[0] == "ERLC_X_InGame >w<":
             modal = CustomModal(
-                "Roblox Username",
+                "Roblox Usewname~",
                 [
                     (
                         "roblox_username",
                         discord.ui.TextInput(
-                            placeholder="e.g. builderman",
+                            placeholder="e.g. buildewman",
                             min_length=1,
                             max_length=30,
-                            label="Roblox Username",
+                            label="Roblox Usewname~",
                             custom_id="value",
                         ),
                     )
@@ -3657,8 +3657,8 @@ class ConditionCreationToolkit(discord.ui.View):
                 await self.update_embed(interaction)
                 await modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Value",
-                        description="The value you entered is not a valid Roblox username.",
+                        title="Invawid Vawue owo~",
+                        description="Da vawue u entewed is nyot a vawid Roblox usewname. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -3671,7 +3671,7 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction)
 
     @discord.ui.select(
-        placeholder="Select an operation",
+        placeholder="Sewect an opewation >w<",
         min_values=0,
         max_values=1,
         options=[
@@ -3688,7 +3688,7 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction)
 
     @discord.ui.select(
-        placeholder="Select a value",
+        placeholder="Sewect a vawue uwu~",
         min_values=0,
         max_values=1,
         options=[
@@ -3699,9 +3699,9 @@ class ConditionCreationToolkit(discord.ui.View):
         ]
         + [
             discord.SelectOption(
-                label="Constant Value",
+                label="Constant Vawue uwu~",
                 value="constant",
-                description="A constant value that will be used in the condition",
+                description="A constant vawue dat wiww be used in da condition uwu~",
             )
         ],
     )
@@ -3710,15 +3710,15 @@ class ConditionCreationToolkit(discord.ui.View):
     ):
         if select.values[0] == "constant":
             modal = CustomModal(
-                "Constant Value",
+                "Constant Vawue uwu~",
                 [
                     (
                         "constant",
                         discord.ui.TextInput(
-                            placeholder="Value (must be a number)",
+                            placeholder="Vawue (must be a numbew)~",
                             min_length=1,
                             max_length=5,
-                            label="Value",
+                            label="Vawue owo~",
                             custom_id="value",
                         ),
                     )
@@ -3735,25 +3735,25 @@ class ConditionCreationToolkit(discord.ui.View):
                 await self.update_embed(interaction)
                 await modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Value",
-                        description="The value you entered is not a valid number.",
+                        title="Invawid Vawue owo~",
+                        description="Da vawue u entewed is nyot a vawid numbew. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
                 )
                 return
             self.constant = int(modal.constant.value)
-        elif select.values[0] == "ERLC_X_InGame":
+        elif select.values[0] == "ERLC_X_InGame >w<":
             modal = CustomModal(
-                "Roblox Username",
+                "Roblox Usewname~",
                 [
                     (
                         "roblox_username",
                         discord.ui.TextInput(
-                            placeholder="e.g. builderman",
+                            placeholder="e.g. buildewman",
                             min_length=1,
                             max_length=30,
-                            label="Roblox Username",
+                            label="Roblox Usewname~",
                             custom_id="value",
                         ),
                     )
@@ -3774,8 +3774,8 @@ class ConditionCreationToolkit(discord.ui.View):
                 await self.update_embed(interaction)
                 await modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Value",
-                        description="The value you entered is not a valid Roblox username.",
+                        title="Invawid Vawue owo~",
+                        description="Da vawue u entewed is nyot a vawid Roblox usewname. uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -3789,19 +3789,19 @@ class ConditionCreationToolkit(discord.ui.View):
         await self.update_embed(interaction)
 
     @discord.ui.select(
-        placeholder="Select a logic gate",
+        placeholder="Sewect a logic gate uwu~",
         min_values=0,
         max_values=1,
         options=[
             discord.SelectOption(
-                label="AND",
+                label="AND owo~",
                 value="and",
-                description="All of the previous conditions must be met for the action to execute.",
+                description="Aww of da pwevious conditions must be met fow da action to execute.",
             ),
             discord.SelectOption(
-                label="OR",
+                label="OR owo~",
                 value="or",
-                description="Any of the previous conditions must be met for the action to execute.",
+                description="Any of da pwevious conditions must be met fow da action to execute.",
             ),
         ],
     )
@@ -3819,14 +3819,14 @@ class ActionCreationToolkit(discord.ui.View):
         self.bot = bot
         self.user_id = user_id
         self.action_data = {
-            "ActionName": action_name,
-            "ActionID": next(generator),
-            "Triggers": 0,
-            "Integrations": [],
-            "ConditionExecutionInterval": 300,
-            "Conditions": [],
-            "Guild": 0,
-            "LastExecuted": 0,
+            "ActionName~": action_name,
+            "ActionID~": next(generator),
+            "Twiggews uwu~": 0,
+            "Integwations~": [],
+            "ConditionExecutionIntewvaw >w<": 300,
+            "Conditions >w<": [],
+            "Guiwd~": 0,
+            "LastExecuted~": 0,
         }
 
         def return_correspondent_callback(item):
@@ -3836,19 +3836,19 @@ class ActionCreationToolkit(discord.ui.View):
             return unnative_callback
 
         actions = [
-            "Execute Custom Command",
-            "Toggle Reminder",
-            "Force All Staff Off Duty",
-            "Send ER:LC Command",
-            "Send ER:LC Message",
-            "Send ER:LC Hint",
-            "Delay",
-            "Add Role",
-            "Remove Role",
-            "Execute ERM Command"
+            "Execute Custom Command >w<",
+            "Toggwe Remindew owo~",
+            "Fowce Aww Staff Off Duty >w<",
+            "Send ER:LC Command owo~",
+            "Send ER:LC Message uwu~",
+            "Send ER:LC Hint owo~",
+            "Deway owo~",
+            "Add Rowe >w<",
+            "Remove Rowe >w<",
+            "Execute ERM Command owo~"
         ]
 
-        extras = ["Remove Last Integration"]
+        extras = ["Remove Last Integwation >w<"]
 
         for item in actions:
             button = discord.ui.Button(style=discord.ButtonStyle.secondary, label=item)
@@ -3856,7 +3856,7 @@ class ActionCreationToolkit(discord.ui.View):
             self.add_item(button)
 
         button = discord.ui.Button(
-            style=discord.ButtonStyle.primary, label="Access Roles"
+            style=discord.ButtonStyle.primary, label="Access Rowes~"
         )
         button.callback = self.set_access_roles
 
@@ -3868,36 +3868,36 @@ class ActionCreationToolkit(discord.ui.View):
 
             self.add_item(button)
 
-        button = discord.ui.Button(style=discord.ButtonStyle.success, label="Finish")
+        button = discord.ui.Button(style=discord.ButtonStyle.success, label="Finish uwu~")
         button.callback = self.finish
 
         self.add_item(button)
 
     async def finish(self, interaction: discord.Interaction):
-        if len(self.action_data["Integrations"]) == 0:
+        if len(self.action_data["Integwations~"]) == 0:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Enough Integrations",
-                    description="You need at least one integration to finish this action.",
+                    title="Nyot Enough Integwations~",
+                    description="U need at least one integwation to finish dis action. owo~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
-        self.action_data["Guild"] = interaction.guild.id
+        self.action_data["Guiwd~"] = interaction.guild.id
         self.stop()
 
     async def remove_last_integration(self, interaction: discord.Interaction):
-        if len(self.action_data["Integrations"]) == 0:
+        if len(self.action_data["Integwations~"]) == 0:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Unable To Remove",
-                    description="I was unable to remove the last integration from this action. It may be that there are no integrations.",
+                    title="Unabwe To Remove owo~",
+                    description="I was unabwe to remove da last integwation fwom dis action. It may be dat thewe awe nyo integwations.",
                     color=BLANK_COLOR
                 ),
                 ephemeral=True
             )
-        self.action_data["Integrations"].pop(-1)
+        self.action_data["Integwations~"].pop(-1)
         message = interaction.message
         embed = message.embeds[-1]
         lines = embed.description.splitlines()
@@ -3911,12 +3911,12 @@ class ActionCreationToolkit(discord.ui.View):
         view = RoleSelect(interaction.user.id, limit=10)
         view.children[0].default_values = [
             discord.utils.get(interaction.guild.roles, id=item)
-            for item in (self.action_data.get("AccessRoles", []) or [])
+            for item in (self.action_data.get("AccessRowes owo~", []) or [])
         ]
         await interaction.response.send_message(
             embed=discord.Embed(
-                title="Access Roles",
-                description="These roles will be able to execute this action. **Usually this would be your staff role.**",
+                title="Access Rowes~",
+                description="These rowes wiww be abwe to execute dis action. **Usuawwy dis wouwd be uw staff rowe.**",
                 color=BLANK_COLOR,
             ),
             view=view,
@@ -3925,11 +3925,11 @@ class ActionCreationToolkit(discord.ui.View):
         timeout = await view.wait()
         if timeout:
             return
-        self.action_data["AccessRoles"] = [i.id for i in view.value]
+        self.action_data["AccessRowes owo~"] = [i.id for i in view.value]
         await (await interaction.original_response()).delete()
 
     @discord.ui.button(
-        label="Change Conditions",
+        label="Change Conditions >w<",
         style=discord.ButtonStyle.primary,
         row=2,
     )
@@ -3937,20 +3937,20 @@ class ActionCreationToolkit(discord.ui.View):
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         embed = discord.Embed(
-            title="Change Conditions",
-            description="Conditions are requirements that must be met for the action. When a condition is selected, the action will be activated when the condition is met. Otherwise, the action will only be executed when ran with `/actions execute`.\n\n**If ...**\n> *No Conditions*",
+            title="Change Conditions >w<",
+            description="Conditions awe requiwements dat must be met fow da action. When a condition is sewected, da action wiww be activated when da condition is met. Othewwise, da action wiww onwy be executed when ran wid `/actions execute`.\n\n**If ...**\n> *Nyo Conditions*",
             color=BLANK_COLOR,
         )
-        if len(self.action_data["Conditions"]) > 0:
-            embed.description = embed.description.replace("> *No Conditions*", "")
-            for item in self.action_data["Conditions"]:
-                embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate', '').upper())) + ' ') if item.get('LogicGate', '') != '' else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
+        if len(self.action_data["Conditions >w<"]) > 0:
+            embed.description = embed.description.replace("> *Nyo Conditions*", "")
+            for item in self.action_data["Conditions >w<"]:
+                embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate~', '').upper())) + ' ') if item.get('LogicGate~', '') != '' else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
 
         embed.add_field(
-            name="Execution Interval",
+            name="Execution Intewvaw~",
             value=td_format(
                 datetime.timedelta(
-                    seconds=self.action_data["ConditionExecutionInterval"]
+                    seconds=self.action_data["ConditionExecutionIntewvaw >w<"]
                 )
             ),
             inline=False,
@@ -3961,23 +3961,23 @@ class ActionCreationToolkit(discord.ui.View):
         timeout = await view.wait()
         if timeout:
             return
-        self.action_data["Conditions"] = view.conditions
-        self.action_data["ConditionExecutionInterval"] = view.execution_interval
+        self.action_data["Conditions >w<"] = view.conditions
+        self.action_data["ConditionExecutionIntewvaw >w<"] = view.execution_interval
 
         embed = interaction.message.embeds[-1]
         if len(view.conditions) != 0:
             embed.add_field(
-                name="Conditions",
+                name="Conditions >w<",
                 value="\n".join(
                     [
-                        f"> **{('`{}`'.format(item.get('LogicGate', '')) + ' ') if item.get('LogicGate') else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
+                        f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
                         for item in view.conditions
                     ]
                 ),
                 inline=False,
             )
             embed.add_field(
-                name="Execution Interval",
+                name="Execution Intewvaw~",
                 value=td_format(datetime.timedelta(seconds=view.execution_interval)),
                 inline=False,
             )
@@ -3988,67 +3988,67 @@ class ActionCreationToolkit(discord.ui.View):
         if interaction.user.id != self.user_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
         correspondents = {
-            "Execute Custom Command": 1,
-            "Toggle Reminder": 1,
-            "Force All Staff Off Duty": 0,
-            "Send ER:LC Command": 1,
-            "Send ER:LC Message": 1,
-            "Send ER:LC Hint": 1,
-            "Delay": 1,
-            "Add Role": 1,
-            "Remove Role": 1,
-            "Execute ERM Command": 1,
+            "Execute Custom Command >w<": 1,
+            "Toggwe Remindew owo~": 1,
+            "Fowce Aww Staff Off Duty >w<": 0,
+            "Send ER:LC Command owo~": 1,
+            "Send ER:LC Message uwu~": 1,
+            "Send ER:LC Hint owo~": 1,
+            "Deway owo~": 1,
+            "Add Rowe >w<": 1,
+            "Remove Rowe >w<": 1,
+            "Execute ERM Command owo~": 1,
         }
         if not correspondents[button_name]:
             msg = interaction.message
             embed = msg.embeds[-1]
 
-            msg.embeds[-1].description = msg.embeds[-1].description.replace("No Integrations", "").replace("*New Integration*", "")
+            msg.embeds[-1].description = msg.embeds[-1].description.replace("Nyo Integwations owo~", "").replace("*Nyew Integwation~*", "")
             if (
-                len(f" **{button_name}**\n> *New Integration*")
+                len(f" **{button_name}**\n> *Nyew Integwation~*")
                 + len(msg.embeds[-1].description)
             ) > 4000:
                 embed = discord.Embed(
                     title="\u200b", color=BLANK_COLOR, description="> "
                 )
-                embed.description += f" **{button_name}**\n> *New Integration*"
+                embed.description += f" **{button_name}**\n> *Nyew Integwation~*"
                 msg.embeds.append(embed)
             else:
-                embed.description += f" **{button_name}**\n> *New Integration*"
+                embed.description += f" **{button_name}**\n> *Nyew Integwation~*"
                 msg.embeds[len(msg.embeds) - 1] = embed
 
             await interaction.message.edit(embeds=msg.embeds)
 
-            self.action_data["Integrations"].append(
+            self.action_data["Integwations~"].append(
                 {
-                    "IntegrationName": button_name,
-                    "IntegrationID": {
-                        "Execute Custom Command": 0,
-                        "Toggle Reminder": 1,
-                        "Force All Staff Off Duty": 2,
-                        "Send ER:LC Command": 3,
-                        "Send ER:LC Message": 4,
-                        "Send ER:LC Hint": 5,
-                        "Delay": 6,
-                        "Add Role": 7,
-                        "Remove Role": 8,
-                        "Execute ERM Command": 9
+                    "IntegwationName~": button_name,
+                    "IntegwationID uwu~": {
+                        "Execute Custom Command >w<": 0,
+                        "Toggwe Remindew owo~": 1,
+                        "Fowce Aww Staff Off Duty >w<": 2,
+                        "Send ER:LC Command owo~": 3,
+                        "Send ER:LC Message uwu~": 4,
+                        "Send ER:LC Hint owo~": 5,
+                        "Deway owo~": 6,
+                        "Add Rowe >w<": 7,
+                        "Remove Rowe >w<": 8,
+                        "Execute ERM Command owo~": 9
                     }[button_name],
-                    "ExtraInformation": None,
+                    "ExtwaInfowmation owo~": None,
                 }
             )
 
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully Added",
-                    description="I have successfully added the integration.",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Successfuwwy Added~ uwu",
+                    description="I hav successfuwwy added da integwation~ hehe owo~",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -4056,21 +4056,21 @@ class ActionCreationToolkit(discord.ui.View):
 
         else:
             extra_information = {
-                "Execute Custom Command": ["Custom Command Name", 0],
-                "Toggle Reminder": ["Reminder Name", 0],
-                "Send ER:LC Command": ["Command", 1],
-                "Send ER:LC Message": ["Message", 1],
-                "Send ER:LC Hint": ["Hint", 1],
-                "Delay": ["Time (Seconds)", 1],
-                "Add Role": ["Role ID", 0],
-                "Remove Role": ["Role ID", 0],
-                "Execute ERM Command": ["Command (without prefix)", 1],
+                "Execute Custom Command": ["Custom Command Name >w<", 0],
+                "Toggle Reminder": ["Wemindew Name uwu~", 0],
+                "Send ER:LC Command": ["Command uwu~", 1],
+                "Send ER:LC Message": ["Message~", 1],
+                "Send ER:LC Hint": ["Hint uwu~", 1],
+                "Delay": ["Time (Seconds) >w<", 1],
+                "Add Role": ["Wowe ID owo~", 0],
+                "Remove Role": ["Wowe ID owo~", 0],
+                "Execute ERM Command": ["Command (without prefix) uwu~", 1],
             }
 
             view = CustomModalView(
                 interaction.user.id,
-                "Provide Information",
-                "Provide Information",
+                "Pwovide Infowmation owo~",
+                "Pwovide Infowmation owo~",
                 [
                     (
                         "info",
@@ -4082,8 +4082,8 @@ class ActionCreationToolkit(discord.ui.View):
 
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Extra Information",
-                    description=f"**{button_name}** requires extra information, provide it by pressing the button below.",
+                    title="Extwa Infowmation owo",
+                    description=f"**{button_name}** wequiwes extwa infowmation, pwovide it by pwessing da button bewow~ uwu",
                     color=BLANK_COLOR,
                 ),
                 view=view,
@@ -4100,21 +4100,21 @@ class ActionCreationToolkit(discord.ui.View):
             async def static_validation_failure():
                 await view.modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Incorrect Medium",
-                        description="This medium is invalid. Please try again by clicking the button on the initial embed.",
+                        title="Incowwect Medium >w<",
+                        description="Dis medium is invawid~ Pwease twy again by cwicking da button on da initiaw embed~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
                 )
 
             if not dynamic:
-                if "Role" in button_name:
+                if "Rowe >w<" in button_name:
                     role = interaction.guild.get_role(int(provided_information))
                     if not role:
                         await static_validation_failure()
                     provided_information = int(provided_information)
 
-                if "Reminder" in button_name:
+                if "Remindew owo~" in button_name:
                     # Fetch reminders
 
                     reminders = await self.bot.reminders.find_by_id(
@@ -4133,7 +4133,7 @@ class ActionCreationToolkit(discord.ui.View):
                     else:
                         return await static_validation_failure()
 
-                if "Custom Command" in button_name:
+                if "Custom Command~" in button_name:
                     # Fetch Custom Commands
 
                     custom_commands = await self.bot.custom_commands.find_by_id(
@@ -4149,48 +4149,48 @@ class ActionCreationToolkit(discord.ui.View):
                     else:
                         return await static_validation_failure()
 
-            if "Command (without prefix)" in button_name:
+            if "Command (widout pwefix) uwu~" in button_name:
                 # strip possible prefix
                 provided_information = provided_information.strip()
                 if provided_information[0] not in [*string.ascii_lowercase, *string.ascii_uppercase]:
                     provided_information = provided_information[1:]
 
-            self.action_data["Integrations"].append(
+            self.action_data["Integwations~"].append(
                 {
-                    "IntegrationName": button_name,
-                    "IntegrationID": {
-                        "Execute Custom Command": 0,
-                        "Toggle Reminder": 1,
-                        "Force All Staff Off Duty": 2,
-                        "Send ER:LC Command": 3,
-                        "Send ER:LC Message": 4,
-                        "Send ER:LC Hint": 5,
-                        "Delay": 6,
-                        "Add Role": 7,
-                        "Remove Role": 8,
-                        "Execute ERM Command": 9
+                    "IntegwationName~": button_name,
+                    "IntegwationID uwu~": {
+                        "Execute Custom Command >w<": 0,
+                        "Toggwe Remindew owo~": 1,
+                        "Fowce Aww Staff Off Duty >w<": 2,
+                        "Send ER:LC Command owo~": 3,
+                        "Send ER:LC Message uwu~": 4,
+                        "Send ER:LC Hint owo~": 5,
+                        "Deway owo~": 6,
+                        "Add Rowe >w<": 7,
+                        "Remove Rowe >w<": 8,
+                        "Execute ERM Command owo~": 9
                     }[button_name],
-                    "ExtraInformation": provided_information,
+                    "ExtwaInfowmation owo~": provided_information,
                 }
             )
             msg = interaction.message
             embed = msg.embeds[-1]
-            msg.embeds[-1].description = msg.embeds[-1].description.replace("No Integrations", "").replace("*New Integration*", "")
+            msg.embeds[-1].description = msg.embeds[-1].description.replace("Nyo Integwations owo~", "").replace("*Nyew Integwation~*", "")
 
 
             if (
                 len(
-                    f" **{button_name}:** {provided_information}\n> *New Integration*"
+                    f" **{button_name}:** {provided_information}\n> *Nyew Integwation~*"
                 )
                 + len(msg.embeds[-1].description)
             ) > 4000:
                 embed = discord.Embed(
                     title="\u200b", color=BLANK_COLOR, description="> "
                 )
-                embed.description += f" **{button_name}:** {provided_information}\n> *New Integration*"
+                embed.description += f" **{button_name}:** {provided_information}\n> *Nyew Integwation~*"
                 msg.embeds.append(embed)
             else:
-                embed.description += f" **{button_name}:** {provided_information}\n> *New Integration*"
+                embed.description += f" **{button_name}:** {provided_information}\n> *Nyew Integwation~*"
                 msg.embeds[len(msg.embeds) - 1] = embed
 
             await interaction.message.edit(embeds=msg.embeds)
@@ -4215,7 +4215,7 @@ class RequestGoogleSpreadsheet(discord.ui.View):
         total_seconds: int,
         type="lb",
         additional_data=None,
-        label="Google Spreadsheet",
+        label="Googwe Spweadsheet owo~",
     ):
         self.bot = bot
         if type:
@@ -4241,7 +4241,7 @@ class RequestGoogleSpreadsheet(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Google Spreadsheet", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Googwe Spweadsheet owo~", style=discord.ButtonStyle.secondary)
     async def googlespreadsheet(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -4250,16 +4250,16 @@ class RequestGoogleSpreadsheet(discord.ui.View):
         if interaction.user.id != self.user_id:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
 
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Generating...",
-                description="We are currently generating your Google Spreadsheet.",
+                title="Genewating... uwu",
+                description="We awe cuwwentwy genewating uw Googwe Spweadsheet~ owo",
                 color=BLANK_COLOR,
             )
         )
@@ -4276,9 +4276,9 @@ class RequestGoogleSpreadsheet(discord.ui.View):
             pass
 
         if self.type == "lb":
-            cell_list = new_sheet.range("D13:H999")
+            cell_list = new_sheet.range("D13:H999 owo~")
         elif self.type == "ar":
-            cell_list = new_sheet.range("D13:I999")
+            cell_list = new_sheet.range("D13:I999 uwu~")
 
         try:
             new_sheet.update_cell(
@@ -4290,31 +4290,31 @@ class RequestGoogleSpreadsheet(discord.ui.View):
         for c, n_v in zip(cell_list, self.data):
             c.value = str(n_v)
 
-        new_sheet.update_cells(cell_list, "USER_ENTERED")
+        new_sheet.update_cells(cell_list, "USER_ENTERED >w<")
         if self.type == "ar":
             LoAs = sheet.get_worksheet(1)
             LoAs.update_cell(4, 2, f'=IMAGE("{interaction.guild.icon.url}")')
-            cell_list = LoAs.range("D13:H999")
+            cell_list = LoAs.range("D13:H999 owo~")
 
             for cell, new_value in zip(cell_list, self.additional_data):
                 if isinstance(new_value, int):
                     cell.value = f"=({new_value}/ 86400 + DATE(1970, 1, 1))"
                 else:
                     cell.value = str(new_value)
-            LoAs.update_cells(cell_list, "USER_ENTERED")
+            LoAs.update_cells(cell_list, "USER_ENTERED >w<")
 
         client.insert_permission(
             sheet.id, value=None, perm_type="anyone", role="writer"
         )
 
         view = GoogleSpreadsheetModification(
-            self.bot, self.config, self.scopes, "Open Google Spreadsheet", sheet.url
+            self.bot, self.config, self.scopes, "Open Googwe Spweadsheet~", sheet.url
         )
 
         await interaction.edit_original_response(
             embed=discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('success')} Successfully generated",
-                description="Your Google Spreadsheet has been successfully generated.",
+                title=f"{self.bot.emoji_controller.get_emoji('success')} Successfuwwy genewated~ hehe",
+                description="Uw Googwe Spweadsheet has been successfuwwy genewated~ uwu",
                 color=GREEN_COLOR,
             ),
             view=view,
@@ -4547,7 +4547,7 @@ class Verification(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Done!", style=discord.ButtonStyle.green, emoji="✅")
+    @discord.ui.button(label="Done! uwu", style=discord.ButtonStyle.green, emoji="✅")
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -4562,7 +4562,7 @@ class Verification(discord.ui.View):
         self.value = "done"
         self.stop()
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Cancew~", style=discord.ButtonStyle.secondary)
     async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -4639,19 +4639,19 @@ class ActivityNoticeAdministration(discord.ui.View):
 
         if self.current_notice is not None:
             self.delete_button = discord.ui.Button(
-                label="Delete", style=discord.ButtonStyle.danger
+                label="Dewete >w<", style=discord.ButtonStyle.danger
             )
             self.delete_button.callback = self.delete_notice
             self.add_item(self.delete_button)
 
             self.end_button = discord.ui.Button(
-                label="End", style=discord.ButtonStyle.secondary
+                label="End~", style=discord.ButtonStyle.secondary
             )
             self.end_button.callback = self.end_notice
             self.add_item(self.end_button)
 
             self.extend_button = discord.ui.Button(
-                label="Extend", style=discord.ButtonStyle.primary
+                label="Extend~", style=discord.ButtonStyle.primary
             )
             self.extend_button.callback = self.extend_notice
             self.add_item(self.extend_button)
@@ -4669,23 +4669,23 @@ class ActivityNoticeAdministration(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
             return False
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def create_notice(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         self.modal = CustomModal(
-            "Create Activity Notice",
+            "Cweate Activity Notice~ owo",
             [
-                ("reason", discord.ui.TextInput(label="Reason")),
-                ("duration", discord.ui.TextInput(label="Duration")),
+                ("reason", discord.ui.TextInput(label="Weason owo~")),
+                ("duration", discord.ui.TextInput(label="Duwation >w<")),
             ],
             {"ephemeral": True},
         )
@@ -4698,7 +4698,7 @@ class ActivityNoticeAdministration(discord.ui.View):
         await self.visual_close(interaction.message)
         self.stop()
 
-    @discord.ui.button(label="List", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Wist~", style=discord.ButtonStyle.secondary)
     async def list_notices(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -4726,8 +4726,8 @@ class ActivityNoticeAdministration(discord.ui.View):
 
     async def extend_notice(self, interaction: discord.Interaction):
         self.modal = CustomModal(
-            "Extend Activity Notice",
-            [("duration", discord.ui.TextInput(label="Duration"))],
+            "Extend Activity Notice~ owo",
+            [("duration", discord.ui.TextInput(label="Duwation >w<"))],
             {"ephemeral": True},
         )
 
@@ -4765,8 +4765,8 @@ class NextView(discord.ui.View):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
@@ -4784,26 +4784,26 @@ class ShiftTypeManagement(discord.ui.View):
         self.name_for_creation = None
         self.modal = None
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def _create(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         # await interaction.response.defer(thinking=False)
         self.modal = CustomModal(
-            "Create Shift Type",
+            "Cweate Shift Type~ owo",
             [
                 (
                     "shift_type_name",
                     discord.ui.TextInput(
-                        label="Name", placeholder="Name of Shift Type"
+                        label="Name >w<", placeholder="Name of Shift Type~ uwu"
                     ),
                 )
             ],
@@ -4817,24 +4817,24 @@ class ShiftTypeManagement(discord.ui.View):
         self.value = "create"
         self.stop()
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Edit~", style=discord.ButtonStyle.primary)
     async def _edit(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         # await interaction.response.defer(thinking=False)
         self.modal = CustomModal(
-            "Edit Shift Type",
+            "Edit Shift Type~ owo",
             [
                 (
                     "shift_type_name",
                     discord.ui.TextInput(
-                        label="Name", placeholder="Name of Shift Type"
+                        label="Name >w<", placeholder="Name of Shift Type~ uwu"
                     ),
                 )
             ],
@@ -4848,25 +4848,25 @@ class ShiftTypeManagement(discord.ui.View):
         self.value = "edit"
         self.stop()
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Dewete >w<", style=discord.ButtonStyle.danger)
     async def _delete(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         self.modal = CustomModal(
-            "Shift Type Deletion",
+            "Shift Type Dewetion~ owo",
             [
                 (
                     "shift_type",
                     discord.ui.TextInput(
-                        label="Shift Type ID", placeholder="ID of the Shift Type"
+                        label="Shift Type ID owo~", placeholder="ID of da Shift Type~"
                     ),
                 )
             ],
@@ -4890,26 +4890,26 @@ class PermissionTypeManagement(discord.ui.View):
         self.name_for_creation = None
         self.modal = None
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def _create(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         # await interaction.response.defer(thinking=False)
         self.modal = CustomModal(
-            "Create Permission Type",
+            "Cweate Pewmission Type~ owo",
             [
                 (
                     "permission_type_name",
                     discord.ui.TextInput(
-                        label="Name", placeholder="Name of Permission Type"
+                        label="Name >w<", placeholder="Name of Pewmission Type~ uwu"
                     ),
                 )
             ],
@@ -4923,24 +4923,24 @@ class PermissionTypeManagement(discord.ui.View):
         self.value = "create"
         self.stop()
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Edit~", style=discord.ButtonStyle.primary)
     async def _edit(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         # await interaction.response.defer(thinking=False)
         self.modal = CustomModal(
-            "Edit Permission Type",
+            "Edit Pewmission Type~ owo",
             [
                 (
                     "permission_type_name",
                     discord.ui.TextInput(
-                        label="Name", placeholder="Name of Permission Type"
+                        label="Name >w<", placeholder="Name of Pewmission Type~ uwu"
                     ),
                 )
             ],
@@ -4955,26 +4955,26 @@ class PermissionTypeManagement(discord.ui.View):
         self.value = "edit"
         self.stop()
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Dewete >w<", style=discord.ButtonStyle.danger)
     async def _delete(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         self.modal = CustomModal(
-            "Permission Type Deletion",
+            "Pewmission Type Dewetion~ owo",
             [
                 (
                     "permission_type",
                     discord.ui.TextInput(
-                        label="Permission Type Name",
-                        placeholder="Name of the Permission Type",
+                        label="Pewmission Type Name >w<",
+                        placeholder="Name of da Pewmission Type~",
                     ),
                 )
             ],
@@ -4998,15 +4998,15 @@ class RoleQuotaManagement(discord.ui.View):
         self.name_for_creation = None
         self.modal = None
 
-    @discord.ui.button(label="Create Role Quota")
+    @discord.ui.button(label="Cweate Rowe Quota uwu~")
     async def _create(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
@@ -5014,24 +5014,24 @@ class RoleQuotaManagement(discord.ui.View):
         self.value = "create"
         self.stop()
 
-    @discord.ui.button(label="Delete Role Quota")
+    @discord.ui.button(label="Dewete Rowe Quota~")
     async def _delete(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
         self.modal = CustomModal(
-            "Role Quota Deletion",
+            "Rowe Quota Dewetion uwu~",
             [
                 (
                     "role_id",
-                    discord.ui.TextInput(label="Role ID", placeholder="ID of the Role"),
+                    discord.ui.TextInput(label="Rowe ID owo~", placeholder="ID of da Rowe uwu~"),
                 )
             ],
         )
@@ -5051,7 +5051,7 @@ class AcknowledgeStaffRequest(discord.ui.View):
         self.bot = bot
         self.o_id = o_id
 
-    @discord.ui.button(label="Acknowledge", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Acknowledge~", style=discord.ButtonStyle.secondary)
     async def acknowledge(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -5059,8 +5059,8 @@ class AcknowledgeStaffRequest(discord.ui.View):
         if interaction.user.id in document["acked"]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Already Acknowledged",
-                    description="You have already acknowledged this Staff Request.",
+                    title="Alweady Acknowledged >w<",
+                    description="U hab alweady acknowledged dis Staff Request. owo~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -5070,16 +5070,16 @@ class AcknowledgeStaffRequest(discord.ui.View):
             {"_id": document["_id"]}, {"$set": {"acked": document["acked"]}}
         )
         embed = interaction.message.embeds[0]
-        if embed.fields[-1].name.startswith("Acknowledgements"):
+        if embed.fields[-1].name.startswith("Acknowledgements >w<"):
             index = len(embed.fields) - 1
             embed.set_field_at(
                 index,
-                name="Acknowledgements [{}]".format(len(document["acked"])),
+                name="Acknowledgements [{}]~".format(len(document["acked"])),
                 value="\n".join(["> <@{}>".format(u) for u in document["acked"]]),
             )
         else:
             embed.add_field(
-                name="Acknowledgements [1]",
+                name="Acknowledgements [1]~",
                 value="\n".join(["> <@{}>".format(u) for u in document["acked"]]),
                 inline=False,
             )
@@ -5109,8 +5109,8 @@ class BackNextView(discord.ui.View):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
@@ -5122,8 +5122,8 @@ class BackNextView(discord.ui.View):
         if interaction.user.id not in [self.user_id]:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 )
             )
@@ -5142,7 +5142,7 @@ class AssociationConfigurationView(discord.ui.View):
             if len(defaults) == 0:
                 continue
             if isinstance(defaults[0], list):
-                if defaults[0][0] == "CUSTOM_CONF":
+                if defaults[0][0] == "CUSTOM_CONF owo~":
                     configurator = defaults[0]
                     match_configurator = configurator[1]
                     if match_configurator.get("_FIND_BY_LABEL") is True:
@@ -5210,8 +5210,8 @@ class AssociationConfigurationView(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -5227,18 +5227,18 @@ class ERLCIntegrationToolkit(discord.ui.View):
         self.content = None
         self.message = None
 
-    @discord.ui.button(label="Message", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Message~", style=discord.ButtonStyle.secondary)
     async def message(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         await interaction.response.send_modal(
             modal := CustomModal(
-                "Edit Message Content",
+                "Edit Message Content owo~",
                 [
                     (
                         "msg_content",
                         discord.ui.TextInput(
-                            label="Message Content", max_length=250, required=True
+                            label="Message Content owo~", max_length=250, required=True
                         ),
                     )
                 ],
@@ -5250,27 +5250,27 @@ class ERLCIntegrationToolkit(discord.ui.View):
             return
 
         self.content = modal.msg_content.value
-        self.selected_option = "Message"
+        self.selected_option = "Message~"
         await self.message.edit(
             embed=discord.Embed(
                 title="<:success:1163149118366040106> Success!",
-                description="Message integration has successfully been setup.",
+                description="Message integwation has successfuwwy been setup. >w<",
                 color=GREEN_COLOR,
             ),
             view=None,
         )
         self.stop()
 
-    @discord.ui.button(label="Hint", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Hint uwu~", style=discord.ButtonStyle.secondary)
     async def hint(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(
             modal := CustomModal(
-                "Edit Hint Content",
+                "Edit Hint Content owo~",
                 [
                     (
                         "hint_content",
                         discord.ui.TextInput(
-                            label="Hint Content", max_length=250, required=True
+                            label="Hint Content owo~", max_length=250, required=True
                         ),
                     )
                 ],
@@ -5282,12 +5282,12 @@ class ERLCIntegrationToolkit(discord.ui.View):
             return
 
         self.content = modal.hint_content.value
-        self.selected_option = "Hint"
+        self.selected_option = "Hint uwu~"
 
         await self.message.edit(
             embed=discord.Embed(
-                title="<:success:1163149118366040106> Success!",
-                description="Hint integration has successfully been setup.",
+                title="<:success:1163149118366040106> S-Success! uwu",
+                description="Hint integwation has successfuwwy been setup~ hehe",
                 color=GREEN_COLOR,
             ),
             view=None,
@@ -5327,8 +5327,8 @@ class ReminderCreationToolkit(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -5337,14 +5337,14 @@ class ReminderCreationToolkit(discord.ui.View):
 
     async def refresh_ui(self, message: discord.Message):
         embed = discord.Embed(
-            title=f"{self.option.title()} a Reminder",
+            title=f"{self.option.title()} a Weminder~ owo",
             description=(
                 f"> **Name:** {self.dataset['name']}\n"
                 f"> **ID:** {self.dataset['id']}\n"
-                f"> **Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Not set'}\n"
-                f"> **Completion Ability:** {self.dataset.get('completion_ability') or 'Not set'}\n"
-                f"> **Mentioned Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('role', [])]) or 'Not set'}\n"
-                f"> **Interval:** {td_format(datetime.timedelta(seconds=self.dataset.get('interval', 0))) or 'Not set'}"
+                f"> **Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Nyot set owo~'}\n"
+                f"> **Completion Ability:** {self.dataset.get('completion_ability') or 'Nyot set owo~'}\n"
+                f"> **Mentioned Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('role', [])]) or 'Nyot set owo~'}\n"
+                f"> **Interval:** {td_format(datetime.timedelta(seconds=self.dataset.get('interval', 0))) or 'Nyot set owo~'}"
                 f"\n\n**Content:**\n{self.dataset['message']}"
             ),
             color=BLANK_COLOR,
@@ -5358,18 +5358,18 @@ class ReminderCreationToolkit(discord.ui.View):
         ):
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
 
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="Mentioned Roles", row=0, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="Mentioned Rowes uwu~", row=0, max_values=25
     )
     async def mentioned_roles_select(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -5381,7 +5381,7 @@ class ReminderCreationToolkit(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Reminder Channel",
+        placeholder="Remindew Channel~",
         row=1,
         max_values=1,
         channel_types=[discord.ChannelType.text],
@@ -5394,18 +5394,18 @@ class ReminderCreationToolkit(discord.ui.View):
         self.dataset["channel"] = [i.id for i in select.values][0]
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Set Interval", style=discord.ButtonStyle.secondary, row=2)
+    @discord.ui.button(label="Set Intewvaw >w<", style=discord.ButtonStyle.secondary, row=2)
     async def set_interval(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         self.modal = CustomModal(
-            "Set Interval",
+            "Set Intewvaw >w<",
             [
                 (
                     "interval",
                     discord.ui.TextInput(
-                        label="Interval",
-                        placeholder="The interval between each reminder. (hours/minutes/seconds/days)",
+                        label="Intewvaw uwu~",
+                        placeholder="Da intewvaw between each remindew. (houws/minutes/seconds/days)",
                         default=str(self.dataset.get("interval", 0)),
                         required=False,
                     ),
@@ -5420,8 +5420,8 @@ class ReminderCreationToolkit(discord.ui.View):
         except ValueError:
             return await self.modal.interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Time",
-                    description="You did not enter a valid time.",
+                    title="Invawid Time uwu~",
+                    description="U did nyot entew a vawid time. uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -5430,15 +5430,15 @@ class ReminderCreationToolkit(discord.ui.View):
         await self.refresh_ui(interaction.message)
 
     @discord.ui.button(
-        label="Edit ER:LC Integration", style=discord.ButtonStyle.secondary, row=2
+        label="Edit ER:LC Integwation~", style=discord.ButtonStyle.secondary, row=2
     )
     async def edit_integration(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         msg = await interaction.response.send_message(
             embed=discord.Embed(
-                title="Edit ER:LC Integration",
-                description="Here you can edit your reminder's integrations with Emergency Response: Liberty County, such as sending an automatic message or hint on a reminder activation. **As of right now, you can only have one integration type per reminder.**",
+                title="Edit ER:LC Integwation~",
+                description="Hewe u can edit uw remindew's integwations wid Emewgency Response: Libewty County, such as sending an automatic message ow hint on a remindew activation. **As of right now, u can onwy hab one integwation type pew remindew.**",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -5457,18 +5457,18 @@ class ReminderCreationToolkit(discord.ui.View):
         }
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Edit Content", style=discord.ButtonStyle.secondary, row=2)
+    @discord.ui.button(label="Edit Content owo~", style=discord.ButtonStyle.secondary, row=2)
     async def edit_content(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         self.modal = CustomModal(
-            "Edit Content",
+            "Edit Content owo~",
             [
                 (
                     "content",
                     discord.ui.TextInput(
-                        label="Content",
-                        placeholder="The content of the reminder",
+                        label="Content~",
+                        placeholder="Da content of da remindew >w<",
                         default=str(self.dataset.get("message", "")),
                         style=discord.TextStyle.long,
                         max_length=2000,
@@ -5485,31 +5485,31 @@ class ReminderCreationToolkit(discord.ui.View):
         await self.refresh_ui(interaction.message)
 
     @discord.ui.button(
-        label="Completion Ability: Disabled", style=discord.ButtonStyle.danger, row=2
+        label="Completion Abiwity: Disabled uwu~", style=discord.ButtonStyle.danger, row=2
     )
     async def edit_completion_ability(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        if button.label == "Completion Ability: Disabled":
+        if button.label == "Completion Abiwity: Disabled uwu~":
             self.dataset["completion_ability"] = True
-            button.label = "Completion Ability: Enabled"
+            button.label = "Completion Abiwity: Enabled~"
             button.style = discord.ButtonStyle.green
         else:
             self.dataset["completion_ability"] = False
-            button.label = "Completion Ability: Disabled"
+            button.label = "Completion Abiwity: Disabled uwu~"
             button.style = discord.ButtonStyle.danger
 
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=3)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=3)
     async def cancel(self, interaction: discord.Interaction, button: discord.Button):
         await interaction.response.defer(ephemeral=True)
         self.cancelled = True
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Successfully cancelled",
-                description="This reminder has not been created.",
+                title="Successfuwwy cancewwed owo~",
+                description="Dis remindew has nyot been cweated. uwu~",
                 color=BLANK_COLOR,
             )
         )
@@ -5517,7 +5517,7 @@ class ReminderCreationToolkit(discord.ui.View):
         self.stop()
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, disabled=True, row=3
+        label="Finish uwu~", style=discord.ButtonStyle.green, disabled=True, row=3
     )
     async def finish(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer()
@@ -5533,7 +5533,7 @@ class BasicConfiguration(AssociationConfigurationView):
         return await super().interaction_check(interaction)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="Staff Roles", row=0, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="Staff Rowes uwu~", row=0, max_values=25
     )
     async def staff_role_select(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -5557,7 +5557,7 @@ class BasicConfiguration(AssociationConfigurationView):
         )
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="Admin Role", row=1, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="Admin Rowe >w<", row=1, max_values=25
     )
     async def admin_role_select(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -5582,7 +5582,7 @@ class BasicConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Management Roles",
+        placeholder="Management Rowes uwu~",
         row=2,
         max_values=25,
         min_values=0,
@@ -5609,23 +5609,23 @@ class BasicConfiguration(AssociationConfigurationView):
         )
 
     @discord.ui.select(
-        placeholder="Prefix",
+        placeholder="Pwefix owo~",
         row=3,
         options=[
             discord.SelectOption(
-                label="!", description="Use '!' as your custom prefix."
+                label="!", description="Use '!' as uw custom pwefix. >w<"
             ),
             discord.SelectOption(
-                label=">", description="Use '>' as your custom prefix."
+                label=">", description="Use '>' as uw custom pwefix. >w<"
             ),
             discord.SelectOption(
-                label="?", description="Use '?' as your custom prefix."
+                label="?", description="Use '?' as uw custom pwefix. owo~"
             ),
             discord.SelectOption(
-                label=":", description="Use ':' as your custom prefix."
+                label=":", description="Use ':' as uw custom pwefix. >w<"
             ),
             discord.SelectOption(
-                label="-", description="Use '-' as your custom prefix."
+                label="-", description="Use '-' as uw custom pwefix. >w<"
             ),
         ],
         max_values=1,
@@ -5698,7 +5698,7 @@ class LOAConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="LOA Role", row=1, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="LOA Rowe >w<", row=1, max_values=25
     )
     async def loa_role_select(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -5723,7 +5723,7 @@ class LOAConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="LOA Channel",
+        placeholder="LOA Channel uwu~",
         row=2,
         max_values=1,
         channel_types=[discord.ChannelType.text],
@@ -5750,18 +5750,18 @@ class LOAConfiguration(AssociationConfigurationView):
         )
 
     @discord.ui.select(
-        placeholder="LOA Requests",
+        placeholder="LOA Requests~",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="LOA Requests are enabled.",
+                description="LOA Requests awe enabled.~",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="LOA Requests are disabled.",
+                description="LOA Requests awe disabled. >w<",
             ),
         ],
         max_values=1,
@@ -5813,7 +5813,7 @@ class ExtendedShiftOptions(discord.ui.View):
                 for item in self.children:
                     if (
                         isinstance(item, discord.ui.Select)
-                        and item.placeholder == "Break Roles"
+                        and item.placeholder == "Bweak Rowes owo~"
                     ):
                         item.default_values = defaults
                 continue
@@ -5872,7 +5872,7 @@ class ExtendedShiftOptions(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Break Roles",
+        placeholder="Bweak Rowes owo~",
         max_values=25,
         min_values=0,
     )
@@ -5893,8 +5893,8 @@ class ExtendedShiftOptions(discord.ui.View):
             # we're not allowing this ...
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Security Concern",
-                    description="You cannot choose a Break Role that is higher than your maximum role.",
+                    title="Secuwity Concewn uwu~",
+                    description="U cannot choose a Bweak Rowe dat is highew than uw maximum rowe.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -5919,18 +5919,18 @@ class ExtendedShiftOptions(discord.ui.View):
             f"Break Role has been set to {', '.join([f'<@&{i.id}>' for i in select.values])}.",
         )
 
-    @discord.ui.button(label="Set Maximum Staff Online", row=4)
+    @discord.ui.button(label="Set Maximum Staff Online~", row=4)
     async def set_maximum_staff_online(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         self.modal = CustomModal(
-            "Maximum Staff",
+            "Maximum Staff owo~",
             [
                 (
                     "max_staff",
                     discord.ui.TextInput(
-                        label="Maximum Staff Online",
-                        placeholder="This is the amount of staff members that can be online at one time.",
+                        label="Maximum Staff Online~",
+                        placeholder="Dis is da amount of staff membews dat can be online at one time.",
                         default=str(self.modal_default),
                         required=False,
                     ),
@@ -5954,18 +5954,18 @@ class ExtendedShiftOptions(discord.ui.View):
         )
         self.modal_default = max_staff
 
-    @discord.ui.button(label="Set Nickname Prefix", row=3)
+    @discord.ui.button(label="Set Nickname Pwefix >w<", row=3)
     async def set_nickname_prefix(
         self, interaction: discord.Interaction, button: discord.Button
     ):
         self.modal = CustomModal(
-            "Nickname Prefix",
+            "Nickname Pwefix uwu~",
             [
                 (
                     "nickname_prefix",
                     discord.ui.TextInput(
-                        label="Nickname Prefix",
-                        placeholder="The nickname prefix that will be used when someone goes On-Duty.",
+                        label="Nickname Pwefix uwu~",
+                        placeholder="Da nickname pwefix dat wiww be used when someone goes On-Duty.",
                         default=str(self.nickname_default),
                         required=False,
                     ),
@@ -5988,17 +5988,17 @@ class ExtendedShiftOptions(discord.ui.View):
         )
         self.nickname_default = nickname_prefix
 
-    @discord.ui.button(label="Set Quota", row=2)
+    @discord.ui.button(label="Set Quota owo~", row=2)
     async def set_quota(self, interaction: discord.Interaction, button: discord.Button):
         quota_hours = self.quota_default
         self.modal = CustomModal(
-            "Quota",
+            "Quota~",
             [
                 (
                     "quota",
                     discord.ui.TextInput(
-                        label="Quota",
-                        placeholder="This value will be used to judge whether a staff member has completed quota.",
+                        label="Quota owo",
+                        placeholder="Dis vawue wiww be used to judge whedew a staff membew has compweted quota~ uwu",
                         default=td_format(datetime.timedelta(seconds=quota_hours)),
                         required=False,
                     ),
@@ -6015,8 +6015,8 @@ class ExtendedShiftOptions(discord.ui.View):
         except ValueError:
             return await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Invalid Time",
-                    description="You provided an invalid time format.",
+                    title="Invawid Time >w<",
+                    description="U pwovided an invawid time fowmat~ sowwy! >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -6030,7 +6030,7 @@ class ExtendedShiftOptions(discord.ui.View):
             bot,
             interaction.guild,
             interaction.user,
-            f"Quota has been set to {td_format(datetime.timedelta(seconds=seconds))}.",
+            f"Quota has been set to {td_format(datetime.timedelta(seconds=seconds))} uwu~",
         )
         self.quota_default = seconds
 
@@ -6041,7 +6041,7 @@ class ShiftConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="On-Duty Role",
+        placeholder="On-Duty Wowe uwu",
         row=2,
         max_values=25,
         min_values=0,
@@ -6063,8 +6063,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             # we're not allowing this ...
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Security Concern",
-                    description="You cannot choose an On-Duty role that is higher than your maximum role.",
+                    title="Secuwity Concewn >w<",
+                    description="U cannot choose an On-Duty wowe dat is highew than uw maximum wowe~ nyaa!",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -6086,12 +6086,12 @@ class ShiftConfiguration(AssociationConfigurationView):
             bot,
             interaction.guild,
             interaction.user,
-            f"On-Duty Role has been set to {', '.join([f'<@&{i.id}>' for i in select.values])}.",
+            f"On-Duty Wowe has been set to {', '.join([f'<@&{i.id}>' for i in select.values])} uwu~",
         )
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Shift Channel",
+        placeholder="Shift Channew~",
         row=1,
         max_values=1,
         channel_types=[discord.ChannelType.text],
@@ -6114,22 +6114,22 @@ class ShiftConfiguration(AssociationConfigurationView):
             bot,
             interaction.guild,
             interaction.user,
-            f"Shift Channel has been set to <#{select.values[0].id}>.",
+            f"Shift Channew has been set to <#{select.values[0].id}> owo~",
         )
 
     @discord.ui.select(
-        placeholder="Shift Management",
+        placeholder="Shift Management owo",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabwed >w<",
                 value="enabled",
-                description="Shift Management is enabled.",
+                description="Shift Management is enabwed~ uwu",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabwed >w<",
                 value="disabled",
-                description="Shift Management is disabled.",
+                description="Shift Management is disabwed~ owo",
             ),
         ],
         max_values=1,
@@ -6152,12 +6152,12 @@ class ShiftConfiguration(AssociationConfigurationView):
             bot,
             interaction.guild,
             interaction.user,
-            f"Shift Management has been {'enabled' if select.values[0] == 'enabled' else 'disabled'}.",
+            f"Shift Management has been {'enabwed uwu' if select.values[0] == 'enabled' else 'disabwed owo'}~",
         )
         for i in select.options:
             i.default = False
 
-    @discord.ui.button(label="More Options", row=3)
+    @discord.ui.button(label="Mowe Options~", row=3)
     async def more_options(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -6175,7 +6175,7 @@ class ShiftConfiguration(AssociationConfigurationView):
                     sett["shift_management"].get("nickname_prefix", ""),
                 ),
                 (
-                    "Break Roles",
+                    "Bweak Rowes owo~",
                     [
                         discord.utils.get(interaction.guild.roles, id=i)
                         for i in sett["shift_management"].get("break_roles", [])
@@ -6185,7 +6185,7 @@ class ShiftConfiguration(AssociationConfigurationView):
         )
         await interaction.response.send_message(view=new_view, ephemeral=True)
 
-    @discord.ui.button(label="Shift Types", row=3)
+    @discord.ui.button(label="Shift Types owo", row=3)
     async def shift_types(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -6196,25 +6196,25 @@ class ShiftConfiguration(AssociationConfigurationView):
         settings = await self.bot.settings.find_by_id(interaction.guild.id)
         shift_types = settings.get("shift_types", {}).get("types", [])
 
-        embed = discord.Embed(title="Shift Types", color=BLANK_COLOR)
+        embed = discord.Embed(title="Shift Types owo~", color=BLANK_COLOR)
         for item in shift_types:
             embed.add_field(
                 name=f"{item['name']}",
                 value=(
-                    f"> **Name:** {item['name']}\n"
+                    f"> **Name~:** {item['name']}\n"
                     f"> **ID:** {item['id']}\n"
-                    f"> **Channel:** <#{item['channel']}>\n"
-                    f"> **Nickname Prefix:** {item.get('nickname') or 'None'}\n"
-                    f"> **Access Roles:** {','.join(['<@&{}>'.format(role) for role in item.get('access_roles') or []]) or 'None'}\n"
-                    f"> **On-Duty Role:** {','.join(['<@&{}>'.format(role) for role in item.get('role', [])]) or 'None'}"
+                    f"> **Channew:** <#{item['channel']}>\n"
+                    f"> **Nickname Pwefix:** {item.get('nickname') or 'Nyone owo~'}\n"
+                    f"> **Access Wowes:** {','.join(['<@&{}>'.format(role) for role in item.get('access_roles') or []]) or 'Nyone owo~'}\n"
+                    f"> **On-Duty Wowe:** {','.join(['<@&{}>'.format(role) for role in item.get('role', [])]) or 'Nyone owo~'}"
                 ),
                 inline=False,
             )
 
         if len(embed.fields) == 0:
             embed.add_field(
-                name="No Shift Types",
-                value="There are no shift types on this server.",
+                name="Nyo Shift Types >w<",
+                value="Thewe awe nyo shift types on dis sewvew~ sowwy! uwu~",
                 inline=False,
             )
         embed.set_author(
@@ -6238,8 +6238,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             if not selected_item:
                 return await interaction.edit_original_response(
                     embed=discord.Embed(
-                        title="Incorrect Shift Type",
-                        description="This shift type is incorrect or invalid.",
+                        title="Incowwect Shift Type >w<",
+                        description="Dis shift type is incowwect ow invawid~ sowwy! owo~",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6248,16 +6248,16 @@ class ShiftConfiguration(AssociationConfigurationView):
             data = selected_item
 
             embed = discord.Embed(
-                title="Edit a Shift Type",
+                title="Edit a Shift Type nyaa~",
                 description=(
-                    f"> **Name:** {data['name']}\n"
+                    f"> **Name~:** {data['name']}\n"
                     f"> **ID:** {data['id']}\n"
-                    f"> **Shift Channel:** {'<#{}>'.format(data.get('channel', None)) if data.get('channel', None) is not None else 'Not set'}\n"
-                    f"> **Nickname Prefix:** {data.get('nickname') or 'None'}\n"
-                    f"> **On-Duty Roles:** {', '.join(['<@&{}>'.format(r) for r in data.get('role', [])]) or 'Not set'}\n"
-                    f"> **Break Roles:** {', '.join(['<@&{}>'.format(r) for r in data.get('break_roles', [])]) or 'Not set'}\n"
-                    f"> **Access Roles:** {', '.join(['<@&{}>'.format(r) for r in data.get('access_roles', [])]) or 'Not set'}\n\n\n"
-                    f"Access Roles are roles that are able to freely use this Shift Type and are able to go on-duty as this Shift Type. If an access role is selected, an individual must have it to go on-duty with this Shift Type."
+                    f"> **Shift Channew:** {'<#{}>'.format(data.get('channel', None)) if data.get('channel', None) is not None else 'Nyot set >w<'}\n"
+                    f"> **Nickname Pwefix:** {data.get('nickname') or 'Nyone owo~'}\n"
+                    f"> **On-Duty Wowes:** {', '.join(['<@&{}>'.format(r) for r in data.get('role', [])]) or 'Nyot set >w<'}\n"
+                    f"> **Bweak Wowes:** {', '.join(['<@&{}>'.format(r) for r in data.get('break_roles', [])]) or 'Nyot set >w<'}\n"
+                    f"> **Access Wowes:** {', '.join(['<@&{}>'.format(r) for r in data.get('access_roles', [])]) or 'Nyot set >w<'}\n\n\n"
+                    f"Access Wowes awe wowes dat awe abwe to fweewy use dis Shift Type and awe abwe to go on-duty as dis Shift Type~ If an access wowe is sewected, an individuaw must hav it to go on-duty with dis Shift Type owo!"
                 ),
                 color=BLANK_COLOR,
             )
@@ -6306,10 +6306,10 @@ class ShiftConfiguration(AssociationConfigurationView):
                 data,
                 "edit",
                 {
-                    "On-Duty Roles": roles,
-                    "Break Roles": break_roles,
-                    "Access Roles": access_roles,
-                    "Shift Channel": shift_channel,
+                    "On-Duty Rowes uwu~": roles,
+                    "Bweak Rowes owo~": break_roles,
+                    "Access Rowes~": access_roles,
+                    "Shift Channel uwu~": shift_channel,
                 },
             )
             view.restored_interaction = interaction
@@ -6334,8 +6334,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             await self.bot.settings.update_by_id(settings)
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Shift Type Edited",
-                    description="Your shift type has been edited!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Shift Type Edited uwu~",
+                    description="Uw shift type has been edited~ teehee! owo~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -6350,15 +6350,15 @@ class ShiftConfiguration(AssociationConfigurationView):
                 "roles": [],
             }
             embed = discord.Embed(
-                title="Shift Type Creation",
+                title="Shift Type Cweation nyaa~",
                 description=(
-                    f"> **Name:** {data['name']}\n"
+                    f"> **Name~:** {data['name']}\n"
                     f"> **ID:** {data['id']}\n"
-                    f"> **Shift Channel:** {'<#{}>'.format(data.get('channel', None)) if data.get('channel', None) is not None else 'Not set'}\n"
-                    f"> **Nickname Prefix:** {data.get('nickname') or 'None'}\n"
-                    f"> **On-Duty Roles:** {', '.join(['<@&{}>'.format(r) for r in data.get('role', [])]) or 'Not set'}\n"
-                    f"> **Access Roles:** {', '.join(['<@&{}>'.format(r) for r in data.get('access_roles', [])]) or 'Not set'}\n\n\n"
-                    f"Access Roles are roles that are able to freely use this Shift Type and are able to go on-duty as this Shift Type. If an access role is selected, an individual must have it to go on-duty with this Shift Type."
+                    f"> **Shift Channew:** {'<#{}>'.format(data.get('channel', None)) if data.get('channel', None) is not None else 'Nyot set >w<'}\n"
+                    f"> **Nickname Pwefix:** {data.get('nickname') or 'Nyone owo~'}\n"
+                    f"> **On-Duty Wowes:** {', '.join(['<@&{}>'.format(r) for r in data.get('role', [])]) or 'Nyot set >w<'}\n"
+                    f"> **Access Wowes:** {', '.join(['<@&{}>'.format(r) for r in data.get('access_roles', [])]) or 'Nyot set >w<'}\n\n\n"
+                    f"Access Wowes awe wowes dat awe abwe to fweewy use dis Shift Type and awe abwe to go on-duty as dis Shift Type~ If an access wowe is sewected, an individuaw must hav it to go on-duty with dis Shift Type owo!"
                 ),
                 color=BLANK_COLOR,
             )
@@ -6383,8 +6383,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             await self.bot.settings.update_by_id(settings)
             await msg.edit(
                 embed=discord.Embed(
-                    title="<:success:1163149118366040106> Shift Type Created",
-                    description="Your shift type has been created!",
+                    title="<:success:1163149118366040106> Shift Type Cweated uwu~",
+                    description="Uw shift type has been cweated~ hehe! >w<",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -6402,8 +6402,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             except ValueError:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Shift Type",
-                        description="The ID you have provided is not associated with a shift type.",
+                        title="Invawid Shift Type >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a shift type~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6413,8 +6413,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             if len(shift_types) == 0:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Shift Type",
-                        description="The ID you have provided is not associated with a shift type.",
+                        title="Invawid Shift Type >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a shift type~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6423,8 +6423,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             if type_id not in [t["id"] for t in shift_types]:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Shift Type",
-                        description="The ID you have provided is not associated with a shift type.",
+                        title="Invawid Shift Type >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a shift type~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6449,14 +6449,14 @@ class ShiftConfiguration(AssociationConfigurationView):
             msg = await interaction.original_response()
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Shift Type Deleted",
-                    description="Your shift type has been deleted!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Shift Type Deweted uwu~",
+                    description="Uw shift type has been deweted~ owo! uwu~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
             )
 
-    @discord.ui.button(label="Role Quotas", row=3)
+    @discord.ui.button(label="Wowe Quotas owo", row=3)
     async def role_quotas(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -6467,7 +6467,7 @@ class ShiftConfiguration(AssociationConfigurationView):
         settings = await self.bot.settings.find_by_id(interaction.guild.id)
         role_quotas = settings.get("shift_management").get("role_quotas", [])
 
-        embed = discord.Embed(title="Role Quotas", description="", color=BLANK_COLOR)
+        embed = discord.Embed(title="Wowe Quotas uwu~", description="", color=BLANK_COLOR)
         for item in role_quotas:
             role_id, particular_quota = item["role"], item["quota"]
             # role = interaction.guild.get_role(role_id)
@@ -6483,8 +6483,8 @@ class ShiftConfiguration(AssociationConfigurationView):
 
         if len(embed.description) == 0:
             embed.add_field(
-                name="No Role Quotas",
-                value="There are no role quotas in this server.",
+                name="Nyo Wowe Quotas >w<",
+                value="Thewe awe nyo wowe quotas in dis sewvew~ sowwy! >w<",
                 inline=False,
             )
         embed.set_author(
@@ -6500,9 +6500,9 @@ class ShiftConfiguration(AssociationConfigurationView):
         if view.value == "create":
             data = {"role": 0, "quota": 0}
             embed = discord.Embed(
-                title="Role Quota Creation",
+                title="Wowe Quota Cweation nyaa~",
                 description=(
-                    f"> **Role:** {'<@&{}>'.format(data['role']) if data['role'] != 0 else 'Not set'}\n"
+                    f"> **Wowe:** {'<@&{}>'.format(data['role']) if data['role'] != 0 else 'Nyot set >w<'}\n"
                     f"> **Quota:** {td_format(datetime.timedelta(seconds=data['quota']))}\n"
                 ),
                 color=BLANK_COLOR,
@@ -6530,8 +6530,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             )
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Role Quota Created",
-                    description="Your Role Quota has been created!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Wowe Quota Cweated uwu~",
+                    description="Uw Wowe Quota has been cweated~ hehe! uwu~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -6542,8 +6542,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             except ValueError:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Role ID",
-                        description="The ID you have provided is not associated with a Role Quota.",
+                        title="Invawid Wowe ID >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a Wowe Quota~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6553,8 +6553,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             if len(role_quotas) == 0:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Role ID",
-                        description="The ID you have provided is not associated with a Role Quota.",
+                        title="Invawid Wowe ID >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a Wowe Quota~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6563,8 +6563,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             if type_id not in [t["role"] for t in role_quotas]:
                 return await (await interaction.original_response()).edit(
                     embed=discord.Embed(
-                        title="Invalid Role ID",
-                        description="The ID you have provided is not associated with a Role Quota.",
+                        title="Invawid Wowe ID >w<",
+                        description="Da ID u hab pwovided is nyot associated wid a Wowe Quota~ sowwy!",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -6586,8 +6586,8 @@ class ShiftConfiguration(AssociationConfigurationView):
             )
             await msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Role Quota Deleted",
-                    description="Your Role Quota has been deleted!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Wowe Quota Deweted uwu~",
+                    description="Uw Wowe Quota has been deweted~ owo! uwu~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -6600,7 +6600,7 @@ class ERMCommandLog(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="ERM Log Channel",
+        placeholder="ERM Log Channel~",
         row=0,
         max_values=1,
         min_values=0,
@@ -6637,7 +6637,7 @@ class RAConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="RA Role",
+        placeholder="RA Rowe uwu~",
         row=2,
         max_values=25,
         min_values=0,
@@ -6670,7 +6670,7 @@ class ExtendedPunishmentConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Kick Channel",
+        placeholder="Kick Channel uwu~",
         row=0,
         max_values=1,
         min_values=0,
@@ -6700,7 +6700,7 @@ class ExtendedPunishmentConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Ban Channel",
+        placeholder="Ban Channel uwu~",
         row=1,
         max_values=1,
         min_values=0,
@@ -6730,7 +6730,7 @@ class ExtendedPunishmentConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="BOLO Channel",
+        placeholder="BOLO Channel owo~",
         row=2,
         max_values=1,
         min_values=0,
@@ -6764,18 +6764,18 @@ class PunishmentsConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        placeholder="ROBLOX Punishments",
+        placeholder="ROBLOX Punishments owo~",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="ROBLOX Punishments are enabled.",
+                description="ROBLOX Punishments awe enabled.~",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="ROBLOX Punishments are disabled.",
+                description="ROBLOX Punishments awe disabled. >w<",
             ),
         ],
         max_values=1,
@@ -6805,7 +6805,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Punishments Channel",
+        placeholder="Punishments Channel uwu~",
         row=1,
         max_values=1,
         min_values=0,
@@ -6832,7 +6832,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
             f"Punishments Channel Set: <#{select.values[0].id}>",
         )
 
-    @discord.ui.button(label="More Options", row=2)
+    @discord.ui.button(label="Mowe Options uwu~", row=2)
     async def more_options(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -6845,7 +6845,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
             interaction.user.id,
             [
                 (
-                    "Kick Channel",
+                    "Kick Channel uwu~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -6854,7 +6854,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
                     ],
                 ),
                 (
-                    "Ban Channel",
+                    "Ban Channel uwu~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -6863,7 +6863,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
                     ],
                 ),
                 (
-                    "BOLO Channel",
+                    "BOLO Channel owo~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -6875,7 +6875,7 @@ class PunishmentsConfiguration(AssociationConfigurationView):
         )
         await interaction.response.send_message(view=new_view, ephemeral=True)
 
-    @discord.ui.button(label="Default Punishments", row=2)
+    @discord.ui.button(label="Default Punishments >w<", row=2)
     async def default_punishments(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -6908,14 +6908,14 @@ class defaultPunishments(discord.ui.View):
         self.bolo_enabled = raw_punishments.get("bolo", True)
 
         options = [
-            discord.SelectOption(label="Warning", value="Warning", default=self.warning_enabled),
-            discord.SelectOption(label="Kick", value="Kick", default=self.kick_enabled),
-            discord.SelectOption(label="Ban", value="Ban", default=self.ban_enabled),
-            discord.SelectOption(label="BOLO", value="BOLO", default=self.bolo_enabled),
+            discord.SelectOption(label="Wawning owo~", value="Warning", default=self.warning_enabled),
+            discord.SelectOption(label="Kick uwu~", value="Kick", default=self.kick_enabled),
+            discord.SelectOption(label="Ban~ hehe", value="Ban", default=self.ban_enabled),
+            discord.SelectOption(label="BOLO >w<", value="BOLO", default=self.bolo_enabled),
         ]
 
         select = discord.ui.Select(
-            placeholder="Select a punishment",
+            placeholder="Sewect a punishment >w<",
             options=options,
             max_values=4,
             min_values=0,
@@ -6938,8 +6938,8 @@ class defaultPunishments(discord.ui.View):
 
         await interaction.response.send_message(
             embed=discord.Embed(
-                title="Default Punishments Updated",
-                description="The default punishments have been updated.",
+                title="Default Punishments Updated >w<",
+                description="Da default punishments hab been updated. uwu~",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
@@ -6950,18 +6950,18 @@ class GameSecurityConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        placeholder="Game Security",
+        placeholder="Game Secuwity >w<",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="Game Security is enabled.",
+                description="Game Secuwity is enabled.~",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="Game Security is disabled.",
+                description="Game Secuwity is disabled. uwu~",
             ),
         ],
         max_values=1,
@@ -6993,7 +6993,7 @@ class GameSecurityConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Webhook Channel",
+        placeholder="Webhook Channel~",
         row=1,
         max_values=1,
         min_values=0,
@@ -7024,7 +7024,7 @@ class GameSecurityConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Alert Channel",
+        placeholder="Alewt Channel owo~",
         row=2,
         max_values=1,
         min_values=0,
@@ -7055,7 +7055,7 @@ class GameSecurityConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Mentionables",
+        placeholder="Mentionables~",
         row=3,
         max_values=25,
         min_values=0,
@@ -7089,20 +7089,20 @@ class RDMActions(discord.ui.View):
         super().__init__(timeout=None)
         self.bot = bot
 
-    @discord.ui.button(label="Mark as Justified", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="Mawk as Justified owo~", style=discord.ButtonStyle.success)
     async def mark_as_justified(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         await interaction.response.send_modal(
             (
                 modal := CustomModal(
-                    "Reason",
+                    "Reason~",
                     [
                         (
                             "reason",
                             discord.ui.TextInput(
-                                label="Reason",
-                                placeholder="e.g. Event, Purge, etc.",
+                                label="Reason~",
+                                placeholder="e.g. Event, Puwge, etc.",
                                 style=discord.TextStyle.long,
                             ),
                         )
@@ -7117,20 +7117,20 @@ class RDMActions(discord.ui.View):
 
         await interaction.message.edit(
             embed=interaction.message.embeds[0].add_field(
-                name="Justification",
+                name="Justification owo~",
                 value=f"> {modal.reason.value}\n- {interaction.user.mention}",
             ),
             view=self.clear_items(),
         )
 
-    @discord.ui.button(label="Jail Player", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Jail Playew~", style=discord.ButtonStyle.secondary)
     async def jail_player(
         self, interaction: discord.Interaction, button: discord.ui.View
     ):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
         user_id = "".join([i if i in "1234567890" else "" for i in user_id])
         await interaction.response.defer(ephemeral=True, thinking=False)
 
@@ -7142,7 +7142,7 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Jailed Abuser",
-                    description="This command has been sent to the server. They should now be jailed in the server.",
+                    description="Dis command has been sent to da sewvew. They shouwd now be jaiwed in da sewvew.",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -7151,14 +7151,14 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
     @discord.ui.button(
-        label="Kick Player",
+        label="Kick Playew owo~",
         style=discord.ButtonStyle.secondary,
     )
     async def kick_abuser(
@@ -7167,7 +7167,7 @@ class RDMActions(discord.ui.View):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
         user_id = "".join([i if i in "1234567890" else "" for i in user_id])
         await interaction.response.defer(ephemeral=True, thinking=False)
 
@@ -7179,7 +7179,7 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Kicked Player",
-                    description="This command has been sent to the server. They should now be removed from the server.",
+                    description="Dis command has been sent to da sewvew. They shouwd now be removed fwom da sewvew.",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -7188,14 +7188,14 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
     @discord.ui.button(
-        label="Ban Player",
+        label="Ban Playew owo~",
         style=discord.ButtonStyle.secondary,
     )
     async def ban_abuser(
@@ -7204,7 +7204,7 @@ class RDMActions(discord.ui.View):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
         user_id = "".join([i if i in "1234567890" else "" for i in user_id])
         await interaction.response.defer(ephemeral=True, thinking=False)
         command_response = await bot.prc_api.run_command(
@@ -7215,7 +7215,7 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Banned Player",
-                    description="This command has been sent to the server. They should now be removed from the server.",
+                    description="Dis command has been sent to da sewvew. They shouwd now be removed fwom da sewvew.",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -7224,7 +7224,7 @@ class RDMActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -7240,23 +7240,23 @@ class GameSecurityActions(discord.ui.View):
         # enables the button that allows for unbanning all affected users
         for item in self.children:
             if isinstance(item, discord.ui.Button):
-                if item.label == "Unban Affected Players":
+                if item.label == "Unban Affected Playews uwu~":
                     item.disabled = False
 
-    @discord.ui.button(label="Mark as Justified", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="Mawk as Justified owo~", style=discord.ButtonStyle.success)
     async def mark_as_justified(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         await interaction.response.send_modal(
             (
                 modal := CustomModal(
-                    "Reason",
+                    "Reason~",
                     [
                         (
                             "reason",
                             discord.ui.TextInput(
-                                label="Reason",
-                                placeholder="e.g. SSD, permitted by owners, etc.",
+                                label="Reason~",
+                                placeholder="e.g. SSD, pewmitted by ownews, etc.",
                                 style=discord.TextStyle.long,
                             ),
                         )
@@ -7271,14 +7271,14 @@ class GameSecurityActions(discord.ui.View):
 
         await interaction.message.edit(
             embed=interaction.message.embeds[0].add_field(
-                name="Justification",
+                name="Justification owo~",
                 value=f"> {modal.reason.value}\n- {interaction.user.mention}",
             ),
             view=self.clear_items(),
         )
 
     @discord.ui.button(
-        label="Unadmin Staff Member", style=discord.ButtonStyle.secondary
+        label="Unadmin Staff Membew~", style=discord.ButtonStyle.secondary
     )
     async def unadmin_staff_member(
         self, interaction: discord.Interaction, button: discord.ui.View
@@ -7286,7 +7286,7 @@ class GameSecurityActions(discord.ui.View):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
 
         user_id = "".join(filter(str.isdigit, user_id))
         await interaction.response.defer(ephemeral=True, thinking=False)
@@ -7304,7 +7304,7 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Revoked Permissions",
-                    description="This command has been sent to the server. Their permissions should now be removed.",
+                    description="Dis command has been sent to da sewvew. Theiw pewmissions shouwd now be removed.",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -7313,14 +7313,14 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
     @discord.ui.button(
-        label="Unban Affected Players",
+        label="Unban Affected Playews uwu~",
         style=discord.ButtonStyle.secondary,
         row=0,
         disabled=False,
@@ -7368,7 +7368,7 @@ class GameSecurityActions(discord.ui.View):
             )
 
     @discord.ui.button(
-        label="Kick Abuser", style=discord.ButtonStyle.secondary, row=1, disabled=True
+        label="Kick Abusew~", style=discord.ButtonStyle.secondary, row=1, disabled=True
     )
     async def kick_abuser(
         self, interaction: discord.Interaction, button: discord.ui.View
@@ -7376,7 +7376,7 @@ class GameSecurityActions(discord.ui.View):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
         user_id = "".join(filter(str.isdigit, user_id))
         await interaction.response.defer(ephemeral=True, thinking=False)
 
@@ -7388,7 +7388,7 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Kicked Abuser",
-                    description="This command has been sent to the server. They should now be removed from the server.",
+                    description="Dis command has been sent to da sewvew. They shouwd now be removed fwom da sewvew.",
                     color=GREEN_COLOR,
                 )
             )
@@ -7396,13 +7396,13 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 )
             )
 
     @discord.ui.button(
-        label="Ban Abuser", style=discord.ButtonStyle.secondary, row=1, disabled=True
+        label="Ban Abusew~", style=discord.ButtonStyle.secondary, row=1, disabled=True
     )
     async def ban_abuser(
         self, interaction: discord.Interaction, button: discord.ui.View
@@ -7410,7 +7410,7 @@ class GameSecurityActions(discord.ui.View):
         bot = self.bot
         guild = interaction.guild
         field1 = interaction.message.embeds[0].fields[0]
-        user_id = field1.value.split("**User ID:** ")[1].split("\n")
+        user_id = field1.value.split("**Usew ID:** ")[1].split("\n")
         user_id = "".join(filter(str.isdigit, user_id))
         await interaction.response.defer(ephemeral=True, thinking=False)
         command_response = await bot.prc_api.run_command(
@@ -7421,7 +7421,7 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Banned Abuser",
-                    description="This command has been sent to the server. They should now be removed from the server.",
+                    description="Dis command has been sent to da sewvew. They shouwd now be removed fwom da sewvew.",
                     color=GREEN_COLOR,
                 )
             )
@@ -7429,7 +7429,7 @@ class GameSecurityActions(discord.ui.View):
             return await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"Not Executed ({command_response[0]})",
-                    description="These commands have not been executed successfully. Try again.",
+                    description="These commands hab nyot been executed successfuwwy. Twy again.",
                     color=BLANK_COLOR,
                 )
             )
@@ -7441,7 +7441,7 @@ class ExtendedGameLogging(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Message Logging Channel",
+        placeholder="Message Logging Channel >w<",
         row=0,
         max_values=1,
         min_values=0,
@@ -7474,7 +7474,7 @@ class ExtendedGameLogging(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="STS Logging Channel",
+        placeholder="STS Logging Channel uwu~",
         row=1,
         max_values=1,
         min_values=0,
@@ -7507,7 +7507,7 @@ class ExtendedGameLogging(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Priority Logging Channel",
+        placeholder="Pwiowity Logging Channel owo~",
         row=2,
         max_values=1,
         min_values=0,
@@ -7544,14 +7544,14 @@ class AntipingConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        placeholder="Anti-Ping",
+        placeholder="Anti-Ping >w<",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled", value="enabled", description="Anti-Ping is enabled."
+                label="Enabled~", value="enabled", description="Anti-Ping is enabled.~"
             ),
             discord.SelectOption(
-                label="Disabled", value="disabled", description="Anti-Ping is disabled."
+                label="Disabled owo~", value="disabled", description="Anti-Ping is disabled. >w<"
             ),
         ],
         max_values=1,
@@ -7584,7 +7584,7 @@ class AntipingConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Affected Roles",
+        placeholder="Affected Rowes~",
         row=1,
         max_values=5,
         min_values=0,
@@ -7614,7 +7614,7 @@ class AntipingConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Bypass Roles",
+        placeholder="Bypass Rowes >w<",
         row=2,
         max_values=5,
         min_values=0,
@@ -7643,14 +7643,14 @@ class AntipingConfiguration(AssociationConfigurationView):
         )
 
     @discord.ui.select(
-        placeholder="Use Hierarchy",
+        placeholder="Use Hiewawchy owo~",
         row=3,
         options=[
             discord.SelectOption(
-                label="Enabled", value="enabled", description="Hierarchy is enabled."
+                label="Enabled~", value="enabled", description="Hiewawchy is enabled. >w<"
             ),
             discord.SelectOption(
-                label="Disabled", value="disabled", description="Hierarchy is disabled."
+                label="Disabled owo~", value="disabled", description="Hiewawchy is disabled. uwu~"
             ),
         ],
         max_values=1,
@@ -7692,18 +7692,18 @@ class GameLoggingConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        placeholder="Message Logging",
+        placeholder="Message Logging uwu~",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="Message Logging is enabled.",
+                description="Message Logging is enabled. >w<",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="Message Logging is disabled.",
+                description="Message Logging is disabled. owo~",
             ),
         ],
         max_values=1,
@@ -7737,16 +7737,16 @@ class GameLoggingConfiguration(AssociationConfigurationView):
             i.default = False
 
     @discord.ui.select(
-        placeholder="STS Logging",
+        placeholder="STS Logging uwu~",
         row=1,
         options=[
             discord.SelectOption(
-                label="Enabled", value="enabled", description="STS Logging is enabled."
+                label="Enabled~", value="enabled", description="STS Logging is enabled.~"
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="STS Logging is disabled.",
+                description="STS Logging is disabled. uwu~",
             ),
         ],
         max_values=1,
@@ -7780,18 +7780,18 @@ class GameLoggingConfiguration(AssociationConfigurationView):
             i.default = False
 
     @discord.ui.select(
-        placeholder="Priority Logging",
+        placeholder="Pwiowity Logging uwu~",
         row=2,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="Priority Logging is enabled.",
+                description="Pwiowity Logging is enabled. owo~",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="Priority Logging is disabled.",
+                description="Pwiowity Logging is disabled. uwu~",
             ),
         ],
         max_values=1,
@@ -7826,7 +7826,7 @@ class GameLoggingConfiguration(AssociationConfigurationView):
         for i in select.options:
             i.default = False
 
-    @discord.ui.button(label="More Options", row=3)
+    @discord.ui.button(label="Mowe Options uwu~", row=3)
     async def more_options(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -7839,7 +7839,7 @@ class GameLoggingConfiguration(AssociationConfigurationView):
             interaction.user.id,
             [
                 (
-                    "Priority Logging Channel",
+                    "Pwiowity Logging Channel owo~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -7850,7 +7850,7 @@ class GameLoggingConfiguration(AssociationConfigurationView):
                     ],
                 ),
                 (
-                    "Message Logging Channel",
+                    "Message Logging Channel >w<",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -7861,7 +7861,7 @@ class GameLoggingConfiguration(AssociationConfigurationView):
                     ],
                 ),
                 (
-                    "STS Logging Channel",
+                    "STS Logging Channel uwu~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -7882,7 +7882,7 @@ class RDMERLCConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="RDM Mentionables",
+        placeholder="RDM Mentionables >w<",
         row=0,
         max_values=25,
         min_values=0,
@@ -7912,7 +7912,7 @@ class RDMERLCConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="RDM Alert Channel",
+        placeholder="RDM Alewt Channel owo~",
         row=1,
         max_values=1,
         min_values=0,
@@ -7957,18 +7957,18 @@ class AutomaticShiftConfiguration(discord.ui.View):
 
     def toggle_button_styling(self):
         for item in self.children:
-            if item.label == "Change Shift Type":
+            if item.label == "Change Shift Type uwu~":
                 item.disabled = (
                     True
                     if (
                         len(self.shift_types) == 0
-                        and self.auto_data.get("shift_type") == "Default"
+                        and self.auto_data.get("shift_type") == "Default >w<"
                     )
                     else False
                 )
 
     @discord.ui.button(
-        label="Toggle Automatic Shifts", style=discord.ButtonStyle.secondary
+        label="Toggwe Automatic Shifts >w<", style=discord.ButtonStyle.secondary
     )
     async def toggle_automatic_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -7976,10 +7976,10 @@ class AutomaticShiftConfiguration(discord.ui.View):
         self.auto_data["enabled"] = not self.auto_data["enabled"]
         self.toggle_button_styling()
         embed = discord.Embed(
-            title="Automatic Shifts", description="", color=BLANK_COLOR
+            title="Automatic Shifts owo~", description="", color=BLANK_COLOR
         )
         for key, value in self.auto_data.items():
-            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
+            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default >w<') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -7991,7 +7991,7 @@ class AutomaticShiftConfiguration(discord.ui.View):
         await interaction.response.defer(thinking=False)
 
     @discord.ui.button(
-        label="Change Shift Type",
+        label="Change Shift Type uwu~",
         style=discord.ButtonStyle.secondary,
         row=1,
         disabled=True,
@@ -8001,8 +8001,8 @@ class AutomaticShiftConfiguration(discord.ui.View):
     ):
         await interaction.response.send_modal(
             modal := CustomModal(
-                "Change Shift Type",
-                [("shift_type", discord.ui.TextInput(label="Shift Type"))],
+                "Change Shift Type nyaa~",
+                [("shift_type", discord.ui.TextInput(label="Shift Type owo"))],
                 {"ephemeral": True},
             )
         )
@@ -8014,7 +8014,7 @@ class AutomaticShiftConfiguration(discord.ui.View):
             return
 
         if modal.shift_type.value.lower() == "default":
-            self.auto_data["shift_type"] = "Default"
+            self.auto_data["shift_type"] = "Default >w<"
         else:
             if (
                 selected := {i["name"].lower(): i for i in self.shift_types}.get(
@@ -8023,8 +8023,8 @@ class AutomaticShiftConfiguration(discord.ui.View):
             ) is None:
                 return await modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Shift Type",
-                        description="This Shift Type does not exist in your server.",
+                        title="Invawid Shift Type >w<",
+                        description="Dis Shift Type does nyot exist in uw sewvew owo~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -8033,10 +8033,10 @@ class AutomaticShiftConfiguration(discord.ui.View):
 
         self.toggle_button_styling()
         embed = discord.Embed(
-            title="Automatic Shifts", description="", color=BLANK_COLOR
+            title="Automatic Shifts owo~", description="", color=BLANK_COLOR
         )
         for key, value in self.auto_data.items():
-            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
+            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default >w<') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8048,7 +8048,7 @@ class AutomaticShiftConfiguration(discord.ui.View):
         # await interaction.response.defer(thinking=False)
 
     @discord.ui.button(
-        label="Finish Configuration", style=discord.ButtonStyle.success, row=2
+        label="Finish Configuwation uwu~", style=discord.ButtonStyle.success, row=2
     )
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
@@ -8078,7 +8078,7 @@ class RemoteCommandConfiguration(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Webhook Channel",
+        placeholder="Webhook Channel~",
         max_values=1,
         min_values=0,
     )
@@ -8091,10 +8091,10 @@ class RemoteCommandConfiguration(discord.ui.View):
             self.auto_data["webhook_channel"] = select.values[0].id
         print(self.auto_data)
         embed = discord.Embed(
-            title="Remote Commands", description="", color=BLANK_COLOR
+            title="Remote Commands~", description="", color=BLANK_COLOR
         )
         for key, value in self.auto_data.items():
-            embed.description += f"**{key.replace('_', ' ').title()}:** {'<#' + str(value) + '>' if isinstance(value, int) else 'None'}\n"
+            embed.description += f"**{key.replace('_', ' ').title()}:** {'<#' + str(value) + '>' if isinstance(value, int) else 'None~'}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8106,7 +8106,7 @@ class RemoteCommandConfiguration(discord.ui.View):
         await interaction.response.defer(thinking=False)
 
     @discord.ui.button(
-        label="Finish Configuration", style=discord.ButtonStyle.success, row=2
+        label="Finish Configuwation uwu~", style=discord.ButtonStyle.success, row=2
     )
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
@@ -8128,7 +8128,7 @@ class WelcomeMessagingConfiguration(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(
-        label="Set Welcome Message",
+        label="Set Welcome Message owo~",
     )
     async def webhook_channel(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -8140,8 +8140,8 @@ class WelcomeMessagingConfiguration(discord.ui.View):
                     "welcome_message",
                     (
                         discord.ui.TextInput(
-                            label="Welcome Message",
-                            placeholder="Enter a welcome message to appear to players in your server.",
+                            label="Welcome Message uwu~",
+                            placeholder="Entew a welcome message to appeaw to playews in uw sewvew.~",
                             required=True,
                         )
                     ),
@@ -8157,11 +8157,11 @@ class WelcomeMessagingConfiguration(discord.ui.View):
         welcome_message = modal.welcome_message.value
 
         embed = discord.Embed(
-            title="Welcome Messaging",
-            description="*This module allows for a message to appear to players of your server when they initially join your server.*\n\n",
+            title="Welcome Messaging >w<",
+            description="*Dis moduwe awwows fow a message to appeaw to playews of uw sewvew when they initiawwy join uw sewvew.*\n\n",
             color=BLANK_COLOR,
         )
-        embed.description += f"**Welcome Message:** {welcome_message if welcome_message != '' else 'None'}\n"
+        embed.description += f"**Welcome Message:** {welcome_message if welcome_message != '' else 'None~'}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8173,7 +8173,7 @@ class WelcomeMessagingConfiguration(discord.ui.View):
         )
 
     @discord.ui.button(
-        label="Finish Configuration", style=discord.ButtonStyle.success, row=2
+        label="Finish Configuwation uwu~", style=discord.ButtonStyle.success, row=2
     )
     async def finish(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
@@ -8217,14 +8217,14 @@ class WhitelistVehiclesManagement(discord.ui.View):
         ]
 
         self.enable_vehicle_restrictions_button = discord.ui.Button(
-            label="Vehicle Restrictions",
+            label="Vehicwe Restwictions uwu~",
             style=discord.ButtonStyle.secondary,
             row=3,
         )
 
         # Initialize the select menus and button
         self.whitelisted_vehicles_roles_select = discord.ui.RoleSelect(
-            placeholder="Whitelisted Vehicles Roles",
+            placeholder="Whitewisted Vehicles Rowes owo~",
             max_values=10,
             min_values=0,
             default_values=self.whitelisted_vehicles_roles_objs,
@@ -8236,7 +8236,7 @@ class WhitelistVehiclesManagement(discord.ui.View):
         default_values = [channel] if channel else []
 
         self.whitelisted_vehicle_alert_channel_select = discord.ui.ChannelSelect(
-            placeholder="Whitelisted Vehicle Alert Channel",
+            placeholder="Whitewisted Vehicwe Alewt Channel >w<",
             max_values=1,
             min_values=0,
             channel_types=[discord.ChannelType.text],
@@ -8244,11 +8244,11 @@ class WhitelistVehiclesManagement(discord.ui.View):
         )
 
         self.add_vehicle_button = discord.ui.Button(
-            label="Add Vehicle to Role", style=discord.ButtonStyle.secondary, row=2
+            label="Add Vehicwe to Rowe >w<", style=discord.ButtonStyle.secondary, row=2
         )
 
         self.add_message_button = discord.ui.Button(
-            label="Add Alert Message", style=discord.ButtonStyle.secondary, row=2
+            label="Add Alewt Message owo~", style=discord.ButtonStyle.secondary, row=2
         )
 
         self.add_item(self.whitelisted_vehicles_roles_select)
@@ -8308,8 +8308,8 @@ class WhitelistVehiclesManagement(discord.ui.View):
         embed = interaction.message.embeds[0]
         embed.set_field_at(
             0,
-            name="Vehicle Restrictions",
-            value=f"If enabled, users will be alerted if they use a whitelisted vehicle without the correct roles.\n**Current Status:** {'Enabled' if vehicle_restrictions['enabled'] else 'Disabled'}",
+            name="Vehicwe Restwictions uwu~",
+            value=f"If enabled, users will be alerted if they use a whitelisted vehicle without the correct roles.\n**Current Status:** {'Enabled~' if vehicle_restrictions['enabled'] else 'Disabled owo~'}",
         )
         await interaction.edit_original_response(embed=embed)
 
@@ -8335,11 +8335,11 @@ class WhitelistVehiclesManagement(discord.ui.View):
         embed = interaction.message.embeds[0]
         embed.set_field_at(
             5,
-            name="Current Roles",
+            name="Cuwwent Rowes owo~",
             value=(
                 ", ".join([f"<@&{i.id}>" for i in select.values])
                 if select.values
-                else "None"
+                else "None~"
             ),
         )
         await interaction.edit_original_response(embed=embed)
@@ -8370,7 +8370,7 @@ class WhitelistVehiclesManagement(discord.ui.View):
         sett["ERLC"]["vehicle_restrictions"] = vehicle_restrictions
         await bot.settings.update_by_id(sett)
         embed = interaction.message.embeds[0]
-        embed.set_field_at(6, name="Current Channel", value=f"<#{select.values[0].id}>")
+        embed.set_field_at(6, name="Cuwwent Channel owo~", value=f"<#{select.values[0].id}>")
         await interaction.edit_original_response(embed=embed)
         await config_change_log(
             self.bot,
@@ -8393,13 +8393,13 @@ class WhitelistVehiclesManagement(discord.ui.View):
         existing_vehicles_str = ", ".join(existing_vehicles)
 
         modal = CustomModal(
-            "Add Vehicle to Role",
+            "Add Vehicwe to Rowe >w<",
             [
                 (
                     "vehicle",
                     discord.ui.TextInput(
-                        label="Vehicle",
-                        placeholder="e.g. Falcon Fission 2015, Navara Imperium 2020, etc",
+                        label="Vehicwe~",
+                        placeholder="e.g. Falcon Fission 2015, Navawa Impewium 2020, etc",
                         default=existing_vehicles_str,
                         min_length=0,
                     ),
@@ -8427,8 +8427,8 @@ class WhitelistVehiclesManagement(discord.ui.View):
         embed = interaction.message.embeds[0]
         embed.set_field_at(
             7,
-            name="Current Whitelisted Vehicles",
-            value=", ".join(vehicles) if vehicles else "None",
+            name="Cuwwent Whitewisted Vehicles owo~",
+            value=", ".join(vehicles) if vehicles else "None~",
         )
         await interaction.edit_original_response(embed=embed)
         await config_change_log(
@@ -8450,13 +8450,13 @@ class WhitelistVehiclesManagement(discord.ui.View):
         )
 
         modal = CustomModal(
-            "Add Alert Message",
+            "Add Alewt Message owo~",
             [
                 (
                     "message",
                     discord.ui.TextInput(
-                        label="Message",
-                        placeholder="e.g. You are not allowed to drive this vehicle. Please contact an admin for assistance.",
+                        label="Message~",
+                        placeholder="e.g. U awe nyot awwowed to dwive dis vehicwe. Pwease contact an admin fow assistance.",
                         default=existing_message,
                         min_length=0,
                     ),
@@ -8478,7 +8478,7 @@ class WhitelistVehiclesManagement(discord.ui.View):
             sett["ERLC"] = {"vehicle_restrictions": {"message": modal.message.value}}
         await bot.settings.update_by_id(sett)
         embed = interaction.message.embeds[0]
-        embed.set_field_at(8, name="Alert Message", value=modal.message.value)
+        embed.set_field_at(8, name="Alewt Message >w<", value=modal.message.value)
         await interaction.edit_original_response(embed=embed)
         await config_change_log(
             self.bot,
@@ -8493,18 +8493,18 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
         super().__init__(*args, **kwargs)
 
     @discord.ui.select(
-        placeholder="Elevation Required",
+        placeholder="Elevation Requiwed owo~",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="Elevated Permissions are required.",
+                description="Elevated Pewmissions awe requiwed. >w<",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="Elevated Permissions are not required.",
+                description="Elevated Pewmissions awe nyot requiwed. owo~",
             ),
         ],
         max_values=1,
@@ -8541,7 +8541,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Player Logs Channel",
+        placeholder="Playew Logs Channel >w<",
         row=1,
         max_values=1,
         min_values=0,
@@ -8575,7 +8575,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Kill Logs Channel",
+        placeholder="Kiww Logs Channel~",
         row=2,
         max_values=1,
         min_values=0,
@@ -8607,7 +8607,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
             f"Kill Logs Channel Set: <#{select.values[0].id}>",
         )
 
-    @discord.ui.button(label="RDM Alerts", row=3)
+    @discord.ui.button(label="RDM Alewts uwu~", row=3)
     async def rdm_alerts(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -8620,14 +8620,14 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
             interaction.user.id,
             [
                 (
-                    "RDM Mentionables",
+                    "RDM Mentionables >w<",
                     [
                         discord.utils.get(interaction.guild.roles, id=i)
                         for i in (sett.get("ERLC", {}).get("rdm_mentionables") or [])
                     ],
                 ),
                 (
-                    "RDM Alert Channel",
+                    "RDM Alewt Channel owo~",
                     [
                         discord.utils.get(
                             interaction.guild.channels,
@@ -8639,7 +8639,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
         )
         await interaction.response.send_message(view=new_view, ephemeral=True)
 
-    @discord.ui.button(label="Automatic Shifts", row=3)
+    @discord.ui.button(label="Automatic Shifts owo~", row=3)
     async def automatic_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -8649,14 +8649,14 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
 
         settings = await self.bot.settings.find_by_id(interaction.guild.id)
         auto_shift_data = settings.get("ERLC", {}).get(
-            "automatic_shifts", {"enabled": False, "shift_type": "Default"}
+            "automatic_shifts", {"enabled": False, "shift_type": "Default >w<"}
         )
 
         embed = discord.Embed(
-            title="Automatic Shifts", description="", color=BLANK_COLOR
+            title="Automatic Shifts owo~", description="", color=BLANK_COLOR
         )
         for key, value in auto_shift_data.items():
-            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
+            embed.description += f"**{key.replace('_', ' ').title()}:** {(value or 'Default >w<') if isinstance(value, str) else ('<:check:1163142000271429662>' if value is True else '<:xmark:1166139967920164915>')}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8669,7 +8669,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @discord.ui.button(label="Remote ERM Commands", row=3)
+    @discord.ui.button(label="Remote ERM Commands uwu~", row=3)
     async def remote_commands(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -8683,10 +8683,10 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
         )
 
         embed = discord.Embed(
-            title="Remote Commands", description="", color=BLANK_COLOR
+            title="Remote Commands~", description="", color=BLANK_COLOR
         )
         for key, value in auto_shift_data.items():
-            embed.description += f"**{key.replace('_', ' ').title()}:** {'<#' + str(value) + '>' if isinstance(value, int) else 'None'}\n"
+            embed.description += f"**{key.replace('_', ' ').title()}:** {'<#' + str(value) + '>' if isinstance(value, int) else 'None~'}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8699,7 +8699,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @discord.ui.button(label="More Options", row=3)
+    @discord.ui.button(label="Mowe Options uwu~", row=3)
     async def more_options(self, interaction: discord.Interaction, button: discord.ui.Button):
         val = await self.interaction_check(interaction)
         if val is False:
@@ -8708,7 +8708,7 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
         view = MoreERLCConfiguration(self.bot, await self.bot.settings.find_by_id(interaction.guild.id))
 
         embed = discord.Embed(
-            title="More ER:LC Options",
+            title="Mowe ER:LC Options~",
             description="",
             color=BLANK_COLOR
         ).set_author(
@@ -8717,13 +8717,13 @@ class ERLCIntegrationConfiguration(AssociationConfigurationView):
         )
 
         embed.description = (
-            "**PM on Warning:** This option allows you to enable or disable PMs being sent to users when they receive a warning in ERLC.\n\n"
-            "**Auto-Punish:** This option automatically kicks and bans* people in-game when the appropriate punishment is logged. Individuals will only be banned if the moderator holds the Admin Role or the Server Administrator permission in-game.\n\n"
-            "**Welcome Messaging:** This feature allows you to configure a welcome message that will be sent to players when they join your server.\n\n"
-            "**Vehicle Restrictions:** This feature allows you to manage vehicle restrictions in your server, including whitelisted vehicles and roles.\n\n"
-            "**ER:LC Statistics:** This feature allows you to manage & setup Voice Channels to show the current stats of ER:LC in your server.\n\n"
-            "**Automatic Discord Checks:** This feature allows you to configure automatic discord checks for ER:LC in your server & message players when they are not in the discord server.\n\n"
-            "**Permission Sync:** This feature automatically gives users the Server Moderator and Server Administrator permissions when they go on shift, removing it when they go off shift."
+            "**PM on Wawning:** Dis option awwows u to enabwe ow disabwe PMs being sent to usews when they receive a wawning in ERLC.\n\n"
+            "**Auto-Punish:** Dis option automaticawwy kicks and bans* peopwe in-game when da appwopwiate punishment is logged. Individuals wiww onwy be banned if da modewatow howds da Admin Rowe ow da Sewvew Administwatow pewmission in-game.\n\n"
+            "**Welcome Messaging:** Dis featuwe awwows u to configuwe a welcome message dat wiww be sent to playews when they join uw sewvew.\n\n"
+            "**Vehicwe Restwictions:** Dis featuwe awwows u to manage vehicwe restwictions in uw sewvew, including whitewisted vehicles and rowes.\n\n"
+            "**ER:LC Statistics:** Dis featuwe awwows u to manage & setup Voice Channels to show da cuwwent stats of ER:LC in uw sewvew.\n\n"
+            "**Automatic Discowd Checks:** Dis featuwe awwows u to configuwe automatic discowd checks fow ER:LC in uw sewvew & message playews when they awe nyot in da discowd sewvew.\n\n"
+            "**Pewmission Sync:** Dis featuwe automaticawwy gives usews da Sewvew Modewatow and Sewvew Administwatow pewmissions when they go on shift, removing it when they go off shift."
         )
 
         await interaction.response.send_message(
@@ -8740,7 +8740,7 @@ class MoreERLCConfiguration(discord.ui.View):
         message_on_warning = erlc_settings.get("message_on_warning", False)
         for item in self.children:
             if isinstance(item, discord.ui.Select):
-                if item.placeholder == "PM on Warning":
+                if item.placeholder == "PM on Wawning owo~":
                     for choice in item.options:
                         if choice.value == "enabled" and message_on_warning:
                             choice.default = True
@@ -8754,18 +8754,18 @@ class MoreERLCConfiguration(discord.ui.View):
                             choice.default = True
 
     @discord.ui.select(
-        placeholder="PM on Warning",
+        placeholder="PM on Wawning owo~",
         row=0,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="PM on Warning is enabled.",
+                description="PM on Wawning is enabled. >w<",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="PM on Warning is disabled.",
+                description="PM on Wawning is disabled.~",
             ),
         ],
     )
@@ -8793,18 +8793,18 @@ class MoreERLCConfiguration(discord.ui.View):
         )
 
     @discord.ui.select(
-        placeholder="Auto-Punish",
+        placeholder="Auto-Punish uwu~",
         row=1,
         options=[
             discord.SelectOption(
-                label="Enabled",
+                label="Enabled~",
                 value="enabled",
-                description="Auto-Punish is enabled.",
+                description="Auto-Punish is enabled.~",
             ),
             discord.SelectOption(
-                label="Disabled",
+                label="Disabled owo~",
                 value="disabled",
-                description="Auto-Punish is disabled.",
+                description="Auto-Punish is disabled. >w<",
             ),
         ],
     )
@@ -8831,7 +8831,7 @@ class MoreERLCConfiguration(discord.ui.View):
             f"Auto-Punish set: {select.values[0]}",
         )
 
-    @discord.ui.button(label="Welcome Messaging", row=2)
+    @discord.ui.button(label="Welcome Messaging >w<", row=2)
     async def welcome_messaging(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -8843,11 +8843,11 @@ class MoreERLCConfiguration(discord.ui.View):
         welcome_message = (settings.get("ERLC") or {}).get("welcome_message") or ""
 
         embed = discord.Embed(
-            title="Welcome Messaging",
-            description="*This module allows for a message to appear to players of your server when they initially join your server.*\n\n",
+            title="Welcome Messaging >w<",
+            description="*Dis moduwe awwows fow a message to appeaw to playews of uw sewvew when they initiawwy join uw sewvew.*\n\n",
             color=BLANK_COLOR,
         )
-        embed.description += f"**Welcome Message:** {welcome_message if welcome_message != '' else 'None'}\n"
+        embed.description += f"**Welcome Message:** {welcome_message if welcome_message != '' else 'None~'}\n"
 
         embed.set_author(
             name=interaction.guild.name,
@@ -8857,7 +8857,7 @@ class MoreERLCConfiguration(discord.ui.View):
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @discord.ui.button(label="Vehicle Restrictions", row=2)
+    @discord.ui.button(label="Vehicwe Restwictions uwu~", row=2)
     async def vehicle_restrictions(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -8895,64 +8895,64 @@ class MoreERLCConfiguration(discord.ui.View):
         )
         embed = (
             discord.Embed(
-                title="Whitelisted Vehicles", color=blank_color, description=" "
+                title="Whitewisted Vehicles >w<", color=blank_color, description=" "
             )
             .add_field(
-                name="Vehicle Restrictions",
-                value=f"If enabled, users will be alerted if they use a whitelisted vehicle without the correct roles.\n**Current Status:** {'Enabled' if enable_vehicle_restrictions else 'Disabled'}",
+                name="Vehicwe Restwictions uwu~",
+                value=f"If enabled, users will be alerted if they use a whitelisted vehicle without the correct roles.\n**Current Status:** {'Enabled~' if enable_vehicle_restrictions else 'Disabled owo~'}",
             )
             .add_field(
-                name="Whitelisted Vehicles Roles",
-                value="These roles are given to those who are allowed to drive whitelisted cars in your server. They allow users to drive exotics in-game without any alerts.",
+                name="Whitewisted Vehicles Rowes owo~",
+                value="These rowes awe given to those who awe awwowed to dwive whitewisted caws in uw sewvew. They awwow usews to dwive exotics in-game widout any awewts.",
                 inline=False,
             )
             .add_field(
-                name="Whitelisted Vehicle Alert Channel",
-                value="This channel is where alerts are sent for staff if someone ignores the in-game message about using an exotic car more than 3 times.",
+                name="Whitewisted Vehicwe Alewt Channel >w<",
+                value="Dis channel is whewe awewts awe sent fow staff if someone ignowes da in-game message about using an exotic caw mowe than 3 times.",
                 inline=False,
             )
             .add_field(
-                name="Whitelisted Vehicles",
-                value="These are the vehicles that are whitelisted for use in your server. If a user is not in the whitelisted roles, they will be alerted if they use these vehicles in-game.",
+                name="Whitewisted Vehicles >w<",
+                value="These awe da vehicles dat awe whitewisted fow use in uw sewvew. If a usew is nyot in da whitewisted rowes, they wiww be awewted if they use these vehicles in-game.",
                 inline=False,
             )
             .add_field(
-                name="Alert Message",
-                value="This is the message that is sent to the roblox player if they are caught using a whitelisted vehicle without the correct roles.",
+                name="Alewt Message >w<",
+                value="Dis is da message dat is sent to da roblox playew if they awe caught using a whitewisted vehicwe widout da cowwect rowes.",
                 inline=False,
             )
             .add_field(
-                name="Current Roles",
+                name="Cuwwent Rowes owo~",
                 value=(
                     ", ".join([f"<@&{i}>" for i in vehicle_restrictions_roles])
                     if vehicle_restrictions_roles
-                    else "None"
+                    else "None~"
                 ),
             )
             .add_field(
-                name="Current Channel",
+                name="Cuwwent Channel owo~",
                 value=(
                     f"<#{vehicle_restrictions_channel}>"
                     if vehicle_restrictions_channel
-                    else "None"
+                    else "None~"
                 ),
             )
             .add_field(
-                name="Current Whitelisted Vehicles",
+                name="Cuwwent Whitewisted Vehicles owo~",
                 value=(
                     ", ".join(vehicle_restrictions_cars)
                     if vehicle_restrictions_cars
-                    else "None"
+                    else "None~"
                 ),
             )
             .add_field(
-                name="Alert Message",
-                value=alert_message if alert_message else "None",
+                name="Alewt Message >w<",
+                value=alert_message if alert_message else "None~",
             )
         )
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @discord.ui.button(label="ER:LC Statistics", row=2, disabled=False)
+    @discord.ui.button(label="ER:LC Statistics owo~", row=2, disabled=False)
     async def erlc_statistics(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -8972,19 +8972,19 @@ class MoreERLCConfiguration(discord.ui.View):
             statistics = {}
 
         embed = discord.Embed(
-            title="ER:LC Statistics", description="", color=BLANK_COLOR
+            title="ER:LC Statistics owo~", description="", color=BLANK_COLOR
         ).set_author(
             name=interaction.guild.name,
             icon_url=interaction.guild.icon.url if interaction.guild.icon else "",
         )
         if statistics.items not in [None, {}]:
             for key, value in statistics.items():
-                embed.description += f"**Channel:** <#{key}>\n> **Format:** `{value.get('format', 'None')}`\n"
+                embed.description += f"**Channel:** <#{key}>\n> **Format:** `{value.get('format', 'None~')}`\n"
         else:
-            embed.description = "No Statistics Channels Set"
+            embed.description = "Nyo Statistics Channels Set uwu~"
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
     
-    @discord.ui.button(label="Automatic Discord Checks", row=2)
+    @discord.ui.button(label="Automatic Discowd Checks uwu~", row=2)
     async def automatic_discord_checks(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9001,7 +9001,7 @@ class MoreERLCConfiguration(discord.ui.View):
             sett["ERLC"] = {}
         discord_checks = sett.get("ERLC", {}).get("discord_checks", {})
         embed = discord.Embed(
-            title="Automatic Discord Checks",
+            title="Automatic Discowd Checks uwu~",
             color=BLANK_COLOR
         ).set_author(
             name=interaction.guild.name,
@@ -9009,15 +9009,15 @@ class MoreERLCConfiguration(discord.ui.View):
         )
 
         embed.description = (
-            "**What is Automatic Discord Checks?** This feature allows you to automatically check if players are in your Discord server when they join your ER:LC server. If they are not, they will be alerted in-game and can be kicked if configured.\n\n" \
-            "**Alert Channel:** This is the channel where alerts will be sent if a user fails the Discord checks.\n\n" \
-            "**Alert Message:** This is the message that will be sent to the user if they are not in the Discord server.\n\n" \
-            "**Maximum Warnings:** After a certain amount of warnings, the user will be kicked from the server.\n\n"
+            "**What is Automatic Discowd Checks?** Dis featuwe awwows u to automaticawwy check if playews awe in uw Discowd sewvew when they join uw ER:LC sewvew. If they awe nyot, they wiww be awewted in-game and can be kicked if configuwed.\n\n" \
+            "**Alewt Channel:** Dis is da channel whewe awewts wiww be sent if a usew fails da Discowd checks.\n\n" \
+            "**Alewt Message:** Dis is da message dat wiww be sent to da usew if they awe nyot in da Discowd sewvew.\n\n" \
+            "**Maximum Wawnings:** Aftew a cewtain amount of wawnings, da usew wiww be kicked fwom da sewvew.\n\n"
         )
         
         await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
 
-    @discord.ui.button(label="Permission Sync", row=2)
+    @discord.ui.button(label="Pewmission Sync owo~", row=2)
     async def permission_sync(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9034,15 +9034,15 @@ class MoreERLCConfiguration(discord.ui.View):
             sett["ERLC"] = {}
         discord_checks = sett.get("ERLC", {}).get("permission_sync", {})
         embed = discord.Embed(
-            title="Permission Sync",
-            description="**What is Permission Sync?** This feature automatically gives users the Server Moderator and Server Administrator permissions when they go on shift, removing it when they go off shift.",
+            title="Pewmission Sync owo~",
+            description="**What is Pewmission Sync?** Dis featuwe automaticawwy gives usews da Sewvew Modewatow and Sewvew Administwatow pewmissions when they go on shift, removing it when they go off shift.",
             color=BLANK_COLOR
         ).set_author(
             name=interaction.guild.name,
             icon_url=interaction.guild.icon.url if interaction.guild.icon else "",
         )
-        embed.description += "\n\n**Server Moderator Roles:** When these roles go on-duty, they will be given the Server Moderator permission in-game. When they go off-duty, the permissions they were given will be removed. This means that moderators only have staff permissions when they are on-duty, and they don't have access to commands when they are roleplaying."
-        embed.description += "\n\n**Server Administrator Roles:** When these roles go on-duty, they will be given the Server Administrator permission in-game. When they go off-duty, the permissions they were given will be removed. This means that administrators only have staff permissions when they are on-duty, and they don't have access to commands when they are roleplaying."
+        embed.description += "\n\n**Sewvew Modewatow Rowes:** When these rowes go on-duty, they wiww be given da Sewvew Modewatow pewmission in-game. When they go off-duty, da pewmissions they wewe given wiww be removed. Dis means dat modewatows onwy hab staff pewmissions when they awe on-duty, and they don't hab access to commands when they awe roweplaying."
+        embed.description += "\n\n**Sewvew Administwatow Rowes:** When these rowes go on-duty, they wiww be given da Sewvew Administwatow pewmission in-game. When they go off-duty, da pewmissions they wewe given wiww be removed. Dis means dat administwatows onwy hab staff pewmissions when they awe on-duty, and they don't hab access to commands when they awe roweplaying."
 
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
@@ -9068,7 +9068,7 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    @discord.ui.button(label="Set Minimum Players", row=3)
+    @discord.ui.button(label="Set Minimum Playews uwu~", row=3)
     async def set_min_players(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -9083,12 +9083,12 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
             priority_settings = {"guild_id": str(interaction.guild.id)}
             func = self.bot.priority_settings.db.insert_one
         self.modal = CustomModal(
-            "Minimum Players",
+            "Minimum Playews >w<",
             [
                 (
                     "min_players",
                     discord.ui.TextInput(
-                        label="Minimum Players for a Priority",
+                        label="Minimum Playews fow a Pwiowity >w<",
                         placeholder="i.e. 5",
                         default=priority_settings.get("min_players", 0) or 0,
                         required=False,
@@ -9110,7 +9110,7 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
             f"Priority Request minimum players has been set to {min_players}.",
         )
 
-    @discord.ui.button(label="Set Maximum Players", row=3)
+    @discord.ui.button(label="Set Maximum Playews uwu~", row=3)
     async def set_max_players(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -9125,12 +9125,12 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
             priority_settings = {"guild_id": str(interaction.guild.id)}
             func = self.bot.priority_settings.db.insert_one
         self.modal = CustomModal(
-            "Maximum Players",
+            "Maximum Playews >w<",
             [
                 (
                     "max_players",
                     discord.ui.TextInput(
-                        label="Maximum Players for a Priority",
+                        label="Maximum Playews fow a Pwiowity >w<",
                         placeholder="i.e. 5",
                         default=priority_settings.get("max_players", 0) or 0,
                         required=False,
@@ -9152,7 +9152,7 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
             f"Priority Request maximum players has been set to {max_players}.",
         )
 
-    @discord.ui.button(label="Set Global Cooldown", row=3)
+    @discord.ui.button(label="Set Globaw Coowdown >w<", row=3)
     async def set_global_cooldown(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -9167,12 +9167,12 @@ class ExtendedPriorityConfiguration(AssociationConfigurationView):
             priority_settings = {"guild_id": str(interaction.guild.id)}
             func = self.bot.priority_settings.db.insert_one
         self.modal = CustomModal(
-            "Global Cooldown",
+            "Globaw Coowdown~",
             [
                 (
                     "global_cooldown",
                     discord.ui.TextInput(
-                        label="Global Cooldown (minutes)",
+                        label="Globaw Coowdown (minutes) owo~",
                         placeholder="i.e. 5",
                         default=priority_settings.get("global_cooldown", 0) or 0,
                         required=False,
@@ -9203,7 +9203,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
         cls=discord.ui.RoleSelect,
         min_values=1,
         max_values=25,
-        placeholder="Blacklisted Roles",
+        placeholder="Blacklisted Rowes~",
         row=0,
     )
     async def blacklisted_roles(
@@ -9227,7 +9227,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
         cls=discord.ui.RoleSelect,
         min_values=1,
         max_values=25,
-        placeholder="Mentioned Roles",
+        placeholder="Mentioned Rowes uwu~",
         row=1,
     )
     async def mentioned_roles(
@@ -9251,7 +9251,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
         cls=discord.ui.ChannelSelect,
         min_values=1,
         max_values=1,
-        placeholder="Priority Channel",
+        placeholder="Pwiowity Channel owo~",
         row=2,
     )
     async def priority_channel(
@@ -9271,7 +9271,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
         await func(priority_settings)
         await interaction.response.defer()
 
-    @discord.ui.button(label="Set Cooldown", row=3)
+    @discord.ui.button(label="Set Coowdown owo~", row=3)
     async def set_cooldown(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -9286,12 +9286,12 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
             priority_settings = {"guild_id": str(interaction.guild.id)}
             func = self.bot.priority_settings.db.insert_one
         self.modal = CustomModal(
-            "Cooldown",
+            "Coowdown uwu~",
             [
                 (
                     "cooldown",
                     discord.ui.TextInput(
-                        label="Priority Request Cooldown (minutes)",
+                        label="Pwiowity Request Coowdown (minutes) uwu~",
                         placeholder="i.e. 5",
                         default=priority_settings.get("cooldown", 0) or 0,
                         required=False,
@@ -9314,7 +9314,7 @@ class PriorityRequestConfiguration(AssociationConfigurationView):
             f"Priority Request cooldown has been set to {cooldown}.",
         )
 
-    @discord.ui.button(label="More Options", row=3)
+    @discord.ui.button(label="Mowe Options uwu~", row=3)
     async def more_options(
         self, interaction: discord.Interaction, button: discord.Button
     ):
@@ -9333,7 +9333,7 @@ class ERLCStats(discord.ui.View):
         self.user_id = user_id
         self.guild_id = guild_id
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.success, row=2)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.success, row=2)
     async def create_stats(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9342,8 +9342,8 @@ class ERLCStats(discord.ui.View):
             modal = CreateERLCStats(self.bot, self.user_id, self.guild_id)
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Create ER:LC Statistics",
-                    description="Select a voice channel to set as a statistics channel.",
+                    title="Cweate ER:LC Statistics uwu~",
+                    description="Sewect a voice channel to set as a statistics channel. uwu~",
                     color=BLANK_COLOR,
                 ).set_author(
                     name=interaction.guild.name,
@@ -9355,7 +9355,7 @@ class ERLCStats(discord.ui.View):
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.blurple, row=2)
+    @discord.ui.button(label="Edit uwu~", style=discord.ButtonStyle.blurple, row=2)
     async def edit_stats(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9363,8 +9363,8 @@ class ERLCStats(discord.ui.View):
             modal = EditERLCStats(self.bot, self.user_id, self.guild_id)
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Edit ER:LC Statistics",
-                    description="Select a voice channel to edit statistics.",
+                    title="Edit ER:LC Statistics >w<",
+                    description="Sewect a voice channel to edit statistics.~",
                     color=BLANK_COLOR,
                 ).set_author(
                     name=interaction.guild.name,
@@ -9376,7 +9376,7 @@ class ERLCStats(discord.ui.View):
                 ephemeral=True,
             )
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger, row=2)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.danger, row=2)
     async def delete_stats(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9388,8 +9388,8 @@ class ERLCStats(discord.ui.View):
             )
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Delete ER:LC Statistics",
-                    description="Select a voice channel to remove from statistics.",
+                    title="Dewete ER:LC Statistics >w<",
+                    description="Sewect a voice channel to remove fwom statistics. uwu~",
                     color=BLANK_COLOR,
                 ).set_author(
                     name=interaction.guild.name,
@@ -9402,7 +9402,7 @@ class ERLCStats(discord.ui.View):
             )
 
     @discord.ui.button(
-        label="View Variables", style=discord.ButtonStyle.secondary, row=2
+        label="View Vawiables >w<", style=discord.ButtonStyle.secondary, row=2
     )
     async def view_variables(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -9410,23 +9410,23 @@ class ERLCStats(discord.ui.View):
         if interaction.user.id == self.user_id:
             embed = discord.Embed(
                 description=(
-                    "With **ERM Statistics Check**, you can use custom variables to adapt to the current circumstances when the statistics is updated.\n"
-                    "`{user}` - Mention of the person using the command.\n"
-                    "`{username}` - Name of the person using the command.\n"
-                    "`{display_name}` - Display name of the person using the command.\n"
-                    "`{time}` - Timestamp format of the time of the command execution.\n"
-                    "`{server}` - Name of the server this is being ran in.\n"
-                    "`{channel}` - Mention of the channel the command is being ran in.\n"
-                    "`{prefix}` - The custom prefix of the bot.\n"
-                    "`{onduty}` - Number of staff which are on duty within your server.\n"
-                    "\n**PRC Specific Variables**\n"
-                    "`{join_code}` - Join Code of the ERLC server\n"
-                    "`{players}` - Current players in the ERLC server\n"
-                    "`{max_players}` - Maximum players of the ERLC server\n"
-                    "`{queue}` - Number of players in the queue\n"
-                    "`{staff}` - Number of staff members in-game\n"
-                    "`{mods}` - Number of mods in-game\n"
-                    "`{admins}` - Number of admins in-game\n"
+                    "Wid **ERM Statistics Check**, u can use custom vawiables to adapt to da cuwwent ciwcumstances when da statistics is updated.\n"
+                    "`{user}` - Mention of da pewson using da command.\n"
+                    "`{username}` - Name of da pewson using da command.\n"
+                    "`{display_name}` - Display name of da pewson using da command.\n"
+                    "`{time}` - Timestamp fowmat of da time of da command execution.\n"
+                    "`{server}` - Name of da sewvew dis is being ran in.\n"
+                    "`{channel}` - Mention of da channel da command is being ran in.\n"
+                    "`{prefix}` - Da custom pwefix of da bot.\n"
+                    "`{onduty}` - Numbew of staff which awe on duty widin uw sewvew.\n"
+                    "\n**PRC Specific Vawiables**\n"
+                    "`{join_code}` - Join Code of da ERLC sewvew\n"
+                    "`{players}` - Cuwwent playews in da ERLC sewvew\n"
+                    "`{max_players}` - Maximum playews of da ERLC sewvew\n"
+                    "`{queue}` - Numbew of playews in da queue\n"
+                    "`{staff}` - Numbew of staff membews in-game\n"
+                    "`{mods}` - Numbew of mods in-game\n"
+                    "`{admins}` - Numbew of admins in-game\n"
                 ),
                 color=BLANK_COLOR,
             )
@@ -9440,7 +9440,7 @@ class CreateERLCStats(discord.ui.View):
         self.value = None
         self.user_id = user_id
         self.limit = 1
-        self.placeholder = "Select a channel"
+        self.placeholder = "Sewect a channel~"
         self.guild_id = guild_id
 
         for child in self.children:
@@ -9456,7 +9456,7 @@ class CreateERLCStats(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Set Format", style=discord.ButtonStyle.secondary, row=2)
+    @discord.ui.button(label="Set Fowmat owo~", style=discord.ButtonStyle.secondary, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.ChannelSelect):
@@ -9465,12 +9465,12 @@ class CreateERLCStats(discord.ui.View):
         if interaction.user.id == self.user_id:
             self.value = select.values
             modal = CustomModal(
-                "Format",
+                "Fowmat~",
                 [
                     (
                         "format",
                         discord.ui.TextInput(
-                            label="Format",
+                            label="Fowmat~",
                             placeholder=f"Format With Variables {', '.join([f'`{i}`' for i in ['onduty', 'join_code', 'players', 'etc']])}",
                         ),
                     )
@@ -9532,7 +9532,7 @@ class EditERLCStats(discord.ui.View):
         self.value = None
         self.user_id = user_id
         self.limit = 1
-        self.placeholder = "Select a channel"
+        self.placeholder = "Sewect a channel~"
         self.guild_id = guild_id
 
         for child in self.children:
@@ -9548,7 +9548,7 @@ class EditERLCStats(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Set Format", style=discord.ButtonStyle.secondary, row=2)
+    @discord.ui.button(label="Set Fowmat owo~", style=discord.ButtonStyle.secondary, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.ChannelSelect):
@@ -9557,12 +9557,12 @@ class EditERLCStats(discord.ui.View):
         if interaction.user.id == self.user_id:
             self.value = select.values
             modal = CustomModal(
-                "Format",
+                "Fowmat~",
                 [
                     (
                         "format",
                         discord.ui.TextInput(
-                            label="Format",
+                            label="Fowmat~",
                             placeholder=f"Format With Variables {', '.join([f'`{i}`' for i in ['onduty', 'join_code', 'players', 'etc']])}",
                         ),
                     )
@@ -9631,7 +9631,7 @@ class DeleteERLCStats(discord.ui.View):
         self.value = None
         self.user_id = user_id
         self.limit = 1
-        self.placeholder = "Select a channel"
+        self.placeholder = "Sewect a channel~"
         self.guild_id = guild_id
 
         for child in self.children:
@@ -9647,7 +9647,7 @@ class DeleteERLCStats(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger, row=2)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.danger, row=2)
     async def remove_channel(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -9711,9 +9711,9 @@ class RoleSelect(discord.ui.View):
                 self.limit = value
 
         if self.limit > 1:
-            self.placeholder = "Select roles"
+            self.placeholder = "Sewect rowes uwu~"
         else:
-            self.placeholder = "Select a role"
+            self.placeholder = "Sewect a rowe~"
 
         for child in self.children:
             child.placeholder = self.placeholder
@@ -9726,7 +9726,7 @@ class RoleSelect(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, row=2)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.RoleSelect):
@@ -9753,9 +9753,9 @@ class ExpandedRoleSelect(discord.ui.View):
                 self.limit = value
 
         if self.limit > 1:
-            self.placeholder = "Select roles"
+            self.placeholder = "Sewect rowes uwu~"
         else:
-            self.placeholder = "Select a role"
+            self.placeholder = "Sewect a rowe~"
 
         for child in self.children:
             child.placeholder = self.placeholder
@@ -9768,7 +9768,7 @@ class ExpandedRoleSelect(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, row=3)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, row=3)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         selects = []
         for child in self.children:
@@ -9790,7 +9790,7 @@ class ExpandedRoleSelect(discord.ui.View):
             return await generalised_interaction_check_failure(interaction.followup)
 
     @discord.ui.button(
-        label="I have more than 25 roles", style=discord.ButtonStyle.secondary, row=4
+        label="I hab mowe than 25 rowes~", style=discord.ButtonStyle.secondary, row=4
     )
     async def expand(self, interaction: discord.Interaction, button: discord.ui.Button):
         for i in self.children:
@@ -9799,7 +9799,7 @@ class ExpandedRoleSelect(discord.ui.View):
                 for value in range(1, 3):
                     # # print(t(t(t(t(value)
                     instance = discord.ui.RoleSelect(
-                        row=value, placeholder="Select roles", max_values=25
+                        row=value, placeholder="Sewect rowes uwu~", max_values=25
                     )
                     # # print(t(t(t(t('?')
                     # async def callback(interaction: discord.Interaction, select: discord.ui.Select):
@@ -9826,9 +9826,9 @@ class UserSelect(discord.ui.View):
                 self.limit = value
 
         if self.limit > 1:
-            self.placeholder = "Select users"
+            self.placeholder = "Sewect usews uwu~"
         else:
-            self.placeholder = "Select a user"
+            self.placeholder = "Sewect a usew >w<"
 
         for child in self.children:
             child.placeholder = self.placeholder
@@ -9841,7 +9841,7 @@ class UserSelect(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, row=2)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.UserSelect):
@@ -9868,9 +9868,9 @@ class VoiceChannelSelect(discord.ui.View):
                 self.limit = value
 
         if self.limit > 1:
-            self.placeholder = "Select channels"
+            self.placeholder = "Sewect channels >w<"
         else:
-            self.placeholder = "Select a channel"
+            self.placeholder = "Sewect a channel~"
 
         for child in self.children:
             child.placeholder = self.placeholder
@@ -9885,7 +9885,7 @@ class VoiceChannelSelect(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, row=2)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.ChannelSelect):
@@ -9898,8 +9898,8 @@ class VoiceChannelSelect(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -9918,9 +9918,9 @@ class ChannelSelect(discord.ui.View):
                 self.limit = value
 
         if self.limit > 1:
-            self.placeholder = "Select channels"
+            self.placeholder = "Sewect channels >w<"
         else:
-            self.placeholder = "Select a channel"
+            self.placeholder = "Sewect a channel~"
 
         for child in self.children:
             child.placeholder = self.placeholder
@@ -9935,7 +9935,7 @@ class ChannelSelect(discord.ui.View):
     ):
         await interaction.response.defer()
 
-    @discord.ui.button(label="Finish", style=discord.ButtonStyle.success, row=2)
+    @discord.ui.button(label="Finish uwu~", style=discord.ButtonStyle.success, row=2)
     async def done(self, interaction: discord.Interaction, button: discord.ui.Button):
         for child in self.children:
             if isinstance(child, discord.ui.ChannelSelect):
@@ -9948,8 +9948,8 @@ class ChannelSelect(discord.ui.View):
         else:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -9995,23 +9995,23 @@ class CompleteReminder(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="Mark as Complete", style=discord.ButtonStyle.gray)
+    @discord.ui.button(label="Mawk as Complete owo~", style=discord.ButtonStyle.gray)
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         embed = interaction.message.embeds[0]
         embed.set_footer(
-            text="Completed by {0.name}".format(interaction.user),
+            text="Compweted by {0.name} uwu~".format(interaction.user),
             icon_url=interaction.user.display_avatar.url,
         )
         embed.timestamp = datetime.datetime.now()
         embed.color = GREEN_COLOR
         embed.title = (
-            f"{self.bot.emoji_controller.get_emoji('success')} Reminder Completed"
+            f"{self.bot.emoji_controller.get_emoji('success')} Wemindew Compweted owo~"
         )
 
         for item in self.children:
             item.disabled = True
-            item.label = "Completed"
+            item.label = "Compweted~"
             item.style = discord.ButtonStyle.green
 
         await interaction.message.edit(
@@ -10051,8 +10051,8 @@ class ReloadView(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, s-sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10060,7 +10060,7 @@ class ReloadView(discord.ui.View):
             return False
 
     @discord.ui.button(
-        label="Reload",
+        label="Wewoad~",
         emoji="<:lastupdated:1176999148084535326>",
         style=discord.ButtonStyle.secondary,
     )
@@ -10099,8 +10099,8 @@ class ShiftTypeCreator(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10113,11 +10113,11 @@ class ShiftTypeCreator(discord.ui.View):
             description=(
                 f"> **Name:** {self.dataset['name']}\n"
                 f"> **ID:** {self.dataset['id']}\n"
-                f"> **Shift Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Not set'}\n"
-                f"> **Nickname Prefix:** {self.dataset.get('nickname') or 'Not set'}\n"
-                f"> **On-Duty Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('role', [])]) or 'Not set'}\n"
-                f"> **Break Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('break_roles', [])]) or 'Not set'}\n"
-                f"> **Access Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('access_roles', [])]) or 'Not set'}\n\n\n"
+                f"> **Shift Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Nyot set owo~'}\n"
+                f"> **Nickname Prefix:** {self.dataset.get('nickname') or 'Nyot set owo~'}\n"
+                f"> **On-Duty Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('role', [])]) or 'Nyot set owo~'}\n"
+                f"> **Break Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('break_roles', [])]) or 'Nyot set owo~'}\n"
+                f"> **Access Roles:** {', '.join(['<@&{}>'.format(r) for r in self.dataset.get('access_roles', [])]) or 'Nyot set owo~'}\n\n\n"
                 f"Access Roles are roles that are able to freely use this Shift Type and are able to go on-duty as this Shift Type. If an access role is selected, an individual must have it to go on-duty with this Shift Type."
             ),
             color=BLANK_COLOR,
@@ -10126,18 +10126,18 @@ class ShiftTypeCreator(discord.ui.View):
         if all([self.dataset.get("channel") is not None]):
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
 
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
-        cls=discord.ui.RoleSelect, placeholder="On-Duty Roles", row=0, max_values=25
+        cls=discord.ui.RoleSelect, placeholder="On-Duty Rowes uwu~", row=0, max_values=25
     )  # changed to On-Duty Role for parity with the other select
     async def on_duty_roles(
         self, interaction: discord.Interaction, select: discord.ui.RoleSelect
@@ -10152,8 +10152,8 @@ class ShiftTypeCreator(discord.ui.View):
             # we're not allowing this ...
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Security Concern",
-                    description="You cannot choose an On-Duty Role that is higher than your maximum role.",
+                    title="Secuwity Concewn uwu~",
+                    description="U cannot choose an On-Duty Rowe dat is highew than uw maximum rowe.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -10180,7 +10180,7 @@ class ShiftTypeCreator(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Break Roles",
+        placeholder="Bweak Rowes owo~",
         row=1,
         min_values=0,
         max_values=25,
@@ -10200,8 +10200,8 @@ class ShiftTypeCreator(discord.ui.View):
             # we're not allowing this ...
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Security Concern",
-                    description="You cannot choose a Break Role that is higher than your maximum role.",
+                    title="Secuwity Concewn uwu~",
+                    description="U cannot choose a Bweak Rowe dat is highew than uw maximum rowe.",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -10228,7 +10228,7 @@ class ShiftTypeCreator(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Access Roles",
+        placeholder="Access Rowes~",
         row=2,
         max_values=25,
         min_values=0,
@@ -10246,7 +10246,7 @@ class ShiftTypeCreator(discord.ui.View):
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Shift Channel",
+        placeholder="Shift Channew~",
         row=3,
         max_values=1,
         channel_types=[discord.ChannelType.text],
@@ -10262,17 +10262,17 @@ class ShiftTypeCreator(discord.ui.View):
         except discord.NotFound:
             await self.refresh_ui(await self.restored_interaction.original_response())
 
-    @discord.ui.button(label="Edit Nickname Prefix", row=4)
+    @discord.ui.button(label="Edit Nickname Pwefix uwu~", row=4)
     async def edit_nickname_prefix(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         modal = CustomModal(
-            "Edit Nickname Prefix",
+            "Edit Nickname Pwefix uwu~",
             [
                 (
                     "nickname_prefix",
                     discord.ui.TextInput(
-                        label="Nickname Prefix", max_length=20, required=False
+                        label="Nickname Pwefix uwu~", max_length=20, required=False
                     ),
                 )
             ],
@@ -10294,14 +10294,14 @@ class ShiftTypeCreator(discord.ui.View):
         except discord.NotFound:
             await self.refresh_ui(await self.restored_interaction.original_response())
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=4)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=4)
     async def cancel(self, interaction: discord.Interaction, button: discord.Button):
         await interaction.response.defer(ephemeral=True)
         self.cancelled = True
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Successfully cancelled",
-                description="This Shift Type has not been created.",
+                title="Successfuwwy cancewwed owo~",
+                description="Dis Shift Type has nyot been cweated. uwu~",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -10313,7 +10313,7 @@ class ShiftTypeCreator(discord.ui.View):
         self.stop()
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, disabled=True, row=4
+        label="Finish uwu~", style=discord.ButtonStyle.green, disabled=True, row=4
     )
     async def finish(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer()
@@ -10336,8 +10336,8 @@ class RoleQuotaCreator(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10346,9 +10346,9 @@ class RoleQuotaCreator(discord.ui.View):
 
     async def refresh_ui(self, message: discord.Message):
         embed = discord.Embed(
-            title="Role Quota Creation",
+            title="Rowe Quota Cweation owo~",
             description=(
-                f"> **Role:** {'<@&{}>'.format(self.dataset['role']) if self.dataset['role'] != 0 else 'Not set'}\n"
+                f"> **Role:** {'<@&{}>'.format(self.dataset['role']) if self.dataset['role'] != 0 else 'Nyot set owo~'}\n"
                 f"> **Quota:** {td_format(datetime.timedelta(seconds=self.dataset['quota']))}\n"
             ),
             color=BLANK_COLOR,
@@ -10357,19 +10357,19 @@ class RoleQuotaCreator(discord.ui.View):
         if all([self.dataset.get("role") != 0, self.dataset.get("quota") != 0]):
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
 
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
         cls=discord.ui.RoleSelect,
-        placeholder="Binded Role",
+        placeholder="Binded Rowe owo~",
         row=0,
         max_values=1,
         min_values=0,
@@ -10391,8 +10391,8 @@ class RoleQuotaCreator(discord.ui.View):
         if self.dataset["role"] == 0:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Unavailable Role",
-                    description="This role already has a specified quota attached to it.",
+                    title="Unavaiwabwe Rowe~",
+                    description="Dis rowe alweady has a specified quota attached to it. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -10404,17 +10404,17 @@ class RoleQuotaCreator(discord.ui.View):
         except discord.NotFound:
             await self.refresh_ui(await self.restored_interaction.original_response())
 
-    @discord.ui.button(label="Set Quota", row=1)
+    @discord.ui.button(label="Set Quota owo~", row=1)
     async def set_quota(self, interaction: discord.Interaction, button: discord.Button):
         quota_hours = self.dataset["quota"]
         self.modal = CustomModal(
-            "Quota",
+            "Quota~",
             [
                 (
                     "quota",
                     discord.ui.TextInput(
-                        label="Quota",
-                        placeholder="This value will be used to judge whether a staff member has completed quota.",
+                        label="Quota owo",
+                        placeholder="Dis vawue wiww be used to judge whedew a staff membew has compweted quota~ uwu",
                         default=f"{td_format(datetime.timedelta(seconds=quota_hours))}",
                         required=False,
                     ),
@@ -10435,14 +10435,14 @@ class RoleQuotaCreator(discord.ui.View):
         except discord.NotFound:
             await self.refresh_ui(await self.restored_interaction.original_response())
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=3)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=3)
     async def cancel(self, interaction: discord.Interaction, button: discord.Button):
         await interaction.response.defer(ephemeral=True)
         self.cancelled = True
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Successfully cancelled",
-                description="This Role Quota has not been created.",
+                title="Successfuwwy cancewwed owo~",
+                description="Dis Rowe Quota has nyot been cweated. owo~",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -10454,7 +10454,7 @@ class RoleQuotaCreator(discord.ui.View):
         self.stop()
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, disabled=True, row=3
+        label="Finish uwu~", style=discord.ButtonStyle.green, disabled=True, row=3
     )
     async def finish(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer()
@@ -10475,22 +10475,22 @@ class CustomCommandOptionSelect(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
             return False
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green, row=0)
     async def create_custom_command(
         self, interaction: discord.Interaction, _: discord.Button
     ):
         self.value = "create"
         self.modal = CustomModal(
-            "Create a Custom Command",
-            [("name", discord.ui.TextInput(label="Custom Command Name"))],
+            "Cweate a Custom Command >w<",
+            [("name", discord.ui.TextInput(label="Custom Command Name >w<"))],
             {"thinking": False},
         )
         await interaction.response.send_modal(self.modal)
@@ -10500,14 +10500,14 @@ class CustomCommandOptionSelect(discord.ui.View):
 
         self.stop()
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.secondary, row=0)
+    @discord.ui.button(label="Edit uwu~", style=discord.ButtonStyle.secondary, row=0)
     async def edit_custom_command(
         self, interaction: discord.Interaction, _: discord.Button
     ):
         self.value = "edit"
         self.modal = CustomModal(
-            "Edit a Custom Command",
-            [("id", discord.ui.TextInput(label="Custom Command ID"))],
+            "Edit a Custom Command >w<",
+            [("id", discord.ui.TextInput(label="Custom Command ID~"))],
             {"thinking": False},
         )
         await interaction.response.send_modal(self.modal)
@@ -10516,18 +10516,18 @@ class CustomCommandOptionSelect(discord.ui.View):
             return
         self.stop()
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger, row=0)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.danger, row=0)
     async def delete_custom_command(
         self, interaction: discord.Interaction, _: discord.Button
     ):
         self.value = "delete"
         self.modal = CustomModal(
-            "Delete a custom command",
+            "Dewete a custom command >w<",
             [
                 (
                     "name",
                     discord.ui.TextInput(
-                        placeholder="Command Name", label="Command Name"
+                        placeholder="Command Name owo~", label="Command Name owo~"
                     ),
                 )
             ],
@@ -10562,11 +10562,11 @@ class ShiftMenu(discord.ui.View):
 
     def check_buttons(self, option: typing.Literal["on", "break", "off"]):
         if option == "on":
-            buttons = ["Toggle Break", "Off-Duty"]
+            buttons = ["Toggwe Bweak owo~", "Off-Duty uwu~"]
         elif option == "break":
-            buttons = ["On-Duty", "Off-Duty"]
+            buttons = ["On-Duty owo~", "Off-Duty uwu~"]
         else:
-            buttons = ["On-Duty"]
+            buttons = ["On-Duty owo~"]
 
         for item in self.children:
             if item.label not in buttons:
@@ -10602,8 +10602,8 @@ class ShiftMenu(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10619,7 +10619,7 @@ class ShiftMenu(discord.ui.View):
             return
         uis = {
             "on": discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **Shift Started**",
+                title=f"{self.bot.emoji_controller.get_emoji('ShiftStawted >w<')} **Shift Started**",
                 color=GREEN_COLOR,
             )
             .set_author(
@@ -10627,16 +10627,16 @@ class ShiftMenu(discord.ui.View):
                 icon_url=message.guild.icon.url if message.guild.icon else "",
             )
             .add_field(
-                name="Current Shift",
+                name="Cuwwent Shift~",
                 value=(
                     f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
-                    f"> **Breaks:** {len(self.shift['Breaks'])}\n"
+                    f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
                     f"> **Elapsed Time:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}"
                 ),
                 inline=False,
             ),
             "off": discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
+                title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
                 color=RED_COLOR,
             )
             .set_author(
@@ -10644,10 +10644,10 @@ class ShiftMenu(discord.ui.View):
                 icon_url=message.guild.icon.url if message.guild.icon else "",
             )
             .add_field(
-                name="Shift Overview",
+                name="Shift Ovewview >w<",
                 value=(
                     f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
-                    f"> **Breaks:** {len(self.shift['Breaks'])}\n"
+                    f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
                     f"> **Ended:** <t:{int(contained_document.end_epoch or datetime.datetime.now(tz=pytz.UTC).timestamp())}:R>"
                 ),
                 inline=False,
@@ -10670,11 +10670,11 @@ class ShiftMenu(discord.ui.View):
                     f"> **Break Started:** <t:{int(current_break.start_epoch)}:R>\n"
                 )
             else:
-                break_start_time = "> **Break Started:** No ongoing break\n"
+                break_start_time = "> **Bweak Stawted:** Nyo ongoing bweak\n"
 
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**",
                     color=ORANGE_COLOR,
                 )
                 .set_author(
@@ -10682,11 +10682,11 @@ class ShiftMenu(discord.ui.View):
                     icon_url=message.guild.icon.url if message.guild.icon else "",
                 )
                 .add_field(
-                    name="Current Shift",
+                    name="Cuwwent Shift~",
                     value=(
                         f"> **Shift Started:** <t:{int(contained_document.start_epoch)}:R>\n"
                         f"{break_start_time}"
-                        f"> **Breaks:** {len(self.shift['Breaks'])}\n"
+                        f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
                         f"> **Elapsed Time:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}"
                     ),
                     inline=False,
@@ -10707,11 +10707,11 @@ class ShiftMenu(discord.ui.View):
 
             return await self.message.edit(view=self)
 
-    @discord.ui.button(label="On-Duty", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="On-Duty owo~", style=discord.ButtonStyle.green)
     async def on_duty_button(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer(thinking=False)
         if self.state == "break":
-            self.shift["Breaks"][-1]["EndEpoch"] = datetime.datetime.now(
+            self.shift["Bweaks~"][-1]["EndEpoch uwu~"] = datetime.datetime.now(
                 tz=pytz.UTC
             ).timestamp()
             self.shift["_id"] = self.contained_document.id
@@ -10739,8 +10739,8 @@ class ShiftMenu(discord.ui.View):
         if not access:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="No Access",
-                    description="You are not permitted to go on-duty as this Shift Type.",
+                    title="Nyo Access~",
+                    description="U awe nyot pewmitted to go on-duty as dis Shift Type.~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10760,15 +10760,15 @@ class ShiftMenu(discord.ui.View):
         self.bot.dispatch("shift_start", self.shift["_id"])
         return
 
-    @discord.ui.button(label="Toggle Break", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Toggwe Bweak owo~", style=discord.ButtonStyle.secondary)
     async def toggle_break_button(
         self, interaction: discord.Interaction, _: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        self.shift["Breaks"].append(
+        self.shift["Bweaks~"].append(
             {
-                "StartEpoch": datetime.datetime.now(tz=pytz.UTC).timestamp(),
-                "EndEpoch": 0,
+                "StawtEpoch >w<": datetime.datetime.now(tz=pytz.UTC).timestamp(),
+                "EndEpoch uwu~": 0,
             }
         )
         self.shift["_id"] = self.contained_document.id
@@ -10780,7 +10780,7 @@ class ShiftMenu(discord.ui.View):
         self.bot.dispatch("break_start", self.contained_document.id)
         return
 
-    @discord.ui.button(label="Off-Duty", style=discord.ButtonStyle.red)
+    @discord.ui.button(label="Off-Duty uwu~", style=discord.ButtonStyle.red)
     async def off_duty_button(
         self, interaction: discord.Interaction, _: discord.Button
     ):
@@ -10827,11 +10827,11 @@ class AdministratedShiftMenu(discord.ui.View):
 
     def check_buttons(self, option: typing.Literal["on", "break", "off"]):
         if option == "on":
-            buttons = ["Toggle Break", "Off-Duty", "Other Options"]
+            buttons = ["Toggwe Bweak owo~", "Off-Duty uwu~", "Othew Options owo~"]
         elif option == "break":
-            buttons = ["On-Duty", "Off-Duty", "Other Options"]
+            buttons = ["On-Duty owo~", "Off-Duty uwu~", "Othew Options owo~"]
         else:
-            buttons = ["On-Duty", "Other Options"]
+            buttons = ["On-Duty owo~", "Othew Options owo~"]
 
         for item in self.children:
             if isinstance(item, discord.ui.Button):
@@ -10846,8 +10846,8 @@ class AdministratedShiftMenu(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -10865,9 +10865,9 @@ class AdministratedShiftMenu(discord.ui.View):
             i
             async for i in self.bot.shift_management.shifts.db.find(
                 {
-                    "UserID": self.target_id,
-                    "Guild": message.guild.id,
-                    "EndEpoch": {"$ne": 0},
+                    "UsewID~": self.target_id,
+                    "Guiwd~": message.guild.id,
+                    "EndEpoch uwu~": {"$ne": 0},
                 }
             )
         ]
@@ -10875,7 +10875,7 @@ class AdministratedShiftMenu(discord.ui.View):
         if option == "void":
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
                     color=RED_COLOR,
                 )
                 .set_author(
@@ -10883,7 +10883,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     icon_url=message.guild.icon.url if message.guild.icon else "",
                 )
                 .add_field(
-                    name="Current Statistics",
+                    name="Cuwwent Statistics >w<",
                     value=(
                         f"> **Total Shift Duration:** {td_format(datetime.timedelta(seconds=sum([get_elapsed_time(item) for item in previous_shifts])))}\n"
                         f"> **Total Shifts:** {len(previous_shifts)}\n"
@@ -10897,7 +10897,7 @@ class AdministratedShiftMenu(discord.ui.View):
                 return
             uis = {
                 "on": discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **Shift Started**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftStawted >w<')} **Shift Started**",
                     color=GREEN_COLOR,
                 )
                 .set_author(
@@ -10905,7 +10905,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     icon_url=message.guild.icon.url if message.guild.icon else "",
                 )
                 .add_field(
-                    name="Current Statistics",
+                    name="Cuwwent Statistics >w<",
                     value=(
                         f"> **Total Shift Duration:** {td_format(datetime.timedelta(seconds=sum([get_elapsed_time(item) for item in previous_shifts])))}\n"
                         f"> **Total Shifts:** {len(previous_shifts)}\n"
@@ -10914,7 +10914,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     inline=False,
                 )
                 .add_field(
-                    name="Current Shift",
+                    name="Cuwwent Shift~",
                     value=(
                         f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
                         f"> **Breaks:** {len(contained_document.breaks)}\n"
@@ -10923,7 +10923,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     inline=False,
                 ),
                 "off": discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
                     color=RED_COLOR,
                 )
                 .set_author(
@@ -10931,7 +10931,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     icon_url=message.guild.icon.url if message.guild.icon else "",
                 )
                 .add_field(
-                    name="Shift Overview",
+                    name="Shift Ovewview >w<",
                     value=(
                         f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
                         f"> **Breaks:** {len(contained_document.breaks)}\n"
@@ -10943,7 +10943,7 @@ class AdministratedShiftMenu(discord.ui.View):
         if option == "break":
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**",
                     color=ORANGE_COLOR,
                 )
                 .set_author(
@@ -10951,7 +10951,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     icon_url=message.guild.icon.url if message.guild.icon else "",
                 )
                 .add_field(
-                    name="Current Statistics",
+                    name="Cuwwent Statistics >w<",
                     value=(
                         f"> **Total Shift Duration:** {td_format(datetime.timedelta(seconds=sum([get_elapsed_time(item) for item in previous_shifts])))}\n"
                         f"> **Total Shifts:** {len(previous_shifts)}\n"
@@ -10960,7 +10960,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     inline=False,
                 )
                 .add_field(
-                    name="Current Shift",
+                    name="Cuwwent Shift~",
                     value=(
                         f"> **Shift Started:** <t:{int(contained_document.start_epoch)}:R>\n"
                         f"> **Break Started:** <t:{int(contained_document.breaks[0].start_epoch)}:R>\n"
@@ -11035,11 +11035,11 @@ class AdministratedShiftMenu(discord.ui.View):
         self.contained_document = None
         self.shift = None
 
-    @discord.ui.button(label="On-Duty", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="On-Duty~ owo", style=discord.ButtonStyle.green)
     async def on_duty_button(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer(thinking=False)
         if self.state == "break":
-            self.shift["Breaks"][-1]["EndEpoch"] = datetime.datetime.now(
+            self.shift["Bweaks~"][-1]["EndEpoch uwu~"] = datetime.datetime.now(
                 tz=pytz.UTC
             ).timestamp()
             self.shift["_id"] = self.contained_document.id
@@ -11065,15 +11065,15 @@ class AdministratedShiftMenu(discord.ui.View):
         self.bot.dispatch("shift_start", self.shift["_id"])
         return
 
-    @discord.ui.button(label="Toggle Break", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Toggwe Bweak owo~", style=discord.ButtonStyle.secondary)
     async def toggle_break_button(
         self, interaction: discord.Interaction, _: discord.Button
     ):
         await interaction.response.defer(thinking=False)
-        self.shift["Breaks"].append(
+        self.shift["Bweaks~"].append(
             {
-                "StartEpoch": datetime.datetime.now(tz=pytz.UTC).timestamp(),
-                "EndEpoch": 0,
+                "StawtEpoch >w<": datetime.datetime.now(tz=pytz.UTC).timestamp(),
+                "EndEpoch uwu~": 0,
             }
         )
         self.shift["_id"] = self.contained_document.id
@@ -11085,7 +11085,7 @@ class AdministratedShiftMenu(discord.ui.View):
         self.bot.dispatch("break_start", self.contained_document.id)
         return
 
-    @discord.ui.button(label="Off-Duty", style=discord.ButtonStyle.red)
+    @discord.ui.button(label="Off-Duty uwu~", style=discord.ButtonStyle.red)
     async def off_duty_button(
         self, interaction: discord.Interaction, _: discord.Button
     ):
@@ -11104,27 +11104,27 @@ class AdministratedShiftMenu(discord.ui.View):
         return
 
     @discord.ui.select(
-        placeholder="Other Options",
+        placeholder="Othew Options owo~",
         options=[
             discord.SelectOption(
-                label="Add Time",
+                label="Add Time~",
                 value="add",
-                description="Add time to an ongoing shift.",
+                description="Add time to an ongoing shift.~",
             ),
             discord.SelectOption(
-                label="Subtract Time",
+                label="Subtwact Time owo~",
                 value="subtract",
-                description="Subtract time to an ongoing shift.",
+                description="Subtwact time to an ongoing shift. >w<",
             ),
             discord.SelectOption(
-                label="Void shift",
+                label="Void shift uwu~",
                 value="void",
-                description="Void an ongoing shift.",
+                description="Void an ongoing shift.~",
             ),
             discord.SelectOption(
-                label="Clear Member Shifts",
+                label="Cleaw Membew Shifts~",
                 value="clear",
-                description="Remove all shifts associated with this member.",
+                description="Remove aww shifts associated wid dis membew.~",
             ),
         ],
         row=1,
@@ -11137,13 +11137,13 @@ class AdministratedShiftMenu(discord.ui.View):
             await interaction.response.defer(thinking=False)
         if value == "add":
             self.modal = CustomModal(
-                title="Add Time",
+                title="Add Time~",
                 options=[
                     (
                         "time",
                         discord.ui.TextInput(
-                            label="Time",
-                            placeholder="How much time to add to this shift?",
+                            label="Time owo~",
+                            placeholder="How much time to add to dis shift? uwu~",
                         ),
                     )
                 ],
@@ -11157,16 +11157,16 @@ class AdministratedShiftMenu(discord.ui.View):
             except ValueError:
                 return await self.modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Time",
-                        description="I could not convert this time. Please try again.",
+                        title="Invawid Time uwu~",
+                        description="I couwd nyot convewt dis time. Pwease twy again. >w<",
                         color=BLANK_COLOR,
                     )
                 )
             except OverflowError:
                 return await self.modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Time",
-                        description="You can't add more than 6 months in shift time.",
+                        title="Invawid Time uwu~",
+                        description="U can't add mowe than 6 monds in shift time. >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -11177,9 +11177,9 @@ class AdministratedShiftMenu(discord.ui.View):
                 i
                 async for i in self.bot.shift_management.shifts.db.find(
                     {
-                        "UserID": self.target_id,
-                        "Guild": interaction.guild.id,
-                        "EndEpoch": {"$ne": 0},
+                        "UsewID~": self.target_id,
+                        "Guiwd~": interaction.guild.id,
+                        "EndEpoch uwu~": {"$ne": 0},
                     }
                 )
             ]
@@ -11189,7 +11189,7 @@ class AdministratedShiftMenu(discord.ui.View):
                 )
                 if log_channel:
                     embed = discord.Embed(
-                        title="Shift Time Added",
+                        title="Shift Time Added uwu~",
                         description=(
                             f"> **User:** <@{self.target_id}> \n"
                             f"> **Shift Type:** {self.shift_type}\n"
@@ -11198,10 +11198,10 @@ class AdministratedShiftMenu(discord.ui.View):
                         color=0x2F3136,
                     )
                     embed.add_field(
-                        name="Added By:", value=f"> {interaction.user.mention}"
+                        name="Added By: uwu~", value=f"> {interaction.user.mention}"
                     )
                     embed.add_field(
-                        name="New Total Shift Time:",
+                        name="New Totaw Shift Time: >w<",
                         value=f"> **Total Shift Duration:** {td_format(datetime.timedelta(seconds=sum([get_elapsed_time(item) for item in previous_shifts])))}\n",
                         inline=False,
                     )
@@ -11219,13 +11219,13 @@ class AdministratedShiftMenu(discord.ui.View):
                 await self.cycle_ui("void", interaction.message)
         elif value == "subtract":
             self.modal = CustomModal(
-                title="Subtract Time",
+                title="Subtwact Time owo~",
                 options=[
                     (
                         "time",
                         discord.ui.TextInput(
-                            label="Time",
-                            placeholder="How much time to subtract from this shift?",
+                            label="Time owo~",
+                            placeholder="How much time to subtwact fwom dis shift?~",
                         ),
                     )
                 ],
@@ -11239,8 +11239,8 @@ class AdministratedShiftMenu(discord.ui.View):
             except ValueError:
                 return await self.modal.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Invalid Time",
-                        description="I could not convert this time. Please try again.",
+                        title="Invawid Time uwu~",
+                        description="I couwd nyot convewt dis time. Pwease twy again. >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -11253,9 +11253,9 @@ class AdministratedShiftMenu(discord.ui.View):
                 i
                 async for i in self.bot.shift_management.shifts.db.find(
                     {
-                        "UserID": self.target_id,
-                        "Guild": interaction.guild.id,
-                        "EndEpoch": {"$ne": 0},
+                        "UsewID~": self.target_id,
+                        "Guiwd~": interaction.guild.id,
+                        "EndEpoch uwu~": {"$ne": 0},
                     }
                 )
             ]
@@ -11265,7 +11265,7 @@ class AdministratedShiftMenu(discord.ui.View):
                 )
                 if log_channel:
                     embed = discord.Embed(
-                        title="Shift Time Subtracted",
+                        title="Shift Time Subtwacted owo~",
                         description=(
                             f"> **User:** <@{self.target_id}> \n"
                             f"> **Shift Type:** {self.shift_type}\n"
@@ -11274,10 +11274,10 @@ class AdministratedShiftMenu(discord.ui.View):
                         color=0x2F3136,
                     )
                     embed.add_field(
-                        name="Subtracted By:", value=f"> {interaction.user.mention}"
+                        name="Subtwacted By:~", value=f"> {interaction.user.mention}"
                     )
                     embed.add_field(
-                        name="New Total Shift Time:",
+                        name="New Totaw Shift Time: >w<",
                         value=f"> **Total Shift Duration:** {td_format(datetime.timedelta(seconds=sum([get_elapsed_time(item) for item in previous_shifts])))}\n",
                         inline=False,
                     )
@@ -11318,7 +11318,7 @@ class AdministratedShiftMenu(discord.ui.View):
             all_target_shifts = [
                 shift
                 async for shift in self.bot.shift_management.shifts.db.find(
-                    {"UserID": self.target_id, "Guild": interaction.guild.id}
+                    {"UsewID~": self.target_id, "Guiwd~": interaction.guild.id}
                 )
             ]
             for item in all_target_shifts:
@@ -11340,8 +11340,8 @@ class ActivityNoticeManagement(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -11349,7 +11349,7 @@ class ActivityNoticeManagement(discord.ui.View):
             return False
 
     @discord.ui.button(
-        label="Erase Pending Requests", style=discord.ButtonStyle.danger, row=0
+        label="Ewase Pending Requests~", style=discord.ButtonStyle.danger, row=0
     )
     async def erase_pending_requests(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11361,7 +11361,7 @@ class ActivityNoticeManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased Pending Requests",
-                description="All pending activity notice requests have been deleted.",
+                description="Aww pending activity notice requests hab been deweted.~",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
@@ -11378,7 +11378,7 @@ class ActivityNoticeManagement(discord.ui.View):
             await self.bot.loas.delete_by_id(item["_id"])
 
     @discord.ui.button(
-        label="Erase LOA Notices", style=discord.ButtonStyle.danger, row=1
+        label="Ewase LOA Notices >w<", style=discord.ButtonStyle.danger, row=1
     )
     async def erase_loa_notices(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11390,19 +11390,19 @@ class ActivityNoticeManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased LOA Notices",
-                description="All LOA notices have been deleted.",
+                description="Aww LOA notices hab been deweted. uwu~",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
         )
 
         async for item in self.bot.loas.db.find(
-            {"guild_id": interaction.guild.id, "type": "LOA", "accepted": True}
+            {"guild_id": interaction.guild.id, "type": "LOA >w<", "accepted": True}
         ):
             await self.bot.loas.delete_by_id(item["_id"])
 
     @discord.ui.button(
-        label="Erase RA Notices", style=discord.ButtonStyle.danger, row=2
+        label="Ewase RA Notices~", style=discord.ButtonStyle.danger, row=2
     )
     async def erase_ra_notices(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11414,14 +11414,14 @@ class ActivityNoticeManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased RA Notices",
-                description="All RA notices have been deleted.",
+                description="Aww RA notices hab been deweted. >w<",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
         )
 
         async for item in self.bot.loas.db.find(
-            {"guild_id": interaction.guild.id, "type": "RA", "accepted": True}
+            {"guild_id": interaction.guild.id, "type": "RA~", "accepted": True}
         ):
             await self.bot.loas.delete_by_id(item["_id"])
 
@@ -11438,8 +11438,8 @@ class PunishmentManagement(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -11447,7 +11447,7 @@ class PunishmentManagement(discord.ui.View):
             return False
 
     @discord.ui.button(
-        label="Erase All Punishments", style=discord.ButtonStyle.danger, row=0
+        label="Ewase Aww Punishments owo~", style=discord.ButtonStyle.danger, row=0
     )
     async def erase_all_punishments(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11459,7 +11459,7 @@ class PunishmentManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased All Punishments",
-                description="All punishments have been deleted.\n*This may take up to 10 minutes to fully delete all of your punishments.*",
+                description="Aww punishments hab been deweted. owo~\n*Dis may take up to 10 minutes to fuwwy dewete aww of uw punishments.*",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
@@ -11470,7 +11470,7 @@ class PunishmentManagement(discord.ui.View):
         )
 
     @discord.ui.button(
-        label="Erase Punishments By Type", style=discord.ButtonStyle.danger, row=1
+        label="Ewase Punishments By Type uwu~", style=discord.ButtonStyle.danger, row=1
     )
     async def erase_type_punishments(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11480,12 +11480,12 @@ class PunishmentManagement(discord.ui.View):
             return
 
         modal = CustomModal(
-            "Punishment Type",
+            "Punishment Type uwu~",
             [
                 (
                     "punishment_type",
                     discord.ui.TextInput(
-                        label="Punishment Type", placeholder="This is case-sensitive."
+                        label="Punishment Type uwu~", placeholder="Dis is case-sensitive.~"
                     ),
                 )
             ],
@@ -11497,13 +11497,13 @@ class PunishmentManagement(discord.ui.View):
         sustained_interaction = modal.interaction
 
         count = await self.bot.punishments.db.count_documents(
-            {"Guild": interaction.guild.id, "Type": modal.punishment_type.value}
+            {"Guiwd~": interaction.guild.id, "Type~": modal.punishment_type.value}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
                 embed=discord.Embed(
-                    title="Not Found",
-                    description="There are no punishments with this type.",
+                    title="Nyot Found~",
+                    description="Thewe awe nyo punishments wid dis type. owo~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -11523,7 +11523,7 @@ class PunishmentManagement(discord.ui.View):
         )
 
     @discord.ui.button(
-        label="Erase Punishments By Username", style=discord.ButtonStyle.danger, row=2
+        label="Ewase Punishments By Usewname~", style=discord.ButtonStyle.danger, row=2
     )
     async def erase_username_punishments(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11533,12 +11533,12 @@ class PunishmentManagement(discord.ui.View):
             return
 
         modal = CustomModal(
-            "Punishment Type",
+            "Punishment Type uwu~",
             [
                 (
                     "username",
                     discord.ui.TextInput(
-                        label="ROBLOX Username", placeholder="This is case-sensitive."
+                        label="ROBLOX Usewname~", placeholder="Dis is case-sensitive.~"
                     ),
                 )
             ],
@@ -11557,21 +11557,21 @@ class PunishmentManagement(discord.ui.View):
         except roblox.UserNotFound:
             return await sustained_interaction.followup.send(
                 embed=discord.Embed(
-                    title="Not Found",
-                    description="There are no punishments associated to this username.",
+                    title="Nyot Found~",
+                    description="Thewe awe nyo punishments associated to dis usewname. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
 
         count = await self.bot.punishments.db.count_documents(
-            {"Guild": interaction.guild.id, "UserID": roblox_player.id}
+            {"Guiwd~": interaction.guild.id, "UsewID~": roblox_player.id}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
                 embed=discord.Embed(
-                    title="Not Found",
-                    description="There are no punishments associated to this username.",
+                    title="Nyot Found~",
+                    description="Thewe awe nyo punishments associated to dis usewname. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -11603,8 +11603,8 @@ class ShiftLoggingManagement(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -11612,7 +11612,7 @@ class ShiftLoggingManagement(discord.ui.View):
             return False
 
     @discord.ui.button(
-        label="Erase All Shifts", style=discord.ButtonStyle.danger, row=0
+        label="Ewase Aww Shifts owo~", style=discord.ButtonStyle.danger, row=0
     )
     async def erase_all_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11624,7 +11624,7 @@ class ShiftLoggingManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased All Shifts",
-                description="All shifts have been deleted.",
+                description="Aww shifts hab been deweted. >w<",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
@@ -11632,15 +11632,15 @@ class ShiftLoggingManagement(discord.ui.View):
 
         active_shift_users = []
         async for shift in self.bot.shift_management.shifts.db.find(
-            {"Guild": interaction.guild.id, "EndEpoch": 0}
+            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": 0}
         ):
-            user_id = shift["UserID"]
+            user_id = shift["UsewID~"]
             member = interaction.guild.get_member(user_id) or await interaction.guild.fetch_member(user_id)
             if member and member not in active_shift_users:
                 active_shift_users.append(member)
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guild": interaction.guild.id}
+            {"Guiwd~": interaction.guild.id}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
@@ -11648,7 +11648,7 @@ class ShiftLoggingManagement(discord.ui.View):
             try:
                 await member.send(
                     embed=discord.Embed(
-                        title="Shift Termination Notice",
+                        title="Shift Tewmination Notice uwu~",
                         description=f"Your active shift has been terminated due to a shift wipe in {interaction.guild.name}.",
                         color=discord.Color.red(),
                     )
@@ -11657,7 +11657,7 @@ class ShiftLoggingManagement(discord.ui.View):
                 print(f"Could not send DM to {member.name}")
 
     @discord.ui.button(
-        label="Erase Past Shifts", style=discord.ButtonStyle.danger, row=1
+        label="Ewase Past Shifts owo~", style=discord.ButtonStyle.danger, row=1
     )
     async def erase_past_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11669,19 +11669,19 @@ class ShiftLoggingManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased Past Shifts",
-                description="All past shifts have been deleted.",
+                description="Aww past shifts hab been deweted. >w<",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
         )
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guild": interaction.guild.id, "EndEpoch": {"$ne": 0}}
+            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": {"$ne": 0}}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
     @discord.ui.button(
-        label="Erase Active Shifts", style=discord.ButtonStyle.danger, row=2
+        label="Ewase Active Shifts >w<", style=discord.ButtonStyle.danger, row=2
     )
     async def erase_active_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11693,19 +11693,19 @@ class ShiftLoggingManagement(discord.ui.View):
         await interaction.response.send_message(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Erased Active Shifts",
-                description="All active shifts have been deleted.",
+                description="Aww active shifts hab been deweted. owo~",
                 color=GREEN_COLOR,
             ),
             ephemeral=True,
         )
 
         async for item in self.bot.shift_management.shifts.db.find(
-            {"Guild": interaction.guild.id, "EndEpoch": {"$eq": 0}}
+            {"Guiwd~": interaction.guild.id, "EndEpoch uwu~": {"$eq": 0}}
         ):
             await self.bot.shift_management.shifts.delete_by_id(item["_id"])
 
     @discord.ui.button(
-        label="Erase Shifts By Type", style=discord.ButtonStyle.danger, row=3
+        label="Ewase Shifts By Type~", style=discord.ButtonStyle.danger, row=3
     )
     async def erase_type_shifts(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -11715,12 +11715,12 @@ class ShiftLoggingManagement(discord.ui.View):
             return
 
         modal = CustomModal(
-            "Shift Type",
+            "Shift Type >w<",
             [
                 (
                     "shift_type",
                     discord.ui.TextInput(
-                        label="Shift Type", placeholder="This is case-sensitive."
+                        label="Shift Type >w<", placeholder="Dis is case-sensitive.~"
                     ),
                 )
             ],
@@ -11732,13 +11732,13 @@ class ShiftLoggingManagement(discord.ui.View):
         sustained_interaction = modal.interaction
 
         count = await self.bot.shift_management.shifts.db.count_documents(
-            {"Guild": interaction.guild.id, "Type": modal.shift_type.value}
+            {"Guiwd~": interaction.guild.id, "Type~": modal.shift_type.value}
         )
         if count == 0:
             return await sustained_interaction.followup.send(
                 embed=discord.Embed(
-                    title="Not Found",
-                    description="There are no shifts with this type.",
+                    title="Nyot Found~",
+                    description="Thewe awe nyo shifts wid dis type. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -11754,7 +11754,7 @@ class ShiftLoggingManagement(discord.ui.View):
         )
 
         await self.bot.shift_management.shifts.db.delete_many(
-            {"Guild": interaction.guild.id, "Type": modal.shift_type.value}
+            {"Guiwd~": interaction.guild.id, "Type~": modal.shift_type.value}
         )
 
 
@@ -11770,15 +11770,15 @@ class ManagementOptions(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
             return False
 
-    @discord.ui.button(label="Manage Types")
+    @discord.ui.button(label="Manage Types uwu~")
     async def manage_types(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -11789,7 +11789,7 @@ class ManagementOptions(discord.ui.View):
         self.value = "types"
         self.stop()
 
-    @discord.ui.button(label="Modify Punishment")
+    @discord.ui.button(label="Modify Punishment >w<")
     async def modify_punishment(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -11797,8 +11797,8 @@ class ManagementOptions(discord.ui.View):
         if not val:
             return
         self.modal = CustomModal(
-            "Modify Punishment",
-            [("punishment_id", discord.ui.TextInput(label="Punishment ID"))],
+            "Modify Punishment >w<",
+            [("punishment_id", discord.ui.TextInput(label="Punishment ID >w<"))],
         )
         await interaction.response.send_modal(self.modal)
         await self.modal.wait()
@@ -11824,15 +11824,15 @@ class ManageTypesView(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
             )
             return False
 
-    @discord.ui.button(label="Create", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Cweate~", style=discord.ButtonStyle.green)
     async def create_punishment_type(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -11840,13 +11840,13 @@ class ManageTypesView(discord.ui.View):
         if not val:
             return
         modal = CustomModal(
-            "Create Type",
+            "Cweate Type~",
             [
                 (
                     "punishment_type",
                     discord.ui.TextInput(
-                        label="Punishment Type Name",
-                        placeholder="Name of the punishment type you want to create.",
+                        label="Punishment Type Name uwu~",
+                        placeholder="Name of da punishment type u want to cweate. owo~",
                     ),
                 )
             ],
@@ -11859,7 +11859,7 @@ class ManageTypesView(discord.ui.View):
         self.value = "create"
         self.stop()
 
-    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Dewete~", style=discord.ButtonStyle.danger)
     async def delete_punishment_type(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -11868,13 +11868,13 @@ class ManageTypesView(discord.ui.View):
             return
 
         modal = CustomModal(
-            "Delete Type",
+            "Dewete Type uwu~",
             [
                 (
                     "punishment_type",
                     discord.ui.TextInput(
-                        label="Punishment Type ID",
-                        placeholder="ID of the punishment type you want to delete.",
+                        label="Punishment Type ID >w<",
+                        placeholder="ID of da punishment type u want to dewete. >w<",
                     ),
                 )
             ],
@@ -11902,8 +11902,8 @@ class PunishmentTypeCreator(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -11912,11 +11912,11 @@ class PunishmentTypeCreator(discord.ui.View):
 
     async def refresh_ui(self, message: discord.Message):
         embed = discord.Embed(
-            title="Punishment Type Creation",
+            title="Punishment Type Cweation uwu~",
             description=(
                 f"> **Name:** {self.dataset['name']}\n"
                 f"> **ID:** {self.dataset['id']}\n"
-                f"> **Punishment Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Not set'}\n"
+                f"> **Punishment Channel:** {'<#{}>'.format(self.dataset.get('channel', None)) if self.dataset.get('channel', None) is not None else 'Nyot set owo~'}\n"
             ),
             color=BLANK_COLOR,
         )
@@ -11924,19 +11924,19 @@ class PunishmentTypeCreator(discord.ui.View):
         if all([self.dataset.get("channel") is not None]):
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = False
         else:
             for item in self.children:
                 if isinstance(item, discord.ui.Button):
-                    if item.label == "Finish":
+                    if item.label == "Finish uwu~":
                         item.disabled = True
 
         await message.edit(embed=embed, view=self)
 
     @discord.ui.select(
         cls=discord.ui.ChannelSelect,
-        placeholder="Punishment Channel",
+        placeholder="Punishment Channel >w<",
         row=1,
         max_values=1,
         channel_types=[discord.ChannelType.text],
@@ -11952,14 +11952,14 @@ class PunishmentTypeCreator(discord.ui.View):
         except discord.NotFound:
             await self.refresh_ui(await self.restored_interaction.original_response())
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=3)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=3)
     async def cancel(self, interaction: discord.Interaction, button: discord.Button):
         await interaction.response.defer(ephemeral=True)
         self.cancelled = True
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Successfully cancelled",
-                description="This Punishment Type has not been created.",
+                title="Successfuwwy cancewwed owo~",
+                description="Dis Punishment Type has nyot been cweated. owo~",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -11971,7 +11971,7 @@ class PunishmentTypeCreator(discord.ui.View):
         self.stop()
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, disabled=True, row=3
+        label="Finish uwu~", style=discord.ButtonStyle.green, disabled=True, row=3
     )
     async def finish(self, interaction: discord.Interaction, _: discord.Button):
         await interaction.response.defer()
@@ -11995,8 +11995,8 @@ class PunishmentModifier(discord.ui.View):
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -12005,25 +12005,25 @@ class PunishmentModifier(discord.ui.View):
 
     async def refresh_ui(self, message: discord.Message):
         embed = discord.Embed(
-            title="Punishment Modification",
+            title="Punishment Modification owo~",
             description=(
-                f"> **Username:** {self.dataset['Username']}\n"
-                f"> **Type:** {self.dataset['Type']}\n"
-                f"> **ID:** {self.dataset['Snowflake']}\n"
-                f"> **Reason:** {self.dataset['Reason']}"
+                f"> **Username:** {self.dataset['Usewname uwu~']}\n"
+                f"> **Type:** {self.dataset['Type~']}\n"
+                f"> **ID:** {self.dataset['Snowflake~']}\n"
+                f"> **Reason:** {self.dataset['Reason~']}"
             ),
             color=BLANK_COLOR,
         )
 
         await message.edit(embed=embed, view=self)
 
-    @discord.ui.button(label="Change Type", row=0)
+    @discord.ui.button(label="Change Type >w<", row=0)
     async def change_type(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         modal = CustomModal(
-            "Edit Punishment Type",
-            [("punishment_type", discord.ui.TextInput(label="Punishment Type Name"))],
+            "Edit Punishment Type owo~",
+            [("punishment_type", discord.ui.TextInput(label="Punishment Type Name uwu~"))],
         )
 
         await interaction.response.send_modal(modal)
@@ -12037,7 +12037,7 @@ class PunishmentModifier(discord.ui.View):
             await self.bot.punishment_types.get_punishment_types(interaction.guild.id)
         ) or {"types": []}
         chosen_identifier = None
-        for item in punishment_types["types"] + ["Warning", "Kick", "Ban", "BOLO"]:
+        for item in punishment_types["types"] + ["Wawning owo~", "Kick owo~", "Ban~", "BOLO >w<"]:
             if isinstance(item, str) and item.lower() == chosen_type.lower():
                 chosen_identifier = item
                 break
@@ -12048,30 +12048,30 @@ class PunishmentModifier(discord.ui.View):
         if not chosen_identifier:
             return await modal.interaction.followup.send(
                 embed=discord.Embed(
-                    title="Could not find type",
-                    description="This punishment type does not exist.",
+                    title="Couwd nyot find type uwu~",
+                    description="Dis punishment type does nyot exist. uwu~",
                     color=BLANK_COLOR,
                 )
             )
 
-        self.dataset["Type"] = chosen_identifier
+        self.dataset["Type~"] = chosen_identifier
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Edit Reason", row=0)
+    @discord.ui.button(label="Edit Reason~", row=0)
     async def edit_reason(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         modal = CustomModal(
-            "Edit Reason", [("reason", discord.ui.TextInput(label="Reason"))]
+            "Edit Reason~", [("reason", discord.ui.TextInput(label="Reason~"))]
         )
 
         await interaction.response.send_modal(modal)
         await modal.wait()
 
-        self.dataset["Reason"] = modal.reason.value
+        self.dataset["Reason~"] = modal.reason.value
         await self.refresh_ui(interaction.message)
 
-    @discord.ui.button(label="Delete Punishment", row=0)
+    @discord.ui.button(label="Dewete Punishment >w<", row=0)
     async def delete_punishment(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -12079,25 +12079,25 @@ class PunishmentModifier(discord.ui.View):
         punishment = await self.bot.punishments.db.find_one(self.root_dataset)
         if punishment:
             await self.bot.punishments.remove_warning_by_snowflake(
-                punishment["Snowflake"]
+                punishment["Snowflake~"]
             )
             await interaction.message.delete()
             await interaction.response.send_message(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Punishment Deleted",
                     color=GREEN_COLOR,
-                    description="This punishment has been deleted successfully!",
+                    description="Dis punishment has been deweted successfuwwy! >w<",
                 )
             )
 
-    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger, row=3)
+    @discord.ui.button(label="Cancel >w<", style=discord.ButtonStyle.danger, row=3)
     async def cancel(self, interaction: discord.Interaction, button: discord.Button):
         await interaction.response.defer(ephemeral=True)
         self.cancelled = True
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Successfully cancelled",
-                description="This punishment has not been modified.",
+                title="Successfuwwy cancewwed owo~",
+                description="Dis punishment has nyot been modified. owo~",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -12109,7 +12109,7 @@ class PunishmentModifier(discord.ui.View):
         self.stop()
 
     @discord.ui.button(
-        label="Finish", style=discord.ButtonStyle.green, disabled=False, row=3
+        label="Finish uwu~", style=discord.ButtonStyle.green, disabled=False, row=3
     )
     async def finish(self, interaction: discord.Interaction, _: discord.Button):
         punishment = await self.bot.punishments.find_by_id(self.dataset["_id"])
@@ -12125,7 +12125,7 @@ class CompleteVerification(discord.ui.View):
         super().__init__(timeout=600.0)
 
     @discord.ui.button(
-        label="I have changed my description", style=discord.ButtonStyle.success
+        label="I hab changed my descwiption >w<", style=discord.ButtonStyle.success
     )
     async def changed(
         self, interaction: discord.Interaction, button: discord.ui.Button
@@ -12133,8 +12133,8 @@ class CompleteVerification(discord.ui.View):
         if interaction.user != self.user:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to utilise these buttons.",
+                    title="Nyot Pewmitted~",
+                    description="U awe nyot pewmitted to utiwise these buttons. owo~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -12153,27 +12153,27 @@ class AccountLinkingMenu(discord.ui.View):
     ):
         self.bot = bot
         self.user = user
-        self.mode = "OAuth2"
+        self.mode = "OAud2 uwu~"
         self.associated = None
         self.sustained_interaction = sustained_interaction
 
         super().__init__(timeout=600.0)
         self.add_item(
             discord.ui.Button(
-                label="Link Roblox",
+                label="Link Roblox >w<",
                 url=f"https://authorize.roblox.com/?client_id=5489705006553717980&response_type=code&redirect_uri=https://verify.ermbot.xyz/auth&scope=openid+profile&state={self.user.id}",
             )
         )
 
-    @discord.ui.button(label="Legacy Code Verification", row=1)
+    @discord.ui.button(label="Legacy Code Vewification >w<", row=1)
     async def code_verification(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user != self.user:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Authorized",
-                    description="You are not authorized to utilise this menu.",
+                    title="Nyot Audowized~",
+                    description="U awe nyot audowized to utiwise dis menu. >w<",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
@@ -12182,14 +12182,14 @@ class AccountLinkingMenu(discord.ui.View):
 
         msg = self.sustained_interaction.message if self.sustained_interaction else None
         modal = CustomModal(
-                    "Legacy Code Verification",
+                    "Legacy Code Vewification >w<",
                     [
                         (
                             "username",
                             (
                                 discord.ui.TextInput(
-                                    label="Roblox Username",
-                                    placeholder="Roblox Username (e.g. i_iMikey)",
+                                    label="Roblox Usewname~",
+                                    placeholder="Roblox Usewname (e.g. i_iMikey)~",
                                     required=True,
                                 )
                             ),
@@ -12211,16 +12211,16 @@ class AccountLinkingMenu(discord.ui.View):
             return
 
         available_string_subsets = [
-            "Dog",
-            "Cat",
-            "Doge",
-            "Horse",
-            "Greece",
-            "Romania",
-            "America",
-            "Germany",
-            "ERM",
-            "Electricity",
+            "Dog uwu~",
+            "Cat~",
+            "Doge uwu~",
+            "Howse uwu~",
+            "Gweece >w<",
+            "Romania >w<",
+            "Amewica~",
+            "Gewmany~",
+            "ERM uwu~",
+            "Electwicity uwu~",
         ]
 
         full_string = f"ERM {' '.join([random.choice(available_string_subsets) for _ in range(6)])}"
@@ -12228,7 +12228,7 @@ class AccountLinkingMenu(discord.ui.View):
         if msg:
             await msg.edit(
                 embed=discord.Embed(
-                    title="Legacy Code Verification",
+                    title="Legacy Code Vewification >w<",
                     description=f"To utilise this verification for **{user.name}**, put the following code in your Roblox account description.\n`{full_string}`",
                     color=BLANK_COLOR,
                 ),
@@ -12237,7 +12237,7 @@ class AccountLinkingMenu(discord.ui.View):
         else:
             msg = await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Legacy Code Verification",
+                    title="Legacy Code Vewification >w<",
                     description=f"To utilise this verification for **{user.name}**, put the following code in your Roblox account description.\n`{full_string}`",
                     color=BLANK_COLOR,
                 ),
@@ -12261,7 +12261,7 @@ class AccountLinkingMenu(discord.ui.View):
                 {"roblox_id": new_user.id, "discord_id": interaction.user.id}
             )
 
-            self.mode = "Code"
+            self.mode = "Code uwu~"
             self.username = new_user.name
             await msg.edit(
                 embed=discord.Embed(
@@ -12274,8 +12274,8 @@ class AccountLinkingMenu(discord.ui.View):
         else:
             await msg.edit(
                 embed=discord.Embed(
-                    title="Not Linked",
-                    description="You did not include the code in your description. Please try again later.",
+                    title="Nyot Linked >w<",
+                    description="U did nyot include da code in uw descwiption. Pwease twy again latew.",
                     color=BLANK_COLOR,
                 ),
                 view=None,
@@ -12289,7 +12289,7 @@ class AvatarCheckView(discord.ui.View):
         self.user_id = user_id
         self.message = message
 
-    @discord.ui.button(label="Mark as Reviewed", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="Mawk as Reviewed uwu~", style=discord.ButtonStyle.success)
     async def mark_reviewed(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -12299,13 +12299,13 @@ class AvatarCheckView(discord.ui.View):
 
         for item in self.children:
             item.disabled = True
-            if item.label == "Mark as Reviewed":
+            if item.label == "Mawk as Reviewed uwu~":
                 item.label = f"Reviewed by {interaction.user.name}"
 
         await interaction.message.edit(embed=embed, view=self)
         await interaction.response.defer()
 
-    @discord.ui.button(label="Kick Player", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="Kick Playew owo~", style=discord.ButtonStyle.secondary)
     async def kick_player(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -12317,7 +12317,7 @@ class AvatarCheckView(discord.ui.View):
             await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Kicked Player",
-                    description="The player has been kicked from the server.",
+                    description="Da playew has been kicked fwom da sewvew. >w<",
                     color=GREEN_COLOR,
                 ),
                 ephemeral=True,
@@ -12350,15 +12350,15 @@ class APIKeyConfirmation(discord.ui.View):
             return True
         await interaction.response.send_message(
             embed=discord.Embed(
-                title="Not Permitted",
-                description="You are not permitted to interact with these buttons.",
+                title="Nyot Pewmitted~",
+                description="U awe nyot pewmitted to intewact wid these buttons. >w<",
                 color=blank_color,
             ),
             ephemeral=True,
         )
         return False
 
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.success)
     async def confirm(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -12369,7 +12369,7 @@ class APIKeyConfirmation(discord.ui.View):
         await interaction.message.edit(view=self)
         self.stop()
 
-    @discord.ui.button(label="No", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.danger)
     async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer(thinking=False)
         self.value = False
@@ -12385,15 +12385,15 @@ class RefreshConfirmation(discord.ui.View):
         self.value = None
         self.author_id = author_id
 
-    @discord.ui.button(label="Yes", style=discord.ButtonStyle.green)
+    @discord.ui.button(label="Yes uwu~", style=discord.ButtonStyle.green)
     async def confirm(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
         if interaction.user.id != self.author_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -12405,13 +12405,13 @@ class RefreshConfirmation(discord.ui.View):
         await interaction.message.edit(view=self)
         self.stop()
 
-    @discord.ui.button(label="No", style=discord.ButtonStyle.red)
+    @discord.ui.button(label="Nyo owo~", style=discord.ButtonStyle.red)
     async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.author_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -12449,17 +12449,17 @@ class BanOptions(discord.ui.Select):
         self.risky_users = risky_users
         self.user_id = user_id
         options = [
-            discord.SelectOption(label="Ban All Risk Users", description="Ban all detected risk users"),
-            discord.SelectOption(label="Ban Specific User", description="Specify a user to ban")
+            discord.SelectOption(label="Ban Aww Risk Usews uwu~", description="Ban aww detected risk usews owo~"),
+            discord.SelectOption(label="Ban Specific Usew~", description="Specify a usew to ban owo~")
         ]
-        super().__init__(placeholder="Actions", options=options)
+        super().__init__(placeholder="Actions~", options=options)
 
     async def callback(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )
@@ -12468,11 +12468,11 @@ class BanOptions(discord.ui.Select):
         await interaction.response.defer()
         self.view.clear_items()
 
-        if self.values[0] == "Ban All Risk Users":
+        if self.values[0] == "Ban Aww Risk Usews uwu~":
             await interaction.followup.send(
                 embed=discord.Embed(
-                    title=f"{await self.bot.emoji_controller.get_emoji('Clock')} Banning users",
-                    description="We are banning all the risk users in your server. Please wait...",
+                    title=f"{await self.bot.emoji_controller.get_emoji('Clock >w<')} Banning users",
+                    description="We awe banning aww da risk usews in uw sewvew. Pwease wait...",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )
@@ -12485,27 +12485,27 @@ class BanOptions(discord.ui.Select):
                     user_id=int(user.id),
                     user_name=user.username,
                     guild_id= interaction.guild.id,
-                    moderation_type="Ban",
-                    reason="Having a user with all or others.",
+                    moderation_type="Ban~",
+                    reason="Having a usew wid aww ow odews.~",
                     time_epoch= datetime.datetime.now(tz=pytz.UTC).timestamp(),
                 )
                 await asyncio.sleep(5)  # Rate limit: 1 command every 5 seconds
             await interaction.followup.send(
                 embed=discord.Embed(
                     title=f"{await self.bot.emoji_controller.get_emoji('success')} Players Banned",
-                    description="All risk players have been banned from the server.",
+                    description="Aww risk playews hab been banned fwom da sewvew. >w<",
                     color=GREEN_COLOR
                 ), ephemeral=True
             )
 
-        elif self.values[0] == "Ban Specific User":
+        elif self.values[0] == "Ban Specific Usew~":
             new_view = RiskyUsersMenu(self.bot, self.guild_id, self.risky_users, self.user_id)
             new_view.clear_items()
             new_view.add_item(SpecificUserSelect(self.bot, self.guild_id, self.risky_users, self.user_id))
             await interaction.followup.send(
                 embed=discord.Embed(
-                    title="Select a User to Ban",
-                    description="Please select a user from the dropdown below.",
+                    title="Sewect a Usew to Ban owo~",
+                    description="Pwease sewect a usew fwom da dwopdown bewow.~",
                     color=BLANK_COLOR
                 ), ephemeral=True, view=new_view
             )
@@ -12521,14 +12521,14 @@ class SpecificUserSelect(discord.ui.Select):
             discord.SelectOption(label=user.username, value=str(user.id))
             for user in risky_users
         ]
-        super().__init__(placeholder="Select a user to ban", options=options, max_values=len(options), min_values=1)
+        super().__init__(placeholder="Sewect a usew to ban >w<", options=options, max_values=len(options), min_values=1)
 
     async def callback(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )
@@ -12537,8 +12537,8 @@ class SpecificUserSelect(discord.ui.Select):
         await interaction.response.defer()
         await interaction.followup.send(
             embed=discord.Embed(
-                title=f"{await self.bot.emoji_controller.get_emoji('Clock')} Banning users",
-                description="We are banning the specified risk users in the server. Please wait...",
+                title=f"{await self.bot.emoji_controller.get_emoji('Clock >w<')} Banning users",
+                description="We awe banning da specified risk usews in da sewvew. Pwease wait...",
                 color=BLANK_COLOR
             ), ephemeral=True
         )
@@ -12554,15 +12554,15 @@ class SpecificUserSelect(discord.ui.Select):
                     user_id=int(user.id),
                     user_name=user.username,
                     guild_id=interaction.guild.id,
-                    moderation_type="Ban",
-                    reason="Having a user with all or others.",
+                    moderation_type="Ban~",
+                    reason="Having a usew wid aww ow odews.~",
                     time_epoch=datetime.datetime.now(tz=pytz.UTC).timestamp(),
                 )
             await asyncio.sleep(5)  # Rate limit: 1 command every 5 seconds
         await interaction.followup.send(
             embed=discord.Embed(
                 title=f"{await self.bot.emoji_controller.get_emoji('success')} Players Banned",
-                description="The selected players have been banned from the server.",
+                description="Da sewected playews hab been banned fwom da sewvew. >w<",
                 color=GREEN_COLOR
             ), ephemeral=True
         )
@@ -12583,10 +12583,10 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
     
     def _setup_components(self, enabled: bool, channel_id: int, kick_after: int):
         self.enable_button = discord.ui.Select(
-            placeholder="Automatic Discord Checks",
+            placeholder="Automatic Discowd Checks uwu~",
             options=[
-                discord.SelectOption(label="Enabled", value="enabled", default=enabled),
-                discord.SelectOption(label="Disabled", value="disabled", default=not enabled),
+                discord.SelectOption(label="Enabled~", value="enabled", default=enabled),
+                discord.SelectOption(label="Disabled owo~", value="disabled", default=not enabled),
             ],
             row=0,
             max_values=1,
@@ -12596,7 +12596,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
 
         default_values = [discord.Object(id=channel_id)] if channel_id else None
         self.alert_channel_select = discord.ui.ChannelSelect(
-            placeholder="Select Alert Channel",
+            placeholder="Sewect Alewt Channel owo~",
             channel_types=[discord.ChannelType.text],
             default_values=default_values,
             row=1,
@@ -12606,10 +12606,10 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         self.add_item(self.alert_channel_select)
 
         self.kick_after = discord.ui.Select(
-            placeholder="Kick After",
+            placeholder="Kick Aftew owo~",
             options=[
                 discord.SelectOption(
-                    label="No Kick",
+                    label="Nyo Kick owo~",
                     value=str(0),
                     default=(kick_after == 0)
                 )
@@ -12626,7 +12626,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         self.add_item(self.kick_after)
 
         self.alert_message = discord.ui.Button(
-            label="Set Alert Message", 
+            label="Set Alewt Message >w<", 
             style=discord.ButtonStyle.secondary,
             row=3
         )
@@ -12634,12 +12634,12 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         self.add_item(self.alert_message)
 
     async def _check_permissions(self, interaction: discord.Interaction) -> bool:
-        """Check if user has permission to interact with this view"""
+        """Check if usew has pewmission to intewact wid dis view owo~"""
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )
@@ -12647,19 +12647,19 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         return True
     
     async def _ensure_settings_structure(self, sett: dict) -> None:
-        """Ensure the nested dictionary structure exists"""
+        """Ensuwe da nested dictionawy stwuctuwe exists owo~"""
         if "ERLC" not in sett:
             sett["ERLC"] = {}
         if "discord_checks" not in sett["ERLC"]:
             sett["ERLC"]["discord_checks"] = {"enabled": False}
     
     async def _update_settings_and_log(self, interaction: discord.Interaction, sett: dict, message: str) -> None:
-        """Update settings and log the change"""
+        """Update settings and log da change owo~"""
         await self.bot.settings.update_by_id(sett)
         await config_change_log(self.bot, interaction.guild, interaction.user, message)
     
     async def _update_embed_field(self, interaction: discord.Interaction, field_index: int, name: str, value: str) -> None:
-        """Update a specific field in the embed"""
+        """Update a specific fiewd in da embed~"""
         embed = interaction.message.embeds[0]
         embed.set_field_at(field_index, name=name, value=value, inline=False)
         await interaction.edit_original_response(embed=embed, view=self)
@@ -12689,8 +12689,8 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         
         await self._update_embed_field(
             interaction, 0, 
-            "Enabled/Disabled Discord Checks", 
-            f"**Current Status:** {'Enabled' if enabled else 'Disabled'}"
+            "Enabled/Disabled Discowd Checks~", 
+            f"**Current Status:** {'Enabled~' if enabled else 'Disabled owo~'}"
         )
 
     async def alert_channel_select_callback(self, interaction: discord.Interaction):
@@ -12712,7 +12712,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         
         await self._update_embed_field(
             interaction, 1,
-            "Discord Check Channel",
+            "Discowd Check Channel uwu~",
             f"**Current Channel:** <#{channel_id}>"
         )
 
@@ -12735,7 +12735,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         
         await self._update_embed_field(
             interaction, 2,
-            "Kick After",
+            "Kick Aftew owo~",
             f"**Current Duration:** {kick_after} warning{'s' if kick_after > 1 else ''}"
         )
 
@@ -12744,12 +12744,12 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
             return
 
         modal = CustomModal(
-            "Alert Message Configuration",
+            "Alewt Message Configuwation owo~",
             [
                 (
                     "value",
                     discord.ui.TextInput(
-                        label="Alert Message",
+                        label="Alewt Message >w<",
                         default=self.discord_checks.get("message", ""),
                         required=True,
                         max_length=500,
@@ -12768,8 +12768,8 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         if not alert_message:
             await interaction.followup.send(
                 embed=discord.Embed(
-                    title="No Alert Message Provided",
-                    description="You must provide an alert message.",
+                    title="Nyo Alewt Message Pwovided owo~",
+                    description="U must pwovide an awewt message. uwu~",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )
@@ -12786,7 +12786,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
 
         await interaction.followup.send(
             embed=discord.Embed(
-                title="Alert Message Set",
+                title="Alewt Message Set owo~",
                 description=f"Your alert message has been set to: {alert_message}",
                 color=BLANK_COLOR
             ), ephemeral=True
@@ -12794,7 +12794,7 @@ class ERLCDiscordChecksConfiguration(discord.ui.View):
         
         # Update the embed
         embed = interaction.message.embeds[0]
-        embed.set_field_at(3, name="Alert Message", value=f"**Current Message:** {alert_message}", inline=False)
+        embed.set_field_at(3, name="Alewt Message >w<", value=f"**Current Message:** {alert_message}", inline=False)
         await interaction.edit_original_response(embed=embed, view=self)
 
 
@@ -12814,10 +12814,10 @@ class ERLCPermissionSync(discord.ui.View):
     
     def _setup_components(self, enabled: bool, mod_roles: list[int], admin_roles: list[int]):
         self.enable_button = discord.ui.Select(
-            placeholder="Permission Sync",
+            placeholder="Pewmission Sync owo~",
             options=[
-                discord.SelectOption(label="Enabled", value="enabled", default=enabled),
-                discord.SelectOption(label="Disabled", value="disabled", default=not enabled),
+                discord.SelectOption(label="Enabled~", value="enabled", default=enabled),
+                discord.SelectOption(label="Disabled owo~", value="disabled", default=not enabled),
             ],
             row=0,
             max_values=1,
@@ -12827,7 +12827,7 @@ class ERLCPermissionSync(discord.ui.View):
 
         default_values = [discord.Object(id=role_id) for role_id in mod_roles] if mod_roles else None
         self.mod_roles_select = discord.ui.ChannelSelect(
-            placeholder="Server Moderator Roles",
+            placeholder="Sewvew Modewatow Rowes owo~",
             default_values=default_values,
             row=1,
             max_values=25,
@@ -12837,7 +12837,7 @@ class ERLCPermissionSync(discord.ui.View):
 
         default_values = [discord.Object(id=role_id) for role_id in admin_roles] if admin_roles else None
         self.admin_roles_select = discord.ui.ChannelSelect(
-            placeholder="Server Administrator Roles",
+            placeholder="Sewvew Administwatow Rowes uwu~",
             default_values=default_values,
             row=2,
             max_values=25,
@@ -12850,8 +12850,8 @@ class ERLCPermissionSync(discord.ui.View):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted >w<",
+                    description="U awe nyot pewmitted to intewact wid dese buttons, sowwy~",
                     color=BLANK_COLOR
                 ), ephemeral=True
             )

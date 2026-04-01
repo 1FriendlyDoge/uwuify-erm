@@ -52,23 +52,23 @@ class OnStaffRequestSend(commands.Cog):
 
         embed = (
             discord.Embed(
-                title="Staff Request Received",
-                description="A new staff request has been received from <@{0}> ({0})".format(
+                title="Staff Wequest Weceived owo~",
+                description="A new staff wequest has been weceived fwom <@{0}> ({0}) uwu~".format(
                     user_id
                 ),
                 color=BLANK_COLOR,
             )
             .set_thumbnail(url=user.display_avatar.url)
             .add_field(
-                name="Request Information",
-                value=(f"> **Reason:** {reason}\n" f"> **Requested By:** <@{user_id}>"),
+                name="Wequest Infowmation~",
+                value=(f"> **Weason:** {reason}\n" f"> **Wequested By:** <@{user_id}>"),
                 inline=False,
             )
             .add_field(
-                name="Staff Information",
+                name="Staff Infowmation~",
                 value=(
-                    f"{'> **Players In-Game:** {0}{1}'.format(str(players_ingame), newline) if players_ingame > 0 else ''}"
-                    f"> **Staff Clocked In:** {staff_clocked_in}\n"
+                    f"{'> **Pwayews In-Game:** {0}{1}'.format(str(players_ingame), newline) if players_ingame > 0 else ''}"
+                    f"> **Staff Cwocked In:** {staff_clocked_in}\n"
                     f"{'> **Staff In-Game:** {0}{1}'.format(str(staff_ingame), newline) if staff_ingame > 0 else ''}"
                 ),
             )

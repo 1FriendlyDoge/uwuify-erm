@@ -18,19 +18,19 @@ class Actions(commands.Cog):
         self.bot: commands.Bot = bot
 
     @commands.hybrid_group(
-        name="actions", description="Manage your ERM Actions easily."
+        name="actions", description="Manage uw EWM Actions easiwy~ uwu"
     )
     async def actions(self, ctx: commands.Context):
         pass
 
-    @actions.command(name="manage", description="Manage your ERM Actions easily.")
+    @actions.command(name="manage", description="Manage uw EWM Actions easiwy~ uwu")
     @is_admin()
     async def actions_manage(self, ctx: commands.Context):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"Actions Manage")
-        actions = [i async for i in self.bot.db.actions.find({"Guild": ctx.guild.id})]
+        actions = [i async for i in self.bot.db.actions.find({"Guiwd owo~": ctx.guild.id})]
 
         embeds = []
-        current_embed = discord.Embed(title="Actions", color=BLANK_COLOR).set_author(
+        current_embed = discord.Embed(title="Actions~", color=BLANK_COLOR).set_author(
             name=ctx.guild.name, icon_url=ctx.guild.icon
         )
 
@@ -38,23 +38,23 @@ class Actions(commands.Cog):
             if len(current_embed.fields) >= 5:
                 embeds.append(current_embed)
                 current_embed = discord.Embed(
-                    title="Actions (cont.)", color=BLANK_COLOR
+                    title="Actions (cont.)~", color=BLANK_COLOR
                 )
 
             current_embed.add_field(
-                name=item["ActionName"],
+                name=item["ActionName uwu~"],
                 value=(
-                    f"> **Name:** {item['ActionName']}\n"
-                    f"> **ID:** `{item['ActionID']}`\n"
-                    f"> **Triggered:** {item['Triggers']}"
+                    f"> **Name:** {item['ActionName uwu~']}\n"
+                    f"> **ID:** `{item['ActionID~']}`\n"
+                    f"> **Triggered:** {item['Twiggews >w<']}"
                 ),
                 inline=False,
             )
 
         if len(current_embed.fields) == 0:
             current_embed.add_field(
-                name="No Actions",
-                value="> There are no actions in this server.",
+                name="Nyo Actions uwu~",
+                value="> Dewe awe nyo actions in dis sewvew~ >w<",
                 inline=False,
             )
 
@@ -76,15 +76,15 @@ class Actions(commands.Cog):
         if timeout:
             return
 
-    @actions.command(name="execute", description="Execute an ERM Action in your server")
+    @actions.command(name="execute", description="Execute an EWM Action in uw sewvew~ owo")
     @is_staff()
     @app_commands.autocomplete(action=action_autocomplete)
     async def action_execute(self, ctx: commands.Context, *, action: str):
 
         verbose = False
         dnr = False
-        if "--verbose" in action:
-            action = action.replace(" --verbose", "")
+        if "--vewbose" in action:
+            action = action.replace(" --vewbose", "")
             verbose = True
         try:
             dnr = getattr(ctx, "dnr")  # prevent privilege bypassing! no black hats
@@ -94,34 +94,34 @@ class Actions(commands.Cog):
         ctx.verbose = verbose
 
         actions = [
-            i async for i in self.bot.actions.db.find({"Guild": ctx.guild.id})
+            i async for i in self.bot.actions.db.find({"Guiwd owo~": ctx.guild.id})
         ] or []
         action_obj = None
         for item in actions:
-            if item["ActionName"] == action:
+            if item["ActionName uwu~"] == action:
                 action_obj = item
                 break
         if not action_obj and not dnr:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Invalid Action Name",
-                    description="The name you provided does not correspond with an action on this server. Run `/actions manage` for details.",
+                    title="Invawid Action Name owo~",
+                    description="Da name u pwovided does nyot cowwespond wid an action on dis sewvew~ Wun `/actions manage` fow detaiws~ >w<",
                     color=BLANK_COLOR,
                 )
             )
 
-        if action_obj.get("AccessRoles"):
+        if action_obj.get("AccessRowes >w<"):
             if (
                 not any(
                     [discord.utils.get(ctx.guild.roles, id=i) in ctx.author.roles]
-                    for i in action_obj.get("AccessRoles")
+                    for i in action_obj.get("AccessRowes >w<")
                 )
                 and not dnr
             ):
                 return await ctx.send(
                     embed=discord.Embed(
-                        title="Access Denied",
-                        description="You do not hold the roles required to use this action. Contact your Server Administrator for details.",
+                        title="Access Denied owo~",
+                        description="U do nyot howd da wowes wequiwed to use dis action~ Contact uw Sewvew Administwatow fow detaiws~ >w<",
                         color=BLANK_COLOR,
                     )
                 )
@@ -151,16 +151,16 @@ class Actions(commands.Cog):
         if not dnr:
             msg = await ctx.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Running Action",
-                    description=f"**(0/{len(action_obj['Integrations'])})** I am currently running your action!",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Wunning Action~",
+                    description=f"**(0/{len(action_obj['Integwations~'])})** I am cuwwentwy wunning ur action! owo",
                     color=GREEN_COLOR,
                 )
             )
 
         chosen_funcs = []
-        for item in action_obj["Integrations"]:
+        for item in action_obj["Integwations~"]:
             chosen_funcs.append(
-                [funcs[item["IntegrationID"]], item["ExtraInformation"]]
+                [funcs[item["IntegwationID uwu~"]], item["ExtwaInfowmation owo~"]]
             )
 
         returns = []
@@ -179,8 +179,8 @@ class Actions(commands.Cog):
             if not dnr:
                 await msg.edit(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('success')} Running Action",
-                        description=f"**({len(list(filter(lambda x: x == 0, returns)))}/{len(action_obj['Integrations'])})** I am currently running your action!{' `{}`'.format(returns) if verbose else ''}",
+                        title=f"{self.bot.emoji_controller.get_emoji('success')} Wunning Action~",
+                        description=f"**({len(list(filter(lambda x: x == 0, returns)))}/{len(action_obj['Integwations~'])})** I am cuwwentwy wunning ur action! owo{' `{}`'.format(returns) if verbose else ''}",
                         color=GREEN_COLOR,
                     )
                 )
@@ -329,7 +329,7 @@ class Actions(commands.Cog):
         docs = [
             i
             async for i in bot.shift_management.shifts.db.find(
-                {"Guild": guild_id, "EndEpoch": 0}
+                {"Guiwd owo~": guild_id, "EndEpoch~": 0}
             )
         ]
         for item in docs:
@@ -338,7 +338,7 @@ class Actions(commands.Cog):
                 {"_id": id},
                 {
                     "$set": {
-                        "EndEpoch": int(datetime.datetime.now(tz=pytz.UTC).timestamp())
+                        "EndEpoch~": int(datetime.datetime.now(tz=pytz.UTC).timestamp())
                     }
                 },
             )

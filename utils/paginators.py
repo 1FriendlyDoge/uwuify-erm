@@ -164,8 +164,8 @@ class SelectPagination(discord.ui.View):
         if interaction.user.id != self.user_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted owo~",
+                    description="U awe nyot pewmitted to intewact wif dese buttons >w<~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -180,8 +180,8 @@ class SelectPagination(discord.ui.View):
         if interaction.user.id != self.user_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted owo~",
+                    description="U awe nyot pewmitted to intewact wif dese buttons >w<~",
                     color=blank_color,
                 ),
                 ephemeral=True,
@@ -190,8 +190,8 @@ class SelectPagination(discord.ui.View):
 
         msg = await interaction.followup.send(
             embed=discord.Embed(
-                title="Change Pages",
-                description="What page would you like to change to?",
+                title="Change Pages uwu~",
+                description="What page wouwd u wike to change to? owo~",
                 color=blank_color,
             ),
             view=(
@@ -218,8 +218,8 @@ class SelectPagination(discord.ui.View):
         if interaction.user.id != self.user_id:
             return await interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="You are not permitted to interact with these buttons.",
+                    title="Nyot Pewmitted owo~",
+                    description="U awe nyot pewmitted to intewact wif dese buttons >w<~",
                     color=blank_color,
                 ),
                 ephemeral=True,

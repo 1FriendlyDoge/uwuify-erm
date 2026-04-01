@@ -84,12 +84,12 @@ class OnInfractionCreate(commands.Cog):
                 "{type}": infraction_doc["type"],
                 "{issuer}": f"<@{infraction_doc.get('issuer_id', '0')}>",
                 "{issuer.id}": str(infraction_doc.get("issuer_id", "0")),
-                "{issuer.name}": issuer.name if issuer else "Unknown",
+                "{issuer.name}": issuer.name if issuer else "Unknown~",
                 "{timestamp}": f"<t:{int(datetime.datetime.now().timestamp())}:F>",
                 "{timestamp.short}": f"<t:{int(datetime.datetime.now().timestamp())}:f>",
                 "{timestamp.relative}": f"<t:{int(datetime.datetime.now().timestamp())}:R>",
                 "{escalated}": (
-                    "Yes" if infraction_doc.get("escalated", False) else "No"
+                    "Yesh" if infraction_doc.get("escalated", False) else "Nyo"
                 ),
                 "{count}": str(
                     await self.bot.db.infractions.count_documents(
@@ -101,7 +101,7 @@ class OnInfractionCreate(commands.Cog):
                     )
                 ),
                 "{user.username}": infraction_doc.get("username", member.name),
-                "{issuer.username}": infraction_doc.get("issuer_username", "Unknown"),
+                "{issuer.username}": infraction_doc.get("issuer_username", "Unknown~"),
             }
 
             # Process role changes

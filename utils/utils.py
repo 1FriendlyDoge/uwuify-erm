@@ -64,8 +64,8 @@ async def generalised_interaction_check_failure(
     if isinstance(responder, InteractionResponse):
         await responder.send_message(
             embed=discord.Embed(
-                title="Not Permitted",
-                description="You are not permitted to interact with these buttons.",
+                title="Nyot Pewmitted owo~",
+                description="U awe nyot pewmitted to intewact wif dese buttons >w<~",
                 color=BLANK_COLOR,
             ),
             ephemeral=True,
@@ -73,8 +73,8 @@ async def generalised_interaction_check_failure(
     else:
         await responder.send(
             embed=discord.Embed(
-                title="Not Permitted",
-                description="You are not permitted to interact with these buttons.",
+                title="Nyot Pewmitted owo~",
+                description="U awe nyot pewmitted to intewact wif dese buttons >w<~",
                 color=BLANK_COLOR,
             )
         )
@@ -109,12 +109,12 @@ async def get_roblox_by_username(user: str, bot, ctx: commands.Context):
                 )
                 return roblox_user
         except KeyError:
-            return {"errors": ["Member could not be found in Discord."]}
+            return {"errors": ["Membew couwd nyot be found in Discowd >w<~"]}
 
     client = roblox.Client()
     roblox_user = await client.get_user_by_username(user)
     if not roblox_user:
-        return {"errors": ["Could not find user"]}
+        return {"errors": ["Couwd nyot find usew owo~"]}
     else:
         return await bot.bloxlink.get_roblox_info(roblox_user.id)
 
@@ -192,11 +192,11 @@ def time_converter(parameter: str) -> int:
                     continue
                 if int(number.strip()) * multiplier > 15552000:
                     raise OverflowError(
-                        "Time value exceeds the maximum allowed duration of 180 days."
+                        "Time vawue exceeds da maximum awwowed duwation of 180 dways >w<~"
                     )
                 return int(number.strip()) * multiplier
 
-    raise ValueError("Invalid time format")
+    raise ValueError("Invawid time fowmat owo~")
 
 
 class GuildCheckFailure(commands.CheckFailure):
@@ -571,7 +571,7 @@ async def request_response(bot, ctx, question, **kwargs):
             timeout=300,
         )
     except asyncio.TimeoutError:
-        raise Exception("No response")
+        raise Exception("Nyo wesponse >w<~")
     return response
 
 
@@ -632,8 +632,8 @@ async def log_command_usage(bot, guild, member, command_name):
     if not log_channel.permissions_for(guild.me).send_messages:
         return
     embed = discord.Embed(
-        title="ERM Command Log",
-        description=f"Command `{command_name}` used by {member.mention}",
+        title="EWM Command Wog uwu~",
+        description=f"Command `{command_name}` used by {member.mention} hehe~",
         color=BLANK_COLOR,
     )
     embed.set_footer(text=f"User ID: {member.id}")
@@ -658,10 +658,10 @@ async def config_change_log(bot, guild, member, data):
     if not log_channel.permissions_for(guild.me).send_messages:
         return
     embed = discord.Embed(
-        title="ERM Config Change Log",
-        description=f"Configuration change made by {member.mention}",
+        title="EWM Config Change Wog uwu~",
+        description=f"Configuwation change made by {member.mention} owo~",
         color=BLANK_COLOR,
-    ).add_field(name="Configuration Change", value=data)
+    ).add_field(name="Configuwation Change~", value=data)
     embed.set_footer(text=f"User ID: {member.id}")
     embed.set_author(name=member.name, icon_url=member.display_avatar.url)
     embed.timestamp = datetime.datetime.now(datetime.timezone.utc)
@@ -690,7 +690,7 @@ async def secure_logging(
         if not attempted:
             await channel.send(
                 embed=discord.Embed(
-                    title="Remote Server Logs",
+                    title="Wemote Sewvew Wogs uwu~",
                     description=f"[{(await bot.bloxlink.get_roblox_info(bloxlink_user['robloxID']))['name']}:{bloxlink_user['robloxID']}](https://roblox.com/users/{bloxlink_user['robloxID']}/profile) used a command: {'`:m {}`'.format(command_string) if interpret_type == 'Message' else ('`:h {}`'.format(command_string) if interpret_type == 'Hint' else '`{}`'.format(command_string))}",
                     color=RED_COLOR,
                 ).set_footer(text=f"Private Server: {server_status.join_key}")
@@ -698,7 +698,7 @@ async def secure_logging(
         else:
             await channel.send(
                 embed=discord.Embed(
-                    title="Attempted Command Execution",
+                    title="Attempted Command Execution owo~",
                     description=f"[{(await bot.bloxlink.get_roblox_info(bloxlink_user['robloxID']))['name']}:{bloxlink_user['robloxID']}](https://roblox.com/users/{bloxlink_user['robloxID']}/profile) attempted to use the command: {'`:m {}`'.format(command_string) if interpret_type == 'Message' else ('`:h {}`'.format(command_string) if interpret_type == 'Hint' else '`{}`'.format(command_string))}",
                     color=RED_COLOR,
                 ).set_footer(text=f"Private Server: {server_status.join_key}")

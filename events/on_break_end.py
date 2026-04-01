@@ -95,21 +95,21 @@ class OnBreakEnd(commands.Cog):
 
         if channel is not None:
             await channel.send(
-                embed=discord.Embed(title="Break Ended", color=BLANK_COLOR)
+                embed=discord.Embed(title="Bweak Ended owo~", color=BLANK_COLOR)
                 .add_field(
-                    name="Shift Information",
+                    name="Shift Infowmation~",
                     value=(
-                        f"> **Staff Member:** {staff_member.mention}\n"
+                        f"> **Staff Membew:** {staff_member.mention}\n"
                         f"> **Shift Type:** {shift_type}\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Other Information",
+                    name="Othew Infowmation~",
                     value=(
-                        f"> **Shift Start:** <t:{int(shift.start_epoch)}>\n"
-                        f"> **Ended Break At:** <t:{int(shift.breaks[0].end_epoch)}>\n"
-                        f"> **Total Breaks:** {len(shift.breaks)}\n"
+                        f"> **Shift Stawt:** <t:{int(shift.start_epoch)}>\n"
+                        f"> **Ended Bweak At:** <t:{int(shift.breaks[0].end_epoch)}>\n"
+                        f"> **Totaw Bweaks:** {len(shift.breaks)}\n"
                         f"> **Nickname:** `{shift.nickname}`\n"
                     ),
                     inline=False,

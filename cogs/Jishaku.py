@@ -11,7 +11,7 @@ LOGGING_CHANNEL = 1084950208842039326
 
 class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
     """
-    Custom Jishaku Cog for command logging
+    Custom Jishaku Cog fow command logging
     """
 
     @Feature.Command(parent="jsk", name="creator")
@@ -23,20 +23,20 @@ class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
 
         if owner is None:
             return await ctx.send(
-                f"The creator of {self.bot.user.mention} is <@{OWNER}>"
+                f"Da cweatow of {self.bot.user.mention} is <@{OWNER}> owo~"
             )
 
         embed = discord.Embed(
             title=f"{owner.name}#{owner.discriminator}", color=0x2A2D31
         )
         embed.add_field(
-            name=f"Owner of {self.bot.user.name}",
+            name=f"Ownew of {self.bot.user.name}",
             value=f"{owner.mention}",
             inline=False,
         )
-        embed.add_field(name="ID", value=f"{owner.id}", inline=False)
+        embed.add_field(name="ID~", value=f"{owner.id}", inline=False)
         embed.set_footer(
-            text=f"{owner.name}#{owner.discriminator} is the owner of {self.bot.user.name}",
+            text=f"{owner.name}#{owner.discriminator} is da ownew of {self.bot.user.name} uwu",
             icon_url=ctx.guild.icon,
         )
         embed.set_thumbnail(url=owner.display_avatar.url)

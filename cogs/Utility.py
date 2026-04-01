@@ -24,8 +24,8 @@ class Utility(commands.Cog):
 
     @commands.hybrid_group(
         name="import",
-        description="Internal Use Command - import data from the recent outage.",
-        extras={"category": "Utility"},
+        description="Intewnaw Use Command - impowt data fwom da recent outage.~",
+        extras={"category": "Utiwity >w<"},
     )
     @is_staff()
     async def import_group(self, ctx: commands.Context):
@@ -33,8 +33,8 @@ class Utility(commands.Cog):
 
     @import_group.command(
         name="punishments",
-        description="Import punishments from the outage.",
-        extras={"category": "Utility"},
+        description="Impowt punishments fwom da outage. owo~",
+        extras={"category": "Utiwity >w<"},
     )
     @commands.cooldown(1, 300, commands.BucketType.guild)
     @is_management()
@@ -50,8 +50,8 @@ class Utility(commands.Cog):
 
         msg = await ctx.send(
             embed=discord.Embed(
-                title="Punishments Import",
-                description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** 0".format(channel.mention, int(after.timestamp())),
+                title="Punishments Impowt~",
+                description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** 0".format(channel.mention, int(after.timestamp())),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
         )
@@ -60,7 +60,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM" not in message.author.name:
+            if "ERM owo~" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -73,23 +73,23 @@ class Utility(commands.Cog):
             violator_field = fields[1]
 
             punishment = {}
-            punishment["Moderator"] = ""
-            punishment["ModeratorID"] = int(moderator_field.value.split("<@")[1].split(">")[0])
-            punishment["Snowflake"] = int(moderator_field.value.split("`")[1].split("`")[0])
-            punishment["Reason"] = moderator_field.value.split("Reason:** ")[1].split("\n")[0]
-            punishment["Epoch"] = int(moderator_field.value.split("<t:")[1].split(">")[0])
-            punishment["Username"] = violator_field.value.split("Username:** ")[1].split("\n")[0]
-            punishment["UserID"] = int(violator_field.value.split("`")[1].split("`")[0])
-            punishment["Guild"] = ctx.guild.id
-            punishment["Type"] = violator_field.value.split("Type:** ")[1].split("\n")[0]
+            punishment["Modewatow owo~"] = ""
+            punishment["ModewatowID owo~"] = int(moderator_field.value.split("<@")[1].split(">")[0])
+            punishment["Snowflake owo~"] = int(moderator_field.value.split("`")[1].split("`")[0])
+            punishment["Reason~"] = moderator_field.value.split("Reason:** ")[1].split("\n")[0]
+            punishment["Epoch uwu~"] = int(moderator_field.value.split("<t:")[1].split(">")[0])
+            punishment["Usewname >w<"] = violator_field.value.split("Usewname:** ")[1].split("\n")[0]
+            punishment["UsewID uwu~"] = int(violator_field.value.split("`")[1].split("`")[0])
+            punishment["Guiwd >w<"] = ctx.guild.id
+            punishment["Type~"] = violator_field.value.split("Type:** ")[1].split("\n")[0]
 
-            if punishment["Type"] == "Temporary Ban":
+            if punishment["Type~"] == "Tempowawy Ban owo~":
                 try:
-                    punishment["UntilEpoch"] = int(violator_field.value.split("Until:** <t:")[1].split(">")[0])
+                    punishment["UntilEpoch >w<"] = int(violator_field.value.split("Until:** <t: >w<")[1].split(">")[0])
                 except:
-                    punishment["UntilEpoch"] = punishment["Epoch"]
+                    punishment["UntilEpoch >w<"] = punishment["Epoch uwu~"]
 
-            if await self.bot.punishments.db.find_one({"Snowflake": punishment["Snowflake"]}):
+            if await self.bot.punishments.db.find_one({"Snowflake owo~": punishment["Snowflake owo~"]}):
                 continue
 
             await self.bot.punishments.db.insert_one(punishment)
@@ -98,8 +98,8 @@ class Utility(commands.Cog):
             if success % 100 == 0:
                 await msg.edit(
                     embed=discord.Embed(
-                        title="Punishments Import",
-                        description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** `{}`".format(channel.mention, 1754516493, success),
+                        title="Punishments Impowt~",
+                        description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** `{}`".format(channel.mention, 1754516493, success),
                         color=BLANK_COLOR,
                     ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
                 )
@@ -107,15 +107,15 @@ class Utility(commands.Cog):
         await msg.edit(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Import Complete",
-                description="Successfully imported **{}** punishments.".format(success),
+                description="Successfuwwy impowted **{}** punishments. >w<".format(success),
                 color=GREEN_COLOR,
             )
         )
 
     @import_group.command(
         name="shifts",
-        description="Import shifts from the outage.",
-        extras={"category": "Utility"},
+        description="Impowt shifts fwom da outage. uwu~",
+        extras={"category": "Utiwity >w<"},
     )
     @commands.cooldown(1, 300, commands.BucketType.guild)
     @is_management()
@@ -131,8 +131,8 @@ class Utility(commands.Cog):
         
         msg = await ctx.send(
             embed=discord.Embed(
-                title="Shifts Import",
-                description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** 0".format(channel.mention, int(after.timestamp())),
+                title="Shifts Impowt >w<",
+                description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** 0".format(channel.mention, int(after.timestamp())),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
         )
@@ -142,7 +142,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM" not in message.author.name:
+            if "ERM owo~" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -155,16 +155,16 @@ class Utility(commands.Cog):
             other_field = fields[1]
 
             shift = {}
-            shift["UserID"] = int(shift_field.value.split("<@")[1].split(">")[0])
-            shift["Username"] = other_field.value.split("Nickname:** ")[1].split("\n")[0]
-            shift["Nickname"] = shift["Username"]
-            shift["StartEpoch"] = int(other_field.value.split("<t:")[1].split(">")[0])
-            shift["Guild"] = ctx.guild.id
-            shift["AddedTime"] = 0
-            shift["RemovedTime"] = 0
-            shift["Type"] = shift_field.value.split("Type:** ")[1].split("\n")[0]
-            shift["EndEpoch"] = int(other_field.value.split("<t:")[2].split(">")[0])
-            shift["Breaks"] = []
+            shift["UsewID uwu~"] = int(shift_field.value.split("<@")[1].split(">")[0])
+            shift["Usewname >w<"] = other_field.value.split("Nickname:** ")[1].split("\n")[0]
+            shift["Nickname uwu~"] = shift["Usewname >w<"]
+            shift["StawtEpoch~"] = int(other_field.value.split("<t:")[1].split(">")[0])
+            shift["Guiwd >w<"] = ctx.guild.id
+            shift["AddedTime owo~"] = 0
+            shift["RemovedTime uwu~"] = 0
+            shift["Type~"] = shift_field.value.split("Type:** ")[1].split("\n")[0]
+            shift["EndEpoch owo~"] = int(other_field.value.split("<t:")[2].split(">")[0])
+            shift["Bweaks~"] = []
 
             await self.bot.shift_management.shifts.db.insert_one(shift)
             success += 1
@@ -173,8 +173,8 @@ class Utility(commands.Cog):
             if success % 100 == 0:
                 await msg.edit(
                     embed=discord.Embed(
-                        title="Shifts Import",
-                        description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** `{}`".format(channel.mention, 1754516493, success),
+                        title="Shifts Impowt >w<",
+                        description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** `{}`".format(channel.mention, 1754516493, success),
                         color=BLANK_COLOR,
                     ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
                 )
@@ -182,15 +182,15 @@ class Utility(commands.Cog):
         await msg.edit(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Import Complete",
-                description="Successfully imported **{}** shifts.".format(success),
+                description="Successfuwwy impowted **{}** shifts. uwu~".format(success),
                 color=GREEN_COLOR,
             )
         )
 
     @import_group.command(
         name="loas",
-        description="Import LOAs from the outage.",
-        extras={"category": "Utility"},
+        description="Impowt LOAs fwom da outage. uwu~",
+        extras={"category": "Utiwity >w<"},
     )
     @commands.cooldown(1, 300, commands.BucketType.guild)
     @is_management()
@@ -206,8 +206,8 @@ class Utility(commands.Cog):
         
         msg = await ctx.send(
             embed=discord.Embed(
-                title="LOAs Import",
-                description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** 0".format(channel.mention, int(after.timestamp())),
+                title="LOAs Impowt >w<",
+                description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** 0".format(channel.mention, int(after.timestamp())),
                 color=BLANK_COLOR,
             ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
         )
@@ -217,7 +217,7 @@ class Utility(commands.Cog):
             embeds = message.embeds
             if len(embeds) == 0:
                 continue
-            if "ERM" not in message.author.name:
+            if "ERM owo~" not in message.author.name:
                 continue
 
             embed = embeds[0]
@@ -235,12 +235,12 @@ class Utility(commands.Cog):
             loa["guild_id"] = ctx.guild.id
             loa["type"] = request_field.value.split("Type:** ")[1].split("\n")[0]
             loa["reason"] = request_field.value.split("Reason:** ")[1].split("\n")[0]
-            loa["expiry"] = int(request_field.value.split("Ends At:** <t:")[1].split(">")[0])
+            loa["expiry"] = int(request_field.value.split("Ends At:** <t:~")[1].split(">")[0])
             loa["expired"] = True if loa["expiry"] < int(datetime.datetime.now(tz=pytz.UTC).timestamp()) else False
             loa["voided"] = False
             loa["denied"] = True if "denied" in embed_title else False
             loa["accepted"] = True if "accepted" in embed_title else False
-            loa["_id"] = "{}_{}_{}_{}".format(loa["user_id"], loa["guild_id"], request_field.value.split("Starts At:** <t:")[1].split(">")[0], loa["expiry"])
+            loa["_id"] = "{}_{}_{}_{}".format(loa["user_id"], loa["guild_id"], request_field.value.split("Stawts At:** <t: owo~")[1].split(">")[0], loa["expiry"])
 
             if await self.bot.loas.db.find_one({"_id": loa["_id"]}):
                 await self.bot.loas.db.update_one({"_id": loa["_id"]}, {"$set": {"voided": loa["voided"], "denied": loa["denied"], "accepted": loa["accepted"], "expired": loa["expired"]}})
@@ -252,15 +252,15 @@ class Utility(commands.Cog):
             if success % 100 == 0:
                 await msg.edit(
                     embed=discord.Embed(
-                        title="LOAs Import",
-                        description="> **Channel:** {}\n> **After:** <t:{}:R>\n> **Imported:** {}".format(channel.mention, int(after.timestamp()), success),
+                        title="LOAs Impowt >w<",
+                        description="> **Channel:** {}\n> **Aftew:** <t:{}:R>\n> **Impowted:** {}".format(channel.mention, int(after.timestamp()), success),
                         color=BLANK_COLOR,
                     ).set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
                 )
         await msg.edit(
             embed=discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Import Complete",
-                description="Successfully imported **{}** LOAs.".format(success),
+                description="Successfuwwy impowted **{}** LOAs.~".format(success),
                 color=GREEN_COLOR,
             )
         )
@@ -268,8 +268,8 @@ class Utility(commands.Cog):
 
     @commands.hybrid_command(
         name="staff_sync",
-        description="Internal Use Command, used for connection staff privileged individuals to their Roblox counterparts.",
-        extras={"category": "Utility"},
+        description="Intewnaw Use Command, used fow connection staff pwiviweged individuals to theiw Roblox countewpawts.",
+        extras={"category": "Utiwity >w<"},
         hidden=True,
         with_app_command=False,
     )
@@ -286,7 +286,7 @@ class Utility(commands.Cog):
         roblox_user = await self.bot.roblox.get_user(roblox_id)
         await ctx.send(
             embed=discord.Embed(
-                title="Staff Sync",
+                title="Staff Sync uwu~",
                 description=f"Successfully synced <@{discord_id}> to {roblox_user.name}",
                 color=BLANK_COLOR,
             )
@@ -294,13 +294,13 @@ class Utility(commands.Cog):
 
     @commands.hybrid_command(
         name="ping",
-        description="Shows information of the bot, such as uptime and latency",
-        extras={"category": "Utility"},
+        description="Shows infowmation of da bot, such as uptime and latency uwu~",
+        extras={"category": "Utiwity >w<"},
     )
     async def ping(self, ctx):
         latency = round(self.bot.latency * 1000)
         embed = discord.Embed(
-            title="Bot Status",
+            title="Bot Status~",
             color=BLANK_COLOR,
         )
 
@@ -320,12 +320,12 @@ class Utility(commands.Cog):
         status: str | None = None
 
         if list(data.keys())[0] == "ok":
-            status = "Connected"
+            status = "Connected uwu~"
         else:
-            status = "Not Connected"
+            status = "Nyot Connected~"
 
         embed.add_field(
-            name="Information",
+            name="Infowmation >w<",
             value=(
                 f"> **Latency:** `{latency}ms`\n"
                 f"> **Uptime:** <t:{int(self.bot.start_time)}:R>\n"
@@ -345,8 +345,8 @@ class Utility(commands.Cog):
     @commands.hybrid_command(
         name="modpanel",
         aliases=["panel"],
-        description="Get the link to this server's mod panel.",
-        extras={"category": "Website"},
+        description="Get da link to dis sewvew's mod panel. uwu~",
+        extras={"category": "Website owo~"},
     )
     @is_staff()
     @require_settings()
@@ -356,18 +356,18 @@ class Utility(commands.Cog):
         await ctx.send(
             embed=discord.Embed(
                 color=BLANK_COLOR,
-                description="Visit your server's Moderation Panel using the button below.",
+                description="Visit ur sewvew's Modewation Panel using da button bewow. uwu~",
             ).set_author(name=ctx.guild.name, icon_url=guild_icon),
             view=LinkView(
-                label="Mod Panel", url=f"https://ermbot.xyz/{ctx.guild.id}/panel"
+                label="Mod Panel~", url=f"https://ermbot.xyz/{ctx.guild.id}/panel"
             ),
         )
 
     @commands.hybrid_command(
         name="dashboard",
         aliases=["dash", "applications"],
-        description="Get the link to manage your server through the dashboard.",
-        extras={"category": "Website"},
+        description="Get da link to manage ur sewvew thwough da dashboawd.~",
+        extras={"category": "Website owo~"},
     )
     @is_management()
     async def dashboard(self, ctx: commands.Context):
@@ -376,18 +376,18 @@ class Utility(commands.Cog):
         await ctx.send(
             embed=discord.Embed(
                 color=BLANK_COLOR,
-                description="Visit your server's Dashboard using the button below.",
+                description="Visit ur sewvew's Dashboawd using da button bewow. uwu~",
             ).set_author(name=ctx.guild.name, icon_url=guild_icon),
             view=LinkView(
-                label="Dashboard", url=f"https://ermbot.xyz/{ctx.guild.id}/dashboard"
+                label="Dashboawd owo~", url=f"https://ermbot.xyz/{ctx.guild.id}/dashboard"
             ),
         )
 
     @commands.hybrid_command(
         name="support",
-        aliases=["support-server"],
-        description="Information about the ERM Support Server",
-        extras={"category": "Utility"},
+        aliases=["suppowt-sewvew"],
+        description="Infowmation about da ERM Suppowt Sewvew >w<",
+        extras={"category": "Utiwity >w<"},
     )
     async def support_server(self, ctx):
         # using an embed
@@ -395,36 +395,36 @@ class Utility(commands.Cog):
 
         await ctx.reply(
             embed=discord.Embed(
-                title="ERM Support",
-                description="You can join the ERM Systems Discord server using the button below.",
+                title="ERM Suppowt owo~",
+                description="U can join da ERM Systems Discowd sewvew using da button bewow.",
                 color=BLANK_COLOR,
             ),
-            view=LinkView(label="Support Server", url="https://discord.gg/FAC629TzBy"),
+            view=LinkView(label="Suppowt Sewvew~", url="https://discord.gg/FAC629TzBy"),
         )
 
     @commands.hybrid_command(
         name="about",
         aliases=["info"],
-        description="Information about ERM",
-        extras={"category": "Utility"},
+        description="Infowmation about ERM~",
+        extras={"category": "Utiwity >w<"},
     )
     async def about(self, ctx):
         # using an embed
         # [**Support Server**](https://discord.gg/5pMmJEYazQ)
         embed = discord.Embed(
-            title="About ERM",
+            title="About ERM >w<",
             color=BLANK_COLOR,
-            description="ERM is the all-in-one approach to game moderation logging, shift logging and more.",
+            description="ERM is da aww-in-one appwoach to game modewation logging, shift logging and mowe.",
         )
 
         embed.add_field(
             name=f"Bot Information",
             value=(
-                "> **Website:** [View Website](https://ermbot.xyz)\n"
-                "> **Support:** [Join Server](https://discord.gg/FAC629TzBy)\n"
+                "> **Website:** [View Website](https://ewmbot.xyz)\n"
+                "> **Suppowt:** [Join Sewvew](https://discowd.gg/FAC629TzBy)\n"
                 f"> **Invite:** [Invite Bot](https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&permissions=8&scope=bot%20applications.commands)\n"
-                "> **Documentation:** [View Documentation](https://docs.ermbot.xyz)\n"
-                "> **Desktop:** [Download ERM Desktop](https://ermbot.xyz/download)"
+                "> **Documentation:** [View Documentation](https://docs.ewmbot.xyz)\n"
+                "> **Desktop:** [Download ERM Desktop](https://ewmbot.xyz/download)"
             ),
             inline=False,
         )
@@ -441,8 +441,8 @@ class Utility(commands.Cog):
     @commands.guild_only()
     @api.command(
         name="generate",
-        description="Generate an API key for your server",
-        extras={"category": "Utility"},
+        description="Genewate an API key fow ur sewvew >w<",
+        extras={"category": "Utiwity >w<"},
     )
     @is_management()
     @require_settings()
@@ -450,8 +450,8 @@ class Utility(commands.Cog):
         view = APIKeyConfirmation(ctx.author.id)
         msg = await ctx.send(
             embed=discord.Embed(
-                title="Generate API Key",
-                description="Are you sure you want to generate an API key? This will invalidate any existing keys.",
+                title="Genewate API Key owo~",
+                description="Awe u suwe u want to genewate an API key? Dis wiww invawidate any existing keys.",
                 color=BLANK_COLOR,
             ),
             view=view,
@@ -462,8 +462,8 @@ class Utility(commands.Cog):
         if not view.value:
             return
 
-        api_url = f"{config('OPENERM_API_URL')}/api/v1/auth/token"
-        auth_token = config("OPENERM_AUTH_TOKEN")
+        api_url = f"{config('OPENERM_API_URL uwu~')}/api/v1/auth/token"
+        auth_token = config("OPENERM_AUTH_TOKEN uwu~")
         full_url = f"{api_url}?guild_id={ctx.guild.id}&auth_token={auth_token}"
 
         async with aiohttp.ClientSession() as session:
@@ -478,24 +478,24 @@ class Utility(commands.Cog):
                         if isinstance(ctx.interaction, discord.Interaction):
                             await ctx.send(
                                 embed=discord.Embed(
-                                    title="API Key Generated",
-                                    description="Here is your API key. Please save it somewhere safe - we won't show it again.",
+                                    title="API Key Genewated owo~",
+                                    description="Hewe is ur API key. Pwease save it somewhewe safe - we won't show it again.",
                                     color=BLANK_COLOR,
-                                ).add_field(name="API Key", value=f"```{api_key}```"),
+                                ).add_field(name="API Key~", value=f"```{api_key}```"),
                                 ephemeral=True,
                             )
                         else:
                             await ctx.author.send(
                                 embed=discord.Embed(
-                                    title="API Key Generated",
-                                    description="Here is your API key. Please save it somewhere safe - we won't show it again.",
+                                    title="API Key Genewated owo~",
+                                    description="Hewe is ur API key. Pwease save it somewhewe safe - we won't show it again.",
                                     color=BLANK_COLOR,
-                                ).add_field(name="API Key", value=f"```{api_key}```")
+                                ).add_field(name="API Key~", value=f"```{api_key}```")
                             )
                             await msg.edit(
                                 embed=discord.Embed(
                                     title=f"{self.bot.emoji_controller.get_emoji('success')} API Key Generated",
-                                    description="I have successfully generated an API key and sent it to your DMs!",
+                                    description="I hab successfuwwy genewated an API key and sent it to ur DMs!",
                                     color=GREEN_COLOR,
                                 ),
                                 view=None,
@@ -505,8 +505,8 @@ class Utility(commands.Cog):
                         logging.error(error_msg)
                         await ctx.send(
                             embed=discord.Embed(
-                                title="Error",
-                                description="Failed to generate API key. Please try again later.",
+                                title="Ewwow >w<",
+                                description="Faiwed to genewate API key. Pwease twy again latew. uwu~",
                                 color=BLANK_COLOR,
                             ),
                             ephemeral=isinstance(ctx.interaction, discord.Interaction),
@@ -516,8 +516,8 @@ class Utility(commands.Cog):
                 logging.error(error_msg)
                 await ctx.send(
                     embed=discord.Embed(
-                        title="Error",
-                        description="Failed to connect to API. Please try again later.",
+                        title="Ewwow >w<",
+                        description="Faiwed to connect to API. Pwease twy again latew. owo~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=isinstance(ctx.interaction, discord.Interaction),

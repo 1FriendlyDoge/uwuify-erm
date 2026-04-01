@@ -28,7 +28,7 @@ class StaffConduct(commands.Cog):
         self.bot = bot
 
     async def check_settings(self, ctx: commands.Context):
-        error_text = "<:ERMClose:1111101633389146223> **{},** this server isn't setup with ERM! Please run `/setup` to setup the bot before trying to manage infractions".format(
+        error_text = "<:ERMClose:1111101633389146223> **{},** dis sewvew isn't setup wid EWM! Pwease wun `/setup` to setup da bot befowe twying to manage infwactions~ >w<".format(
             ctx.author.name
         )
         guild_settings = await self.bot.settings.find_by_id(ctx.guild.id)
@@ -45,8 +45,8 @@ class StaffConduct(commands.Cog):
 
     @commands.hybrid_group(
         name="infraction",
-        description="Manage infractions with ease!",
-        extras={"category": "Staff Conduct"},
+        description="Manage infwactions wid ease! uwu",
+        extras={"category": "Staff Conduct >w<"},
     )
     @is_management()
     async def infraction(self, ctx: commands.Context):
@@ -54,8 +54,8 @@ class StaffConduct(commands.Cog):
 
     @infraction.command(
         name="manage",
-        description="Manage staff infractions, staff conduct, and custom integrations!",
-        extras={"category": "Staff Conduct"},
+        description="Manage staff infwactions, staff conduct, and custom integwations! owo",
+        extras={"category": "Staff Conduct >w<"},
     )
     @is_management()
     async def manage(self, ctx: commands.Context):
@@ -69,7 +69,7 @@ class StaffConduct(commands.Cog):
         if first_time_setup:
             view = YesNoExpandedMenu(ctx.author.id)
             message = await ctx.reply(
-                f"{pendingEmoji} **{ctx.author.name},** it looks like your server hasn't setup **Staff Conduct**! Do you want to run the **First-time Setup** wizard?",
+                f"{pendingEmoji} **{ctx.author.name},** it wooks wike ur sewvew hasn't setup **Staff Conduct**! Do u want to wun da **Fiwst-time Setup** wizawd? owo",
                 view=view,
             )
             timeout = await view.wait()
@@ -77,43 +77,43 @@ class StaffConduct(commands.Cog):
                 return
             if not view.value:
                 await message.edit(
-                    content=f"{errorEmoji} **{ctx.author.name},** I have cancelled the setup wizard for **Staff Conduct.**",
+                    content=f"{errorEmoji} **{ctx.author.name},** I hav cancewwed da setup wizawd fow **Staff Conduct.** nyaa~",
                     view=None,
                 )
                 return
 
             embed = discord.Embed(
-                title="<:ERMAlert:1113237478892130324> Information", color=embedColour
+                title="<:ERMAlewt:1113237478892130324> Infowmation~", color=embedColour
             )
             embed.set_thumbnail(
                 url="https://cdn.discordapp.com/emojis/1113210855891423302.webp?size=96&quality=lossless"
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> What is Staff Conduct?",
-                value=">>> Staff Conduct is a module within ERM which allows for infractions on your Staff team. Not only does it allow for manual punishments and infractions to others to be expanded and customised, it also allows for automatic punishments for those that don't meet activity requirements, integrating with other ERM modules.",
+                name="<:ERMList:1111099396990435428> What is Staff Conduct? owo",
+                value=">>> Staff Conduct is a moduwe widin EWM which awwows fow infwactions on uw Staff team~ Nyot onwy does it awwow fow manuaw punishments and infwactions to odews to be expanded and customised, it awso awwows fow automatic punishments fow those dat don't meet activity wequiwements, integwating wid odew EWM moduwes~ uwu",
                 inline=False,
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> How does this module work?",
-                value=">>> For manual punishment assignment, you make your own Infraction Types, as dictated throughout this setup wizard. You can then infract staff members by using `/infract`, which will assign that Infraction Type to the staff individual. You will be able to see all infractions that individual has received, as well as any notes or changes that have been made over the course of their staff career.",
+                name="<:ERMList:1111099396990435428> How does dis moduwe wowk? hehe",
+                value=">>> Fow manuaw punishment assignment, u make uw own Infwaction Types, as dictated thwoughout dis setup wizawd~ U can den infwact staff membews by using `/infwact`, which wiww assign dat Infwaction Type to da staff individuaw~ U wiww be abwe to see aww infwactions dat individuaw has weceived, as weww as any notes ow changes dat hav been made ovew da couwse of theiw staff caweew~ owo",
                 inline=False,
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> If I have a Strike 1/2/3 system, do I have them as separate types?",
-                value=">>> In the case where you have a counting infraction system, you can tell ERM to count the strikes automatically! It will then take the according actions that correspond with that infraction amount.",
+                name="<:ERMList:1111099396990435428> If I hav a Stwike 1/2/3 system, do I hav them as sepawate types? >w<",
+                value=">>> In da case whewe u hav a counting infwaction system, u can teww EWM to count da stwikes automaticawwy! It wiww den take da accowding actions dat cowwespond wid dat infwaction amount~ uwu",
                 inline=False,
             )
             embed.set_footer(
-                text="This module is in beta, and bugs are to be expected. If you notice a problem with this module, report it via our Support server."
+                text="Dis moduwe is in beta, and bugs awe to be expected~ If u notice a pwobwem wid dis moduwe, wepowt it via ouw Suppowt sewvew~ >w<"
             )
             embed.timestamp = datetime.datetime.now()
             embed.set_author(name=ctx.author.name, icon_url=ctx.author.display_avatar)
 
             view = AcknowledgeMenu(
-                ctx.author.id, "Read the information in full before acknowledging."
+                ctx.author.id, "Wead da infowmation in fuww befowe acknowwedging~ uwu"
             )
             await message.edit(
-                content=f"{pendingEmoji} **{ctx.author.name},** please read all the information below before continuing.",
+                content=f"{pendingEmoji} **{ctx.author.name},** pwease wead aww da infowmation bewow befowe continuing~ owo",
                 embed=embed,
                 view=view,
             )
@@ -122,19 +122,19 @@ class StaffConduct(commands.Cog):
                 return
 
             await message.edit(
-                content=f"{pendingEmoji} **{ctx.author.name},** let's begin!",
+                content=f"{pendingEmoji} **{ctx.author.name},** wet's begin! owo~",
                 embed=None,
                 view=(
                     view := CustomModalView(
                         ctx.author.id,
-                        "Add an Infraction Type",
-                        "Add Infraction Type",
+                        "Add an Infwaction Type~ uwu",
+                        "Add Infwaction Type~",
                         [
                             (
                                 "type_name",
                                 discord.ui.TextInput(
-                                    placeholder="e.g. Strike, Termination, Suspension, Blacklist",
-                                    label="Name of Infraction Type",
+                                    placeholder="e.g. Stwike, Tewmination, Suspension, Bwackwist~",
+                                    label="Name of Infwaction Type~",
                                 ),
                             )
                         ],
@@ -151,44 +151,44 @@ class StaffConduct(commands.Cog):
                 return
 
             await message.edit(
-                content=f"{pendingEmoji} **{ctx.author.name},** what actions do you want to add to **{infraction_type_name}**?",
+                content=f"{pendingEmoji} **{ctx.author.name},** what actions do u want to add to **{infraction_type_name}**? owo",
                 view=(
                     view := CustomSelectMenu(
                         ctx.author.id,
                         [
                             discord.SelectOption(
-                                label="Add Role",
-                                description='Add a role, such as a "Strike" role to the individual',
+                                label="Add Wowe owo~",
+                                description='Add a wowe, such as a "Stwike" wowe to da individuaw~ uwu',
                                 emoji="<:ERMAdd:1113207792854106173>",
                                 value="add_role",
                             ),
                             discord.SelectOption(
-                                label="Remove Role",
-                                description='Remove an individual role, such as "Trained", from an individual.',
+                                label="Wemove Wowe uwu~",
+                                description='Wemove an individuaw wowe, such as "Twained", fwom an individuaw~ nyaa',
                                 emoji="<:ERMRemove:1113207777662345387>",
                                 value="remove_role",
                             ),
                             discord.SelectOption(
-                                label="Remove Staff Roles",
-                                description="Remove all designated staff roles from an individual.",
+                                label="Wemove Staff Wowes >w<",
+                                description="Wemove aww designated staff wowes fwom an individuaw~ >w<",
                                 emoji="<:ERMWarn:1113236697702989905>",
                                 value="remove_staff_roles",
                             ),
                             discord.SelectOption(
-                                label="Send Direct Message",
-                                description="Send a Direct Message to the individual involved.",
+                                label="Send Diwect Message~",
+                                description="Send a Diwect Message to da individuaw invowved~ uwu",
                                 emoji="<:ERMUser:1111098647485108315>",
                                 value="send_dm",
                             ),
                             discord.SelectOption(
-                                label="Send Message in Channel",
-                                description="Send a Custom Message in a Channel",
+                                label="Send Message in Channew >w<",
+                                description="Send a Custom Message in a Channew~ hehe uwu~",
                                 emoji="<:ERMLog:1113210855891423302>",
                                 value="send_message",
                             ),
                             discord.SelectOption(
-                                label="Send Escalation Request",
-                                description="Request for a Management member to complete extra actions",
+                                label="Send Escawation Wequest~",
+                                description="Wequest fow a Management membew to compwete extwa actions~ owo",
                                 emoji="<:ERMHelp:1111318459305951262>",
                                 value="send_escalation",
                             ),
@@ -210,24 +210,24 @@ class StaffConduct(commands.Cog):
             for item in value:
                 if item == "add_role":  # Add to Database
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** what roles do you wish to be assigned when \
-                    a user receives a **{infraction_type_name}**?",
+                        content=f"{pendingEmoji} **{ctx.author.name},** what wowes do u wish to be assigned when \
+                    a usew weceives a **{infraction_type_name}**? owo",
                         view=(view := ExpandedRoleSelect(ctx.author.id, limit=25)),
                     )
                     await view.wait()
                     addRoleList = view.value
                 elif item == "remove_role":  # Add to Database
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** what roles do you wish to be removed when \
-a user receives a **{infraction_type_name}**?",
+                        content=f"{pendingEmoji} **{ctx.author.name},** what wowes do u wish to be wemoved when \
+a usew weceives a **{infraction_type_name}**? uwu",
                         view=(view := ExpandedRoleSelect(ctx.author.id, limit=25)),
                     )
                     await view.wait()
                     removeRoleList = view.value
                 elif item == "remove_staff_roles":  # Add to Database
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** what staff roles do you wish to be affected \
-when a user receives a **{infraction_type_name}**?",
+                        content=f"{pendingEmoji} **{ctx.author.name},** what staff wowes do u wish to be affected \
+when a usew weceives a **{infraction_type_name}**? >w<",
                         view=(view := ExpandedRoleSelect(ctx.author.id, limit=25)),
                     )
                     await view.wait()
@@ -261,15 +261,15 @@ when a user receives a **{infraction_type_name}**?",
 
                         if not constant_msg_data:
                             await message.edit(
-                                content=f"{pendingEmoji} **{ctx.author.name},** please set the message you wish to send \
-a user upon receiving a **{infraction_type_name}**.",
+                                content=f"{pendingEmoji} **{ctx.author.name},** pwease set da message u wish to send \
+a usew upon weceiving a **{infraction_type_name}**~ uwu",
                                 view=view,
                             )
                         else:
                             await message.edit(
                                 content=(
-                                    f"{pendingEmoji} **{ctx.author.name},** please set the message you wish to send \
-a user upon receiving a **{infraction_type_name}**."
+                                    f"{pendingEmoji} **{ctx.author.name},** pwease set da message u wish to send \
+a usew upon weceiving a **{infraction_type_name}**~ uwu"
                                     if not message_data.get("content")
                                     else message_data.get("content")
                                 ),
@@ -285,14 +285,14 @@ a user upon receiving a **{infraction_type_name}**."
                             "content": (
                                 updated_message.content
                                 if updated_message.content
-                                != f"{pendingEmoji} **{ctx.author.name},** please set the message you wish to send a user upon receiving a **{infraction_type_name}**."
+                                != f"{pendingEmoji} **{ctx.author.name},** pwease set da message u wish to send a usew upon weceiving a **{infraction_type_name}**~ uwu"
                                 else ""
                             ),
                             "embeds": [i.to_dict() for i in updated_message.embeds],
                         }
                         yesNoValue = YesNoMenu(ctx.author.id)
                         await message.edit(
-                            content=f"{pendingEmoji} **{ctx.author.name},** please confirm below that you wish to use the content shown below.\n\n{message_data['content']}",
+                            content=f"{pendingEmoji} **{ctx.author.name},** pwease confiwm bewow dat u wish to use da content shown bewow~ owo\n\n{message_data['content']}",
                             embeds=[
                                 discord.Embed.from_dict(i)
                                 for i in message_data["embeds"]
@@ -307,7 +307,7 @@ a user upon receiving a **{infraction_type_name}**."
                 elif item == "send_message":  # Add to Database
                     # Get Channel(s) to Send Message To
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** please select the channel(s) you wish to send a message to upon a user receiving a **{infraction_type_name}**.",
+                        content=f"{pendingEmoji} **{ctx.author.name},** pwease sewect da channew(s) u wish to send a message to upon a usew weceiving a **{infraction_type_name}**~ uwu",
                         view=(view := ChannelSelect(ctx.author.id, limit=5)),
                     )
                     await view.wait()
@@ -320,19 +320,19 @@ a user upon receiving a **{infraction_type_name}**."
                     await view.wait()
                 elif item == "send_escalation":  # Add to Database
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** please select the channel you wish to send an escalation request to upon a user recieving a **{infraction_type_name}**.",
+                        content=f"{pendingEmoji} **{ctx.author.name},** pwease sewect da channew u wish to send an escawation wequest to upon a usew wecieving a **{infraction_type_name}**~ owo",
                         view=(view := ChannelSelect(ctx.author.id, limit=1)),
                     )
                     await view.wait()
                     # print(view.value)
                     await message.edit(
-                        content=f"{pendingEmoji} **{ctx.author.name},** should the member responsible for issuing the infraction that triggers an escalation request also have the authority to approve the escalation request? **{infraction_type_name}**.",
+                        content=f"{pendingEmoji} **{ctx.author.name},** shouwd da membew wesponsibwe fow issuing da infwaction dat twiggews an escawation wequest awso hav da authowity to appwove da escawation wequest? **{infraction_type_name}**~ >w<",
                         view=(view := YesNoMenu(ctx.author.id)),
                     )
                     # print(view.value)
             else:
                 await message.edit(
-                    content=f"{successEmoji} **{infraction_type_name}** has been successfully submitted!",
+                    content=f"{successEmoji} **{infraction_type_name}** has been s-successfuwwy submitted! hehe~",
                     view=None,
                     embed=None,
                 )
@@ -341,7 +341,7 @@ a user upon receiving a **{infraction_type_name}**."
             guild_settings["staff_conduct"] = None
             await self.bot.settings.update_by_id(guild_settings)
             await ctx.reply(
-                f"{successEmoji} **{ctx.author.name},** I deleted your Staff Conduct configuration."
+                f"{successEmoji} **{ctx.author.name},** I deweted ur Staff Conduct configuwation~ nyaa"
             )
 
 

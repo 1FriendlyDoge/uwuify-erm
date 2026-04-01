@@ -225,7 +225,7 @@ class Bot(commands.AutoShardedBot):
                 doc = await self.whitelabel.db.find_one({"GuildID": config("CUSTOM_GUILD_ID", default="0")})
                 if not doc:
                     raise Exception(
-                        "Custom guild ID not found in the database. This means the whitelabel subscription is overdue."
+                        "Custom guiwd ID nyot found in da database. Dis means da whitewabew subscwiption is ovewdue >w<~"
                     )
 
             self.roblox = roblox.Client()
@@ -411,8 +411,8 @@ async def AutoDefer(ctx: commands.Context):
             if ctx.interaction:
                 await ctx.interaction.response.send_message(
                     embed=discord.Embed(
-                        title="Not Permitted",
-                        description="This bot is not permitted to be used in this server. You can change this in the **Whitelabel Bot Dashboard**.",
+                        title="Nyot Pewmitted owo~",
+                        description="Dis bot is nyot pewmitted to be used in dis sewvew. U can change dis in da **Whitewabew Bot Dashboard** uwu~",
                         color=BLANK_COLOR,
                     ),
                     ephemeral=True,
@@ -426,13 +426,13 @@ async def AutoDefer(ctx: commands.Context):
         if ctx.interaction:
             await ctx.interaction.response.send_message(
                 embed=discord.Embed(
-                    title="Not Permitted",
-                    description="There is a whitelabel bot already in this server.",
+                    title="Nyot Pewmitted owo~",
+                    description="Dewe is a whitewabew bot awweady in dis sewvew >w<~",
                     color=BLANK_COLOR,
                 ),
                 ephemeral=True,
             )
-        raise Exception("Whitelabel bot already in use")
+        raise Exception("Whitewabew bot awweady in use owo~")
 
     bot.internal_command_storage[ctx] = datetime.datetime.now(tz=pytz.UTC).timestamp()
     if ctx.command:
@@ -487,8 +487,8 @@ async def on_message(
             if ctx.command is not None:
                 await message.reply(
                     embed=discord.Embed(
-                        title="Not Permitted",
-                        description="This bot is not permitted to be used in this server. You can change this in the **Whitelabel Bot Dashboard**.",
+                        title="Nyot Pewmitted owo~",
+                        description="Dis bot is nyot pewmitted to be used in dis sewvew. U can change dis in da **Whitewabew Bot Dashboard** uwu~",
                         color=BLANK_COLOR,
                     )
                 )

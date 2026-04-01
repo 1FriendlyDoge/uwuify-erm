@@ -62,10 +62,10 @@ async def erlc_group_autocomplete(
 ) -> typing.List[app_commands.Choice[str]]:
     bot: Bot = (await Context.from_interaction(interaction)).bot
     defaults = [
-        discord.app_commands.Choice(name="Staff", value="staff"),
-        discord.app_commands.Choice(name="Moderators", value="moderators"),
-        discord.app_commands.Choice(name="Admins", value="admins"),
-        discord.app_commands.Choice(name="Players", value="players"),
+        discord.app_commands.Choice(name="Staff uwu~", value="staff"),
+        discord.app_commands.Choice(name="Modewatows~", value="moderators"),
+        discord.app_commands.Choice(name="Admwins owo~", value="admins"),
+        discord.app_commands.Choice(name="Pwayews~", value="players"),
     ]
     try:
         data = await bot.prc_api.get_server_players(interaction.guild.id)
@@ -115,7 +115,7 @@ async def action_autocomplete(
     bot = (await Context.from_interaction(interaction)).bot
     actions = [i async for i in bot.actions.db.find({"Guild": interaction.guild.id})]
     if actions in [None, []]:
-        return [discord.app_commands.Choice(name="No actions found", value="NULL")]
+        return [discord.app_commands.Choice(name="Nyo actions found >w<~", value="NULL")]
 
     action_list = []
     for action in actions:
@@ -130,7 +130,7 @@ async def action_autocomplete(
             action_list.append(action["ActionName"])
 
     if len(action_list) == 0:
-        return [discord.app_commands.Choice(name="No actions found", value="NULL")]
+        return [discord.app_commands.Choice(name="Nyo actions found >w<~", value="NULL")]
 
     commandList = []
     for command in action_list:
@@ -145,7 +145,7 @@ async def command_autocomplete(
     Data = await bot.custom_commands.find_by_id(interaction.guild.id)
     if Data is None:
         return [
-            discord.app_commands.Choice(name="No custom commands found", value="NULL")
+            discord.app_commands.Choice(name="Nyo custom commands found >w<~", value="NULL")
         ]
     else:
         commands = []

@@ -34,7 +34,7 @@ class OnInfractionRevoke(commands.Cog):
                         try:
                             await member.add_roles(
                                 *roles_to_add,
-                                reason="Infraction revoked - restoring removed roles",
+                                reason="Infwaction wevoked - westowing wemoved woles owo~",
                             )
                             roles_modified = True
                         except discord.HTTPException as e:
@@ -52,7 +52,7 @@ class OnInfractionRevoke(commands.Cog):
                         try:
                             await member.remove_roles(
                                 *roles_to_remove,
-                                reason="Infraction revoked - removing added roles",
+                                reason="Infwaction wevoked - wemoving added woles owo~",
                             )
                             roles_modified = True
                         except discord.HTTPException as e:
@@ -88,17 +88,17 @@ class OnInfractionRevoke(commands.Cog):
                 if settings.get("infractions", {}).get("dm_on_revoke", True):
                     try:
                         embed = discord.Embed(
-                            title="Infraction Revoked",
-                            description=f"One of your infractions in **{guild.name}** has been revoked.",
+                            title="Infwaction Wevoked owo~",
+                            description=f"One of ur infwactions in **{guild.name}** has been wevoked~ uwu~",
                             color=BLANK_COLOR,
                         )
                         embed.add_field(
-                            name="Details",
+                            name="Detaiws~",
                             value=(
                                 f"> **Type:** {infraction['type']}\n"
-                                f"> **Original Reason:** {infraction['reason']}\n"
+                                f"> **Owiginaw Weason:** {infraction['reason']}\n"
                                 f"> **Issued:** <t:{int(infraction['timestamp'])}:F>\n"
-                                f"> **Revoked:** <t:{int(infraction['revoked_at'])}:F>"
+                                f"> **Wevoked:** <t:{int(infraction['revoked_at'])}:F>"
                             ),
                             inline=False,
                         )
@@ -109,19 +109,19 @@ class OnInfractionRevoke(commands.Cog):
             if log_channel_id := settings.get("infractions", {}).get("log_channel"):
                 if log_channel := guild.get_channel(int(log_channel_id)):
                     embed = discord.Embed(
-                        title="Infraction Revoked",
+                        title="Infwaction Wevoked owo~",
                         color=BLANK_COLOR,
                         timestamp=datetime.datetime.now(),
                     )
                     embed.add_field(
-                        name="Details",
+                        name="Detaiws~",
                         value=(
-                            f"> **User:** <@{infraction['user_id']}>\n"
+                            f"> **Usew:** <@{infraction['user_id']}>\n"
                             f"> **Type:** {infraction['type']}\n"
-                            f"> **Original Reason:** {infraction['reason']}\n"
-                            f"> **Original Issuer:** <@{infraction.get('issuer_id', '0')}>\n"
-                            f"> **Revoked By:** <@{infraction['revoked_by']}>\n"
-                            f"> **Infraction ID:** `{infraction['_id']}`"
+                            f"> **Owiginaw Weason:** {infraction['reason']}\n"
+                            f"> **Owiginaw Issuew:** <@{infraction.get('issuer_id', '0')}>\n"
+                            f"> **Wevoked By:** <@{infraction['revoked_by']}>\n"
+                            f"> **Infwaction ID:** `{infraction['_id']}`"
                         ),
                         inline=False,
                     )

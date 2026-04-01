@@ -21,8 +21,8 @@ class OnLOADeny(commands.Cog):
         try:
             await user.send(
                 embed=discord.Embed(
-                    title="Activity Notice Denied",
-                    description=f"Your {s_loa['type']} request in **{guild.name}** was denied.\n**Reason:** {reason}",
+                    title="Activity Nyotice Denyed >w<",
+                    description=f"Ur {s_loa['type']} wequest in **{guild.name}** was denyed~ sowwy~\n**Weason:** {reason}",
                     color=BLANK_COLOR,
                 )
             )
@@ -46,7 +46,7 @@ class OnLOADeny(commands.Cog):
             return
 
         embed = messg.embeds[0]
-        embed.title = f"{s_loa['type']} Denied"
+        embed.title = f"{s_loa['type']} Denyed >w<"
         embed.colour = BLANK_COLOR
         try:
             accepted_by_user = guild.get_member(denied_by) or await guild.fetch_member(
@@ -56,7 +56,7 @@ class OnLOADeny(commands.Cog):
             pass
 
         embed.set_footer(
-            text=f"Denied by {accepted_by_user.name if accepted_by_user else 'n/a'}"
+            text=f"Denyed by {accepted_by_user.name if accepted_by_user else 'n/a'} uwu~"
         )
 
         await messg.edit(embed=embed, view=None)

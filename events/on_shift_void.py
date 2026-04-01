@@ -88,27 +88,27 @@ class OnShiftVoid(commands.Cog):
 
         if channel is not None:
             await channel.send(
-                embed=discord.Embed(title="Shift Voided", color=BLANK_COLOR)
+                embed=discord.Embed(title="Shift Voided >w<", color=BLANK_COLOR)
                 .add_field(
-                    name="Shift Information",
+                    name="Shift Infowmation~",
                     value=(
-                        f"> **Staff Member:** {staff_member.mention}\n"
+                        f"> **Staff Membew:** {staff_member.mention}\n"
                         f"> **Shift Type:** {shift_type}\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Other Information",
+                    name="Othew Infowmation~",
                     value=(
-                        f"> **Shift Start:** <t:{int(shift.start_epoch)}>\n"
+                        f"> **Shift Stawt:** <t:{int(shift.start_epoch)}>\n"
                         f"> **Shift End:** <t:{int(shift.end_epoch or datetime.datetime.now(pytz.UTC).timestamp())}>\n"
-                        f"> **Shift Length:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}\n"
+                        f"> **Shift Wength:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}\n"
                         f"> **Nickname:** `{shift.nickname}`\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Manager Information",
+                    name="Managew Infowmation~",
                     value=(
                         f"> **Voided by:** {voider.mention}\n"
                         f"> **Voided at:** <t:{int(datetime.datetime.now(tz=pytz.UTC).timestamp())}>"

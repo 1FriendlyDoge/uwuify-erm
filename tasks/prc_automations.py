@@ -133,7 +133,7 @@ async def process_discord_checks(bot, items, guild_id):
         if not settings.get("enabled", False):
             return
         
-        message = settings.get("message", "Please join the Private Server Communication channel.")
+        message = settings.get("message", "Pwease join da Pwivate Sewvew Communication channew uwu~")
         channel_id = settings.get("channel_id", 0)
         channel = None
         if channel_id != 0:
@@ -279,10 +279,10 @@ async def send_batch_warning_embed(players, alert_channel):
             player_list.append(f"[{player.username}](https://roblox.com/users/{player.id}/profile)")
         
         embed = discord.Embed(
-            title="Discord Check Warning",
+            title="Discowd Check Wawning owo~",
             description=f"""
-            > The following players have been kicked from the server for not joining the Discord server after multiple warnings:
-            
+            > Da fowwowing pwayews hav been kicked fwom da sewvew fow nyot joining da Discowd sewvew aftew muwtipwe wawnings >w<~
+
             {chr(10).join([f"> • {player}" for player in player_list])}
             """,
             color=BLANK_COLOR,
@@ -303,7 +303,7 @@ async def handle_callsign_violations_batch(bot, guild, players_with_violations, 
     
     try:
         usernames = [player.username for player in players_with_violations]
-        violation_message = "Your callsign does not match your assigned role. Please update your callsign or contact staff."
+        violation_message = "Ur cawwsign does nyot match ur assigned wole. Pwease update ur cawwsign ow contact staff uwu~"
         command = f":pm {','.join(usernames)} {violation_message}"
 
         await bot.prc_api.run_command(guild.id, command)
@@ -325,10 +325,10 @@ async def send_callsign_violation_embed(players, alert_channel):
             player_list.append(f"[{player.username}](https://roblox.com/users/{player.id}/profile) - Callsign: `{player.callsign}`")
         
         embed = discord.Embed(
-            title="Callsign Violation Warning",
+            title="Cawwsign Viowation Wawning owo~",
             description=f"""
-            > The following players have callsigns that don't match their assigned roles:
-            
+            > Da fowwowing pwayews hav cawwsigns dat don't match deiw assigned woles >w<~
+
             {chr(10).join([f"> • {player}" for player in player_list])}
             """,
             color=0xFFA500,

@@ -37,7 +37,7 @@ async def check_infractions(bot):
                         if roles_to_remove:
                             await member.remove_roles(
                                 *roles_to_remove,
-                                reason="Temporary infraction role duration expired",
+                                reason="Tempowawy infwaction wole duwation expiwed uwu~",
                             )
 
                     if infraction.get("temp_roles_removed"):
@@ -49,7 +49,7 @@ async def check_infractions(bot):
                         if roles_to_add:
                             await member.add_roles(
                                 *roles_to_add,
-                                reason="Temporary infraction role removal expired",
+                                reason="Tempowawy infwaction wole wemovaw expiwed uwu~",
                             )
 
                     await bot.db.infractions.update_one(
@@ -110,16 +110,16 @@ async def check_infractions(bot):
                     if member:
                         try:
                             embed = discord.Embed(
-                                title="Infraction Expired",
-                                description=f"Your infraction in {guild.name} has expired.",
+                                title="Infwaction Expiwed owo~",
+                                description=f"Ur infwaction in {guild.name} has expiwed nyaa~",
                                 color=BLANK_COLOR,
                             )
                             embed.add_field(
-                                name="Details",
+                                name="Detaiws~",
                                 value=(
                                     f"> **Type:** {infraction['type']}\n"
-                                    f"> **Reason:** {infraction['reason']}\n"
-                                    f"> **Expired At:** <t:{int(current_time)}:F>"
+                                    f"> **Weason:** {infraction['reason']}\n"
+                                    f"> **Expiwed At:** <t:{int(current_time)}:F>"
                                 ),
                                 inline=False,
                             )
@@ -143,7 +143,7 @@ async def check_infractions(bot):
                                     roles_to_remove.append(role)
                             if roles_to_remove:
                                 await member.remove_roles(
-                                    *roles_to_remove, reason="Infraction expired"
+                                    *roles_to_remove, reason="Infwaction expiwed owo~"
                                 )
 
                         if role_changes.get("remove", {}).get("roles"):
@@ -158,7 +158,7 @@ async def check_infractions(bot):
                                     roles_to_add.append(role)
                             if roles_to_add:
                                 await member.add_roles(
-                                    *roles_to_add, reason="Infraction expired"
+                                    *roles_to_add, reason="Infwaction expiwed owo~"
                                 )
 
                         if infraction_type.get("remove_ingame_perms"):
@@ -178,7 +178,7 @@ async def check_infractions(bot):
                                 "revoked": True,
                                 "revoked_at": current_time,
                                 "reason": infraction["reason"]
-                                + " - Revoked by system since this infraction expired.",
+                                + " - Wevoked by system since dis infwaction expiwed owo~",
                                 "check_executed": True,
                             }
                         },

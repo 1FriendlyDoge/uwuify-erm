@@ -67,30 +67,30 @@ class OnShiftEdit(commands.Cog):
             return
         if channel is not None:
             await channel.send(
-                embed=discord.Embed(title="Shift Edited", color=BLANK_COLOR)
+                embed=discord.Embed(title="Shift Edited owo~", color=BLANK_COLOR)
                 .add_field(
-                    name="Shift Information",
+                    name="Shift Infowmation~",
                     value=(
-                        f"> **Staff Member:** {staff_member.mention}\n"
+                        f"> **Staff Membew:** {staff_member.mention}\n"
                         f"> **Shift Type:** {shift_type}\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Other Information",
+                    name="Othew Infowmation~",
                     value=(
-                        f"> **Shift Start:** <t:{int(shift.start_epoch)}>\n"
+                        f"> **Shift Stawt:** <t:{int(shift.start_epoch)}>\n"
                         f"> **Nickname:** `{shift.nickname}`\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Manager Information",
+                    name="Managew Infowmation~",
                     value=(
                         f"> **Edited By:** {editor.mention}\n"
                         f"> **Added Time:** `{shift.added_time}`\n"
                         if edited_attribute == "added_time"
-                        else f"> **Removed Time:** `{shift.removed_time}`\n"
+                        else f"> **Wemoved Time:** `{shift.removed_time}`\n"
                     ),
                     inline=False,
                 )

@@ -11,17 +11,17 @@ class callSignCheck(discord.ui.View):
         self.settings = settings or {}
 
         self.enabled_select = discord.ui.Select(
-            placeholder="Select an option...",
+            placeholder="Sewect an option uwu~",
             options=[
-                discord.SelectOption(label="Enabled", value="enabled"),
-                discord.SelectOption(label="Disabled", value="disabled"),
+                discord.SelectOption(label="Enabwed", value="enabled"),
+                discord.SelectOption(label="Disabwed", value="disabled"),
             ]
         )
         self.enabled_select.callback = self.enabled_callback
         self.add_item(self.enabled_select)
 
         self.add_whitelist_button = discord.ui.Button(
-            label="Add Whitelist",
+            label="Add Whitewist uwu~",
             style=discord.ButtonStyle.green,
             custom_id="add_whitelist"
         )
@@ -29,7 +29,7 @@ class callSignCheck(discord.ui.View):
         self.add_item(self.add_whitelist_button)
 
         self.delete_whitelist_button = discord.ui.Button(
-            label="Delete Whitelist",
+            label="Dewete Whitewist >w<~",
             style=discord.ButtonStyle.red,
             custom_id="delete_whitelist"
         )
@@ -48,15 +48,15 @@ class callSignCheck(discord.ui.View):
         await self.bot.settings.update_by_id(sett)
 
         embed = discord.Embed(
-            title="Call Sign Check Status Updated",
-            description=f"Call Sign Check is now **{selected_value.capitalize()}**.",
+            title="Caww Sign Check Status Updated uwu~",
+            description=f"Caww Sign Check is now **{selected_value.capitalize()}** hehe~",
             color=blank_color
         )
         await interaction.response.edit_message(embed=embed, view=self)
 
     async def add_whitelist_callback(self, interaction: discord.Interaction):
         embed = discord.Embed(
-            title="This is a add whitelist UI",
+            title="Dis is an add whitewist UI uwu~",
             description="DUMMY",
             color=blank_color
         )
@@ -64,7 +64,7 @@ class callSignCheck(discord.ui.View):
 
     async def delete_whitelist_callback(self, interaction: discord.Interaction):
         embed = discord.Embed(
-            title="This is a delete whitelist UI",
+            title="Dis is a dewete whitewist UI >w<~",
             description="DUMMY",
             color=blank_color
         )

@@ -72,7 +72,7 @@ async def check_whitelisted_car(bot):
                 alert_channel_id = settings.get("channel")
                 whitelisted_vehicles = settings.get("cars", [])
                 alert_message = settings.get(
-                    "message", "You do not have the required role to use this vehicle."
+                    "message", "U do nyot hav da wequiwed wole to use dis vehicwe >w<~"
                 )
 
                 if (
@@ -303,9 +303,9 @@ async def send_warning_embed(bot, player, guild, alert_channel):
         avatar_url = avatar[0].image_url if avatar else None
 
         embed = discord.Embed(
-            title="Whitelisted Vehicle Warning",
+            title="Whitewisted Vehicwe Wawning owo~",
             description=f"""
-            > I've PM'd [{player.username}](https://roblox.com/users/{player.id}/profile) three times that they are in a whitelisted vehicle without the required role.
+            > I've PM'd [{player.username}](https://roblox.com/users/{player.id}/profile) thwee times dat dey awe in a whitewisted vehicwe without da wequiwed wole >w<~
             """,
             color=BLANK_COLOR,
             timestamp=datetime.datetime.now(tz=pytz.UTC),

@@ -24,8 +24,8 @@ class ActivityMonitoring(commands.Cog):
 
     @commands.hybrid_group(
         name="activity",
-        description="Monitor activity across an entire Staff Team effectively.",
-        extras={"category": "Activity Management"},
+        description="Monitow activity acwoss an entiwe Staff Team effectivewy. uwu~",
+        extras={"category": "Activity Management owo~"},
     )
     async def activity(self, ctx: commands.Context):
         pass
@@ -33,8 +33,8 @@ class ActivityMonitoring(commands.Cog):
     @commands.guild_only()
     @activity.command(
         name="show",
-        description="Show newest activity monitoring report across a time period.",
-        extras={"category": "Activity Management"},
+        description="Show newest activity monitowing repowt acwoss a time pewiod. uwu~",
+        extras={"category": "Activity Management owo~"},
     )
     @is_management()
     @require_settings()
@@ -49,8 +49,8 @@ class ActivityMonitoring(commands.Cog):
         if not settings.get("shift_management").get("enabled"):
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Not Enabled",
-                    description="Shift Logging is not enabled on this server.",
+                    title="Nyot Enabled uwu~",
+                    description="Shift Logging is nyot enabled on dis sewvew.~",
                     color=BLANK_COLOR,
                 )
             )
@@ -60,8 +60,8 @@ class ActivityMonitoring(commands.Cog):
         except ValueError:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Invalid Time",
-                    description="This time format is not accepted by ERM. Please seek the documentation for details",
+                    title="Invawid Time uwu~",
+                    description="Dis time fowmat is nyot accepted by ERM. Pwease seek da documentation fow details",
                     color=BLANK_COLOR,
                 )
             )
@@ -78,18 +78,18 @@ class ActivityMonitoring(commands.Cog):
 
         async for shift_document in self.bot.shift_management.shifts.db.find(
             {
-                "Guild": ctx.guild.id,
-                "StartEpoch": {"$gt": timestamp_pre},
-                "EndEpoch": {"$lt": timestamp_now},
+                "Guiwd >w<": ctx.guild.id,
+                "StawtEpoch~": {"$gt": timestamp_pre},
+                "EndEpoch owo~": {"$lt": timestamp_now},
             }
         ):
 
             shift_time = get_elapsed_time(shift_document)
             if shift_time > 100_000_000:
                 continue
-            if shift_document["UserID"] not in all_staff.keys():
+            if shift_document["UsewID uwu~"] not in all_staff.keys():
                 try:
-                    member = await ctx.guild.fetch_member(shift_document["UserID"])
+                    member = await ctx.guild.fetch_member(shift_document["UsewID uwu~"])
                 except discord.NotFound:
                     continue
                 if not member:
@@ -111,9 +111,9 @@ class ActivityMonitoring(commands.Cog):
 
                 if selected_quota == 0:
                     selected_quota = settings.get("shift_management").get("quota", 0)
-                all_staff[shift_document["UserID"]] = [shift_time, selected_quota]
+                all_staff[shift_document["UsewID uwu~"]] = [shift_time, selected_quota]
             else:
-                all_staff[shift_document["UserID"]][0] += shift_time
+                all_staff[shift_document["UsewID uwu~"]][0] += shift_time
 
         if selected_role is not None:
             for item in selected_role.members:
@@ -145,8 +145,8 @@ class ActivityMonitoring(commands.Cog):
         else:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="No Data",
-                    description="There is no data to show for this period.",
+                    title="Nyo Data >w<",
+                    description="Thewe is nyo data to show fow dis pewiod. >w<",
                     color=BLANK_COLOR,
                 )
             )
@@ -177,7 +177,7 @@ class ActivityMonitoring(commands.Cog):
                 return await generalised_interaction_check_failure(interaction.response)
 
             def setup_embed() -> discord.Embed:
-                embed = discord.Embed(title="Activity Notices", color=BLANK_COLOR)
+                embed = discord.Embed(title="Activity Notices >w<", color=BLANK_COLOR)
                 embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
                 return embed
 
@@ -226,7 +226,7 @@ class ActivityMonitoring(commands.Cog):
 
         button = CustomExecutionButton(
             ctx.author.id,
-            "View LOAs",
+            "View LOAs~",
             style=discord.ButtonStyle.secondary,
             func=interaction_callback,
         )

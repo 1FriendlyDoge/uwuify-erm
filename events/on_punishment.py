@@ -113,15 +113,15 @@ class OnPunishment(commands.Cog):
                     user_to_dm = await guild.fetch_member(warned_discord_id)
                     embed = (
                         discord.Embed(
-                            title="You have been Moderated.",
-                            description=(f"{guild.name} has moderated you in-game.\n"),
+                            title="U have been Modewated~ >w<",
+                            description=(f"{guild.name} has modewated u in-game~ uwu~\n"),
                             color=BLANK_COLOR,
                         )
                         .add_field(
-                            name="Moderation Information",
+                            name="Modewation Infowmation~",
                             value=(
-                                f"> **Punishment Type:** {warning.warning_type}\n"
-                                f"> **Reason:** {warning.reason}\n"
+                                f"> **Punyishment Type:** {warning.warning_type}\n"
+                                f"> **Weason:** {warning.reason}\n"
                             ),
                         )
                         .set_thumbnail(url=thumbnail)
@@ -134,24 +134,24 @@ class OnPunishment(commands.Cog):
                 pass
 
             embed = (
-                discord.Embed(title="Punishment Issued", color=BLANK_COLOR)
+                discord.Embed(title="Punyishment Issued owo~", color=BLANK_COLOR)
                 .add_field(
-                    name="Moderator Information",
+                    name="Modewatow Infowmation~",
                     value=(
-                        f"> **Moderator:** {moderator.mention}\n"
-                        f"> **Warning ID:** `{warning.snowflake}`\n"
-                        f"> **Reason:** {warning.reason}\n"
-                        f"> **Moderated At:** <t:{int(warning.time_epoch)}>\n"
+                        f"> **Modewatow:** {moderator.mention}\n"
+                        f"> **Wawning ID:** `{warning.snowflake}`\n"
+                        f"> **Weason:** {warning.reason}\n"
+                        f"> **Modewated At:** <t:{int(warning.time_epoch)}>\n"
                     ),
                     inline=False,
                 )
                 .add_field(
-                    name="Violator Information",
+                    name="Viowatow Infowmation~",
                     value=(
-                        f"> **Username:** {warning.username}\n"
-                        f"> **User ID:** `{warning.user_id}`\n"
-                        f"> **Punishment Type:** {warning.warning_type}\n"
-                        f"{'> **Until:** <t:{}>'.format(int(warning.until_epoch)) if warning.until_epoch not in [None, 0] else ''}"
+                        f"> **Usewname:** {warning.username}\n"
+                        f"> **Usew ID:** `{warning.user_id}`\n"
+                        f"> **Punyishment Type:** {warning.warning_type}\n"
+                        f"{'> **Untiw:** <t:{}>'.format(int(warning.until_epoch)) if warning.until_epoch not in [None, 0] else ''}"
                     ),
                     inline=False,
                 )

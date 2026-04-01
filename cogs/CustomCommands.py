@@ -40,8 +40,8 @@ class CustomCommands(commands.Cog):
     @commands.guild_only()
     @custom.command(
         name="manage",
-        description="Manage your custom commands.",
-        extras={"category": "Custom Commands"},
+        description="Manage uw custom commands~ uwu",
+        extras={"category": "Custom Commands >w<"},
     )
     @is_admin()
     async def custom_manage(self, ctx):
@@ -53,7 +53,7 @@ class CustomCommands(commands.Cog):
 
         embeds = []
         current_embed = (
-            discord.Embed(title="Custom Commands", color=BLANK_COLOR)
+            discord.Embed(title="Custom Commands~", color=BLANK_COLOR)
             .set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
             .set_thumbnail(url=ctx.guild.icon)
         )
@@ -62,7 +62,7 @@ class CustomCommands(commands.Cog):
             if len(current_embed.fields) >= 10:
                 embeds.append(current_embed)
                 current_embed = discord.Embed(
-                    title="Custom Commands (cont.)", color=BLANK_COLOR
+                    title="Custom Commands (cont.)~", color=BLANK_COLOR
                 )
 
             current_embed.add_field(
@@ -70,14 +70,14 @@ class CustomCommands(commands.Cog):
                 value=f"> **Name:** {item['name']}\n"
                 f"> **Command ID:** `{item['id']}`\n"
                 f"> **Creator:** {'<@{}>'.format(item.get('author') if item.get('author') is not None else '1')}\n"
-                f"> **Default Channel:** {'<#{}>'.format(item.get('channel')) if item.get('channel') is not None else 'None selected'}",
+                f"> **Defauwt Channew:** {'<#{}>'.format(item.get('channel')) if item.get('channel') is not None else 'Nyone sewected~'}",
                 inline=False,
             )
 
         if len(current_embed.fields) == 0:
             current_embed.add_field(
-                name="No Custom Commands",
-                value=f"> No Custom Commands were found to be associated with this server.",
+                name="Nyo Custom Commands uwu~",
+                value=f"> Nyo Custom Commands wewe found to be associated with dis sewvew~ >w<",
             )
 
         embeds.append(current_embed)
@@ -108,15 +108,15 @@ class CustomCommands(commands.Cog):
             await new_msg.edit(
                 view=view,
                 embed=discord.Embed(
-                    title="Custom Commands",
+                    title="Custom Commands~",
                     description=(
-                        "**Command Information**\n"
+                        "**Command Infowmation**\n"
                         f"> **Command ID:** `{data['id']}`\n"
                         f"> **Command Name:** {data['name']}\n"
-                        f"> **Creator:** <@{data.get('author', '0')}>\n"  # this is just to be sure that author actually exists!
-                        f"> **Default Channel:** {'<#{}>'.format(data.get('channel')) if data.get('channel') is not None else 'None selected'}\n"
+                        f"> **Cweatow:** <@{data.get('author', '0')}>\n"  # this is just to be sure that author actually exists!
+                        f"> **Defauwt Channew:** {'<#{}>'.format(data.get('channel')) if data.get('channel') is not None else 'Nyone sewected~'}\n"
                         f"\n**Message:**\n"
-                        f"View the message below by clicking 'View Message'."
+                        f"View da message bewow by cwicking 'View Message'~ uwu"
                     ),
                     color=BLANK_COLOR,
                 ),
@@ -128,8 +128,8 @@ class CustomCommands(commands.Cog):
                 if item["name"] == name:
                     return await ctx.reply(
                         embed=discord.Embed(
-                            title="Command Mismatch",
-                            description="This custom command already exists.",
+                            title="Command Mismatch >w<",
+                            description="Dis custom command awweady exists~ >w<",
                             color=BLANK_COLOR,
                         )
                     )
@@ -147,8 +147,8 @@ class CustomCommands(commands.Cog):
             await bot.custom_commands.upsert(Data)
             await new_msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Created",
-                    description="This custom command has been successfully created",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Cweated~",
+                    description="Dis custom command has been s-successfuwwy cweated~ hehe uwu~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -159,8 +159,8 @@ class CustomCommands(commands.Cog):
             except ValueError:
                 return await new_msg.edit(
                     embed=discord.Embed(
-                        title="Invalid Format",
-                        description="A Custom Command ID may only contain numbers, not letters.",
+                        title="Invawid Fowmat owo~",
+                        description="A Custom Command ID may onwy contain numbews, nyot wettews~ >w<",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -176,8 +176,8 @@ class CustomCommands(commands.Cog):
             if command_id is None:
                 await new_msg.edit(
                     embed=discord.Embed(
-                        title="Command Mismatch",
-                        description="This custom command doesn't exist.",
+                        title="Command Mismatch >w<",
+                        description="Dis custom command doesn't exist~ nyaa~",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -187,8 +187,8 @@ class CustomCommands(commands.Cog):
             if existing_command_data is None:
                 await new_msg.edit(
                     embed=discord.Embed(
-                        title="Command Mismatch",
-                        description="This custom command doesn't exist.",
+                        title="Command Mismatch >w<",
+                        description="Dis custom command doesn't exist~ nyaa~",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -201,8 +201,8 @@ class CustomCommands(commands.Cog):
             except KeyError:
                 await new_msg.edit(
                     embed=discord.Embed(
-                        title="Command Mismatch",
-                        description="This custom command doesn't exist.",
+                        title="Command Mismatch >w<",
+                        description="Dis custom command doesn't exist~ nyaa~",
                         color=BLANK_COLOR,
                     )
                 )
@@ -211,15 +211,15 @@ class CustomCommands(commands.Cog):
             await new_msg.edit(
                 view=view,
                 embed=discord.Embed(
-                    title="Custom Commands",
+                    title="Custom Commands~",
                     description=(
-                        "**Command Information**\n"
+                        "**Command Infowmation**\n"
                         f"> **Command ID:** `{data['id']}`\n"
                         f"> **Command Name:** {data['name']}\n"
-                        f"> **Creator:** <@{data['author']}>\n"
-                        f"> **Default Channel:** {'<#{}>'.format(data.get('channel')) if data.get('channel') is not None else 'None selected'}\n"
+                        f"> **Cweatow:** <@{data['author']}>\n"
+                        f"> **Defauwt Channew:** {'<#{}>'.format(data.get('channel')) if data.get('channel') is not None else 'Nyone sewected~'}\n"
                         f"\n**Message:**\n"
-                        f"View the message below by clicking 'View Message'."
+                        f"View da message bewow by cwicking 'View Message'~ uwu"
                     ),
                     color=BLANK_COLOR,
                 ),
@@ -233,8 +233,8 @@ class CustomCommands(commands.Cog):
             await bot.custom_commands.upsert(Data)
             return await new_msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Edited",
-                    description="This custom command has been successfully edited",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Edited~",
+                    description="Dis custom command has been s-successfuwwy edited~ hehe >w<",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -250,8 +250,8 @@ class CustomCommands(commands.Cog):
             else:
                 return await new_msg.edit(
                     embed=discord.Embed(
-                        title="Command Mismatch",
-                        description="This custom command doesn't exist.",
+                        title="Command Mismatch >w<",
+                        description="Dis custom command doesn't exist~ nyaa~",
                         color=BLANK_COLOR,
                     ),
                     view=None,
@@ -259,8 +259,8 @@ class CustomCommands(commands.Cog):
 
             return await new_msg.edit(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Deleted Command",
-                    description="This custom command has been successfully deleted",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Deweted Command~",
+                    description="Dis custom command has been s-successfuwwy deweted~ nyaa uwu~",
                     color=GREEN_COLOR,
                 ),
                 view=None,
@@ -268,14 +268,14 @@ class CustomCommands(commands.Cog):
 
     @custom.command(
         name="run",
-        description="Run a custom command.",
-        extras={"category": "Custom Commands", "ephemeral": True},
+        description="Wun a custom command~ owo",
+        extras={"category": "Custom Commands >w<", "ephemeral": True},
     )
     @app_commands.autocomplete(command=command_autocomplete)
     @is_admin()
-    @app_commands.describe(command="What custom command would you like to run?")
+    @app_commands.describe(command="What custom command wouwd u wike to wun? owo")
     @app_commands.describe(
-        channel="Where do you want this custom command's output to go? (e.g. #general)"
+        channel="Whewe do u want dis custom command's output to go? (e.g. #genewaw)~ uwu"
     )
     async def run(self, ctx, command: str, channel: discord.TextChannel = None):
         bot = self.bot
@@ -283,8 +283,8 @@ class CustomCommands(commands.Cog):
         if Data is None:
             return await ctx.reply(
                 embed=discord.Embed(
-                    title="No Commands",
-                    description="There are no custom commands in this server.",
+                    title="Nyo Commands >w<",
+                    description="Dewe awe nyo custom commands in dis sewvew~ >w<",
                 )
             )
 
@@ -301,8 +301,8 @@ class CustomCommands(commands.Cog):
         if not is_command:
             return await ctx.reply(
                 embed=discord.Embed(
-                    title="Command Mismatch",
-                    description="This custom command doesn't exist.",
+                    title="Command Mismatch >w<",
+                    description="Dis custom command doesn't exist. uwu~",
                     color=BLANK_COLOR,
                 )
             )
@@ -353,15 +353,15 @@ class CustomCommands(commands.Cog):
             ):
                 return await ctx.interaction.followup.send(
                     embed=discord.Embed(
-                        title="Empty Command",
-                        description="Due to Discord limitations, I am unable to send your reminder. Your message is most likely empty.",
+                        title="Empty Command uwu~",
+                        description="Due to Discowd wimitations, I am unabwe to send uw wemindew~ Uw message is most wikewy empty~ >w<",
                         color=BLANK_COLOR,
                     )
                 )
             await ctx.interaction.followup.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Ran",
-                    description=f"I've just ran the custom command in {channel.mention}.",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Wan~",
+                    description=f"I've just wan da custom command in {channel.mention}~ hehe",
                     color=GREEN_COLOR,
                 )
             )
@@ -394,15 +394,15 @@ class CustomCommands(commands.Cog):
             ):
                 return await ctx.reply(
                     embed=discord.Embed(
-                        title="Empty Command",
-                        description="Due to Discord limitations, I am unable to send your reminder. Your message is most likely empty.",
+                        title="Empty Command uwu~",
+                        description="Due to Discowd wimitations, I am unabwe to send uw wemindew~ Uw message is most wikewy empty~ >w<",
                         color=BLANK_COLOR,
                     )
                 )
             await ctx.reply(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Ran",
-                    description=f"I've just ran the custom command in {channel.mention}.",
+                    title=f"{self.bot.emoji_controller.get_emoji('success')} Command Wan~",
+                    description=f"I've just wan da custom command in {channel.mention}~ hehe",
                     color=GREEN_COLOR,
                 )
             )
