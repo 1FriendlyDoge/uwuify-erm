@@ -420,11 +420,11 @@ class Utility(commands.Cog):
         embed.add_field(
             name=f"Bot Information",
             value=(
-                "> **Website:** [View Website](https://ewmbot.xyz)\n"
+                "> **Website:** [View Website](https://ermbot.xyz)\n"
                 "> **Suppowt:** [Join Sewvew](https://discowd.gg/FAC629TzBy)\n"
                 f"> **Invite:** [Invite Bot](https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&permissions=8&scope=bot%20applications.commands)\n"
-                "> **Documentation:** [View Documentation](https://docs.ewmbot.xyz)\n"
-                "> **Desktop:** [Download ERM Desktop](https://ewmbot.xyz/download)"
+                "> **Documentation:** [View Documentation](https://docs.ermbot.xyz)\n"
+                "> **Desktop:** [Download ERM Desktop](https://ermbot.xyz/download)"
             ),
             inline=False,
         )
@@ -462,8 +462,8 @@ class Utility(commands.Cog):
         if not view.value:
             return
 
-        api_url = f"{config('OPENERM_API_URL uwu~')}/api/v1/auth/token"
-        auth_token = config("OPENERM_AUTH_TOKEN uwu~")
+        api_url = f"{config('OPENERM_API_URL')}/api/v1/auth/token"
+        auth_token = config("OPENERM_AUTH_TOKEN")
         full_url = f"{api_url}?guild_id={ctx.guild.id}&auth_token={auth_token}"
 
         async with aiohttp.ClientSession() as session:

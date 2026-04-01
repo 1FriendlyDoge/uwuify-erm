@@ -432,7 +432,7 @@ class ActivityCoreCommands:
             if duration is None:
                 return await respond(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} Cancelled",
+                        title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} Cancelled",
                         description="U did nyot pwovide a duwation. uwu~",
                         color=BLANK_COLOR,
                     )
@@ -443,7 +443,7 @@ class ActivityCoreCommands:
             except ValueError:
                 return await respond(
                     embed=discord.Embed(
-                        title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} Invalid Time",
+                        title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} Invalid Time",
                         description="U did nyot pwovide a vawid time fowmat. uwu~",
                         color=BLANK_COLOR,
                     )

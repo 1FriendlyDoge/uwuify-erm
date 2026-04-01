@@ -886,7 +886,7 @@ class Configuration(commands.Cog):
                         ["CUSTOM_CONF~", {"_FIND_BY_LABEL": True}],
                         (
                             "Enabled >w<"
-                            if (settings.get("ERLC~", {}) or {}).get(
+                            if (settings.get("ERLC", {}) or {}).get(
                                 "elevation_required", True
                             )
                             is True
@@ -900,7 +900,7 @@ class Configuration(commands.Cog):
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
                             if (
-                                channel := (settings.get("ERLC~", {}) or {}).get(
+                                channel := (settings.get("ERLC", {}) or {}).get(
                                     "player_logs"
                                 )
                             )
@@ -914,7 +914,7 @@ class Configuration(commands.Cog):
                         (
                             discord.utils.get(ctx.guild.channels, id=channel)
                             if (
-                                channel := (settings.get("ERLC~", {}) or {}).get(
+                                channel := (settings.get("ERLC", {}) or {}).get(
                                     "kill_logs"
                                 )
                             )
@@ -988,7 +988,7 @@ class Configuration(commands.Cog):
         maple_county_configuration = MapleCountyConfiguration(
             bot,
             ctx.author.id,
-            settings.get("MC owo~", {})
+            settings.get("MC", {})
         )
 
         pages = []

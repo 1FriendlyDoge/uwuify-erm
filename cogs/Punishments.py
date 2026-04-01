@@ -79,7 +79,7 @@ class Punishments(commands.Cog):
     @app_commands.describe(reason="What is ur reason fow punishing dis usew? >w<")
     async def punish(self, ctx, user: str, type: str, *, reason: str):
         if type.lower() == "warn":
-            type = "Wawning uwu~"
+            type = "Warning"
 
         settings = await self.bot.settings.find_by_id(ctx.guild.id) or {}
         if not settings:
@@ -100,13 +100,13 @@ class Punishments(commands.Cog):
                 )
             )
 
-        auto_punish = settings.get("ERLC~", {}).get("auto_punish", False)
+        auto_punish = settings.get("ERLC", {}).get("auto_punish", False)
         present_unpermitted_warning = False
         if auto_punish is True:
             server_staff = await self.bot.prc_api.get_server_staff(ctx.guild.id)
             roblox_username = await self.bot.accounts.discord_to_roblox(ctx.guild, ctx.author.id)
             if type.strip().lower() == "ban" and auto_punish is True:
-                if not (await admin_predicate(ctx) or await management_predicate(ctx) or roblox_username in [i.username for i in list(filter(lambda x: x.permission != "Sewvew Modewatow owo~", server_staff))]):
+                if not (await admin_predicate(ctx) or await management_predicate(ctx) or roblox_username in [i.username for i in list(filter(lambda x: x.permission != "Server Moderator", server_staff))]):
                     present_unpermitted_warning = True
 
         flags = []
@@ -147,7 +147,7 @@ class Punishments(commands.Cog):
         )
         types = (punishment_types or {}).get("types", [])
     
-        preset_types = ["Wawning uwu~", "Kick uwu~", "Ban~", "BOLO"]
+        preset_types = ["Warning", "Kick", "Ban", "BOLO"]
 
         enabled_punishments = (punishment_types or {}).get("default_punishments", [])
         enabled_defaults = {
@@ -223,7 +223,7 @@ class Punishments(commands.Cog):
 
         warning: WarningItem = await self.bot.punishments.fetch_warning(oid)
         newline = "\n"
-        if "autoban" in flags and (await admin_predicate(ctx) or await management_predicate(ctx) or roblox_username in [i.username for i in list(filter(lambda x: x.permission != "Sewvew Modewatow owo~", server_staff))]):
+        if "autoban" in flags and (await admin_predicate(ctx) or await management_predicate(ctx) or roblox_username in [i.username for i in list(filter(lambda x: x.permission != "Server Moderator", server_staff))]):
             try:
                 await self.bot.prc_api.run_command(
                     ctx.guild.id, ":ban {}".format(warning.user_id)
@@ -584,8 +584,8 @@ class Punishments(commands.Cog):
                 doc["UserID"],
                 doc["Username"],
                 ctx.guild.id,
-                f"BOLO marked as complete by {ctx.author} ({ctx.author.id}). Original BOLO Reason was {doc['Reason~']} made by {doc['Modewatow owo~']} ({doc['ModewatowID owo~']})",
-                "Ban~",
+                f"BOLO marked as complete by {ctx.author} ({ctx.author.id}). Original BOLO Reason was {doc['Reason']} made by {doc['Moderator']} ({doc['ModeratorID']})",
+                "Ban",
                 datetime.datetime.now(tz=pytz.UTC).timestamp(),
             )
 
@@ -916,20 +916,20 @@ class Punishments(commands.Cog):
                 }
             },
             {
-                "$gwoup": {
+                "$group": {
                     "_id": {
-                        "moderator": "$ModewatowID",
-                        "guild": "$Guiwd"
+                        "moderator": "$ModeratorID",
+                        "guild": "$Guild"
                     },
-                    "modewationCount": {"$sum": 1}
+                    "moderationCount": {"$sum": 1}
                 }
             },
             {
-                "$pwoject": {
+                "$project": {
                     "_id": 0,
-                    "ModeratorID": "$_id.modewatow",
-                    "Guild": "$_id.guiwd",
-                    "ModerationCount": "$modewationCount"
+                    "ModeratorID": "$_id.moderator",
+                    "Guild": "$_id.guild",
+                    "ModerationCount": "$moderationCount"
                 }
             }
         ]
@@ -941,7 +941,7 @@ class Punishments(commands.Cog):
         pages = []
         for index, item in enumerate(sorted_results):
             embed.description += "> **{}**. <@{}> • {} modewations\n".format(
-                index + 1, item["ModeratorID"], f"{item['ModewationCount uwu~']:,}",
+                index + 1, item["ModeratorID"], f"{item['ModerationCount']:,}",
             )
             if len(embed.description) > 2000:
                 pages.append(CustomPage(

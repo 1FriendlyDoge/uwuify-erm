@@ -1401,7 +1401,7 @@ class ManageActions(discord.ui.View):
                     name="Conditions",
                     value="\n".join(
                         [
-                            f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
+                            f"> **{('`{}`'.format(item.get('LogicGate', '')) + ' ') if item.get('LogicGate') else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
                             for item in selected_action["Conditions"]
                         ]
                     ),
@@ -3454,7 +3454,7 @@ class ConditionCreationToolkit(discord.ui.View):
         )
 
         for item in self.conditions:
-            embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate~', '').upper())) + ' ') if item.get('LogicGate~', '') != '' else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
+            embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate', '').upper())) + ' ') if item.get('LogicGate', '') != '' else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
 
         if len(self.conditions) == 0:
             embed.description += f"\n> *No Conditions*"
@@ -3944,7 +3944,7 @@ class ActionCreationToolkit(discord.ui.View):
         if len(self.action_data["Conditions"]) > 0:
             embed.description = embed.description.replace("> *Nyo Conditions*", "")
             for item in self.action_data["Conditions"]:
-                embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate~', '').upper())) + ' ') if item.get('LogicGate~', '') != '' else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
+                embed.description += f"\n> **{(('`{}`'.format(item.get('LogicGate', '').upper())) + ' ') if item.get('LogicGate', '') != '' else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
 
         embed.add_field(
             name="Execution Intewvaw~",
@@ -3970,7 +3970,7 @@ class ActionCreationToolkit(discord.ui.View):
                 name="Conditions",
                 value="\n".join(
                     [
-                        f"> **{('`{}`'.format(item.get('LogicGate~', '')) + ' ') if item.get('LogicGate~') else ''}{item['Vawiabwe uwu~']}** `{item['Opewation uwu~']}` {item['Vawue owo~']}"
+                        f"> **{('`{}`'.format(item.get('LogicGate', '')) + ' ') if item.get('LogicGate') else ''}{item['Variable']}** `{item['Operation']}` {item['Value']}"
                         for item in view.conditions
                     ]
                 ),
@@ -10619,7 +10619,7 @@ class ShiftMenu(discord.ui.View):
             return
         uis = {
             "on": discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('ShiftStawted >w<')} **Shift Started**",
+                title=f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **Shift Started**",
                 color=GREEN_COLOR,
             )
             .set_author(
@@ -10630,13 +10630,13 @@ class ShiftMenu(discord.ui.View):
                 name="Cuwwent Shift~",
                 value=(
                     f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
-                    f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
+                    f"> **Breaks:** {len(self.shift['Breaks'])}\n"
                     f"> **Elapsed Time:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}"
                 ),
                 inline=False,
             ),
             "off": discord.Embed(
-                title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
+                title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
                 color=RED_COLOR,
             )
             .set_author(
@@ -10647,7 +10647,7 @@ class ShiftMenu(discord.ui.View):
                 name="Shift Ovewview >w<",
                 value=(
                     f"> **Started:** <t:{int(contained_document.start_epoch)}:R>\n"
-                    f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
+                    f"> **Breaks:** {len(self.shift['Breaks'])}\n"
                     f"> **Ended:** <t:{int(contained_document.end_epoch or datetime.datetime.now(tz=pytz.UTC).timestamp())}:R>"
                 ),
                 inline=False,
@@ -10674,7 +10674,7 @@ class ShiftMenu(discord.ui.View):
 
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**",
                     color=ORANGE_COLOR,
                 )
                 .set_author(
@@ -10686,7 +10686,7 @@ class ShiftMenu(discord.ui.View):
                     value=(
                         f"> **Shift Started:** <t:{int(contained_document.start_epoch)}:R>\n"
                         f"{break_start_time}"
-                        f"> **Breaks:** {len(self.shift['Bweaks~'])}\n"
+                        f"> **Breaks:** {len(self.shift['Breaks'])}\n"
                         f"> **Elapsed Time:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}"
                     ),
                     inline=False,
@@ -10875,7 +10875,7 @@ class AdministratedShiftMenu(discord.ui.View):
         if option == "void":
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
                     color=RED_COLOR,
                 )
                 .set_author(
@@ -10897,7 +10897,7 @@ class AdministratedShiftMenu(discord.ui.View):
                 return
             uis = {
                 "on": discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftStawted >w<')} **Shift Started**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **Shift Started**",
                     color=GREEN_COLOR,
                 )
                 .set_author(
@@ -10923,7 +10923,7 @@ class AdministratedShiftMenu(discord.ui.View):
                     inline=False,
                 ),
                 "off": discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded uwu~')} **Off-Duty**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**",
                     color=RED_COLOR,
                 )
                 .set_author(
@@ -10943,7 +10943,7 @@ class AdministratedShiftMenu(discord.ui.View):
         if option == "break":
             selected_ui = (
                 discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**",
+                    title=f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**",
                     color=ORANGE_COLOR,
                 )
                 .set_author(
@@ -12007,10 +12007,10 @@ class PunishmentModifier(discord.ui.View):
         embed = discord.Embed(
             title="Punishment Modification owo~",
             description=(
-                f"> **Username:** {self.dataset['Usewname uwu~']}\n"
-                f"> **Type:** {self.dataset['Type~']}\n"
-                f"> **ID:** {self.dataset['Snowflake~']}\n"
-                f"> **Reason:** {self.dataset['Reason~']}"
+                f"> **Username:** {self.dataset['Username']}\n"
+                f"> **Type:** {self.dataset['Type']}\n"
+                f"> **ID:** {self.dataset['Snowflake']}\n"
+                f"> **Reason:** {self.dataset['Reason']}"
             ),
             color=BLANK_COLOR,
         )
@@ -12471,7 +12471,7 @@ class BanOptions(discord.ui.Select):
         if self.values[0] == "Ban All Risk Users":
             await interaction.followup.send(
                 embed=discord.Embed(
-                    title=f"{await self.bot.emoji_controller.get_emoji('Clock >w<')} Banning users",
+                    title=f"{await self.bot.emoji_controller.get_emoji('Clock')} Banning users",
                     description="We awe banning aww da risk usews in uw sewvew. Pwease wait...",
                     color=BLANK_COLOR
                 ), ephemeral=True
@@ -12537,7 +12537,7 @@ class SpecificUserSelect(discord.ui.Select):
         await interaction.response.defer()
         await interaction.followup.send(
             embed=discord.Embed(
-                title=f"{await self.bot.emoji_controller.get_emoji('Clock >w<')} Banning users",
+                title=f"{await self.bot.emoji_controller.get_emoji('Clock')} Banning users",
                 description="We awe banning da specified risk usews in da sewvew. Pwease wait...",
                 color=BLANK_COLOR
             ), ephemeral=True

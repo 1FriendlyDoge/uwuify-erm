@@ -221,7 +221,7 @@ class Reminders(commands.Cog):
                 "message": message,
                 "channel": None,
                 "role": [],
-                "lastTwiggewed": 0,
+                "lastTriggered": 0,
                 "paused": False,
             }
 

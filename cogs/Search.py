@@ -152,11 +152,11 @@ class Search(commands.Cog):
                 name="Punishments >w<",
                 value=(
                     f"> **Total Punishments:** {len(warnings)}\n"
-                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', warnings)))}\n"
-                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', warnings)))}\n"
-                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', warnings)))}\n"
-                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', warnings)))}\n"
-                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], warnings)))}"
+                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', warnings)))}\n"
+                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', warnings)))}\n"
+                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', warnings)))}\n"
+                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', warnings)))}\n"
+                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], warnings)))}"
                 ),
                 inline=False,
             )
@@ -184,11 +184,11 @@ class Search(commands.Cog):
                 name="Staff Infowmation~",
                 value=(
                     f"> **Total Moderations:** {len(moderations)}\n"
-                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', moderations)))}\n"
-                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', moderations)))}\n"
-                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', moderations)))}\n"
-                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', moderations)))}\n"
-                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], moderations)))}"
+                    f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', moderations)))}\n"
+                    f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', moderations)))}\n"
+                    f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', moderations)))}\n"
+                    f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', moderations)))}\n"
+                    f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], moderations)))}"
                 ),
                 inline=False,
             )
@@ -205,7 +205,7 @@ class Search(commands.Cog):
         def add_warning_field(warning):
             new_line = "\n"
             embed_list[-1].add_field(
-                name=f"{warning['Type~']}",
+                name=f"{warning['Type']}",
                 inline=False,
                 value=(
                     f"> **Reason:** {warning.reason}\n"
@@ -402,11 +402,11 @@ class Search(commands.Cog):
             name="Punishments >w<",
             value=(
                 f"> **Total Punishments:** {len(warnings)}\n"
-                f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Wawning uwu~', warnings)))}\n"
-                f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick uwu~', warnings)))}\n"
-                f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban~', warnings)))}\n"
-                f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO uwu~', warnings)))}\n"
-                f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING owo~', 'KICK~', 'BAN >w<', 'BOLO uwu~'], warnings)))}"
+                f"> **Warnings:** {len(list(filter(lambda x: x.warning_type == 'Warning', warnings)))}\n"
+                f"> **Kicks:** {len(list(filter(lambda x: x.warning_type == 'Kick', warnings)))}\n"
+                f"> **Bans:** {len(list(filter(lambda x: x.warning_type == 'Ban', warnings)))}\n"
+                f"> **BOLOs:** {len(list(filter(lambda x: x.warning_type.upper() == 'BOLO', warnings)))}\n"
+                f"> **Other:** {len(list(filter(lambda x: x.warning_type.upper() not in ['WARNING', 'KICK', 'BAN', 'BOLO'], warnings)))}"
             ),
             inline=False,
         )
@@ -422,7 +422,7 @@ class Search(commands.Cog):
         def add_warning_field(warning):
             new_line = "\n"
             embed_list[-1].add_field(
-                name=f"{warning['Type~']}",
+                name=f"{warning['Type']}",
                 inline=False,
                 value=(
                     f"> **Moderator:** <@{warning.moderator_id}>\n"

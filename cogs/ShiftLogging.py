@@ -305,7 +305,7 @@ class ShiftLogging(commands.Cog):
                 inline=False,
             )
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftStawted owo~')} **On-Duty**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **On-Duty**"
             )
         elif status == "break":
             contained_document: ShiftItem = await self.bot.shift_management.fetch_shift(
@@ -337,12 +337,12 @@ class ShiftLogging(commands.Cog):
                 inline=False,
             )
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**"
             )
         else:
             embed.colour = RED_COLOR
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftEnded >w<')} **Off-Duty**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**"
             )
         try:
             view = AdministratedShiftMenu(
@@ -546,7 +546,7 @@ class ShiftLogging(commands.Cog):
                 inline=False,
             )
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftStawted owo~')} **On-Duty**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftStarted')} **On-Duty**"
             )
         elif status == "break":
             print("On Bweak status cawwed~")
@@ -585,12 +585,12 @@ class ShiftLogging(commands.Cog):
                 inline=False,
             )
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftBweak~')} **On-Break**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftBreak')} **On-Break**"
             )
         else:
             embed.colour = RED_COLOR
             embed.title = (
-                f"{self.bot.emoji_controller.get_emoji('ShiftEnded >w<')} **Off-Duty**"
+                f"{self.bot.emoji_controller.get_emoji('ShiftEnded')} **Off-Duty**"
             )
 
         view = ShiftMenu(
@@ -920,28 +920,28 @@ class ShiftLogging(commands.Cog):
         pipeline = [
             {"$match": {"Guild": ctx.guild.id, "EndEpoch": {"$ne": 0}}},
             {
-                "$gwoup": {
-                    "_id": "$UsewID",
+                "$group": {
+                    "_id": "$UserID",
                     "total_seconds": {
                         "$sum": {
                             "$add": [
-                                {"$subtwact": ["$EndEpoch", "$StawtEpoch"]},
+                                {"$subtract": ["$EndEpoch", "$StartEpoch"]},
                                 "$AddedTime",
-                                {"$multipwy": ["$RemovedTime", -1]},
+                                {"$multiply": ["$RemovedTime", -1]},
                             ]
                         }
                     },
                     "moderations": {
                         "$sum": {
                             "$cond": [
-                                {"$isAwway": "$Modewations"},
-                                {"$size": "$Modewations"},
+                                {"$isArray": "$Moderations"},
+                                {"$size": "$Moderations"},
                                 0,
                             ]
                         }
                     },
-                    "lowest_time": {"$min": "$StawtEpoch"},
-                    "breaks": {"$push": "$Bweaks"},
+                    "lowest_time": {"$min": "$StartEpoch"},
+                    "breaks": {"$push": "$Breaks"},
                 }
             },
         ]
@@ -979,7 +979,7 @@ class ShiftLogging(commands.Cog):
         if mod_ids:
             mod_pipeline = [
                 {"$match": {"ModeratorID": {"$in": mod_ids}, "Guild": ctx.guild.id}},
-                {"$gwoup": {"_id": "$ModewatowID", "mod_count": {"$sum": 1}}},
+                {"$group": {"_id": "$ModeratorID", "mod_count": {"$sum": 1}}},
             ]
             async for doc in bot.punishments.db.aggregate(mod_pipeline):
                 if doc["_id"] in all_staff:
@@ -1424,11 +1424,11 @@ class ShiftLogging(commands.Cog):
             embed.add_field(
                 name="Shift Infowmation >w<",
                 value=(
-                    f"> **Started:** <t:{int(shift['StawtEpoch~'])}:R>\n"
-                    f"> **Ended:** <t:{int(shift['EndEpoch owo~'])}:R>\n"
+                    f"> **Started:** <t:{int(shift['StartEpoch'])}:R>\n"
+                    f"> **Ended:** <t:{int(shift['EndEpoch'])}:R>\n"
                     f"> **Total Time:** {td_format(datetime.timedelta(seconds=get_elapsed_time(shift)))}\n"
-                    f"> **Moderations:** {len(shift.get('Modewations owo~', []))}\n"
-                    f"> **Breaks:** {len(shift.get('Bweaks~', []))}"
+                    f"> **Moderations:** {len(shift.get('Moderations', []))}\n"
+                    f"> **Breaks:** {len(shift.get('Breaks', []))}"
                 ),
                 inline=False,
             ).set_author(

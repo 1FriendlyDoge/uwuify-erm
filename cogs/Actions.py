@@ -44,9 +44,9 @@ class Actions(commands.Cog):
             current_embed.add_field(
                 name=item["ActionName"],
                 value=(
-                    f"> **Name:** {item['ActionName uwu~']}\n"
-                    f"> **ID:** `{item['ActionID~']}`\n"
-                    f"> **Triggered:** {item['Twiggews >w<']}"
+                    f"> **Name:** {item['ActionName']}\n"
+                    f"> **ID:** `{item['ActionID']}`\n"
+                    f"> **Triggered:** {item['Triggers']}"
                 ),
                 inline=False,
             )
@@ -83,8 +83,8 @@ class Actions(commands.Cog):
 
         verbose = False
         dnr = False
-        if "--vewbose" in action:
-            action = action.replace(" --vewbose", "")
+        if "--verbose" in action:
+            action = action.replace(" --verbose", "")
             verbose = True
         try:
             dnr = getattr(ctx, "dnr")  # prevent privilege bypassing! no black hats
@@ -110,11 +110,11 @@ class Actions(commands.Cog):
                 )
             )
 
-        if action_obj.get("AccessRowes >w<"):
+        if action_obj.get("AccessRoles"):
             if (
                 not any(
                     [discord.utils.get(ctx.guild.roles, id=i) in ctx.author.roles]
-                    for i in action_obj.get("AccessRowes >w<")
+                    for i in action_obj.get("AccessRoles")
                 )
                 and not dnr
             ):
@@ -152,7 +152,7 @@ class Actions(commands.Cog):
             msg = await ctx.send(
                 embed=discord.Embed(
                     title=f"{self.bot.emoji_controller.get_emoji('success')} Wunning Action~",
-                    description=f"**(0/{len(action_obj['Integwations~'])})** I am cuwwentwy wunning ur action! owo",
+                    description=f"**(0/{len(action_obj['Integrations'])})** I am cuwwentwy wunning ur action! owo",
                     color=GREEN_COLOR,
                 )
             )
@@ -180,7 +180,7 @@ class Actions(commands.Cog):
                 await msg.edit(
                     embed=discord.Embed(
                         title=f"{self.bot.emoji_controller.get_emoji('success')} Wunning Action~",
-                        description=f"**({len(list(filter(lambda x: x == 0, returns)))}/{len(action_obj['Integwations~'])})** I am cuwwentwy wunning ur action! owo{' `{}`'.format(returns) if verbose else ''}",
+                        description=f"**({len(list(filter(lambda x: x == 0, returns)))}/{len(action_obj['Integrations'])})** I am cuwwentwy wunning ur action! owo{' `{}`'.format(returns) if verbose else ''}",
                         color=GREEN_COLOR,
                     )
                 )

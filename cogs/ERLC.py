@@ -59,7 +59,7 @@ class ERLC(commands.Cog):
         self,
         guild_id,
         author_id,
-        interpret_type: typing.Literal["Message >w<", "Hint~", "Command >w<"],
+        interpret_type: typing.Literal["Message", "Hint", "Command"],
         command_string: str,
         attempted: bool = False,
     ):
@@ -157,10 +157,10 @@ class ERLC(commands.Cog):
             embed1.add_field(
                 name="Staff Statistics~",
                 value=(
-                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Sewvew Modewatow owo~', players)))}\n"
-                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Sewvew Administwatow uwu~', players)))}\n"
-                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Nowmaw >w<', players)))}\n"
-                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guiwd >w<': guild_id, 'EndEpoch owo~': 0})}"
+                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Server Moderator', players)))}\n"
+                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Server Administrator', players)))}\n"
+                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Normal', players)))}\n"
+                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guild': guild_id, 'EndEpoch': 0})}"
                 ),
                 inline=False,
             )
@@ -901,12 +901,12 @@ class ERLC(commands.Cog):
                 elif item.permission != "Normal" and target.lower() == "staff":
                     selected.append(item.username)
                 elif (
-                    item.permission == "Sewvew Modewatow owo~"
+                    item.permission == "Server Moderator"
                     and target.lower() == "moderators"
                 ):
                     selected.append(item.username)
                 elif (
-                    item.permission == "Sewvew Administwatow uwu~"
+                    item.permission == "Server Administrator"
                     and target.lower() == "admins"
                 ):
                     selected.append(item.username)
@@ -1084,7 +1084,7 @@ class ERLC(commands.Cog):
         ):
             # REQUIRES ELEVATION
             if (
-                (await self.bot.settings.find_by_id(ctx.guild.id) or {}).get("ERLC~", {})
+                (await self.bot.settings.find_by_id(ctx.guild.id) or {}).get("ERLC", {})
                 or {}
             ).get("elevation_required", True):
                 await self.secure_logging(
@@ -1176,10 +1176,10 @@ class ERLC(commands.Cog):
             embed1.add_field(
                 name="Staff Statistics~",
                 value=(
-                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Sewvew Modewatow owo~', players)))}\n"
-                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Sewvew Administwatow uwu~', players)))}\n"
-                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Nowmaw >w<', players)))}\n"
-                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guiwd >w<': guild_id, 'EndEpoch owo~': 0})}"
+                    f"> **Moderators:** {len(list(filter(lambda x: x.permission == 'Server Moderator', players)))}\n"
+                    f"> **Administrators:** {len(list(filter(lambda x: x.permission == 'Server Administrator', players)))}\n"
+                    f"> **Staff In-Game:** {len(list(filter(lambda x: x.permission != 'Normal', players)))}\n"
+                    f"> **Staff Clocked In:** {await self.bot.shift_management.shifts.db.count_documents({'Guild': guild_id, 'EndEpoch': 0})}"
                 ),
                 inline=False,
             )
@@ -1223,9 +1223,9 @@ class ERLC(commands.Cog):
 
         new_maps = ["Sewvew Ownews~", "Sewvew Administwatow uwu~", "Sewvew Modewatow owo~"]
         new_vals = [
-            key_maps.get("Sewvew Ownew >w<", []) + key_maps.get("Sewvew Co-Ownew >w<", []),
-            key_maps.get("Sewvew Administwatow uwu~", []),
-            key_maps.get("Sewvew Modewatow owo~", []),
+            key_maps.get("Server Owner", []) + key_maps.get("Server Co-Owner", []),
+            key_maps.get("Server Administrator", []),
+            key_maps.get("Server Moderator", []),
         ]
         new_keymap = dict(zip(new_maps, new_vals))
         embed2.title = f"Online Staff Members [{sum([len(i) for i in new_vals])}]"
@@ -1648,7 +1648,7 @@ class ERLC(commands.Cog):
         except ResponseFailure:
             return await ctx.send(
                 embed=discord.Embed(
-                    title=f"{self.bot.emoji_controller.get_emoji('WawningIcon~')} PRC API Error",
+                    title=f"{self.bot.emoji_controller.get_emoji('WarningIcon')} PRC API Error",
                     description="Thewe was an ewwow fetching playews fwom da PRC API. owo~",
                     color=BLANK_COLOR,
                 )
@@ -1708,7 +1708,7 @@ class ERLC(commands.Cog):
     @is_server_linked()
     async def refresh(self, ctx: commands.Context):
         settings = await self.bot.settings.find_by_id(ctx.guild.id) or {}
-        erlc_settings = settings.get("ERLC~", {})
+        erlc_settings = settings.get("ERLC", {})
         if not erlc_settings.get("allow_player_refresh", False):
             return await ctx.send(
                 embed=discord.Embed(

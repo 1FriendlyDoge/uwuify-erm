@@ -453,7 +453,7 @@ class APIRoutes:
             try:
                 member = await guild.fetch_member(user_id)
             except discord.HTTPException:
-            return HTTPException(status_code=404, detail="Membew nyot found >w<~")
+                return HTTPException(status_code=404, detail="Membew nyot found >w<~")
         if json_data["status"].lower() == "accepted":
             embed = discord.Embed(
                 title=f"{self.bot.emoji_controller.get_emoji('success')} Pwiowity Wequest Accepted uwu~",
